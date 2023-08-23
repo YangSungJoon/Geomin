@@ -1,0 +1,50 @@
+footer{
+    width: 100%;
+    margin-top: 5rem;
+
+}
+
+.footerMain{
+    width: 80rem;
+    height: 15rem;
+    background-color: #f8f6f6;
+}
+
+.foot_bottom{
+    display: flex;
+}
+
+.foot_bottom h3{
+    margin: 1rem auto;
+}
+
+.foot_bottom div{
+    margin: 0;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.foot_bottom_bottom{
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+}
+
+.foot_bottom_bottom a{
+    /*margin: 0 0.7rem;*/
+    color: #bbb;
+    text-decoration: none;
+}
+
+.footer_bottom{
+    padding-right: 0.7rem;
+    border-right: 2px solid #bbb;
+    margin-left: 0.2rem;
+}
+
+.team_intro{
+    text-align: center;
+    line-height: 2rem;
+    font-weight: bold;
+    padding: 0.5rem;
+}
