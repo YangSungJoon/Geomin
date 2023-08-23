@@ -21,6 +21,8 @@ public class ContentController {
 	@GetMapping("contentList")
 	public void contentList(Model model) {
 		
+		// 마지막 테스트
+		
 		contentService.contentList(model);
 	}
 	
