@@ -32,6 +32,7 @@ public class HomeController {
 		// test4444
 		//test55
 		// test66
+		// test 77
 		
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
