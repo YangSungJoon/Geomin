@@ -1,0 +1,87 @@
+.login_box{
+    width: 60rem;
+    align-items: center;
+    float: left;
+    /* background-color: bisque; */
+}
+
+.login_logo{
+    width: 100%;
+    text-align: center;
+    margin: 2.5rem 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+
+}
+
+.login_content_box{
+    width: 60rem;
+    float: left;
+    line-height: 2rem;
+    text-align: center;
+    height: 50rem;
+}
+
+.login_menu{
+    height: 18rem;
+    line-height: 3.5rem;
+}
+
+.login_button{
+    height: 3rem;
+    line-height: 2.5rem;
+    width: 100px;
+    border: 3px solid aliceblue;
+    background-color: azure;
+    border-radius: 15px;
+}
+
+.login_button:hover{
+    background-color: rgb(228, 252, 252);
+}
+
+/* #button_login{
+    border: 3px solid rgb(150, 236, 20);
+    background-color: rgb(157, 247, 23);
+    border-radius: 5px;
+} */
+
+.login_bottom{
+    display: flex;
+    margin: 1.5rem 0;
+}
+
+.login_box_id h5{
+    font-size: 17px;
+}
+
+.login_box_pw h5{
+    font-size: 17px;
+}
+
+#userId{
+    width: 10rem;
+    height: 3rem;
+}
+
+#userPw{
+    width: 10rem;
+    height: 3rem;
+}
+
+.login_bottom{
+    height: 20rem;
+}
+
+.login_bottom div{
+    height: 3.5rem;
+    width: 150px;
+    line-height: 3.5rem;
+    margin-top: 2rem;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.login_bottom div:hover{
+    background-color: rgb(226, 240, 253);
+}

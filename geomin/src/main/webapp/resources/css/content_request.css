@@ -1,0 +1,93 @@
+.intro-box{
+    border: 2px solid black;
+    width: 80rem;
+    height: 60rem;
+}
+
+.left-sideBar{
+    border-right: 2px solid #f8f8f8;
+    width: 15rem;
+    height: 55rem;
+    float: left;
+    line-height: 3rem;
+    margin-top: 0.5rem;
+}
+
+.site-intro{
+    width: 100%;
+    font-weight: bold;
+    background-color: #f9f9f9 !important;
+    border-radius: 10rem;
+    text-align: center;
+}
+
+#intro-hover:hover{
+    color: #bbb;
+}
+
+.guide{
+    width: 100%;
+    font-weight: bold;
+    border-radius: 10rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#guide-hover:hover{
+    color: #bbb;
+}
+
+.location{
+    background-color: #f8f8f8;
+    padding: 7px;
+    height: 2.3rem;
+}
+
+.clearFix{
+    max-width: 1500px;
+    margin: 0 auto;
+    height: 3rem;
+}
+
+.home img{
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+.clearFix li{
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.name-content{
+    width: 60rem;
+    height: 4rem;
+    float: right;
+    line-height: 3.5rem;
+}
+
+.request-content{
+    border: 3px solid blue;
+    width: 63rem;
+    height: 53rem;
+    float: right;
+}
+
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#search_level{
+    border: 2px solid black;
+    width: 100px;
+    height: 40px;
+}
+
+option{
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}

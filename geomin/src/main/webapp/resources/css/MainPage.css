@@ -1,0 +1,100 @@
+
+.home-box{
+    width: 80rem;
+    height: 60rem;
+}
+
+#banner{
+    /* position:relative; */
+    width: 100%;
+    height: 20rem;
+    /* border:2px solid #ccc; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 1s;
+    background-size : 100% 100%;
+    background-image: url('../image/pic-1.jpeg');
+}
+
+#banner img{
+    width: 100%;
+    height: 20rem;
+}
+
+.arrow {
+    margin: 0;
+    /* z-index:100; */
+    font-size:2em;
+    padding:10px;
+    background:#dddddd00;
+    color:#222;
+    opacity:0.2;
+}
+
+.arrow:hover {
+    opacity:1;
+}
+
+#recommand-box{
+    width: 80rem;
+    height: 25rem;
+    margin-top: 1rem;
+}
+
+.recommand-image1{
+    width: 20rem;
+    float: left;
+    margin-left: 5rem;
+}
+
+.recommand-image2{
+    width: 20rem;
+    float: left;
+    margin-left: 5rem;
+}
+
+.recommand-image3{
+    width: 20rem;
+    float: left;
+    margin-left: 5rem;
+}
+
+.recommand-image1 img{
+    width: 19.5rem;
+    height: 11rem;
+    margin-top: 2rem;
+    border: 2px solid #bbb;
+    float: left;
+}
+
+.recommand-image1 p{
+    line-height: 3rem;
+    font-weight: bold;
+}
+
+.recommand-image2 p{
+    line-height: 3rem;
+    font-weight: bold;
+}
+
+.recommand-image3 p{
+    line-height: 3rem;
+    font-weight: bold;
+}
+
+.recommand-image2 img{
+    width: 19.5rem;
+    height: 11rem;
+    margin-top: 2rem;
+    border: 2px solid #bbb;
+    float: left;
+}
+
+.recommand-image3 img{
+    width: 19.5rem;
+    height: 11rem;
+    margin-top: 2rem;
+    border: 2px solid #bbb;
+    float: left;
+}
