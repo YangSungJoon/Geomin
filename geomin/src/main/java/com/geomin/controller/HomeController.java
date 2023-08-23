@@ -27,6 +27,7 @@ public class HomeController {
 		
 		// ㅎㅇ
 		//test
+		// testtesttest
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
