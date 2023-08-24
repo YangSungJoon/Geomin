@@ -58,7 +58,7 @@ public class UserController {
         	    
            session.setAttribute("userVo", userVo);
            session.setAttribute("userId", userVo.getUser_id());
-           return "redirect:/main";
+           return "/main";
 
 		} else {
 			// 로그인 실패

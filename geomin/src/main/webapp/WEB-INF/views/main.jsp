@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/MainPage.css">
-    <link rel="stylesheet" href="../resources/css/footer.css">
-    <link rel="stylesheet" href="../resources/css/header.css">
-    <script src="../js/MainPage.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <script src="../js/main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
@@ -75,7 +75,7 @@
     <div class = "home-box">
         <div id='banner'>
 		    <div class="arrow" id="left">&lang;</div>
-            <img src="../resources/image/pic-1.jpeg" alt="">
+            <img src="../image/pic-1.jpeg" alt="">
 		    <div class="arrow" id="right">&rang;</div>
 		</div>
 
@@ -85,19 +85,19 @@
         <div id = "recommand-box">
             <h2>인기 강의</h2>
             <div class = "recommand-image1">
-                <img src="../resources/image/a.png" alt="이미지">
+                <img src="../image/a.png" alt="이미지">
                 <p>강의 1</p>
                 <p>200,000 원</p>
             </div>
 
             <div class = "recommand-image2">
-                <img src="../resources/image/a.png" alt="이미지">
+                <img src="../image/a.png" alt="이미지">
                 <p>강의 2</p>
                 <p>50,000 원</p>
             </div>
 
             <div class = "recommand-image3">
-                <img src="../resources/image/a.png" alt="이미지">
+                <img src="../image/a.png" alt="이미지">
                 <p>강의 3</p>
                 <p>100,000 원</p>
             </div>

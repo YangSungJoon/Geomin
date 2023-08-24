@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/footer.css">
-    <link rel="stylesheet" href="../resources/css/header.css">
-    <link rel="stylesheet" href="../resources/css/intro.css">
-    <link rel="stylesheet" href="../resources/css/login.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/intro.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <header>
     <div class = "header">
@@ -68,13 +68,12 @@
     </div>
 </header>
 <body>
-<form action='/loginAction' method='post'>
     <div class = "intro-box">
         <div class = "location">
             <ul class = "clearFix">
                 <li class = "home">
                     <a href = "#">
-                        <img src="../resources/image/homeicon.png" alt=""> /
+                        <img src="../image/homeicon.png" alt=""> /
                     </a>
                 </li>
                 <li>
@@ -103,15 +102,15 @@
     <div class = "login_menu">
         <div class='login_box_id'>
             <h5>아이디</h5>
-            <input type="text" name="userId" id="userId" placeholder='' autocomplete='off' value="aaa111">
+            <input type="id" name="userId" id="userId" placeholder='' autocomplete='off'>
         </div>
         <div class='login_box_pw'>
             <h5>비밀번호</h5>
-            <input type="password" name="userPw" id="userPw" autocomplete='off' value="aaaa1111!!!!">
+            <input type="password" name="userPw" id="userPw" autocomplete='off'>
         </div>
     </div>
         <div class='login_button'>
-            <button type="submit" id="button_login">로그인</button> 
+            <a href="#" id="button_login">로그인</a>
         </div>
         <br><br>
         <hr>
@@ -119,20 +118,13 @@
         <div class='login_bottom'>
             <div><a href="#">아이디 찾기</a></div>
             <div><a href="#">비밀번호 찾기</a></div>
-            <div><a href="/regist">회원가입</a></div>
+            <div><a href="../html/regist.html">회원가입</a></div>
         </div>
     </div>
 
 </div>
-</form>
-      <script>
-        <%-- 로그인 실패 시 메시지가 있는 경우에만 alert 창을 띄웁니다. --%>
-        
-        <% if (request.getAttribute("errorMSG") != null) { %>
-            var errorMessage = "${errorMSG}";
-            alert(errorMessage);
-        <% } %>
-    </script>
+
+    
 </body>
 <footer>
     <div class="footerMain">

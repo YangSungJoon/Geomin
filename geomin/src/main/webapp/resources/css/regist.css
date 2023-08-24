@@ -33,14 +33,7 @@ div[class^=regi_box] input{
     padding: 1rem;
 }
 
-.regi_button{
-    width: 100%;
-    height: 4rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--main-color);
-    background-color: var(--main-color);
-    margin-top: 1.5rem;
-}
+
 
 .regi_button{
     width: 100%;
@@ -54,9 +47,9 @@ div[class^=regi_box] input{
     border-radius: var(--border-radius);
 }
 
-.regi_button:hover{
+#button_register:hover{
     background-color: var(--main-color-hover);
-    color: #ebebeb;
+    color: gray;
 }
 
 div[class^=regi_box] input{
@@ -133,12 +126,28 @@ input:focus{
 }
 
 #button_register{
-    border: 2px solid black;
+    font-weight: bold;
+    text-align: center;
+    width: 120px;
 }
 
 .regi_box_id div{
     display: flex;
     float: left;
+}
+
+#id_check{
+    border: 1px solid gray;
+    text-align: center;
+}
+
+#id_check:hover{
+    background-color: #ceccccd7;
+}
+
+.id_check_box{
+    width: 100%;
+    height: 2rem;
 }
 
 .regi_box_pw div{
@@ -156,11 +165,48 @@ input:focus{
     float: left;
 }
 
+.regi_box_member{
+}
+
 .regi_box_member div{
     display: flex;
     float: left;
 }
 
+.member_check{
+    margin-left: 1rem;
+}
+
+#member_select_box{
+    width: 7rem;
+    height: 3rem;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid rgb(203, 203, 203);
+    background-color: #f6f6f6;
+}
+
 .star{
     color: red;
+}
+
+.check{
+    /*text-align: center;*/
+    margin-bottom: 2rem;
+}
+
+.check button{
+    width: 6rem;
+    height: 2.5rem;
+    border: 1px solid #bbb;
+    border-radius: 1rem;
+    background-color: #f8f8f8;
+}
+
+.check #male:hover{
+    background-color: dodgerblue;
+}
+
+.check #female:hover{
+    background-color: hotpink;
 }
