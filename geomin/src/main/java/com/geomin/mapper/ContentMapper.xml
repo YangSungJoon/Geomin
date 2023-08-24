@@ -8,10 +8,20 @@
 	<select id="contentList" resultType="com.geomin.vo.ContentVO">
 	
 	select 
-    content_name, learning_difficulty, learning_member,
-    price, sale, (price - (price * sale)) as real_price 
+    content_id,content_name, learning_difficulty, learning_member,
+    price, sale, (price - (price * sale)) as real_price, learning_content 
     from content
 	
 	</select>
+
+
+	<insert id="insertSubscription">
+	<selectKey keyProperty="group_id" order="BEFORE" resultType="String">
+  		select 'G' || LPAD(SEQ_groups.NEXTVAL, 4, '0') from dual
+	</selectKey>
+	insert into groups values(#{group_id}, #{user_id_leader}, #{content_id},#{group_name}, #{group_personnel},#{learning_start} ,#{learning_end})
+	
+	</insert>
+
 
   </mapper>
