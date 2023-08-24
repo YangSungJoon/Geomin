@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class testController {
 	
-	@GetMapping("/content_request")
+	/*@GetMapping("/content_request")
 	public String contentRequest() {
 		return "/content_request";
 	}
@@ -39,5 +39,5 @@ public class testController {
 	@GetMapping("/study_group_join")
 	public String study_group_join() {
 		return "/study_group_join";
-	}
+	}*/
 }
