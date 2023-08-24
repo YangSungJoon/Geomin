@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.geomin.service.ContentService;
+import com.geomin.vo.GroupVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -21,9 +23,22 @@ public class ContentController {
 	@GetMapping("contentList")
 	public void contentList(Model model) {
 		
-		// 마지막 테스트
 		
 		contentService.contentList(model);
 	}
 	
+	@GetMapping("group")
+	public String group(Model model){
+		contentService.contentList(model);
+		return "/content/group";
+	}
+	
+	
+	@PostMapping("group")
+	public void insertSubscription(GroupVO groupVO, Model model) {
+		
+		contentService.insertSubscription(groupVO, model);
+		contentService.contentList(model);
+		
+	}
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 
 import com.geomin.mapper.ContentMapper;
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.GroupVO;
 
 @Service
 public class ContentServiceImpl implements ContentService{
@@ -24,5 +25,16 @@ public class ContentServiceImpl implements ContentService{
 		
 		return null;
 	}
+	
+	
+	@Override
+	public int insertSubscription(GroupVO groupVO, Model model) {
+		
+		int res = contentMapper.insertSubscription(groupVO);
+		
+		model.addAttribute("GroupVO", groupVO);
+		return res;
+	}
+	
 	
 }
