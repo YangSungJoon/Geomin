@@ -93,9 +93,8 @@
 					</div>
 					<input type="id" name="userId" id="userId"
 						placeholder='공백없이 영문/숫자 6자' autocomplete='off'
-						style='text-align: center;'>
+						style='text-align: center;' value="aaa111">
 				</div>
-				<div class="errors"></div>
 				<div class='regi_box_pw'>
 					<div>
 						<h5>비밀번호</h5>
@@ -103,9 +102,8 @@
 					</div>
 					<input type="password" name="userPw" id="userPw"
 						placeholder='공백없이 영문(대/소문자) 숫자 및 특수문자 조합 8-15자' maxlength='15'
-						autocomplete='off' style='text-align: center;'>
+						autocomplete='off' style='text-align: center;' value="aaaa1111!!!!">
 				</div>
-				<div class="errors"></div>
 				<div class='regi_box_pw_check'>
 					<div>
 						<h5>비밀번호 확인</h5>
@@ -113,12 +111,12 @@
 					</div>
 					<input type="password" name="userPwCheck" id="userPwCheck"
 						placeholder='비밀번호를 한번 더 입력하세요' maxlength='15' autocomplete='off'
-						style='text-align: center;'>
+						style='text-align: center;' value="aaaa1111!!!!">
 				</div>
 				<div class='regi_box_name'>
 					<h5>이름</h5>
 					<input type="text" name="userName" id="userName" autocomplete='off'
-						style='text-align: center;'>
+						style='text-align: center;' value="이창훈">
 				</div>
 				<div class='regi_box_birth'>
 					<div>
@@ -126,13 +124,13 @@
 						<h5 class="star">&nbsp*</h5>
 					</div>
 					<input type="date" name="brithDate" id="birthDate"
-						style='text-align: center;'>
+						style='text-align: center;' value="1999-05-27">
 				</div>
 				<div class='regi_box_id'>
 					<h5>이메일 주소</h5>
 					<input type="email" name="userEmail" id="userEmail"
 						placeholder='이메일 주소를 입력하세요' autocomplete='off'
-						style='text-align: center;'>
+						style='text-align: center;' value="aaa111@naver.com">
 				</div>
 
 				<div class='regi_box_member'>
@@ -141,19 +139,17 @@
 						<h5 class="star">&nbsp*</h5>
 					</div>
 					<br> <select name="userType" id="userType">
-						<option value="">학습지도자</option>
-						<option value="">학습자</option>
-						<option value="">운영자</option>
+						<option value="teacher">학습지도자</option>
+						<option value="student">학습자</option>
+						<option value="admin">운영자</option>
 					</select>
 				</div>
 				<div class='regi_box_gender'>
 					<h5>성별</h5>
 					<input type="text" name="userGender" id="userGender"
-						style='text-align: center;'>
+						style='text-align: center;' value="남">
 				</div>
-				<div class="errors"></div>
 
-				<div class="errors"></div>
 				<div class='regi_box_phone'>
 					<div>
 						<h5>전화번호</h5>
@@ -161,12 +157,10 @@
 					</div>
 					<div>
 						<input type="tel" name="userPhone" id="userPhone"
-							placeholder='(-)없이 지역번호 포함 숫자' onkeypress='phoneNum()'
-							maxlength='13' autocomplete='off' style='text-align: center;'>
+							placeholder='(-)없이 지역번호 포함 숫자' oninput='phoneNum()'
+							maxlength='13' autocomplete='off' style='text-align: center;' value="01055556666">
 					</div>
 				</div>
-				<div class="errors"></div>
-				<div class="errors"></div>
 
 				<div class='regi_button'>
 					<button id='button_register' type="submit">회원가입</button>
@@ -180,6 +174,8 @@
 		var inputElement = document.getElementById("userPhone");
 		var inputValue = inputElement.value;
 
+		// 숫자를 제외한 모든 문자 제거
+	    var numericValue = inputValue.replace(/\D/g, '');
 		// 하이픈(-) 추가 로직
 		var formattedValue = inputValue.replace(/(\d{3})(\d{4})(\d{4})/,
 				"$1-$2-$3");
@@ -188,6 +184,41 @@
 		inputElement.value = formattedValue;
 	}
 
+	document.getElementById('button_register').addEventListener('click', function(e) {
+		  const idRegex = /^[a-zA-Z0-9]{6,12}$/; // 6~12 글자의 영문 소문자와 숫자 조합
+		  const pwRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,12}$/; // 6~12 글자의 영문과 숫자 조합
+		  
+		  const userIdInput = document.getElementById('userId'); // 아이디 입력 요소 가져오기
+		  const userPwInput = document.getElementById('userPw'); // 비밀번호 입력 요소 가져오기
+		
+		  // 이벤트 초기화
+		  e.preventDefault();
+		  
+		  // 입력값 가져오기
+		  const userId = document.getElementById('userId').value;
+		  const userPw = document.getElementById('userPw').value;
+		  const userPwCheck = document.getElementById('userPwCheck').value;
+		  
+		  // 유효성 검사 수행
+		  
+		  if (!idRegex.test(userId)) {
+			  showAlert('아이디 형식을 확인하세요.');
+			  return false;
+		  }
+		  
+		  if (!pwRegex.test(userPw)) {
+			  showAlert('비밀번호 형식을 확인하세요.');
+			  return false;
+		  }
+		  
+		  if (userPw !== userPwCheck) {
+			  showAlert('비밀번호가 일치하지 않습니다.');
+			  return false;
+		  }
+		  
+		  register();
+	  });
+	
 	function register() {
 
 		let userId = document.getElementById('userId').value;
@@ -233,16 +264,19 @@
 	        	  showAlert('회원가입이 완료되었습니다.');
 	              location.href = '/login';
 	          } else {
-	        	  errors.innerHTML = result.msg;
+	        	  error.innerHTML = result.msg;
 	          }
 	      })
 	      .catch((error) => {
 	          console.error('Error : ', error);
 	      });
 	  };
-				
-		}
-	}
+	//서버로부터 받은 메시지를 이용하여 알림창을 띄우는 함수
+	  function showAlert(message) {
+	    alert(message);
+	  }		
+		
+	
 </script>
 
 <footer>

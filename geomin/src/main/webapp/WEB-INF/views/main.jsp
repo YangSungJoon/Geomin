@@ -6,10 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../resources/css/MainPage.css">
     <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
-    <link rel="stylesheet" href="../resources/css/intro.css">
-    <link rel="stylesheet" href="../resources/css/login.css">
+    <script src="../js/MainPage.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <header>
     <div class = "header">
@@ -35,21 +38,21 @@
                     </ul>
                 </li>
         
-                <li><a href = "#" id = "category-size">구독서비스</a>
+                <li><a href = "#" id = "category-size">학습서비스</a>
                     <ul class = 'submenu'>
                         <li><a href="#" id = "subcategory-size">학습 신청</a></li>
                         <li><a href="#" id = "subcategory-size">학습현황 등록</a></li>
                     </ul>
                 </li>
 
-                <li><a href = "#" id = "category-size">강사마당</a>
+                <li><a href = "#" id = "category-size">구독서비스</a>
                     <ul class = 'submenu'>
                         <li><a href="#" id = "subcategory-size">패키지 및 구독신청</a></li>
                         <li><a href="#" id = "subcategory-size">학습자 등록</a></li>
                     </ul>
                 </li>
 
-                <li><a href = "#" id = "category-size">학습서비스</a>
+                <li><a href = "#" id = "category-size">강사마당</a>
                     <ul class = 'submenu'>
                         <li><a href="#" id = "subcategory-size">학습 현황 조회</a></li>
                     </ul>
@@ -57,9 +60,10 @@
 
                 <li><a href = "#" id = "category-size">관리마당</a>
                     <ul class = 'submenu'>
-                        <li><a href="#" id = "subcategory-size">학습콘텐츠 등록</a></li>
-                        <li><a href="#" id = "subcategory-size">공지 등록</a></li>
-                        <li><a href="#" id = "subcategory-size">매출집계 및 조회</a></li>
+                        <li><a href="#" id = "subcategory-size">학습패키지 등록</a></li>
+                        <li><a href="#" id = "subcategory-size">게시판</a></li>
+                        <li><a href="#" id = "subcategory-size">Q&A</a></li>
+                        <li><a href="#" id = "subcategory-size">매출관리</a></li>
                     </ul>
                 </li>
             </ul>
@@ -68,71 +72,43 @@
     </div>
 </header>
 <body>
-<form action='/loginAction' method='post'>
-    <div class = "intro-box">
-        <div class = "location">
-            <ul class = "clearFix">
-                <li class = "home">
-                    <a href = "#">
-                        <img src="../resources/image/homeicon.png" alt=""> /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        로그인
-                    </a>
-                </li>
-            </ul>
-        </div>
-    
-        <div class = "left-sideBar">
-            <ul>
-                <li class = "site-intro"><a href = "" id = "intro-hover">로그인</a></li>
-            </ul>
-        </div>
+    <div class = "home-box">
+        <div id='banner'>
+		    <div class="arrow" id="left">&lang;</div>
+            <img src="../resources/image/pic-1.jpeg" alt="">
+		    <div class="arrow" id="right">&rang;</div>
+		</div>
 
-    <div class='login_box'>
-        <div class='login_center slide-in'>
-            <div class='login_logo'>
-                회원 로그인
-            </div>
-        </div>
-    </div>
-    
-    <div class = "login_content_box">
-    <div class = "login_menu">
-        <div class='login_box_id'>
-            <h5>아이디</h5>
-            <input type="text" name="userId" id="userId" placeholder='' autocomplete='off' value="aaa111">
-        </div>
-        <div class='login_box_pw'>
-            <h5>비밀번호</h5>
-            <input type="password" name="userPw" id="userPw" autocomplete='off' value="aaaa1111!!!!">
-        </div>
-    </div>
-        <div class='login_button'>
-            <button type="submit" id="button_login">로그인</button> 
-        </div>
-        <br><br>
+        <br>
         <hr>
 
-        <div class='login_bottom'>
-            <div><a href="#">아이디 찾기</a></div>
-            <div><a href="#">비밀번호 찾기</a></div>
-            <div><a href="/regist">회원가입</a></div>
-        </div>
-    </div>
+        <div id = "recommand-box">
+            <h2>인기 강의</h2>
+            <div class = "recommand-image1">
+                <img src="../resources/image/a.png" alt="이미지">
+                <p>강의 1</p>
+                <p>200,000 원</p>
+            </div>
 
-</div>
-</form>
-      <script>
-        <%-- 로그인 실패 시 메시지가 있는 경우에만 alert 창을 띄웁니다. --%>
-        
-        <% if (request.getAttribute("errorMSG") != null) { %>
-            var errorMessage = "${errorMSG}";
-            alert(errorMessage);
-        <% } %>
-    </script>
+            <div class = "recommand-image2">
+                <img src="../resources/image/a.png" alt="이미지">
+                <p>강의 2</p>
+                <p>50,000 원</p>
+            </div>
+
+            <div class = "recommand-image3">
+                <img src="../resources/image/a.png" alt="이미지">
+                <p>강의 3</p>
+                <p>100,000 원</p>
+            </div>
+
+        </div>
+
+        <div id = "add-content" style='text-align: center;'>
+            <h2>추가 내용</h2>
+        </div>
+
+    </div>
 </body>
 <footer>
     <div class="footerMain">
@@ -151,6 +127,5 @@
             <a href="#">이용약관</a>
         </div>
     </div>
-
 </footer>
 </html>

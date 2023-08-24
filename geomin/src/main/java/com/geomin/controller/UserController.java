@@ -34,20 +34,13 @@ public class UserController {
 	}
 	
 	@GetMapping("/regist")
-    public String regist() {
-        return "regist"; 
-    }
-    
-    @PostMapping("/login/signup")
-    public String signupPage() {
-        
-            return "login/signup";    
-    }
-	
+	public String regist() {
+		return "regist";
+	}
+       
 	@PostMapping("/loginAction")
 	public String loginAction(@RequestParam("userId") String user_id, 
-			@RequestParam("userPw") String user_pw,
-			RedirectAttributes rttr,
+			@RequestParam("userPw") String user_pw,			
 			Model model, HttpSession session) {
 
 		UserVO userVo = new UserVO();
@@ -65,10 +58,10 @@ public class UserController {
         	    
            session.setAttribute("userVo", userVo);
            session.setAttribute("userId", userVo.getUser_id());
-			return "redirect:/MainPage";
+           return "redirect:/main";
+
 		} else {
 			// 로그인 실패
-			//rttr.addFlashAttribute("errorMSG", "잘못된 아이디 또는 비밀번호 입니다.");
 			model.addAttribute("errorMSG", "잘못된 아이디 또는 비밀번호 입니다.");
 			return "/login";
 		}

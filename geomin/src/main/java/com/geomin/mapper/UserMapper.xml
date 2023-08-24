@@ -15,7 +15,7 @@
 	<insert id="insert">
 	insert into users (user_id, user_name, user_pw, user_type, phonenumber, email, datebirth, gender) 
 	values (#{user_id}, #{user_name}, #{user_pw}, #{user_type}
-	, #{phonenumber}, #{email},user #{datebirth}, #{gender})
+	, #{phonenumber}, #{email}, #{datebirth}, #{gender})
 	</insert>
 	
 </mapper>
