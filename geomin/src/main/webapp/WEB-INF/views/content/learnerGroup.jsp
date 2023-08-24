@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/content_request.css">
 </head>
-<%@include file = "../common/header.jsp" %>
+<%@include file = "../../common/header.jsp" %>
 <body>
+
 <div class = "intro-box">
         <div class = "location">
             <ul class = "clearFix">
@@ -39,12 +41,12 @@
             <p>학습콘텐츠 &nbsp;
                 <select id="search_level">
                     <option value="level">전체</option>
-                    <option value="level">창의인성</option>
-                    <option value="level">콘텐츠2</option>
-                    <option value="level">콘텐츠3</option>
+            <c:forEach items="${subContentList }" var="si" varStatus="status">
+                    <option value="${li.content_id }">${si.content_name }</option>
+            </c:forEach>
                 </select>&nbsp;&nbsp;&nbsp;
-                그룹명 : $___ &nbsp;&nbsp;&nbsp;
-                가입인원 : -명 / -명 &nbsp;&nbsp;&nbsp;
+			                그룹명 : $___ &nbsp;&nbsp;&nbsp;
+			                가입인원 : -명 / -명 &nbsp;&nbsp;&nbsp;
                 <button type = "button" id = "">조회</button>
                 <button type = "button" id = "">승인</button>
             </p><hr>
@@ -58,40 +60,18 @@
                     <td>가입신청일자</td>
                     <td>승인여부</td>
                 </tr>
+            <c:forEach items="${learnerGroup }" var="li" varStatus="status">
                 <tr>
-                    <td class = "check_box"><input type="checkbox" name="" id="checkbox"></td>
-                    <td class = "name">2</td>
-                    <td class = "date">3</td>
-                    <td class = "yn">00000 원</td>
+                    <td class = "check_box"><input type="checkbox" name="content_id" id="checkbox" value="${li.user_id_learner}"></td>
+                    <td class = "name" >${li.learner_name }</td>
+                    <td class = "date">${li.group_appdate}</td>
+                    <td class = "yn">${li.groupyn }</td>
                 </tr>
-                <tr>
-                    <td class = "check_box"><input type="checkbox" name="" id="checkbox"></td>
-                    <td class = "name">2</td>
-                    <td class = "date">3</td>
-                    <td class = "yn">00000 원</td>
-                </tr>
-                <tr>
-                    <td class = "check_box"><input type="checkbox" name="" id="checkbox"></td>
-                    <td class = "name">2</td>
-                    <td class = "date">3</td>
-                    <td class = "yn">00000 원</td>
-                </tr>
-                <tr>
-                    <td class = "check_box"><input type="checkbox" name="" id="checkbox"></td>
-                    <td class = "name">2</td>
-                    <td class = "date">3</td>
-                    <td class = "yn">00000 원</td>
-                </tr>
-                <tr>
-                    <td class = "check_box"><input type="checkbox" name="" id="checkbox"></td>
-                    <td class = "name">2</td>
-                    <td class = "date">3</td>
-                    <td class = "yn">00000 원</td>
-                </tr>
+			</c:forEach>               
             </table>
         </div>
     </div>
 
 </body>
-<%@include file = "../common/footer.jsp" %>
+<%@include file = "../../common/footer.jsp" %>
 </html>

@@ -14,8 +14,23 @@
 	
 	</select>
 
+	<select id="subContentList" resultType="com.geomin.vo.SubScriptionVO">
+	
+	select s.content_id ,c.CONTENT_NAME, c.LEARNING_MEMBER, c.price, (c.price - (c.price * c.sale)) as real_price,
+		 c.LEARNING_DIFFICULTY, c.LEARNING_CONTENT, s.subscription_date,s.paystatus
+	from content c, subscription s
+	where c.content_id = s.content_id
+	and s.user_id = 'ID3'
+	order by s.subscription_date DESC
+	
+	</select>
 
-	<insert id="insertSubscription">
+	<select id="learnerGroup" resultType="com.geomin.vo.LearnerGroupVO">
+	select * from LEARNER_GROUP
+	</select>
+
+
+	<insert id="insertgroup">
 	<selectKey keyProperty="group_id" order="BEFORE" resultType="String">
   		select 'G' || LPAD(SEQ_groups.NEXTVAL, 4, '0') from dual
 	</selectKey>
@@ -23,5 +38,26 @@
 	
 	</insert>
 
+	<insert id="insertSubContent">
+	INSERT INTO SUBSCRIPTION 
+	VALUES('ID3', #{content_id}, #{content_name}, SYSDATE , #{subscription_price}, #{total_personnel}, 0,'Y')
+	
+	</insert>
 
+	
+	<update id="payStatusUpdate">
+    update subscription set paystatus = 'C' where content_id = #{content_id }
+    </update>
+    
+    <insert id="insertContentPay">
+    insert into sales (SUBSCRIPTION_DATE, CONTENT_ID, TRANSACTION_COUNT, SALES)
+            (select sysdate, content_id, '1', (price - (price * sale)) 
+            from content
+            where content_id = #{content_id})
+    </insert>
+    
+    <delete id="deletePay">
+    delete from sales where content_id = #{content_id}
+    </delete>
+    
   </mapper>

@@ -3,7 +3,7 @@ package com.geomin.vo;
 import lombok.Data;
 
 @Data
-public class ContentVO {
+public class SubScriptionVO {
 
 	private String content_id;
 	private String content_name;
@@ -14,6 +14,12 @@ public class ContentVO {
 	private String sale;
 	private String real_price;
 	private String learning_content;
+	
+	private String subscription_date;
+	private int subscription_price;
+	private int total_personnel;
+	private int current_personnel;
+	private String paystatus;
 	
 	
 }
