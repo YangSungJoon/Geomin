@@ -1,0 +1,58 @@
+.group_add_box{
+    border: 3px solid blue;
+    height: 100%;
+    width: 37rem;
+    float: left;
+}
+
+.content_name{
+    border: 3px solid black;
+    width: 22rem;
+    float: left;
+}
+
+.poss_people{
+    border: 3px solid black;
+    width: 22rem;
+    float: left;
+}
+
+.add_people{
+    border: 3px solid black;
+    width: 20rem;
+    float: left;
+}
+
+.right_box{
+    width: 27rem;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+    line-height: 3rem;
+    margin-top: 10rem;
+}
+
+.group_add_box h1{
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.left_content{
+    height: 20rem;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    line-height: 2rem;
+}
+
+span{
+    color: red;
+}
+
+#add_button{
+    margin-left: 5rem;
+    margin-top: 2rem;
+    height: 2rem;
+}

@@ -1,0 +1,50 @@
+.group-content-box{
+    border: 3px solid black;
+    width: 40rem;
+    height: 25rem;
+    padding: 2rem;
+    margin-top: 8rem;
+    margin-left: 26.5rem;
+}
+
+.send_button_box{
+    width: 40rem;
+    height: 5rem;
+    text-align: center;
+    line-height: 4rem;
+    margin-left: 26.5rem;
+}
+
+#send_button{
+    width: 5rem;
+    height: 2.5rem;
+}
+
+#send_button:hover{
+    background-color: #f8f8f8;
+}
+
+.group_content{
+    height: 25rem;
+    padding: 2rem;
+}
+
+.sub_content{
+    width: 35rem;
+    height: 20rem;
+    line-height: 3rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#select{
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    border: 2px solid black;
+    font-size: 15px;
+}
+
+.join_info{
+    
+}
