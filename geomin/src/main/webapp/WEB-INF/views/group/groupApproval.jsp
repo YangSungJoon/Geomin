@@ -76,8 +76,10 @@ userId : ${userId}
         </div>
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "/content/contentList" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
-                <li class = "guide"><a href = "/content/subContentList?user_id=${userId}" id = "guide-hover">나의 학습콘텐츠</a></li>
+                <li class = "site-intro"><a href = "/group/groupAdd" id = "intro-hover">학습그룹 등록</a></li>
+                <li class = "guide"><a href = "/group/groupApproval" id = "guide-hover">그룹가입 승인</a></li>
+                <li class = "guide"><a href = "#" id = "guide-hover">숙제 전송</a></li>
+                <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
         <div class = "name-content">
@@ -96,13 +98,9 @@ userId : ${userId}
             <table>
                 <tr class = "table_menu">
                     <td class = "check_box"></td>
-                    <td>패키지명</td>
-                    <td>학습가능인원</td>
-                    <td>정가</td>
-                    <td>할일율</td>
-                    <td>구독료</td>
-                    <td>학습수준</td>
-                    <td>학습내용</td>
+                    <td>학습자명</td>
+                    <td>가입신청일자</td>
+                    <td>승인여부</td>
                 </tr>
                 <c:forEach items="${contentList }" var="li" varStatus="status">
 				    <tr>
@@ -110,10 +108,6 @@ userId : ${userId}
 				        <td class="packageName">${li.content_name}</td>
 				        <td class="people" >${li.learning_member} 명</td>
 				        <td class="price" >${li.price}원</td>
-				        <td>${li.sale }</td>
-				        <td class="subPrice" >${li.real_price}원</td>
-				        <td class="subPrice-difficulty" >${li.learning_difficulty}</td>
-				        <td>${li.learning_content}</td>
 				    </tr>
                 </c:forEach>
                

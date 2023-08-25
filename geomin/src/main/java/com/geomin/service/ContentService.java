@@ -9,6 +9,7 @@ import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
 import com.geomin.vo.LearnerGroupVO;
 import com.geomin.vo.SubScriptionVO;
+import com.geomin.vo.UserVO;
 
 @Service
 public interface ContentService {
@@ -28,4 +29,5 @@ public interface ContentService {
 	public int insertContentPay(SubScriptionVO subScriptionVO);
 	
 	public int deletePay(SubScriptionVO subScriptionVO);
+	
 }
