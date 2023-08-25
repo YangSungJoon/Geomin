@@ -2,7 +2,9 @@
 	width: 80rem;
 	display: flex;
 	align-items: center;
-	margin-top: 5rem;
+	margin-top: 2rem;
+	/*border : 3px solid black;*/
+	height: 75rem;
 	/* background-color: bisque; */
 }
 

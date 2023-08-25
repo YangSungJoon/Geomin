@@ -1,21 +1,6 @@
 window.onload = function (){
 
 	
-	function phoneNum() {
-		var inputElement = document.getElementById("userPhone");
-		var inputValue = inputElement.value;
-
-		// 숫자를 제외한 모든 문자 제거
-	    var numericValue = inputValue.replace(/\D/g, '');
-		// 하이픈(-) 추가 로직
-		var formattedValue = inputValue.replace(/(\d{3})(\d{4})(\d{4})/,
-				"$1-$2-$3");
-
-		// 가공된 전화번호로 입력 필드의 값을 업데이트
-		inputElement.value = formattedValue;
-	}
-	
-	
 	document.getElementById('button_register').addEventListener('click', function(e) {
 		  const idRegex = /^[a-zA-Z0-9]{6}$/; // 영문 대소문자와 숫자 6자
 		  const pwRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,15}$/; // 영문 대소문자, 숫자, 특수문자 조합 8~15자
@@ -135,6 +120,10 @@ window.onload = function (){
 	          console.error('Error : ', error);
 	      });
 	  };
+	  
+	  
+		
+	  
 	//서버로부터 받은 메시지를 이용하여 알림창을 띄우는 함수
 	  function showAlert(message) {
 	    alert(message);

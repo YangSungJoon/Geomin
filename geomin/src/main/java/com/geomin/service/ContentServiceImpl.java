@@ -11,6 +11,7 @@ import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
 import com.geomin.vo.LearnerGroupVO;
 import com.geomin.vo.SubScriptionVO;
+import com.geomin.vo.UserVO;
 
 @Service
 public class ContentServiceImpl implements ContentService{
@@ -52,7 +53,7 @@ public class ContentServiceImpl implements ContentService{
 		
 	}
 	
-	
+
 	
 	@Override
 	public int insertgroup(GroupVO groupVO, Model model) {

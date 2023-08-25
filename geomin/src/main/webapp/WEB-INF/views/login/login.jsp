@@ -47,11 +47,11 @@
     <div class = "login_menu">
         <div class='login_box_id'>
             <h5>아이디</h5>
-            <input type="text" name="userId" id="userId" placeholder='' autocomplete='off' value="aaa111">
+            <input type="text" name="userId" id="userId" placeholder='' autocomplete='off' value="">
         </div>
         <div class='login_box_pw'>
             <h5>비밀번호</h5>
-            <input type="password" name="userPw" id="userPw" autocomplete='off' value="aaaa1111!!!!">
+            <input type="password" name="userPw" id="userPw" autocomplete='off' value="">
         </div>
     </div>
         <div class='login_button'>

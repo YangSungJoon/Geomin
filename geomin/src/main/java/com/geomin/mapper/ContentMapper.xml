@@ -9,7 +9,7 @@
 	
 	select 
     content_id,content_name, learning_difficulty, learning_member,
-    price, sale, (price - (price * sale)) as real_price, learning_content 
+    price, (sale * 100)||'%' as sale, (price - (price * sale)) as real_price, learning_content 
     from content
 	
 	</select>
@@ -20,7 +20,7 @@
 		 c.LEARNING_DIFFICULTY, c.LEARNING_CONTENT, s.subscription_date,s.paystatus
 	from content c, subscription s
 	where c.content_id = s.content_id
-	and s.user_id = 'ID3'
+	and s.user_id = #{user_id}
 	order by s.subscription_date DESC
 	
 	</select>
@@ -28,6 +28,8 @@
 	<select id="learnerGroup" resultType="com.geomin.vo.LearnerGroupVO">
 	select * from LEARNER_GROUP
 	</select>
+
+
 
 
 	<insert id="insertgroup">
@@ -39,8 +41,12 @@
 	</insert>
 
 	<insert id="insertSubContent">
-	INSERT INTO SUBSCRIPTION 
-	VALUES('ID3', #{content_id}, #{content_name}, SYSDATE , #{subscription_price}, #{total_personnel}, 0,'Y')
+
+	insert into subscription 
+		select #{user_id}, content_id, content_name, sysdate, (price - (sale* price)) as real_price,
+		    LEARNING_MEMBER, 0,'Y'
+		    from content
+		    where content_id = #{content_id}
 	
 	</insert>
 

@@ -15,6 +15,7 @@ import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
 import com.geomin.vo.LearnerGroupVO;
 import com.geomin.vo.SubScriptionVO;
+import com.geomin.vo.UserVO;
 
 import jdk.internal.org.jline.utils.Log;
 import lombok.extern.log4j.Log4j;
@@ -39,6 +40,7 @@ public class ContentTest {
 		});
 		
 	}
+	
 	
 	  @Test
 	  public void learnerGroup() {
@@ -90,19 +92,19 @@ public class ContentTest {
 	  
 	  }
 	 
-	  
-	  @Test 
-	  public void insertSubContentTest() {
+	
+	  @Test public void insertSubContentTest() {
 	  
 	  SubScriptionVO subscriptionVO = new SubScriptionVO();
 	  
 	  subscriptionVO.setContent_id("0004");
+	  subscriptionVO.setUser_id("ID1");
 	  
 	  
 	  contentMapper.insertSubContent(subscriptionVO);
 	  
 	  }
-	  
+	 
 	  
 	  @Test
 	  public void payStatusUpdate() {
