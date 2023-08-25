@@ -33,8 +33,8 @@
         </div>
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "#" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
-                <li class = "guide"><a href = "../html/guide.html" id = "guide-hover">콘텐츠 구매</a></li>
+                <li class = "site-intro"><a href = "/content/contentList" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
+                <li class = "guide"><a href = "../html/guide.html" id = "guide-hover">나의 학습콘텐츠</a></li>
             </ul>
         </div>
         <div class = "name-content">

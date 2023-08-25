@@ -35,8 +35,8 @@
         
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "#" id = "intro-hover">학습그룹 등록</a></li>
-                <li class = "guide"><a href = "#" id = "guide-hover">그룹가입 승인</a></li>
+                <li class = "site-intro"><a href = "/group/groupAdd" id = "intro-hover">학습그룹 등록</a></li>
+                <li class = "guide"><a href = "/group/groupApproval" id = "guide-hover">그룹가입 승인</a></li>
                 <li class = "guide"><a href = "#" id = "guide-hover">숙제 전송</a></li>
                 <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
             </ul>
@@ -78,7 +78,7 @@
 
 
 
-	<input type="text" name="user_id_leader" value="ID1"><br>
+	<input type="text" name="user_id_leader" value="${userId}"><br>
 	
 
     </form>

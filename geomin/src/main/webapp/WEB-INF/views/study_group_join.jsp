@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/study_group_join.css">
 </head>
-<%@include file = "../common/header.jsp" %>
+<%@include file = "./common/header.jsp" %>
 <body>
 <div class = "intro-box">
 
@@ -64,5 +64,5 @@
 
     </div>
 </body>
-<%@include file = "../common/footer.jsp" %>
+<%@include file = "./common/footer.jsp" %>
 </html>

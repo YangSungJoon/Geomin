@@ -50,6 +50,8 @@
 
 <form action="payStatus" method="post">
 
+<input name="user_id" value="${userId}">
+
 <div class = "intro-box">
         <div class = "location">
             <ul class = "clearFix">
@@ -72,8 +74,8 @@
         </div>
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "#" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
-                <li class = "guide"><a href = "../html/guide.html" id = "guide-hover">콘텐츠 구매</a></li>
+                <li class = "site-intro"><a href = "/content/contentList" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
+                <li class = "guide"><a href = "/content/subContentList?user_id=${userId}" id = "guide-hover">나의 학습콘텐츠</a></li>
             </ul>
         </div>
 
@@ -83,7 +85,6 @@
                     <td class = "check_box"></td>
                     <td>패키지명</td>
                     <td>학습가능인원</td>
-                    <td>정가</td>
                     <td>구독료</td>
                     <td>학습수준</td>
                     <td>학습내용</td>
@@ -95,7 +96,6 @@
 	                    <td class = "check_box"><input type="checkbox" name="content_id" id="checkbox" value="${li.content_id}"></td>
 	                    <td class = "packageName">${li.content_name }</td>
 	                    <td class = "people">${li.learning_member } 명</td>
-	                    <td class = "price">${li.price }원</td>
 	                    <td class = "subPrice">${li.real_price }원</td>
 	                    <td class="subPrice-difficulty">${li.learning_difficulty}</td>
 	                    <td>${li.learning_content }</td>
