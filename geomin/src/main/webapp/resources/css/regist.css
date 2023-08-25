@@ -1,212 +1,241 @@
-.regi_area{
-    width: 80rem;
-    display: flex;
-    align-items: center;
-    margin-top: 5rem;
-    /* background-color: bisque; */
+.regi_area {
+	width: 80rem;
+	display: flex;
+	align-items: center;
+	margin-top: 5rem;
+	/* background-color: bisque; */
 }
 
-.regi_center{
-    width: 45rem;
-    margin-left: 23rem;
-    /* background-color: blanchedalmond; */
-    line-height: 2rem;
+.regi_center {
+	width: 45rem;
+	margin-left: 23rem;
+	/* background-color: blanchedalmond; */
+	line-height: 2rem;
 }
 
-.regi_logo{
-    width: 100%;
-    text-align: center;
-    margin: 2.5rem 0;
-    font-size: 2.2rem;
-    font-weight: bold;
-
-}
-div[class^=regi_box]{
-    font-size: 1.2rem;
-    margin: 1rem 0;
-}
-div[class^=regi_box] input{
-    margin: 0.4rem 0;
-    width: 100%;
-    height: 2.5rem;
-    font-size: 0.9rem;
-    padding: 1rem;
+.regi_logo {
+	width: 100%;
+	text-align: center;
+	margin: 2.5rem 0;
+	font-size: 2.2rem;
+	font-weight: bold;
 }
 
-
-
-.regi_button{
-    width: 100%;
-    height: 3rem;
-    display: inline-block;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    color: white;
-    border-radius: var(--border-radius);
+div[class^=regi_box] {
+	font-size: 1.2rem;
+	margin: 1rem 0;
 }
 
-#button_register:hover{
-    background-color: var(--main-color-hover);
-    color: gray;
+div[class^=regi_box] input {
+	margin: 0.4rem 0;
+	width: 100%;
+	height: 2.5rem;
+	font-size: 0.9rem;
+	padding: 1rem;
 }
 
-div[class^=regi_box] input{
-    width: 100%;
-    height: 2rem;
-    border: none;
-    border: 1px solid rgb(177, 177, 177);
+.regi_button {
+	width: 100%;
+	height: 3rem;
+	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	color: white;
+	border-radius: var(- -border-radius);
 }
 
-.regi_social_regi{
-    width: 100%;
+#button_register:hover {
+	background-color: var(- -main-color-hover);
+	color: gray;
 }
 
-.regi_social_regi [class^='regi']{
-    width: 100%;
-    height: 3.3rem;
-    background-color: white;
-    border: 1px solid rgb(203, 203, 203);
-    border-radius: var(--border-radius);
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: larger;
-    cursor: pointer;
+div[class^=regi_box] input {
+	width: 100%;
+	height: 2rem;
+	border: none;
+	border: 1px solid rgb(177, 177, 177);
 }
 
-.regi_social_regi [class^='regi']:hover{
-    background-color: #f3f3f3;
+.regi_social_regi {
+	width: 100%;
 }
 
-
-.regi_box_pw{
-    margin-top: 1rem;
+.regi_social_regi [class^='regi'] {
+	width: 100%;
+	height: 3.3rem;
+	background-color: white;
+	border: 1px solid rgb(203, 203, 203);
+	border-radius: var(- -border-radius);
+	margin-bottom: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: larger;
+	cursor: pointer;
 }
 
-input:focus{
-    outline: 2.5px solid var(--main-color);
-    border-radius: 0.3rem;
-    box-shadow: none;
+.regi_social_regi [class^='regi']:hover {
+	background-color: #f3f3f3;
 }
 
-.regi_box_phone div h5{
-    display: flex;
-    float: left;
-    gap: 1rem;
+.regi_box_pw {
+	margin-top: 1rem;
 }
 
-.phoneCheck{
-    border-radius: var(--border-radius);
-    color: white;
-    background-color: var(--main-color);
-    width: 8rem;
-    font-size: 0.9rem;
-    border: none;
+input:focus {
+	outline: 2.5px solid var(- -main-color);
+	border-radius: 0.3rem;
+	box-shadow: none;
 }
 
-.phoneCheck:hover{
-    background-color: var(--main-color-hover);
+.regi_box_phone div h5 {
+	display: flex;
+	float: left;
+	gap: 1rem;
 }
 
-.regi_box_phone_check.active{
-    display: flex;
-    gap: 1rem;
+.phoneCheck {
+	border-radius: var(- -border-radius);
+	color: white;
+	background-color: var(- -main-color);
+	width: 8rem;
+	font-size: 0.9rem;
+	border: none;
 }
 
-.errors{
-    color: red;
-    font-size: 0.9rem;
-    margin-top: -1rem;
-}
-.errorsborder{
-    border: 2px solid rgb(255, 114, 114);
+.phoneCheck:hover {
+	background-color: var(- -main-color-hover);
 }
 
-#button_register{
-    font-weight: bold;
-    text-align: center;
-    width: 120px;
+.regi_box_phone_check.active {
+	display: flex;
+	gap: 1rem;
 }
 
-.regi_box_id div{
-    display: flex;
-    float: left;
+.errors {
+	color: red;
+	font-size: 0.9rem;
+	margin-top: -1rem;
 }
 
-#id_check{
-    border: 1px solid gray;
-    text-align: center;
+.errorsborder {
+	border: 2px solid rgb(255, 114, 114);
 }
 
-#id_check:hover{
-    background-color: #ceccccd7;
+#button_register {
+	font-weight: bold;
+	text-align: center;
+	width: 120px;
 }
 
-.id_check_box{
-    width: 100%;
-    height: 2rem;
+.regi_box_id div {
+	display: flex;
+	float: left;
 }
 
-.regi_box_pw div{
-    display: flex;
-    float: left;
+#idCheck {
+	border: 1px solid gray;
+	text-align: center;
+	width: 20%;
 }
 
-.regi_box_pw_check div{
-    display: flex;
-    float: left;
+#id_check:hover {
+	background-color: #ceccccd7;
 }
 
-.regi_box_birth div{
-    display: flex;
-    float: left;
+.id_check_box {
+	width: 100%;
+	height: 2rem;
 }
 
-.regi_box_member{
+.regi_box_pw div {
+	display: flex;
+	float: left;
 }
 
-.regi_box_member div{
-    display: flex;
-    float: left;
+.regi_box_pw_check div {
+	display: flex;
+	float: left;
 }
 
-.member_check{
-    margin-left: 1rem;
+.regi_box_birth div {
+	display: flex;
+	float: left;
 }
 
-#member_select_box{
-    width: 7rem;
-    height: 3rem;
-    font-size: 15px;
-    font-weight: bold;
-    border: 2px solid rgb(203, 203, 203);
-    background-color: #f6f6f6;
+.regi_box_member {
+	
 }
 
-.star{
-    color: red;
+.regi_box_member div {
+	display: flex;
+	float: left;
 }
 
-.check{
-    /*text-align: center;*/
-    margin-bottom: 2rem;
+.member_check {
+	margin-left: 1rem;
 }
 
-.check button{
-    width: 6rem;
-    height: 2.5rem;
-    border: 1px solid #bbb;
-    border-radius: 1rem;
-    background-color: #f8f8f8;
+#userType {
+	width: 7rem;
+	height: 3rem;
+	font-size: 15px;
+	font-weight: bold;
+	border: 2px solid rgb(203, 203, 203);
+	background-color: #f6f6f6;
 }
 
-.check #male:hover{
-    background-color: dodgerblue;
+.star {
+	color: red;
 }
 
-.check #female:hover{
-    background-color: hotpink;
+.check {
+	margin-bottom: 2rem;
+	font-size: 16px;
+}
+
+.check label {
+	margin-left: 0px;
+}
+
+#male {
+	border: 3px solid red;
+}
+
+#female {
+	border: 3px solid black;
+}
+
+.id_check_box {
+	/*border : 1px solid black;*/
+	height: 45px;
+}
+
+#userId {
+	width: 78%;
+}
+
+#idbox {
+	/*border : 1px solid blue;*/
+	width: 100%;
+}
+
+#id1 {
+	/*border : 1px solid red;*/
+	text-align: left;
+	margin-left: 0px;
+}
+
+#registMsg {
+	/*border : 1px solid black;*/
+	font-size: 15px;
+	text-align: right;
+	margin-right: 0px;
+}
+
+.gender_box{
+	font-size: 1.2rem;
+	margin-top: 1.5rem;
 }

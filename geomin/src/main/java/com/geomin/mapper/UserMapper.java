@@ -11,5 +11,15 @@ public interface UserMapper {
 	public int insert(UserVO userVo);
 
 	public List<UserVO> userList();
+	
+	public int idCheck(UserVO userVo);
+
+	public List<UserVO> findId(String email);
+
+	public void findId(UserVO userVo);
+
+	public int updatePw(UserVO userVo);
+
+	public UserVO findPw(UserVO userVo);
 
 }

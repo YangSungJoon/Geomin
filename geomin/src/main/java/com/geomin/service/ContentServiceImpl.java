@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import com.geomin.mapper.ContentMapper;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
+import com.geomin.vo.LearnerGroupVO;
+import com.geomin.vo.SubScriptionVO;
 
 @Service
 public class ContentServiceImpl implements ContentService{
@@ -28,13 +30,79 @@ public class ContentServiceImpl implements ContentService{
 	
 	
 	@Override
-	public int insertSubscription(GroupVO groupVO, Model model) {
+	public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO, Model model){
 		
-		int res = contentMapper.insertSubscription(groupVO);
+		List<SubScriptionVO> list = contentMapper.subContentList(subScriptionVO);
+		
+		System.out.println("list : " +  list);
+		
+		model.addAttribute("subContentList", list);
+		
+		return null;
+		
+	}
+	
+	@Override
+	public List<LearnerGroupVO> learnerGroup(Model model){
+		List<LearnerGroupVO> list = contentMapper.learnerGroup();
+		
+		model.addAttribute("learnerGroup", list);
+		
+		return null;
+		
+	}
+	
+	
+	
+	@Override
+	public int insertgroup(GroupVO groupVO, Model model) {
+		
+		int res = contentMapper.insertgroup(groupVO);
 		
 		model.addAttribute("GroupVO", groupVO);
 		return res;
 	}
 	
+	
+	@Override
+	public int insertSubContent(SubScriptionVO subScriptionVO, Model model) {
+		
+		int res = contentMapper.insertSubContent(subScriptionVO);
+		
+		model.addAttribute("subScriptionVO", subScriptionVO);
+		
+		return res;
+		
+	}
+	
+	
+	@Override
+	public int payStatusUpdate(SubScriptionVO subScriptionVO) {
+		
+		int res = contentMapper.payStatusUpdate(subScriptionVO);
+		
+		
+		return res;
+		
+	}
+	
+	@Override
+	public int insertContentPay(SubScriptionVO subScriptionVO) {
+		
+		int res = contentMapper.insertContentPay(subScriptionVO);
+		
+		return res;
+		
+	}
+	
+	
+	@Override
+	public int deletePay(SubScriptionVO subScriptionVO) {
+		
+		int res = contentMapper.deletePay(subScriptionVO);
+		
+		return res;
+		
+	}
 	
 }
