@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.geomin.service.HomeWorkService;
@@ -30,7 +31,7 @@ public class dhController {
 //		return "/homework_send";
 //	}
 	
-	@GetMapping("/homework_send")
+	@GetMapping("/homework/homework_send")
 	public void getList(String user_id, String content_id, Model model) {
 		log.info("숙제 목록----------");
 		
@@ -38,6 +39,15 @@ public class dhController {
 		model.addAttribute("learner", homeworkService.getUserName(user_id));
 		model.addAttribute("leader", homeworkService.getLeaderName(user_id));
 		model.addAttribute("content", homeworkService.getContentName(content_id));
+		
+	}
+	
+	@PostMapping("/homework/homework_send/send")
+	public String send(String user_id, String content_id, Model model) {
+		
+		
+		
+		return "redirect:/";
 	}
 	
 }

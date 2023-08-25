@@ -6,7 +6,8 @@
 	
 	<!-- 숙제 목록 조회 -->
 	<select id="getList" resultType="com.geomin.vo.HomeWorkVO">
-		select * from homework
+		<!-- select * from homework -->
+		select * from homework,users where user_id_learner = user_id and user_id = 'ID2'
 	</select>
 	
 	<!-- 학습자 이름 조회 -->
