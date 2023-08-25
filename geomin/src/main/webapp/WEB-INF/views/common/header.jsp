@@ -17,8 +17,8 @@
             <div id = "name">게임으로 배우는 바둑 교실</div>
             <div id = "login_menu">
                 <ul class = "login">
-                    <li class='header_login'><a href="http://127.0.0.1:5500/regist.html" id ="regist">회원가입</a></li>
-                    <li class='header_login'><a href="http://127.0.0.1:5500/login.html">로그인</a></li>
+                    <li class='header_login'><a href="/login/regist" id ="regist">회원가입</a></li>
+                    <li class='header_login'><a href="/login/login">로그인</a></li>
                 </ul>
             </div>
         </div>

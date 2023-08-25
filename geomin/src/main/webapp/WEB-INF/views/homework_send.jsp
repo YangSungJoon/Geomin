@@ -100,5 +100,5 @@
     </div>
 
 </body>
-<%@include file = "/common/footer.jsp" %>
+<%@include file = "../common/footer.jsp" %>
 </html>
