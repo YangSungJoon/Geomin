@@ -29,21 +29,21 @@
             <ul class = 'categoryMenu'>
                 <li><a href = "#" id = "category-size">서비스 안내</a>
                     <ul class = 'submenu'>
-                        <li><a href="#" id = "subcategory-size">사이트 소개</a></li>
-                        <li><a href="#" id = "subcategory-size">이용가이드</a></li>
+                        <li><a href="/main/intro" id = "subcategory-size">사이트 소개</a></li>
+                        <li><a href="/main/guide" id = "subcategory-size">이용가이드</a></li>
                     </ul>
                 </li>
         
                 <li><a href = "#" id = "category-size">구독서비스</a>
                     <ul class = 'submenu'>
-                        <li><a href="#" id = "subcategory-size">학습콘텐츠 검색</a></li>
+                        <li><a href="/content/contentList" id = "subcategory-size">학습콘텐츠 검색</a></li>
                         <li><a href="#" id = "subcategory-size">콘텐츠 구매</a></li>
                     </ul>
                 </li>
 
                 <li><a href = "#" id = "category-size">강사마당</a>
                     <ul class = 'submenu'>
-                        <li><a href="#" id = "subcategory-size">학습그룹 등록</a></li>
+                        <li><a href="/content/group" id = "subcategory-size">학습그룹 등록</a></li>
                         <li><a href="#" id = "subcategory-size">학습그룹 가입승인</a></li>
                         <li><a href="#" id = "subcategory-size">숙제 전송</a></li>
                         <li><a href="#" id = "subcategory-size">숙제 평가</a></li>

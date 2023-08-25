@@ -73,7 +73,7 @@ public class UserController {
         	    
            session.setAttribute("userVo", userVo);
            session.setAttribute("userId", userVo.getUser_id());
-           return "/main";
+           return "main/main";
 
 		} else {
 			// 로그인 실패
