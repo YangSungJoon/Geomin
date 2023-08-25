@@ -1,0 +1,97 @@
+#open {
+  background-color: gray;
+  color:#fff;
+  border:none;
+  border-radius:5px;
+  padding:15px;
+}
+
+#open:hover{
+	backgroud-color: lightgray;	
+}
+
+#modal-box{
+  /* border: 1px solid black; */
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.411);
+}
+#modal-box.active{
+  display: flex;
+}
+
+#modal-contents{
+  background-color:#fff;
+  width: 700px;
+  height: 500px;
+  padding:20px;
+  border-radius:5px;
+  position:relative;
+}
+
+#close {
+  background-color:#fff;
+  color:#ccc;
+  font-size:20px;
+  border:none;
+  outline:none;
+  position:absolute;
+  top:10px;
+  right:10px;
+}
+
+
+h1 {
+  font-size:2rem;  
+  margin-bottom:20px ;
+}
+#profile {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border:1px solid #ccc;
+  padding:10px;
+  width: 620px;
+  height: 370px;
+  margin-top: 2rem;
+}
+#desc {
+  margin :10px 20px;
+  width: 550px;
+  line-height: 2rem;
+  
+}
+.user {
+  font-size:1.2rem;
+  line-height:2;
+}
+
+.sendbtn-box{
+	margin-top: 1.5rem;
+	line-height: 2rem;
+}
+
+#studytext{
+	margin-left: 1.5rem;
+	width: 400px;
+	height: 75px;
+	border: 1px solid #ccc;
+}
+
+#content-box1{
+	width: 500px;
+	height: 170px;
+	line-height: 1.5rem;
+}
+
+#content-box2{
+}
