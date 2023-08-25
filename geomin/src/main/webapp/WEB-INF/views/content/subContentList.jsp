@@ -43,7 +43,7 @@
     </script> 
     
 </head>
- <%@include file = "../../common/header.jsp" %> 
+ <%@include file = "../common/header.jsp" %> 
 <body>
 
 구독 콘텐츠 목록
@@ -113,5 +113,5 @@
 </form>
 
 </body>
- <%@include file = "../../common/footer.jsp" %> 
+ <%@include file = "../common/footer.jsp" %> 
 </html>

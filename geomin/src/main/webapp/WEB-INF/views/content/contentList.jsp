@@ -44,7 +44,7 @@
     </script>
     
 </head>
- <%@include file = "../../common/header.jsp" %> 
+ <%@include file = "../common/header.jsp" %> 
 <body>
 
 메인 콘텐츠 목록
@@ -124,5 +124,5 @@
 
 
 </body>
- <%@include file = "../../common/footer.jsp" %> 
+ <%@include file = "../common/footer.jsp" %> 
 </html>

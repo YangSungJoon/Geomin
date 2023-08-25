@@ -1,7 +1,9 @@
 package com.geomin.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,10 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.geomin.service.UserService;
 import com.geomin.vo.UserVO;
+import com.geomin.service.MailService;
 
 @Controller
 public class UserController {
@@ -27,15 +29,28 @@ public class UserController {
 
 	@Autowired
 	BCryptPasswordEncoder encoder;
+	
+	@Autowired
+	MailService mailService;
 
-	@GetMapping("/login")
+	@GetMapping("/login/login")
 	public String login() {
-		return "login";
+		return "login/login";
 	}
 	
-	@GetMapping("/regist")
+	@GetMapping("/login/regist")
 	public String regist() {
-		return "regist";
+		return "login/regist";
+	}
+	
+	@GetMapping("/login/findId")
+	public String findId() {
+		return "login/findId";
+	}
+	
+	@GetMapping("/login/findPw")
+	public String findPw() {
+		return "login/findPw";
 	}
        
 	@PostMapping("/loginAction")
@@ -63,16 +78,18 @@ public class UserController {
 		} else {
 			// 로그인 실패
 			model.addAttribute("errorMSG", "잘못된 아이디 또는 비밀번호 입니다.");
-			return "/login";
+			return "login/login";
 		}
 	}
 	
-	@PostMapping("/regist")
+	@PostMapping("/login/regist")
 	@ResponseBody
 	public Map<String, Object> register(@RequestBody UserVO userVo) {
 	    try {
 	    	
 	    	System.out.println("userVo : " + userVo);
+	    	
+	    	
 	        // 회원가입 서비스 호출
 	        int res = userService.insert(userVo);
 	        if (res > 0) {
@@ -94,4 +111,86 @@ public class UserController {
 		response.put("msg", msg);
 		return response;
 	}
+	
+	@PostMapping("/login/idCheck")
+	@ResponseBody
+	// 넘겨줄때도 JSON 문자열로 반환 할겁니다.
+	public  Map<String, Object> idCheck(@RequestBody UserVO userVo){
+		
+		int res = userService.idCheck(userVo);
+		
+		// decode(count(*),0,1,0), 0 이면 메세지 나오도록 수정함
+		Map<String, Object> response = new HashMap<>();
+		
+		if(res == 0) {
+			response.put("message", "사용 가능한 아이디 입니다.");
+			response.put("result", true);
+		} else {
+			response.put("message", "이미 사용 중인 아이디 입니다.");
+			response.put("result", false);
+		}
+		return response;
+	}
+	
+	 @PostMapping("/login/findId")
+	    public String findId(@RequestParam("email") String email, Model model) {
+	        List<UserVO> user = userService.findId(email);
+	        model.addAttribute("userList", user);
+	        return "login/findId";
+	    }
+	 
+	 @PostMapping("/findPwAction")
+	 @ResponseBody
+	 public Map<String, Object> findPwAction(@RequestBody UserVO userVo) {
+	     // userEmail과 userName을 사용하여 회원 정보를 조회하여 유효성을 검사하고, 회원 정보가 맞으면 이메일로 임시 비밀번호를 전송
+	     // 회원 정보가 맞지 않다면 에러 메시지를 반환
+		 
+	     // 사용자 정보를 확인하는 로직은 데이터베이스에서 이메일과 이름으로 회원 정보를 조회하여 확인합니다.
+	     // 이 부분은 MemberService의 메서드를 호출하여 처리하도록 합니다.
+	     boolean isUserInfoValid = userService.checkUser(userVo);
+	     
+	     if (isUserInfoValid) {
+	         // 임시 비밀번호 생성
+	         String temporaryPassword = RandomPassword(8); // 8자리 임시 비밀번호 생성
+	         
+	         // 회원 정보 업데이트
+	        
+	         
+	         userVo.setUser_pw(temporaryPassword); // 암호화된 비밀번호 설정
+	         System.out.println("userVo : " + userVo);
+
+	         int updateResult = userService.updatePw(userVo);
+	         
+	         Map<String, Object> response = new HashMap<>();
+	         if(updateResult > 0) {
+	        	 response.put("check", true);
+	         } else {
+	        	 response.put("check", false);
+	         }
+	         
+	         // 임시 비밀번호를 메일로 발송
+	         mailService.findPwSendMail(userVo.getUser_id(), userVo.getEmail(), userVo.getUser_name(), temporaryPassword);
+	         
+	         return response;
+	     } else {
+	    	 Map<String, Object> response = new HashMap<>();
+	    	 response.put("check", false);
+	    	 return response;
+	     }
+	     
+	 }
+	 
+
+	 private String RandomPassword(int length) {
+	     String chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+	     StringBuilder randomPassword = new StringBuilder(length);
+	     ThreadLocalRandom random = ThreadLocalRandom.current();
+
+	     for (int i = 0; i < length; i++) {
+	         int randomIndex = random.nextInt(chars.length());
+	         randomPassword.append(chars.charAt(randomIndex));
+	     }
+
+	     return randomPassword.toString();
+	 }
 }

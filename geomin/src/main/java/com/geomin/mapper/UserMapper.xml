@@ -18,4 +18,36 @@
 	, #{phonenumber}, #{email}, #{datebirth}, #{gender})
 	</insert>
 	
+	<select id="idCheck" resultType="int">
+		select count(*)
+			from users
+			where user_id=#{user_id}
+	</select>
+	
+	<!-- 추가된 resultMap -->
+    <resultMap type="com.geomin.vo.UserVO" id="UserVOResultMap">
+        <result property="user_id" column="user_id" />
+        <result property="user_pw" column="user_pw" />
+        <result property="user_name" column="user_name" />
+        <result property="user_type" column="user_type" />
+        <result property="phonenumber" column="phonenumber" />
+        <result property="email" column="email" />
+        <result property="address" column="address" />
+        <result property="datebirth" column="datebirth" />
+        <result property="gender" column="gender" />
+    </resultMap>
+	
+	<select id="findId" resultMap="UserVOResultMap">
+		select * from users where email = #{email}
+	</select>
+	
+	<select id="findPw" resultMap="UserVOResultMap">
+    	select * from users where email = #{email} and user_id = #{user_id}
+	</select>
+	
+	<update id="updatePw">
+		update users
+		set user_pw = #{user_pw}
+		where user_id = #{user_id}
+	</update>
 </mapper>
