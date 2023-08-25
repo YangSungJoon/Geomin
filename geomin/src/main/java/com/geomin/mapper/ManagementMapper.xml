@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.geomin.mapper.ManagementMapper">
+	<insert id="insert">
+	<selectKey keyProperty="content_id" order="BEFORE" resultType="String">
+  		select LPAD(SEQ_groups.NEXTVAL, 4, '0') from dual
+	</selectKey>
+    	insert into content 
+    	 values (#{content_id}, #{content_name}, #{learning_difficulty}
+    	 , #{learning_member}, #{price}, #{sale}, #{real_price}, #{learning_content})
+
+    </insert>
+    
+    <select id="contentList" resultType="com.geomin.vo.ContentVO">
+    
+		select * from content
+	</select>
+	
+	
+</mapper>

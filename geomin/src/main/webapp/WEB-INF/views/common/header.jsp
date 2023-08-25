@@ -59,7 +59,7 @@
 
                 <li><a href = "#" id = "category-size">관리마당</a>
                     <ul class = 'submenu'>
-                        <li><a href="#" id = "subcategory-size">학습콘텐츠 등록</a></li>
+                        <li><a href="/management/learner_content" id = "subcategory-size">학습콘텐츠 등록</a></li>
                         <li><a href="#" id = "subcategory-size">공지 등록</a></li>
                         <li><a href="#" id = "subcategory-size">매출집계 및 조회</a></li>
                     </ul>

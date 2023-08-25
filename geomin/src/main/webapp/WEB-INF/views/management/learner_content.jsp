@@ -40,50 +40,79 @@
                 <li class = "guide"><a href = "#" id = "guide-hover">매출집계 및 조회</a></li>
             </ul>
         </div>
-        
-   <form action="group" method="post" >
-
+  
         <div class = "group_add_box">
-
-            <div><h1>정보 입력</h1></div>
-            <hr>
-            <div class = "left_content">
-				<p>콘텐츠 명<span>*</span></p>
-      		   <select name="content_id">
-				<c:forEach items="${contentList }" var="li" varStatus="status">
-				   	<option  value="${li.content_id }">${li.content_name }</option>
-			    </c:forEach>
-			   </select>
-            
-                <p>그룹명<span>*</span></p>
-                <input type="text" name="group_name">
-                <p>그룹인원<span>*</span></p>
-                <input type="text" name="group_personnel">
-                <p>학습기간<span>*</span></p>
-                 <input type="date" name="learning_start"> ~ <input type="date" name="learning_end">
-
-                <div>
-                    <button type = "submit" id = "add_button">학습그룹 등록</button>
+		<form action="/management/insert_content" method="post">
+        <div>
+                    <button type = "submit" id = "add_button">등록</button>
+                    <button type="button" class="pakage_select" onclick="location.href='/content/contentList'">조회</button>
+                    
                 </div>
+            <div class = "left_content">
+				<p>패키지명<span>*</span></p>
+				<input type="text" name="group_name">
+				<p>학습난이도<span>*</span></p>
+      		    <div class = "member_check">
+                <select name="" id="learning_difficulty">
+                    <option value="1">초급</option>
+                    <option value="2">중급</option>
+                    <option value="3">고급</option>
+                </select>
+            </div>		   
+            
+                <p>학습가능인원<span>*</span></p>
+                
+			    <input type="number" class="class_maxcount" name="class_maxcount" id="class_maxcount" min="1">
+			 
+                <p>정가<span>*</span></p>
+                <input type="text" id="price" name="price" value="">원
+               <p>할인<span>*</span></p>
+                <input type="text" id="discount" name="discount" value="">%
+                <p>판매가<span>*</span></p>
+                <input type="text" id="real_price" name="real_price">원
+				 <p>패키지내용<span>*</span></p>
+                <input type="text" id="pakage_content" name="pakage_content">
+                
 
             </div>
+    </form>
+    <!-- 등록 성공 메시지 -->
+<c:if test="${param.insertSuccess eq 'true'}">
+    <p>등록되었습니다.</p>
+</c:if>
         </div>
 
-        <div class = "right_box">
-            <div class = "content_name">학습 콘텐츠명 : $_____</div>
-            <div class = "poss_people">학습가능인원 : $__명</div>
-            <div class = "add_people">그룹등록인원: $__명</div>
-        </div>
-
-
-
-	<input type="text" name="user_id_leader" value="ID1"><br>
+      
 	
 
-    </form>
     </div>
     
     
 </body>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const priceInput = document.getElementById("price");
+    const discountInput = document.getElementById("discount");
+    const realPriceInput = document.getElementById("real_price");
+
+    // 입력값이 변경될 때 판매가 계산
+    priceInput.addEventListener("input", calculateRealPrice);
+    discountInput.addEventListener("input", calculateRealPrice);
+
+    function calculateRealPrice() {
+        const price = parseFloat(priceInput.value.replace(/[^0-9.-]+/g,"")); // 숫자만 추출
+        const discount = parseFloat(discountInput.value.replace(/[^0-9.-]+/g,"")); // 숫자만 추출
+
+        if (!isNaN(price) && !isNaN(discount)) {
+            const calculatedPrice = price - (price * (discount / 100));
+            realPriceInput.value = calculatedPrice.toFixed(0);
+        } else {
+            realPriceInput.value = "";
+        }
+    }
+});
+</script>
 <%@include file = "../common/footer.jsp" %>
 </html>
