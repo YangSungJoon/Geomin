@@ -6,17 +6,19 @@
   <mapper namespace="com.geomin.mapper.ContentMapper">
 
 	<select id="contentList" resultType="com.geomin.vo.ContentVO">
-	
+	<![CDATA[
 	select 
     content_id,content_name, learning_difficulty, learning_member,
-    price, (sale * 100)||'%' as sale, (price - (price * sale)) as real_price, learning_content 
+    TO_CHAR(price, '9,999,999') as price, sale ||'%' as sale, to_char((price - (price * (sale / 100))),'9,999,999') as real_price, learning_content 
     from content
-	
+    where 1=1
+	]]>
+	<include refid="learning_difficulty"></include>
 	</select>
-
+	
 	<select id="subContentList" resultType="com.geomin.vo.SubScriptionVO">
 	
-	select s.content_id ,c.CONTENT_NAME, c.LEARNING_MEMBER, c.price, (c.price - (c.price * c.sale)) as real_price,
+	select s.content_id ,c.CONTENT_NAME, c.LEARNING_MEMBER, TO_CHAR(c.price, '9,999,999') as price, to_char((c.price - (c.price * (c.sale / 100))),'9,999,999') as real_price,
 		 c.LEARNING_DIFFICULTY, c.LEARNING_CONTENT, s.subscription_date,s.paystatus
 	from content c, subscription s
 	where c.content_id = s.content_id
@@ -25,11 +27,26 @@
 	
 	</select>
 
-	<select id="learnerGroup" resultType="com.geomin.vo.LearnerGroupVO">
-	select * from LEARNER_GROUP
+	<select id="groupApproval" resultType="com.geomin.vo.SubScriptionVO">
+	<![CDATA[
+	    select l.content_id, c.content_name, g.group_name,l.learner_name , l.group_appdate,
+      		  s.TOTAL_PERSONNEL, s.current_personnel, l.groupyn, s.user_id, l.user_id_learner 
+	    from learner_group l, content c, SUBSCRIPTION s, groups g
+	    where c.content_id = l.content_id
+		    and s.content_id = l.content_id
+		    and g.group_id = l.group_id
+			and s.user_id = #{user_id}
+	]]>
+			<include refid="sel_name"></include>
 	</select>
 
 
+	<select id="option_content_id" resultType="com.geomin.vo.SubScriptionVO">
+		select distinct content_id, content_name
+	            from subscription
+	            where user_id = #{user_id}
+	            order by content_id asc
+	</select>
 
 
 	<insert id="insertgroup">
@@ -65,5 +82,40 @@
     <delete id="deletePay">
     delete from sales where content_id = #{content_id}
     </delete>
+    
+    
+    <update id="updateGroupyn">
+           update LEARNER_GROUP
+		    set groupyn = 'Y'
+		    where user_id_learner= #{user_id_learner}
+    </update>
+
+	<update id="add_current">
+	    update subscription
+	    set CURRENT_PERSONNEL = CURRENT_PERSONNEL + 1
+	    where content_id = '0003'
+	</update>
+    
+    
+    
+    
+    
+   	<sql id="sel_name">
+		<choose>
+   			<when test="content_name != null and content_name != ''">
+		      	and s.content_name = #{content_name}
+		    </when>
+		</choose>
+		
+	</sql>
+    
+    <sql id="learning_difficulty">
+		<choose>
+   			<when test="learning_difficulty != null and learning_difficulty != ''">
+		      	and learning_difficulty = #{learning_difficulty}
+		    </when>
+		</choose>
+		
+	</sql>
     
   </mapper>

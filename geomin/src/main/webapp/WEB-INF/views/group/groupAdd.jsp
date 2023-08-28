@@ -36,13 +36,14 @@
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/group/groupAdd" id = "intro-hover">학습그룹 등록</a></li>
-                <li class = "guide"><a href = "/group/groupApproval" id = "guide-hover">그룹가입 승인</a></li>
+                <li class = "guide"><a href = "/group/groupApproval?user_id=${userId}" id = "guide-hover">그룹가입 승인</a></li>
+                <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "guide-hover">나의 그룹</a></li>
                 <li class = "guide"><a href = "#" id = "guide-hover">숙제 전송</a></li>
                 <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
         
-   <form action="group" method="post" >
+   <form action="groupAdd" method="post" >
 
         <div class = "group_add_box">
 
@@ -59,7 +60,7 @@
                 <p>그룹명<span>*</span></p>
                 <input type="text" name="group_name">
                 <p>그룹인원<span>*</span></p>
-                <input type="text" name="group_personnel">
+                <input type="text" name="group_personnel" >
                 <p>학습기간<span>*</span></p>
                  <input type="date" name="learning_start"> ~ <input type="date" name="learning_end">
 

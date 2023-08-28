@@ -53,7 +53,8 @@
                 <li><a href = "#" id = "category-size">강사마당</a>
                     <ul class = 'submenu'>
                         <li><a href="/group/groupAdd" id = "subcategory-size">학습그룹 등록</a></li>
-                        <li><a href="/group/groupApproval" id = "subcategory-size">학습그룹 가입승인</a></li>
+                        <li><a href="/group/groupApproval?user_id=${userId}" id = "subcategory-size">학습그룹 가입승인</a></li>
+                        <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "subcategory-size">나의 그룹</a></li>
                         <li><a href="#" id = "subcategory-size">숙제 전송</a></li>
                         <li><a href="#" id = "subcategory-size">숙제 평가</a></li>
                     </ul>

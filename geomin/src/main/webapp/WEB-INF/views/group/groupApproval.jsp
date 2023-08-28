@@ -36,11 +36,31 @@
                 cell.textContent = difficultyText;
             });
             
-            
-            
-            
-            
         };
+        
+        
+        window.onload = function() {
+            const searchNameSelect = document.getElementById('search_name');
+            const contentNameInput = document.querySelector('input[name="content_name"]');
+            
+            // 이전에 선택된 값 복구
+            const selectedValue = "${content_name}";
+            if (selectedValue) {
+                const optionToSelect = [...searchNameSelect.options].find(option => option.value === selectedValue);
+                if (optionToSelect) {
+                    optionToSelect.selected = true;
+                }
+            }
+            
+            // 조회 버튼 클릭 시 선택된 값을 input에 설정
+            const levelCheckButton = document.getElementById('name_check');
+            levelCheckButton.addEventListener('click', function() {
+                const selectedOption = searchNameSelect.options[searchNameSelect.selectedIndex];
+                const selectedValue = selectedOption.value;
+                contentNameInput.value = selectedValue;
+            });
+        };
+        
     </script>
     
 </head>
@@ -48,10 +68,7 @@
 <body>
 
 메인 콘텐츠 목록
-userId : ${userId}
-
-<form action="subContentListAction" method="post">
-
+userId : ${userId}	
 <input name="user_id" value="${userId}">
 
 <div class = "intro-box">
@@ -77,47 +94,64 @@ userId : ${userId}
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/group/groupAdd" id = "intro-hover">학습그룹 등록</a></li>
-                <li class = "guide"><a href = "/group/groupApproval" id = "guide-hover">그룹가입 승인</a></li>
+                <li class = "guide"><a href = "/group/groupApproval?user_id=${userId}" id = "guide-hover">그룹가입 승인</a></li>
+                <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "guide-hover">나의 그룹</a></li>
                 <li class = "guide"><a href = "#" id = "guide-hover">숙제 전송</a></li>
                 <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
-        <div class = "name-content">
-            <p>학습난이도 &nbsp;
-                <select id="search_level">
-                    <option value="level">전체 ↓</option>
-                    <option value="level">초급</option>
-                    <option value="level">중급</option>
-                    <option value="level">고급</option>
-                </select>
-                <button type = "button" id = "level_check">조회</button>
-            </p><hr>
-        </div>
-
-        <div class = "request-content">
-            <table>
-                <tr class = "table_menu">
-                    <td class = "check_box"></td>
-                    <td>학습자명</td>
-                    <td>가입신청일자</td>
-                    <td>승인여부</td>
-                </tr>
-                <c:forEach items="${contentList }" var="li" varStatus="status">
-				    <tr>
-				        <td class="check_box"><input type="checkbox" name="content_id" id="checkbox" value="${li.content_id}"></td>
-				        <td class="packageName">${li.content_name}</td>
-				        <td class="people" >${li.learning_member} 명</td>
-				        <td class="price" >${li.price}원</td>
-				    </tr>
-                </c:forEach>
-               
-            </table>
-            <div class = "send_button_box">
-                <button type = "submit" id = "send_button">구독신청</button>
-            </div>
-        </div>
-    </div>
+        
+     <form action="groupApproval" method="get">
+     <input name="user_id" value="${userId}">
+	      <div class = "name-content">
+	          <p>콘텐츠명 &nbsp;
+	              <select id="search_name">
+	                  <option value="">전체 ↓</option>
+	               <c:forEach items="${option_content_id}" var="count">
+	                  <option value="${count.content_name}" >${count.content_name }</option>
+				   </c:forEach>
+	              </select>
+	              <button type = "submit" id = "name_check">조회</button>
+	          </p><hr>
+	      </div>
+	      
+	      <input name="content_name" value="${content_name }">
+	      
+     </form>
+        
+<form action="Approval" method="post">
+	<input name="user_id" value="${userId}">
+	        <div class = "request-content">
+	            <table>
+	                <tr class = "table_menu">
+	                    <td class = "check_box"></td>
+	                    <td>콘텐츠명</td>
+	                    <td>학습자명</td>
+	                    <td>가입신청일자</td>
+	                    <td>총 인원</td>
+	                    <td>현재 인원</td>
+	                    <td>승인여부</td>
+	                </tr>
+	                 <c:forEach items="${groupApproval }" var="li" varStatus="status">
+					    <tr>
+					        <td class="check_box"><input type="checkbox" name="user_id_learner" id="checkbox" value="${li.user_id_learner}"></td>
+					        <td >${li.content_name}</td>
+					        <td >${li.learner_name}</td>
+					        <td >${li.group_appdate}</td>
+					        <td >${li.total_personnel}명</td>
+					        <td >${li.current_personnel}명</td>
+					        <td >${li.groupyn}</td>
+					    </tr>
+	                </c:forEach> 
+	               
+					        
+	            </table>
+	            <div class = "send_button_box">
+	                <button type = "submit" id = "send_button">승인</button>
+	            </div>
+	        </div>
 </form>
+    </div>
 
 
 </body>

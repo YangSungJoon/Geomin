@@ -28,10 +28,10 @@ public class ContentController {
 	ContentService contentService;
 	
 	@GetMapping("contentList")
-	public void contentList(Model model) {
+	public void contentList(ContentVO contentVO, Model model) {
 		
 		
-		contentService.contentList(model);
+		contentService.contentList(contentVO, model);
 	}
 	
 
@@ -86,13 +86,5 @@ public class ContentController {
 				
 	}
 	
-	
-	@GetMapping("learnerGroup")
-	public void learnerGroup(SubScriptionVO subScriptionVO,  Model model) {
-		
-		contentService.subContentList(subScriptionVO, model);
-		
-		contentService.learnerGroup(model);
-	}
-	
+
 }
