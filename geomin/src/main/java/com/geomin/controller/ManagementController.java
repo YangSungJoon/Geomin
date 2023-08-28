@@ -27,6 +27,12 @@ public class ManagementController {
 		return "/management/learner_content";
 	}
 	
+	@GetMapping("announcement")
+	public String announcement(Model model){
+		contentService.contentList(model);
+		return "/management/announcement";
+	}
+	
 	@PostMapping("insert_content")
 	public String insertContent(ContentVO contentVo, Model model) {
 		System.out.println("contentVo" + contentVo);
@@ -39,4 +45,6 @@ public class ManagementController {
 		
 		return "redirect:/management/learner_content";
 	}
+	
+	
 }

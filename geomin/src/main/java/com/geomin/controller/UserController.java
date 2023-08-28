@@ -104,6 +104,13 @@ public class UserController {
 	        return responseMapMessage("fail", "등록 중 예외사항이 발생하였습니다.");
 	    }
 	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		// 세션 정보 삭제
+		session.invalidate();
+		return "redirect:/login/login";
+	}
 
 	private Map<String, Object> responseMapMessage(String result, String msg) {
 		Map<String, Object> response = new HashMap<>();

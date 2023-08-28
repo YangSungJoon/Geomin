@@ -23,6 +23,15 @@ ul{
 }
 
 .header_login{
+	/*border:1px solid red;*/
+	width: 5rem;
+	
+}
+
+.header_user{
+	/*border : 1px solid black;*/
+	width: 10rem;
+	text-align: right;
 }
 
 .header .header_top{
@@ -55,7 +64,7 @@ ul{
 }
 
 .login{
-    width: 15rem;
+    width: 20rem;
     height: 5rem;
     display: flex;
     margin-right: 0.5rem;

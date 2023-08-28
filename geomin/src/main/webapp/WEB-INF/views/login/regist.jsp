@@ -26,8 +26,7 @@
 			</div>
 			<div class="left-sideBar">
 				<ul>
-					<li class="site-intro"><a href="../html/intro.html"
-						id="intro-hover">회원 등록</a></li>
+					
 					<li class="guide"><a href="#" id="guide-hover">회원 정보</a></li>
 				</ul>
 			</div>

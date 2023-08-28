@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +18,16 @@
             <div id = "name">게임으로 배우는 바둑 교실</div>
             <div id = "login_menu">
                 <ul class = "login">
-                    <li class='header_login'><a href="/login/regist" id ="regist">회원가입</a></li>
+                  <c:choose>
+                  	<c:when test="${empty userVo }">
+                    <li class='header_user'><a href="/login/regist" id ="regist">회원가입</a></li>
                     <li class='header_login'><a href="/login/login">로그인</a></li>
+                    </c:when>
+                    <c:otherwise>
+                    <li class='header_user'>${userVo.user_name }님 환영합니다.</li>
+                    <li class='header_login'><a href="/logout">로그아웃</a></li>
+                    </c:otherwise>
+                 </c:choose>
                 </ul>
             </div>
         </div>
