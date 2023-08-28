@@ -24,7 +24,7 @@
                     <li class='header_login'><a href="/login/login">로그인</a></li>
                     </c:when>
                     <c:otherwise>
-                    <li class='header_user'>${userVo.user_name }님 환영합니다.</li>
+                    <li class='header_user'><a href="/login/regist">${userVo.user_name }</a>님 환영합니다.</li>
                     <li class='header_login'><a href="/logout">로그아웃</a></li>
                     </c:otherwise>
                  </c:choose>

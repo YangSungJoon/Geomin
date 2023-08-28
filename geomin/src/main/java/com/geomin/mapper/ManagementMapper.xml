@@ -8,7 +8,7 @@
 	<selectKey keyProperty="content_id" order="BEFORE" resultType="String">
   		select LPAD(SEQ_groups.NEXTVAL, 4, '0') from dual
 	</selectKey>
-    	insert into content 
+    	insert into content (content_id, content_name, learning_difficulty, learning_member, price, sale, real_price, learning_content)
     	 values (#{content_id}, #{content_name}, #{learning_difficulty}
     	 , #{learning_member}, #{price}, #{sale}, #{real_price}, #{learning_content})
 
