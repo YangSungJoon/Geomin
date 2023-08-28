@@ -9,9 +9,7 @@ import org.springframework.ui.Model;
 import com.geomin.mapper.ContentMapper;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
-import com.geomin.vo.LearnerGroupVO;
 import com.geomin.vo.SubScriptionVO;
-import com.geomin.vo.UserVO;
 
 @Service
 public class ContentServiceImpl implements ContentService{
@@ -20,11 +18,14 @@ public class ContentServiceImpl implements ContentService{
 	private ContentMapper contentMapper;
 	
 	@Override
-	public List<ContentVO> contentList(Model model){
+	public List<ContentVO> contentList(ContentVO contentVO, Model model){
 		
-		List<ContentVO> list = contentMapper.contentList();
+		List<ContentVO> list = contentMapper.contentList(contentVO);
+		
+		
 		
 		model.addAttribute("contentList", list);
+		model.addAttribute("learning_difficulty", contentVO.getLearning_difficulty());
 		
 		return null;
 	}
@@ -44,16 +45,29 @@ public class ContentServiceImpl implements ContentService{
 	}
 	
 	@Override
-	public List<LearnerGroupVO> learnerGroup(Model model){
-		List<LearnerGroupVO> list = contentMapper.learnerGroup();
+	public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO, Model model){
+		List<SubScriptionVO> list = contentMapper.groupApproval(subScriptionVO);
 		
-		model.addAttribute("learnerGroup", list);
+		model.addAttribute("content_name",subScriptionVO.getContent_name());
+		
+		model.addAttribute("groupApproval", list);
 		
 		return null;
 		
 	}
 	
 
+	@Override
+	public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO, Model model){
+		
+		List<SubScriptionVO> list = contentMapper.option_content_id(subScriptionVO);
+		
+		model.addAttribute("option_content_id", list);
+		
+		return null;
+		
+	}
+	
 	
 	@Override
 	public int insertgroup(GroupVO groupVO, Model model) {
@@ -71,6 +85,7 @@ public class ContentServiceImpl implements ContentService{
 		int res = contentMapper.insertSubContent(subScriptionVO);
 		
 		model.addAttribute("subScriptionVO", subScriptionVO);
+		model.addAttribute("content_id", subScriptionVO.getContent_id());
 		
 		return res;
 		
@@ -101,6 +116,23 @@ public class ContentServiceImpl implements ContentService{
 	public int deletePay(SubScriptionVO subScriptionVO) {
 		
 		int res = contentMapper.deletePay(subScriptionVO);
+		
+		return res;
+		
+	}
+	
+	@Override
+	public int updateGroupyn(SubScriptionVO subScriptionVO) {
+		
+		int res = contentMapper.updateGroupyn(subScriptionVO);
+		
+		return res;
+	}
+	
+	@Override
+	public int add_current(SubScriptionVO subScriptionVO) {
+	
+		int res = contentMapper.add_current(subScriptionVO);
 		
 		return res;
 		

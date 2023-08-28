@@ -21,5 +21,13 @@ public class SubScriptionVO {
 	private int current_personnel;
 	private String paystatus;
 	
+	private String group_name;
+	private String learner_name;
+	private String group_appdate;
+	private String groupyn;
+	private String user_id_leader;
+	private String user_id_learner;
+	
+	
 	
 }

@@ -160,3 +160,11 @@ td{
     width: 4rem;
     height: 2.5rem;
 }
+
+#name_check{
+    float: right;
+    margin-top: 0.5rem;
+    margin-right: 5rem;
+    width: 4rem;
+    height: 2.5rem;
+}

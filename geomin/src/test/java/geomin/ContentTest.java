@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.geomin.mapper.ContentMapper;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
-import com.geomin.vo.LearnerGroupVO;
 import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
@@ -28,34 +27,31 @@ public class ContentTest {
 	@Autowired
 	ContentMapper contentMapper;
 	
-	@Test
-	public void test() {
-		assumeNotNull(contentMapper);
-		
+	/*
+	 * @Test public void test() { assumeNotNull(contentMapper);
+	 * 
+	 * 
+	 * List<ContentVO> list = contentMapper.contentList();
+	 * 
+	 * list.forEach(content ->{ log.info(content.getContent_id()); });
+	 * 
+	 * }
+	 */
 	
-		List<ContentVO> list = contentMapper.contentList();
-		
-		list.forEach(content ->{
-			log.info(content.getContent_id());
-		});
-		
-	}
-	
-	
-	  @Test
-	  public void learnerGroup() {
-
-		  List<LearnerGroupVO> list = contentMapper.learnerGroup();
-		  
-		  list.forEach(learner  ->{
-			  
-			  log.info(learner.getUser_id_leader());
-			  log.info(learner.getUser_id_learner());
-			  
-		  });
-		  	
-		  
-	  }
+	/*
+	 * @Test public void learnerGroup() {
+	 * 
+	 * List<SubScriptionVO> list = contentMapper.groupApproval();
+	 * 
+	 * list.forEach(learner ->{
+	 * 
+	 * log.info(learner.getContent_id()); log.info(learner.getContent_name());
+	 * 
+	 * });
+	 * 
+	 * 
+	 * }
+	 */
 	
 	
 	/*

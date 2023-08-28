@@ -4,18 +4,17 @@ import java.util.List;
 
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
-import com.geomin.vo.LearnerGroupVO;
 import com.geomin.vo.SubScriptionVO;
-import com.geomin.vo.UserVO;
 
 public interface ContentMapper {
 
-public List<ContentVO> contentList();
+public List<ContentVO> contentList(ContentVO contentVO);
 
 public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO);
 
-public List<LearnerGroupVO> learnerGroup();
+public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO);
 
+public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO);
 
 public int insertgroup(GroupVO groupVO);
 
@@ -27,6 +26,8 @@ public int insertContentPay(SubScriptionVO subScriptionVO);
 
 public int deletePay(SubScriptionVO subScriptionVO);
 
+public int updateGroupyn(SubScriptionVO subScriptionVO);
 
+public int add_current(SubScriptionVO subScriptionVO);
 
 }

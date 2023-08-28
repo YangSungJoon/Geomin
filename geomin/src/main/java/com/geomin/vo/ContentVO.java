@@ -15,5 +15,4 @@ public class ContentVO {
 	private String real_price;
 	private String learning_content;
 	
-	
 }
