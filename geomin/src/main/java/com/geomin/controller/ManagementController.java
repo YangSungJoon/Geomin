@@ -29,9 +29,9 @@ public class ManagementController {
 	
 	@PostMapping("insert_content")
 	public String insertContent(ContentVO contentVo, Model model) {
+		System.out.println("contentVo" + contentVo);
 		int result = managementService.insert(contentVo);
 		
-		System.out.println("contentVo" + contentVo);
 		if(result > 0) {
 			model.addAttribute("insertSuccess", "true");
 		}

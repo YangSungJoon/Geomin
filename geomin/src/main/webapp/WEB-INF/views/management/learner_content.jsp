@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/study_group_add.css">
+<link rel="stylesheet" href="../resources/css/learner_content.css">
 </head>
 <%@include file = "../common/header.jsp" %>
 <body>
@@ -50,10 +50,10 @@
                 </div>
             <div class = "left_content">
 				<p>패키지명<span>*</span></p>
-				<input type="text" name="group_name">
+				<input type="text" name="content_name" class="content_name"><br>
 				<p>학습난이도<span>*</span></p>
       		    <div class = "member_check">
-                <select name="" id="learning_difficulty">
+                <select name="learning_difficulty" id="learning_difficulty">
                     <option value="1">초급</option>
                     <option value="2">중급</option>
                     <option value="3">고급</option>
@@ -62,28 +62,21 @@
             
                 <p>학습가능인원<span>*</span></p>
                 
-			    <input type="number" class="class_maxcount" name="class_maxcount" id="class_maxcount" min="1">
+			    <input type="number" class="learning_member" name="learning_member" min="1">
 			 
                 <p>정가<span>*</span></p>
                 <input type="text" id="price" name="price" value="">원
                <p>할인<span>*</span></p>
-                <input type="text" id="discount" name="discount" value="">%
+                <input type="text" id="sale" name="sale" value="">%
                 <p>판매가<span>*</span></p>
                 <input type="text" id="real_price" name="real_price">원
 				 <p>패키지내용<span>*</span></p>
-                <input type="text" id="pakage_content" name="pakage_content">
-                
+                <textarea cols="50" rows="5" id="learning_content" name="learning_content"></textarea>
 
-            </div>
-    </form>
-    <!-- 등록 성공 메시지 -->
-<c:if test="${param.insertSuccess eq 'true'}">
-    <p>등록되었습니다.</p>
-</c:if>
+            	</div>
+    		</form>
+
         </div>
-
-      
-	
 
     </div>
     
@@ -94,24 +87,35 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const priceInput = document.getElementById("price");
-    const discountInput = document.getElementById("discount");
+    const saleInput = document.getElementById("sale");
     const realPriceInput = document.getElementById("real_price");
 
     // 입력값이 변경될 때 판매가 계산
     priceInput.addEventListener("input", calculateRealPrice);
-    discountInput.addEventListener("input", calculateRealPrice);
+    saleInput.addEventListener("input", calculateRealPrice);
 
     function calculateRealPrice() {
         const price = parseFloat(priceInput.value.replace(/[^0-9.-]+/g,"")); // 숫자만 추출
-        const discount = parseFloat(discountInput.value.replace(/[^0-9.-]+/g,"")); // 숫자만 추출
+        const sale = parseFloat(saleInput.value.replace(/[^0-9.-]+/g,"")); // 숫자만 추출
 
-        if (!isNaN(price) && !isNaN(discount)) {
-            const calculatedPrice = price - (price * (discount / 100));
+        if (!isNaN(price) && !isNaN(sale)) {
+            const calculatedPrice = price - (price * (sale / 100));
             realPriceInput.value = calculatedPrice.toFixed(0);
         } else {
             realPriceInput.value = "";
         }
     }
+    
+    
+	//서버로부터 받은 메시지를 이용하여 알림창을 띄우는 함수
+	  function showAlert(message) {
+	    alert(message);
+	  }	
+	// 서버로부터 메시지가 전달될 경우 showAlert 함수 호출
+	    const insertSuccess = "${param.insertSuccess}";
+	    if (insertSuccess === "true") {
+	        showAlert("등록되었습니다.");
+	    }
 });
 </script>
 <%@include file = "../common/footer.jsp" %>

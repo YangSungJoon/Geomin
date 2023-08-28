@@ -17,7 +17,7 @@
         <div class = "location">
             <ul class = "clearFix">
                 <li class = "home">
-                    <a href = "#">
+                    <a href = "/login/login">
                         <img src="../resources/image/homeicon.png" alt=""> /
                     </a>
                 </li>
@@ -31,7 +31,7 @@
     
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "" id = "intro-hover">로그인</a></li>
+                <li class = "site-intro"><a href = "/login/login" id = "intro-hover">로그인</a></li>
             </ul>
         </div>
 
