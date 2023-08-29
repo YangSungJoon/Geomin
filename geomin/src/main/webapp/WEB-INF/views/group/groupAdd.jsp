@@ -10,6 +10,9 @@
 </head>
 <%@include file = "../common/header.jsp" %>
 <body>
+
+	<input type="text" name="user_id" value="${userId}"><br>
+
 <div class = "intro-box">
         <div class = "location">
             <ul class = "clearFix">
@@ -35,10 +38,10 @@
         
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "/group/groupAdd" id = "intro-hover">학습그룹 등록</a></li>
+                <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
                 <li class = "guide"><a href = "/group/groupApproval?user_id=${userId}" id = "guide-hover">그룹가입 승인</a></li>
                 <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "guide-hover">나의 그룹</a></li>
-                <li class = "guide"><a href = "#" id = "guide-hover">숙제 전송</a></li>
+                <li class = "guide"><a href = "/homework_t/homework_add?user_id=${userId }" id = "guide-hover">숙제 전송</a></li>
                 <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
@@ -52,7 +55,7 @@
             <div class = "left_content">
 				<p>콘텐츠 명<span>*</span></p>
       		   <select name="content_id">
-				<c:forEach items="${contentList }" var="li" varStatus="status">
+				<c:forEach items="${option_content_id }" var="li" varStatus="status">
 				   	<option  value="${li.content_id }">${li.content_name }</option>
 			    </c:forEach>
 			   </select>
@@ -71,11 +74,6 @@
             </div>
         </div>
 
-        <div class = "right_box">
-            <div class = "content_name">학습 콘텐츠명 : $_____</div>
-            <div class = "poss_people">학습가능인원 : $__명</div>
-            <div class = "add_people">그룹등록인원: $__명</div>
-        </div>
 
 
 

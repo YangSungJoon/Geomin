@@ -59,7 +59,31 @@
                 const selectedValue = selectedOption.value;
                 contentNameInput.value = selectedValue;
             });
+        
+
         };
+        
+        
+        
+        // 페이지가 로드되면 실행될 함수 등록
+        document.addEventListener("DOMContentLoaded", function() {
+          // check1 클래스를 가진 요소들을 모두 가져옴
+          const check1Elements = document.querySelectorAll('.check1');
+          
+          // 가져온 요소들에 대해 반복문 실행
+          check1Elements.forEach(function(check1Element) {
+            // check1 클래스를 가진 체크박스가 클릭되었을 때 실행되는 함수 등록
+            check1Element.addEventListener('click', function() {
+              // 연관된 check2 클래스를 가진 체크박스를 찾아서 클릭 처리
+              const associatedCheck2 = this.parentElement.querySelector('.check2');
+              if (associatedCheck2) {
+                associatedCheck2.click(); // check2 체크박스 클릭
+              }
+            });
+          });
+        });
+        
+        
         
     </script>
     
@@ -93,10 +117,10 @@ userId : ${userId}
         </div>
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "/group/groupAdd" id = "intro-hover">학습그룹 등록</a></li>
+                <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
                 <li class = "guide"><a href = "/group/groupApproval?user_id=${userId}" id = "guide-hover">그룹가입 승인</a></li>
                 <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "guide-hover">나의 그룹</a></li>
-                <li class = "guide"><a href = "#" id = "guide-hover">숙제 전송</a></li>
+                <li class = "guide"><a href = "/homework_t/homework_add?user_id=${userId }" id = "guide-hover">숙제 전송</a></li>
                 <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
@@ -134,7 +158,10 @@ userId : ${userId}
 	                </tr>
 	                 <c:forEach items="${groupApproval }" var="li" varStatus="status">
 					    <tr>
-					        <td class="check_box"><input type="checkbox" name="user_id_learner" id="checkbox" value="${li.user_id_learner}"></td>
+					        <td class="check_box">
+					        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" value="${li.user_id_learner}">
+					        	<input type="checkbox" name="content_id" class="check2" id="checkbox" style="display: none;" value="${li.content_id}" >
+					        </td>
 					        <td >${li.content_name}</td>
 					        <td >${li.learner_name}</td>
 					        <td >${li.group_appdate}</td>

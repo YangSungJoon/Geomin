@@ -12,7 +12,7 @@ import com.geomin.vo.SubScriptionVO;
 @Service
 public interface ContentService {
 
-	public List<ContentVO> contentList(ContentVO contentVO, Model model);
+	public List<ContentVO> contentList(SubScriptionVO subScriptionVO, Model model);
 	
 	public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO, Model model);
 	
@@ -20,7 +20,9 @@ public interface ContentService {
 	
 	public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO, Model model);
 	
-	public int insertgroup(GroupVO groupVO, Model model);
+	public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO, Model model);
+	
+	public int insertgroup(SubScriptionVO subScriptionVO, Model model);
 	
 	public int insertSubContent(SubScriptionVO subScriptionVO, Model model);
 	
@@ -34,6 +36,8 @@ public interface ContentService {
 
 	public int add_current(SubScriptionVO subScriptionVO);
 	
+	public int delGroup(SubScriptionVO subScriptionVO);
 
+	public int homework_add(SubScriptionVO subScriptionVO);
 	
 }
