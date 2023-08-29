@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>공지사항</title>
-  <link rel="stylesheet" href="../resources/css/announcement.css"> <!-- 스타일 시트 연결 -->
+  <link rel="stylesheet" href="styles.css"> <!-- 스타일 시트 연결 -->
 </head>
   <%@include file = "../common/header.jsp" %>
 <body>
@@ -22,31 +22,23 @@
     
       <h2>공지사항</h2>
       <br>
-<!-- Type 1 Announcements -->
+      
+      <br>
 <div class="notice">
-    <h3>안내문 공지</h3>
-    <br>
-    <table border="1px" class="table1">
-        <tr>
-            <td>번호</td>
-            <td>제목</td>
-            <td>날짜</td>
+    <table border="1px">
+        <tr class="table_menu">
+        	<th class="announceContent">${announceVo.title}</th>
+            <td class="announceDate">${announceVo.announcement_date}</td>
+            
         </tr>
-        <c:forEach items="${type1List}" var="announceVo">
+        
             <tr>
-                <td class="announceContent">${announceVo.announcement_id}</td>
-                <td class="announceTitle">
-                    <a href="/management/announcementView?announcement_id=${announceVo.announcement_id}">
-                        ${announceVo.title}
-                    </a>
-                </td>
-                <td class="announceDate">${announceVo.announcement_date}</td>
+             
+                <td class="announceContent" colspan="2">${announceVo.announcement_content}</td>
             </tr>
-        </c:forEach>
+        
     </table>
-  
 </div>
-
 
 </body>
 <%@include file = "../common/footer.jsp" %>

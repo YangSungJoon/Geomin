@@ -94,8 +94,8 @@
 					<h5>이메일 주소</h5>
 					<h5 class="star">&nbsp*</h5>
 				</div><br>
-						${userVo.email}
-					<input type="button" class="emailEdit" value="수정하기">
+					<input type="text" class="emailEditInput" value="${userVo.email} ">
+					<input type="button" class="emailEdit" value="이메일 변경">
 				</div>
 
 				<div class='regi_box_phone'>
@@ -103,8 +103,8 @@
 					<h5>전화번호</h5>
 					<h5 class="star">&nbsp*</h5>
 				</div><br>
-					${userVo.phonenumber }	
-					<input type="button" class="phoneEdit" value="수정하기">
+					<input type="text" class="phoneEditInput" value="${userVo.phonenumber } ">					
+					<input type="button" class="phoneEdit" value="전화번호 변경">
 				</div>
 					<div class='regi_box_pw'>
 					<div>

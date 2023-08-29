@@ -5,8 +5,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>공지사항</title>
-  <link rel="stylesheet" href="../resources/css/announcement.css"> <!-- 스타일 시트 연결 -->
+  <title>공지등록</title>
+  <link rel="stylesheet" href="styles.css"> <!-- 스타일 시트 연결 -->
 </head>
   <%@include file = "../common/header.jsp" %>
 <body>
@@ -20,33 +20,31 @@
             </ul>
         </div>
     
-      <h2>공지사항</h2>
+      <h2>공지등록</h2>
       <br>
-<!-- Type 1 Announcements -->
-<div class="notice">
-    <h3>안내문 공지</h3>
-    <br>
-    <table border="1px" class="table1">
-        <tr>
-            <td>번호</td>
-            <td>제목</td>
-            <td>날짜</td>
-        </tr>
-        <c:forEach items="${type1List}" var="announceVo">
-            <tr>
-                <td class="announceContent">${announceVo.announcement_id}</td>
-                <td class="announceTitle">
-                    <a href="/management/announcementView?announcement_id=${announceVo.announcement_id}">
-                        ${announceVo.title}
-                    </a>
-                </td>
-                <td class="announceDate">${announceVo.announcement_date}</td>
-            </tr>
-        </c:forEach>
-    </table>
-  
-</div>
+<form action="announceInsert" method="post">
 
+	<div class = "notice_type">
+                <select name="announcement_type" id="type">
+                    <option value="1">안내문 공지</option>
+                    <option value="2">자주문의하는 내용</option>
+                </select>
+      </div>	
+		<br>
+    <div class="notice_title">
+      <label for="title">제목:</label>
+      <input type="text" id="title" name="title" required>
+    </div>
+      <br>
+     <div class="notice_content">
+      <label for="content">내용:</label>
+      <textarea id="content" name="announcement_content" required></textarea>
+     </div> <br>
+     
+      <input type="submit" value="등록">
+  </form>
+ 
+  
 
 </body>
 <%@include file = "../common/footer.jsp" %>

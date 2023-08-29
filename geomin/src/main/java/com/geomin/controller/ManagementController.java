@@ -16,9 +16,6 @@ import com.geomin.vo.ContentVO;
 public class ManagementController {
 	
 	@Autowired
-	ContentService contentService;
-	
-	@Autowired
 	ManagementService managementService;
 	
 	@GetMapping("learner_content")
@@ -26,12 +23,7 @@ public class ManagementController {
 		managementService.contentList(model);
 		return "/management/learner_content";
 	}
-	
-	@GetMapping("announcement")
-	public String announcement(Model model){
-		managementService.contentList(model);
-		return "/management/announcement";
-	}
+		
 	
 	@PostMapping("insert_content")
 	public String insertContent(ContentVO contentVo, Model model) {
@@ -41,8 +33,7 @@ public class ManagementController {
 		if(result > 0) {
 			model.addAttribute("insertSuccess", "true");
 		}
-		
-		
+				
 		return "redirect:/management/learner_content";
 	}
 	
