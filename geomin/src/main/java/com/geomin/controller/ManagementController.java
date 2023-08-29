@@ -23,13 +23,13 @@ public class ManagementController {
 	
 	@GetMapping("learner_content")
 	public String learner_content(Model model){
-		contentService.contentList(model);
+		managementService.contentList(model);
 		return "/management/learner_content";
 	}
 	
 	@GetMapping("announcement")
 	public String announcement(Model model){
-		contentService.contentList(model);
+		managementService.contentList(model);
 		return "/management/announcement";
 	}
 	

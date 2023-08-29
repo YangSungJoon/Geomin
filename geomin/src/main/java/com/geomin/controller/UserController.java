@@ -52,7 +52,13 @@ public class UserController {
 	public String findPw() {
 		return "login/findPw";
 	}
-       
+	
+	@GetMapping("/login/profile")
+	public String profile() {
+		return "login/profile";
+	}
+	
+	
 	@PostMapping("/loginAction")
 	public String loginAction(@RequestParam("userId") String user_id, 
 			@RequestParam("userPw") String user_pw,			
@@ -199,5 +205,28 @@ public class UserController {
 	     }
 
 	     return randomPassword.toString();
+	 }
+	 
+	 @PostMapping("/passwordEditAction")
+	 @ResponseBody
+	 public Map<String, Object> passwordEditAction(@RequestBody UserVO userVo) {
+	     try {
+	         // 새 비밀번호 암호화
+	         userVo.setUser_pw(encoder.encode(userVo.getUser_pw()));
+
+	         // 비밀번호 업데이트 서비스 호출
+	         int updateResult = userService.passwordEdit(userVo);
+	         
+	         System.out.println("userVo : " + userVo);
+	         
+	         Map<String, Object> response = new HashMap<>();
+	         response.put("check", updateResult > 0);
+	         return response;
+	     } catch (Exception e) {
+	         e.printStackTrace();
+	         Map<String, Object> response = new HashMap<>();
+	         response.put("check", false);
+	         return response;
+	     }
 	 }
 }

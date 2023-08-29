@@ -2,6 +2,7 @@ package com.geomin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.geomin.mapper.ManagementMapper;
 import com.geomin.vo.ContentVO;
@@ -17,6 +18,12 @@ public class ManagementServiceImpl implements ManagementService{
 		// 패키지 정보를 DB에 저장
 	    int res = managementMapper.insert(contentVo);
 	    return res > 0 ? 1 : 0; // 1: 성공, 0: 실패
+	}
+
+	@Override
+	public void contentList(Model model) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

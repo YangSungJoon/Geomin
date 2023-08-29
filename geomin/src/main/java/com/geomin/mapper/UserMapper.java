@@ -22,4 +22,7 @@ public interface UserMapper {
 
 	public UserVO findPw(UserVO userVo);
 
+	public List<UserVO> userList(UserVO userVo);
+	
+	public int passwordEdit(UserVO userVo);
 }

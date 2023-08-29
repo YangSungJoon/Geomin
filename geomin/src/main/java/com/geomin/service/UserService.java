@@ -10,6 +10,8 @@ import com.geomin.vo.UserVO;
 public interface UserService {
 
 	UserVO login(UserVO userVo);
+	
+	List<UserVO> userList(UserVO userVo);	
 
 	int insert(UserVO userVo);
 
@@ -22,4 +24,6 @@ public interface UserService {
 	boolean checkUser(UserVO userVo);
 
 	void sendTemporaryPasswordByEmail(String userEmail, String userName, String temporaryPassword);
+
+	int passwordEdit(UserVO userVo);
 }

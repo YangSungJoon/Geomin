@@ -25,10 +25,7 @@
 				</ul>
 			</div>
 			<div class="left-sideBar">
-				<ul>
-					
-					<li class="guide"><a href="#" id="guide-hover">회원 정보</a></li>
-				</ul>
+				
 			</div>
 			<div class='regi_center slide-in'>
 				<div class='regi_logo'>정보 입력</div>

@@ -92,6 +92,18 @@ public class UserServiceImpl implements UserService{
 		UserVO user = userMapper.findPw(userVo);
         return user != null; // 회원 정보가 존재하면 true, 존재하지 않으면 false를 반환
     }
+
+	@Override
+	public List<UserVO> userList(UserVO userVo) {
+		return userMapper.userList(userVo);
+	}
+
+	@Override
+	public int passwordEdit(UserVO userVo) {
+		userVo.setUser_pw(encoder.encode(userVo.getUser_pw()));
+		
+		return userMapper.passwordEdit(userVo);
+	}
 	
 	
 	
