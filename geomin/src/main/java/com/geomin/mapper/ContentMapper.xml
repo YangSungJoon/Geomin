@@ -5,7 +5,7 @@
   
   <mapper namespace="com.geomin.mapper.ContentMapper">
 
-	<select id="contentList" resultType="com.geomin.vo.ContentVO">
+	<select id="contentList" resultType="com.geomin.vo.SubScriptionVO">
 	<![CDATA[
 	select 
     content_id,content_name, learning_difficulty, learning_member,
@@ -19,7 +19,7 @@
 	<select id="subContentList" resultType="com.geomin.vo.SubScriptionVO">
 	
 	select s.content_id ,c.CONTENT_NAME, c.LEARNING_MEMBER, TO_CHAR(c.price, '9,999,999') as price, to_char((c.price - (c.price * (c.sale / 100))),'9,999,999') as real_price,
-		 c.LEARNING_DIFFICULTY, c.LEARNING_CONTENT, s.subscription_date,s.paystatus
+		 c.LEARNING_DIFFICULTY, c.LEARNING_CONTENT, to_char(s.subscription_date,'yyyy-MM-dd') as subscription_date,s.paystatus
 	from content c, subscription s
 	where c.content_id = s.content_id
 	and s.user_id = #{user_id}
@@ -29,8 +29,8 @@
 
 	<select id="groupApproval" resultType="com.geomin.vo.SubScriptionVO">
 	<![CDATA[
-	    select l.content_id, c.content_name, g.group_name,l.learner_name , l.group_appdate,
-      		  s.TOTAL_PERSONNEL, s.current_personnel, l.groupyn, s.user_id, l.user_id_learner 
+	    select l.content_id, c.content_name, g.group_name,l.learner_name , to_char(l.group_appdate, 'yyyy-MM-dd') as group_appdate,
+      		  s.TOTAL_PERSONNEL, s.current_personnel, l.groupyn, s.user_id, l.user_id_learner, g.group_id 
 	    from learner_group l, content c, SUBSCRIPTION s, groups g
 	    where c.content_id = l.content_id
 		    and s.content_id = l.content_id
@@ -48,6 +48,12 @@
 	            order by content_id asc
 	</select>
 
+	<select id="myGroup" resultType="com.geomin.vo.SubScriptionVO">
+	    select distinct g.user_id_leader ,g.content_id, g.group_name, s.content_name, s.total_personnel, s.current_personnel, g.group_id
+		    from subscription s, groups g
+		    where g.content_id = s.content_id
+		    and g.user_id_leader = #{user_id}
+	</select>
 
 	<insert id="insertgroup">
 	<selectKey keyProperty="group_id" order="BEFORE" resultType="String">
@@ -93,11 +99,23 @@
 	<update id="add_current">
 	    update subscription
 	    set CURRENT_PERSONNEL = CURRENT_PERSONNEL + 1
-	    where content_id = '0003'
+	    where content_id = #{content_id}
 	</update>
     
+    <delete id="delGroup">
+    	delete from groups where group_id = #{group_id}
+    </delete>
     
     
+    <insert id="homework_add">
+	   	<selectKey keyProperty="homework_no" order="BEFORE" resultType="String">
+	  		select 'H' || LPAD(SEQ_HOMEWORK.NEXTVAL, 4, '0') from dual
+		</selectKey>
+		insert into homework 
+			select #{homework_no}, #{group_id}, #{content_id}, #{user_id_leader}, #{user_id_learner}
+			        ,#{homework_deadline}, #{homework_content_leader}, '','',''
+			from learner_group
+    </insert>
     
     
    	<sql id="sel_name">

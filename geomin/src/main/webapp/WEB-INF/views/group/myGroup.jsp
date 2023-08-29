@@ -12,30 +12,7 @@
     
      <script>
         window.onload = function() {
-            const difficultyCells = document.querySelectorAll('.subPrice-difficulty');
 
-            difficultyCells.forEach(cell => {
-                const difficultyValue = cell.textContent.trim();
-                let difficultyText = '';
-
-                switch (difficultyValue) {
-                    case '1':
-                        difficultyText = '초급';
-                        break;
-                    case '2':
-                        difficultyText = '중급';
-                        break;
-                    case '3':
-                        difficultyText = '고급';
-                        break;
-                    default:
-                        difficultyText = '기타';
-                }
-
-                cell.textContent = difficultyText;
-            });
-            
-            
             
             
             
@@ -48,9 +25,6 @@
 
 구독 콘텐츠 목록
 
-<form action="payStatus" method="post">
-
-<input name="user_id" value="${userId}">
 
 <div class = "intro-box">
         <div class = "location">
@@ -74,43 +48,43 @@
         </div>
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "/content/contentList" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
-                <li class = "guide"><a href = "/content/subContentList?user_id=${userId}" id = "guide-hover">나의 학습콘텐츠</a></li>
+                <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
+                <li class = "guide"><a href = "/group/groupApproval?user_id=${userId}" id = "guide-hover">그룹가입 승인</a></li>
+                <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "guide-hover">나의 그룹</a></li>
+                <li class = "guide"><a href = "/homework_t/homework_add?user_id=${userId }" id = "guide-hover">숙제 전송</a></li>
+                <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
 
+<form action="delGroup" method="post">
+
+<input name="user_id" value="${userId}">
         <div class = "request-content">
             <table>
                 <tr class = "table_menu">
                     <td class = "check_box"></td>
-                    <td>패키지명</td>
-                    <td>학습가능인원</td>
-                    <td>구독료</td>
-                    <td>학습수준</td>
-                    <td>학습내용</td>
-                    <td>구독신청일</td>
-                    <td>결제상태</td>
+                    <td>그룹명</td>
+                    <td>콘텐츠명</td>
+                    <td>총인원</td>
+                    <td>현재인원</td>
                 </tr>
-                <c:forEach items="${subContentList }" var="li" varStatus="status">
+                <c:forEach items="${myGroup }" var="li" varStatus="status">
 	                <tr>
-	                    <td class = "check_box"><input type="checkbox" name="content_id" id="checkbox" value="${li.content_id}"></td>
-	                    <td class = "packageName">${li.content_name }</td>
-	                    <td class = "people">${li.learning_member } 명</td>
-	                    <td class = "subPrice">${li.real_price }원</td>
-	                    <td class="subPrice-difficulty">${li.learning_difficulty}</td>
-	                    <td>${li.learning_content }</td>
-	                    <td>${li.subscription_date }</td>
-	                    <td>${li.paystatus }</td>
+	                    <td class = "check_box"><input type="checkbox" name="group_id" id="checkbox" value="${li.group_id}"></td>
+	                    <td >${li.group_name }</td>
+	                    <td >${li.content_name }</td>
+	                    <td >${li.total_personnel }</td>
+	                    <td >${li.current_personnel}</td>
 	                </tr>
                 </c:forEach>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button">결제 취소</button>
+                <button type = "submit" id = "send_button">그룹 삭제</button>
             </div>
         </div>
-    </div>
 </form>
+    </div>
 
 </body>
  <%@include file = "../common/footer.jsp" %> 

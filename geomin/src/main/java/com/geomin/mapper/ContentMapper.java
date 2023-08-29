@@ -8,7 +8,7 @@ import com.geomin.vo.SubScriptionVO;
 
 public interface ContentMapper {
 
-public List<ContentVO> contentList(ContentVO contentVO);
+public List<ContentVO> contentList(SubScriptionVO subScriptionVO);
 
 public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO);
 
@@ -16,7 +16,9 @@ public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO);
 
 public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO);
 
-public int insertgroup(GroupVO groupVO);
+public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO);
+
+public int insertgroup(SubScriptionVO subScriptionVO);
 
 public int insertSubContent(SubScriptionVO subScriptionVO);
 
@@ -29,5 +31,9 @@ public int deletePay(SubScriptionVO subScriptionVO);
 public int updateGroupyn(SubScriptionVO subScriptionVO);
 
 public int add_current(SubScriptionVO subScriptionVO);
+
+public int delGroup(SubScriptionVO subScriptionVO);
+
+public int homework_add(SubScriptionVO subScriptionVO);
 
 }

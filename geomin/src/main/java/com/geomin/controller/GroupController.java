@@ -1,5 +1,7 @@
 package com.geomin.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import com.geomin.vo.GroupVO;
 import com.geomin.vo.SubScriptionVO;
 
 import lombok.extern.log4j.Log4j;
+import oracle.jdbc.proxy.annotation.Post;
 
 @RequestMapping("/group/*")
 @Controller
@@ -23,30 +26,34 @@ public class GroupController {
 	ContentService contentService;
 
 	@GetMapping("groupAdd")
-	public String group(ContentVO contentVO, String userid,Model model){
-		contentService.contentList(contentVO, model);
+	public String group(SubScriptionVO subScriptionVO,String userid,Model model){
+		
+		System.err.println("user_id : ========================" + subScriptionVO.getUser_id());
+		contentService.option_content_id(subScriptionVO, model);
 		
 		
 		return "/group/groupAdd";
 	}
 
-	
-	@GetMapping("myGroup")
-	public String myGroup(Model model, SubScriptionVO subScriptionVO){
-		
-		contentService.subContentList(subScriptionVO, model);
-		
-		return "/group/myGroup";
-	}
-	
-	
+
 	
 	@PostMapping("groupAdd")
-	public void insertgroup(ContentVO contentVO, GroupVO groupVO, Model model) {
+	public String insertgroup(SubScriptionVO subScriptionVO, GroupVO groupVO, Model model, HttpSession session) {
+		System.out.println("getUser_id : ===============" + session.getAttribute("userId").toString());
+		System.out.println("getContent_name : ============" + subScriptionVO.getContent_name());
+		System.out.println("getUser_id : ===============" + subScriptionVO.getGroup_name());
+		System.out.println("getContent_name : ============" + subScriptionVO.getContent_id());
 		
-		contentService.insertgroup(groupVO, model);
-		contentService.contentList(contentVO, model);
+		contentService.contentList(subScriptionVO, model);
+
+		contentService.insertgroup(subScriptionVO, model);
 		
+		
+	
+		subScriptionVO.setUser_id(session.getAttribute("userId").toString());
+		contentService.myGroup(subScriptionVO, model);
+		
+		return "group/myGroup";
 	}
 	
 	
@@ -71,6 +78,26 @@ public class GroupController {
 		contentService.groupApproval(subScriptionVO, model);
 	
 		return "group/groupApproval";
+	}
+	
+	
+	@GetMapping("myGroup")
+	public String myGroup(SubScriptionVO subScriptionVO, Model model) {
+		contentService.myGroup(subScriptionVO, model);
+		
+		return "group/myGroup";
+	}
+	
+	
+	@PostMapping("delGroup")
+	public String delGroup(SubScriptionVO subScriptionVO, Model model) {
+		
+		System.err.println("group_id : =================================" + subScriptionVO.getGroup_id());
+		
+		contentService.delGroup(subScriptionVO);
+		contentService.myGroup(subScriptionVO, model);
+		
+		return "group/myGroup";
 	}
 	
 }

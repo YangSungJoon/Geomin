@@ -28,6 +28,15 @@ public class SubScriptionVO {
 	private String user_id_leader;
 	private String user_id_learner;
 	
+	private String group_id;
+	private String group_personnel;
+	private String learning_start;
+	private String learning_end;
+	
+	
+	private String homework_content_leader;
+	private String homework_deadline;
+	private String homework_no;
 	
 	
 }

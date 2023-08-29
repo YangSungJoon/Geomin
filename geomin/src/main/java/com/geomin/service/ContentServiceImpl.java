@@ -18,14 +18,14 @@ public class ContentServiceImpl implements ContentService{
 	private ContentMapper contentMapper;
 	
 	@Override
-	public List<ContentVO> contentList(ContentVO contentVO, Model model){
+	public List<ContentVO> contentList(SubScriptionVO subScriptionVO, Model model){
 		
-		List<ContentVO> list = contentMapper.contentList(contentVO);
+		List<ContentVO> list = contentMapper.contentList(subScriptionVO);
 		
 		
 		
 		model.addAttribute("contentList", list);
-		model.addAttribute("learning_difficulty", contentVO.getLearning_difficulty());
+		model.addAttribute("learning_difficulty", subScriptionVO.getLearning_difficulty());
 		
 		return null;
 	}
@@ -68,13 +68,27 @@ public class ContentServiceImpl implements ContentService{
 		
 	}
 	
+	@Override
+	public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO, Model model){
+		
+		List<SubScriptionVO> list = contentMapper.myGroup(subScriptionVO);
+		
+		
+		
+		 
+		model.addAttribute("group_id", subScriptionVO.getGroup_id());
+		model.addAttribute("myGroup", list);
+		
+		return null;
+	}
+	
 	
 	@Override
-	public int insertgroup(GroupVO groupVO, Model model) {
+	public int insertgroup(SubScriptionVO subScriptionVO, Model model) {
 		
-		int res = contentMapper.insertgroup(groupVO);
+		int res = contentMapper.insertgroup(subScriptionVO);
 		
-		model.addAttribute("GroupVO", groupVO);
+		model.addAttribute("GroupVO", subScriptionVO);
 		return res;
 	}
 	
@@ -138,4 +152,18 @@ public class ContentServiceImpl implements ContentService{
 		
 	}
 	
+	@Override
+	public int delGroup(SubScriptionVO subScriptionVO) {
+		int res = contentMapper.delGroup(subScriptionVO);
+		
+		return res;
+	}
+	
+	
+	@Override
+	public int homework_add(SubScriptionVO subScriptionVO) {
+		int res = contentMapper.homework_add(subScriptionVO);
+		
+		return res;
+	}
 }
