@@ -15,9 +15,20 @@
     </insert>
     
     <select id="contentList" resultType="com.geomin.vo.ContentVO">
-    
 		select * from content
 	</select>
-	
+
+	 <select id="yearSaleList" resultType="com.geomin.vo.SubScriptionVO">
+        SELECT EXTRACT(YEAR FROM subscription_date) AS subscription_date,
+               COUNT(content_id) AS content_id,
+               SUM(subscription_price) AS subscription_price
+        FROM SUBSCRIPTION
+        WHERE content_name = #{contentName}
+        GROUP BY EXTRACT(YEAR FROM subscription_date)
+        ORDER BY subscription_date
+    </select>
+
+
+
 	
 </mapper>

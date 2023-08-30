@@ -1,15 +1,19 @@
 package com.geomin.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.geomin.service.ContentService;
 import com.geomin.service.ManagementService;
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.SubScriptionVO;
 
 @RequestMapping("/management/*")
 @Controller
@@ -37,5 +41,19 @@ public class ManagementController {
 		return "redirect:/management/learner_content";
 	}
 	
+	@GetMapping("salestally")
+	public String salestally(Model model){
+		
+		return "/management/salestally";
+	}
+
+	@GetMapping("yearSaleList")
+	@ResponseBody
+	public List<SubScriptionVO> yearSaleList(@RequestParam String contentName) {
+		
+		System.out.println("contentName : "+contentName);
+	    return managementService.yearSaleList(contentName);
+	}
+
 	
 }

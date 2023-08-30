@@ -16,7 +16,7 @@
                 <li class = "guide"><a href = "/management/announce_add" id = "insert_announce">공지 등록</a></li>
                 <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
                 <li class = "guide"><a href = "/management/qna" id = "qna">Q&A</a></li>
-                <li class = "guide"><a href = "#" id = "guide-hover">매출집계 및 조회</a></li>
+                <li class = "guide"><a href = "/management/salestally" id = "guide-hover">매출집계 및 조회</a></li>
             </ul>
         </div>
     
@@ -30,13 +30,11 @@
     <br>
     <table border="1px" class="table2">
         <tr>
-            <td>번호</td>
             <td>제목</td>
             <td>날짜</td>
         </tr>
         <c:forEach items="${type2List}" var="announceVo">
             <tr>
-                <td class="announceContent">${announceVo.announcement_id}</td>
                 <td class="announceTitle">
                     <a href="/management/announcementView?announcement_id=${announceVo.announcement_id}">
                         ${announceVo.title}

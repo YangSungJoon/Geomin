@@ -1,11 +1,14 @@
 package com.geomin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.geomin.mapper.ManagementMapper;
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.SubScriptionVO;
 
 @Service
 public class ManagementServiceImpl implements ManagementService{
@@ -22,11 +25,14 @@ public class ManagementServiceImpl implements ManagementService{
 
 	@Override
 	public void contentList(Model model) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	
-	
+	@Override
+	public List<SubScriptionVO> yearSaleList(String contentName) {
+		System.out.println("contentName : " + contentName);
+	    return managementMapper.yearSaleList(contentName);
+	}
+
 	
 }

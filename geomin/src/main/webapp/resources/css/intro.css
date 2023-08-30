@@ -64,9 +64,16 @@
 .intro-content{
     border: 3px solid black;
     width: 47rem;
-    height: 55rem;
+    height: 56rem;
 }
 
 h1{
     text-align: center;
 }
+
+#intro{
+		width : 88%;
+        float: left;
+        margin: 40px;
+        
+    }
