@@ -48,6 +48,8 @@ public class ContentServiceImpl implements ContentService{
 	public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO, Model model){
 		List<SubScriptionVO> list = contentMapper.groupApproval(subScriptionVO);
 		
+		model.addAttribute("groupyn", subScriptionVO.getGroupyn());
+		
 		model.addAttribute("content_name",subScriptionVO.getContent_name());
 		
 		model.addAttribute("groupApproval", list);
@@ -81,6 +83,18 @@ public class ContentServiceImpl implements ContentService{
 		
 		return null;
 	}
+	
+	@Override
+	public List<SubScriptionVO> homeworkEval(SubScriptionVO subScriptionVO, Model model){
+		
+		List<SubScriptionVO> list = contentMapper.homeworkEval(subScriptionVO);
+		
+		 
+		model.addAttribute("homeworkEval", list);
+		
+		return null;
+	}
+	
 	
 	
 	@Override
@@ -163,6 +177,13 @@ public class ContentServiceImpl implements ContentService{
 	@Override
 	public int homework_add(SubScriptionVO subScriptionVO) {
 		int res = contentMapper.homework_add(subScriptionVO);
+		
+		return res;
+	}
+
+	@Override
+	public int updateEvaluation(SubScriptionVO subScriptionVO) {
+		int res = contentMapper.updateEvaluation(subScriptionVO);
 		
 		return res;
 	}

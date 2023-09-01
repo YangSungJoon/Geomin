@@ -22,6 +22,10 @@ public interface ContentService {
 	
 	public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO, Model model);
 	
+	
+	public List<SubScriptionVO> homeworkEval(SubScriptionVO subScriptionVO, Model model);
+	
+	
 	public int insertgroup(SubScriptionVO subScriptionVO, Model model);
 	
 	public int insertSubContent(SubScriptionVO subScriptionVO, Model model);
@@ -39,5 +43,7 @@ public interface ContentService {
 	public int delGroup(SubScriptionVO subScriptionVO);
 
 	public int homework_add(SubScriptionVO subScriptionVO);
+
+	public int updateEvaluation(SubScriptionVO subScriptionVO);
 	
 }

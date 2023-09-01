@@ -27,32 +27,13 @@
 
 
 <div class = "intro-box">
-        <div class = "location">
-            <ul class = "clearFix">
-                <li class = "home">
-                    <a href = "#">
-                        <img src="../image/homeicon.png" alt=""> /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        구독 서비스 /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        학습콘텐츠 검색 및 구독신청
-                    </a>
-                </li>
-            </ul>
-        </div>
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
                 <li class = "guide"><a href = "/group/groupApproval?user_id=${userId}" id = "guide-hover">그룹가입 승인</a></li>
                 <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "guide-hover">나의 그룹</a></li>
-                <li class = "guide"><a href = "/homework_t/homework_add?user_id=${userId }" id = "guide-hover">숙제 전송</a></li>
-                <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
+                <li class = "guide"><a href = "/homework_t/homework_add?user_id=${userId }&groupyn=Y" id = "guide-hover">숙제 전송</a></li>
+                <li class = "guide"><a href = "/homework_t/homework_evaluation?user_id=${userId }" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
 

@@ -75,7 +75,7 @@
                 <c:forEach items="${subContentList }" var="li" varStatus="status">
 	                <tr>
 	                    <td class = "check_box"><input type="checkbox" name="content_id" id="checkbox" value="${li.content_id}"></td>
-	                    <td class = "packageName" >${li.content_name }</td>
+	                    <td class = "packageName">${li.content_name }</td>
 	                    <td class = "people">${li.learning_member } 명</td>
 	                    <td class = "subPrice">${li.real_price }원</td>
 	                    <td class="subPrice-difficulty">${li.learning_difficulty}</td>

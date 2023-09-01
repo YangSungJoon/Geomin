@@ -75,21 +75,20 @@ public class ContentTest {
 	
 
 	
-	  @Test 
-	  public void insert() {
-	  
-	  GroupVO groupVO = new GroupVO();
-	  
-	  groupVO.setUser_id_leader("ID1");
-	  groupVO.setContent_id("0002");
-	  groupVO.setGroup_name("그룹이름123");
-	  groupVO.setGroup_personnel(11);
-	  groupVO.setLearning_start("2023-08-24");
-	  groupVO.setLearning_end("2023-09-01");
-	  
-	  contentMapper.insertgroup(groupVO);
-	  
-	  }
+	/*
+	 * @Test public void insert() {
+	 * 
+	 * GroupVO groupVO = new GroupVO();
+	 * 
+	 * groupVO.setUser_id_leader("ID1"); groupVO.setContent_id("0002");
+	 * groupVO.setGroup_name("그룹이름123"); groupVO.setGroup_personnel(11);
+	 * groupVO.setLearning_start("2023-08-24");
+	 * groupVO.setLearning_end("2023-09-01");
+	 * 
+	 * contentMapper.insertgroup(groupVO);
+	 * 
+	 * }
+	 */
 	 
 	
 	  @Test public void insertSubContentTest() {

@@ -74,25 +74,6 @@ userId : ${userId}
 
 
 <div class = "intro-box">
-        <div class = "location">
-            <ul class = "clearFix">
-                <li class = "home">
-                    <a href = "#">
-                        <img src="../image/homeicon.png" alt=""> /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        구독 서비스 /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        학습콘텐츠 검색 및 구독신청
-                    </a>
-                </li>
-            </ul>
-        </div>
      
  <form action="contentList" method="get">
         <div class = "left-sideBar">

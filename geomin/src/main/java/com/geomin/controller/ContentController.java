@@ -47,6 +47,17 @@ public class ContentController {
 		 return "content/subContentList";
 	 }
 	 
+	 
+	 @GetMapping("contentRead") 
+	 public String contentRead(Model model, SubScriptionVO subScriptionVO) { 
+		 System.out.println("User_id ============================== :  " + subScriptionVO.getUser_id());
+		 
+		 
+		 contentService.subContentList(subScriptionVO, model);
+		 
+		 return "content/contentRead";
+	 }
+	 
 	
 	@PostMapping("subContentListAction")
 	public String subContentListAction(Model model, SubScriptionVO subScriptionVO) {

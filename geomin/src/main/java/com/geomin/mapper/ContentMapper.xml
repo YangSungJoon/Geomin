@@ -38,6 +38,7 @@
 			and s.user_id = #{user_id}
 	]]>
 			<include refid="sel_name"></include>
+			<include refid="homeworkGroupyn"></include>
 	</select>
 
 
@@ -55,6 +56,15 @@
 		    and g.user_id_leader = #{user_id}
 	</select>
 
+	
+	<select id="homeworkEval" resultType="com.geomin.vo.SubScriptionVO">
+		select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation
+			from homework h, users u
+			where u.user_id = h.user_id_learner
+	</select>
+	
+
+
 	<insert id="insertgroup">
 	<selectKey keyProperty="group_id" order="BEFORE" resultType="String">
   		select 'G' || LPAD(SEQ_groups.NEXTVAL, 4, '0') from dual
@@ -66,7 +76,9 @@
 	<insert id="insertSubContent">
 
 	insert into subscription 
-		select #{user_id}, content_id, content_name, sysdate, (price - (sale* price)) as real_price,
+		select #{user_id}, content_id, content_name, sysdate, (price - (price * (sale / 100))) as real_price,
+														
+		
 		    LEARNING_MEMBER, 0,'Y'
 		    from content
 		    where content_id = #{content_id}
@@ -80,7 +92,7 @@
     
     <insert id="insertContentPay">
     insert into sales (SUBSCRIPTION_DATE, CONTENT_ID, TRANSACTION_COUNT, SALES)
-            (select sysdate, content_id, '1', (price - (price * sale)) 
+            (select sysdate, content_id, '1', (price - (price * (sale / 100)))
             from content
             where content_id = #{content_id})
     </insert>
@@ -111,12 +123,15 @@
 	   	<selectKey keyProperty="homework_no" order="BEFORE" resultType="String">
 	  		select 'H' || LPAD(SEQ_HOMEWORK.NEXTVAL, 4, '0') from dual
 		</selectKey>
-		insert into homework 
-			select #{homework_no}, #{group_id}, #{content_id}, #{user_id_leader}, #{user_id_learner}
-			        ,#{homework_deadline}, #{homework_content_leader}, '','',''
-			from learner_group
+       insert into homework 
+       		values(#{homework_no}, #{group_id}, #{content_id}, #{user_id_leader}, #{user_id_learner}
+   	 				,#{homework_deadline}, #{homework_content_leader}, '','','')	
     </insert>
     
+    
+    <update id="updateEvaluation">
+   		update homework set evaluation = #{evaluation} where homework_no = #{homework_no}
+    </update>
     
    	<sql id="sel_name">
 		<choose>
@@ -135,5 +150,14 @@
 		</choose>
 		
 	</sql>
-    
+	
+	<sql id="homeworkGroupyn">
+		<choose>
+			<when test="groupyn != null and groupyn != ''">
+				and groupyn = 'Y'
+			</when>
+		</choose>
+	</sql>
+	
+
   </mapper>
