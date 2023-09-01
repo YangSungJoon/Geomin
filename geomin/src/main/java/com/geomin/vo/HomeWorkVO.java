@@ -17,6 +17,8 @@ public class HomeWorkVO {
 	private String homework_content_learner; // 학습 내용(학습자가 학습 한)
 	private String evaluation; // 학습관리자 평가 ('우수', '보통', '미흡')
 	
+	private String user_name;
+	
 	private String searchField; // 검색조건
 	private String searchWord;	// 검색어
 }

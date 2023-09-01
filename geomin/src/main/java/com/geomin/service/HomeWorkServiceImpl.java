@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 
 import com.geomin.mapper.HomeWorkMapper;
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.GroupVO;
 import com.geomin.vo.HomeWorkCriteria;
 import com.geomin.vo.HomeWorkVO;
 import com.geomin.vo.UserVO;
@@ -44,6 +45,18 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 	public ContentVO getContentName(String content_id) {
 		return homeworkMapper.getContentName(content_id);
 	}
+
+	// 그룹 정보 조회
+	@Override
+	public List<GroupVO> getGroupInfo() {
+		return homeworkMapper.getGroupInfo();
+	}
+
+	@Override
+	public GroupVO getGroupId(String group_id) {
+		return homeworkMapper.getGroupId(group_id);
+	}
+
 	
 //	@Override
 //	public List<HomeWorkVO> getList(HomeWorkVO vo, Model model){

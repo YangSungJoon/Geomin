@@ -42,7 +42,7 @@
         </div>
         
         <div class = "name-content">
-            <p>학습자 : ${learner.user_name }
+            <p>학습자 : ${learner.user_name } ${userVO.user_name}
             </p><hr>
         </div>
 
@@ -75,7 +75,7 @@
                     <td class = "studyContent">
                     
                     	<button id = "open">작성 하기</button>
-<form action="/homework/homework_send" method="post">
+<form action="/homework/homework_create" method="post">
                     	<div id = "modal-box">
                     		<div id = "modal-contents">
                     			<button id = "close">&times;</button>
@@ -125,7 +125,7 @@
     		let modalprice = document.querySelector('.text-price').textContent;
     		
     		document.querySelector('#text-date').innerText = '대여 기간 : '+startDate+' ~ '+endDate;
-    		document.querySelector('#total-date').innerText = '총 일수 : '+ parseInt(diff/currDay) + '박' + parseInt((diff/currDay+1)) + '일';
+    		
     		document.querySelector('.text-price').textContent = '가격 : '+modalprice;
     		document.querySelector('#totalmodalprice').innerText = '최종가격 : '+modalprice*parseInt(diff/currDay);
     		
