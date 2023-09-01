@@ -78,6 +78,7 @@ h1 {
 .sendbtn-box{
 	margin-top: 1.5rem;
 	line-height: 2rem;
+	border: 0px;
 }
 
 #studytext{
