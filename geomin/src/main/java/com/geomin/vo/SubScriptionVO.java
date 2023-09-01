@@ -38,5 +38,12 @@ public class SubScriptionVO {
 	private String homework_deadline;
 	private String homework_no;
 	
+	private String user_name;
+	private String homework_content_learner;
+	private String homework_subdate;
+	private String evaluation;
+	
+	
+
 	
 }

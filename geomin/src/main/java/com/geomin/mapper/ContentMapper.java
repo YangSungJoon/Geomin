@@ -18,6 +18,8 @@ public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO);
 
 public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO);
 
+public List<SubScriptionVO> homeworkEval(SubScriptionVO subScriptionVO);
+
 public int insertgroup(SubScriptionVO subScriptionVO);
 
 public int insertSubContent(SubScriptionVO subScriptionVO);
@@ -35,5 +37,8 @@ public int add_current(SubScriptionVO subScriptionVO);
 public int delGroup(SubScriptionVO subScriptionVO);
 
 public int homework_add(SubScriptionVO subScriptionVO);
+
+public int updateEvaluation(SubScriptionVO subScriptionVO);
+
 
 }

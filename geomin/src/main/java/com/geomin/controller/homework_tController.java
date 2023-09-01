@@ -65,4 +65,28 @@ public class homework_tController {
 	}
 	
 	
+	@GetMapping("homework_evaluation")
+	public String homeworkEval(SubScriptionVO subScriptionVO, Model model) {
+		
+		
+		contentService.homeworkEval(subScriptionVO, model);
+		
+		return "homework_t/homework_evaluation";
+		
+	}
+	
+	@PostMapping("updateEvaluation")
+	public String updateEvaluation(SubScriptionVO subScriptionVO, Model model) {
+		
+		System.out.println("getHomework_no : ==============================" +  subScriptionVO.getHomework_no());
+		System.out.println("getEvaluation : ==============================" +  subScriptionVO.getEvaluation());
+		
+		
+		contentService.updateEvaluation(subScriptionVO);
+		contentService.homeworkEval(subScriptionVO, model);
+		
+		return "homework_t/homework_evaluation";
+		
+	}
+	
 }

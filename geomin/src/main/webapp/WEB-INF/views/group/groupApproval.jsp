@@ -61,27 +61,23 @@
             });
         
 
-        };
-        
-        
-        
-        // 페이지가 로드되면 실행될 함수 등록
-        document.addEventListener("DOMContentLoaded", function() {
-          // check1 클래스를 가진 요소들을 모두 가져옴
-          const check1Elements = document.querySelectorAll('.check1');
-          
-          // 가져온 요소들에 대해 반복문 실행
-          check1Elements.forEach(function(check1Element) {
-            // check1 클래스를 가진 체크박스가 클릭되었을 때 실행되는 함수 등록
-            check1Element.addEventListener('click', function() {
-              // 연관된 check2 클래스를 가진 체크박스를 찾아서 클릭 처리
-              const associatedCheck2 = this.parentElement.querySelector('.check2');
-              if (associatedCheck2) {
-                associatedCheck2.click(); // check2 체크박스 클릭
-              }
+            
+            // check1 클래스를 가진 요소들을 모두 가져옴
+            const check1Elements = document.querySelectorAll('.check1');
+            
+            // 가져온 요소들에 대해 반복문 실행
+            check1Elements.forEach(function(check1Element) {
+              // check1 클래스를 가진 체크박스가 클릭되었을 때 실행되는 함수 등록
+              check1Element.addEventListener('click', function() {
+                // 연관된 check2 클래스를 가진 체크박스를 찾아서 클릭 처리
+                const associatedCheck2 = this.parentElement.querySelector('.check2');
+                if (associatedCheck2) {
+                  associatedCheck2.click(); // check2 체크박스 클릭
+                }
+              });
             });
-          });
-        });
+            
+        };
         
         
         
@@ -96,32 +92,13 @@ userId : ${userId}
 <input name="user_id" value="${userId}">
 
 <div class = "intro-box">
-        <div class = "location">
-            <ul class = "clearFix">
-                <li class = "home">
-                    <a href = "#">
-                        <img src="../image/homeicon.png" alt=""> /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        구독 서비스 /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        학습콘텐츠 검색 및 구독신청
-                    </a>
-                </li>
-            </ul>
-        </div>
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
                 <li class = "guide"><a href = "/group/groupApproval?user_id=${userId}" id = "guide-hover">그룹가입 승인</a></li>
                 <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "guide-hover">나의 그룹</a></li>
-                <li class = "guide"><a href = "/homework_t/homework_add?user_id=${userId }" id = "guide-hover">숙제 전송</a></li>
-                <li class = "guide"><a href = "#" id = "guide-hover">숙제 평가</a></li>
+                <li class = "guide"><a href = "/homework_t/homework_add?user_id=${userId }&groupyn=Y" id = "guide-hover">숙제 전송</a></li>
+                <li class = "guide"><a href = "/homework_t/homework_evaluation?user_id=${userId }" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
         
