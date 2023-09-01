@@ -48,7 +48,15 @@
   
         <div class = "group_sales">
 		<div id="select">
-	        <label><input type="radio" name="report_type" value="yearly"> 년도별 조회</label>
+	        <label><input type="radio" name="report_type" value="yearly" > 년도별 조회</label>
+	        <select id="yearSelect">
+	        	<option value="2021">2021</option>
+	        	<option value="2022">2022</option>
+	        	<option value="2023">2023</option>
+	        	<option value="2024">2024</option>
+	        	<option value="2025">2025</option>
+	        </select>
+	        
 	        <label><input type="radio" name="report_type" value="monthly"> 월별 조회</label>
 	        <select id="contentSelect">
 	        	<option value="콘텐츠명1">콘텐츠명1</option>
@@ -70,8 +78,8 @@
 
 	    	</table>
 	    
-	    </div>
-	<div style="width: 80%; margin: auto;">
+	    </div><br>
+	<div style="width: 80%; margin: auto;" id="chart">
     <canvas id="salesChart"></canvas>
   </div>
         </div>

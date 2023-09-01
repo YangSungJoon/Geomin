@@ -25,4 +25,6 @@ public interface UserMapper {
 	public List<UserVO> userList(UserVO userVo);
 	
 	public int passwordEdit(UserVO userVo);
+
+	public int emailEdit(UserVO userVo);
 }

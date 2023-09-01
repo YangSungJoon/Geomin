@@ -94,7 +94,10 @@
 					<h5>이메일 주소</h5>
 					<h5 class="star">&nbsp*</h5>
 				</div><br>
-					<input type="text" class="emailEditInput" value="${userVo.email} ">
+					<input type="email" class="emailEditInput" name="email" placeholder="이메일 입력">
+					<input type="text" class="emailNumber" value="">
+					<input type="button" class="emailTrans" value="이메일 전송" onclick="sendEmail()">
+
 					<input type="button" class="emailEdit" value="이메일 변경">
 				</div>
 
@@ -169,6 +172,63 @@ function passwordEditAction() {
     	alert("서버와의 통신 쪽에 오류가 발생하였습니다.");
     });
 }
+
+function sendEmail(){
+	var email = document.querySelector(".emailEditInput").value;
+	if(email.trim() === ""){
+		alert("이메일을 입력하세요.");
+		return;
+	}
+	
+	// 이메일 전송 및 인증번호 발급 로직 호출
+	fetch(`/management/mailCheck?email=${email}`)
+		.then(response => response.text())
+		.then(authNumber => {
+			document.querySelector(".emailNumber").value = authNumber;
+			alert("인증번호가 이메일로 전송되었습니다.");
+		})
+		.catch(error => {
+			console.error("Error", error);
+			alert("인증번호 전송에 실패했습니다.");
+		});
+	
+}
+
+function editEmail(){
+	var emailNumber = document.querySelector(".emailNumber").value;
+	if(emailNumber.trim() === ""){
+		alert("인증번호를 입력하세요.");
+		return;
+	}
+	
+	var newEmail = document.querySelector(".emailEditInput").value;
+	var data = {
+			email: newEmail
+	};
+	
+	fetch("/management/emailEdit",{
+		method : "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body : JSON.stringify(data)
+	})
+	.then(response => response.text())
+	.then(result => {
+		if(result === "success"){
+			alert("이메일이 성공적으로 변경되었습니다.");
+			location.reload();
+		} else {
+			alert("이메일 변경에 실패했습니다.");
+		}
+	})
+	.catch(error => {
+		console.error("Error", error);
+		alert("서버와의 통신 중 오류가 발생했습니다.");
+	});
+}
+
+
 </script>
 
 

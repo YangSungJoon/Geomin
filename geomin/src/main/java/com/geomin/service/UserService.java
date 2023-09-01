@@ -26,4 +26,6 @@ public interface UserService {
 	void sendTemporaryPasswordByEmail(String userEmail, String userName, String temporaryPassword);
 
 	int passwordEdit(UserVO userVo);
+
+	
 }

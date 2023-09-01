@@ -28,7 +28,19 @@
         ORDER BY subscription_date
     </select>
 
+	<select id="monthSaleList" resultType="com.geomin.vo.SubScriptionVO">
+		SELECT EXTRACT(month FROM subscription_date) AS subscription_date,
+				COUNT(content_id) AS content_id,
+				SUM(subscription_price) AS subscription_price
+		FROM SUBSCRIPTION 
+		where content_name = #{contentName} and EXTRACT(YEAR FROM subscription_date) = #{year}
+		GROUP BY EXTRACT(month FROM subscription_date)
+		order by subscription_date
+	</select>
 
-
+	<update id="emailEdit">
+		update users set email = #{email}
+		where user_id= #{user_id}
+	</update>
 	
 </mapper>

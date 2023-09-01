@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SubScriptionVO;
+import com.geomin.vo.UserVO;
 
 @Service
 public interface ManagementService {
@@ -17,5 +18,7 @@ public interface ManagementService {
 
 	public List<SubScriptionVO> yearSaleList(String contentName);
 	
-
+	public List<SubScriptionVO> monthSaleList(String contentName, String year);
+	
+	public int emailEdit(UserVO userVo);
 }

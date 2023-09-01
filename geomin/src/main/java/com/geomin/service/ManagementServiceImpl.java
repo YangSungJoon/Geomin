@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import com.geomin.mapper.ManagementMapper;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SubScriptionVO;
+import com.geomin.vo.UserVO;
 
 @Service
 public class ManagementServiceImpl implements ManagementService{
@@ -34,5 +35,16 @@ public class ManagementServiceImpl implements ManagementService{
 	    return managementMapper.yearSaleList(contentName);
 	}
 
+	@Override
+	public List<SubScriptionVO> monthSaleList(String contentName, String year) {
+		
+	    return managementMapper.monthSaleList(contentName, year);
+	}
+
+	@Override
+	public int emailEdit(UserVO userVo) {
+		// TODO Auto-generated method stub
+		return managementMapper.emailEdit(userVo);
+	}
 	
 }
