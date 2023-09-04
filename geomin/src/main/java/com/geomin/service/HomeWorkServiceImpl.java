@@ -24,8 +24,8 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 
 	// 게시판 목록
 	@Override
-	public List<HomeWorkVO> getList() {
-		return homeworkMapper.getList();
+	public List<HomeWorkVO> getList(String user_id) {
+		return homeworkMapper.getList(user_id);
 	}
 
 	// 학습자 이름 조회
@@ -36,7 +36,7 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 
 	// 학습지도자 이름 조회
 	@Override
-	public UserVO getLeaderName(String user_id) {
+	public HomeWorkVO getLeaderName(String user_id) {
 		return homeworkMapper.getLeaderName(user_id);
 	}
 
