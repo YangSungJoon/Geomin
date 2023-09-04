@@ -14,7 +14,7 @@ function formatDate(dateString, reportType){
 	if(reportType === "yearly"){
 		return date.getFullYear() + "년";
 	} else if(reportType === "monthly"){
-		return date.getMonth() + "월";
+		return date.getMonth() +1 + "월";
 	}
 	return dateString;
 }
@@ -22,7 +22,7 @@ function formatDate(dateString, reportType){
 $(document).ready(function() {
     $("#queryButton").click(function() {
         var reportType = $("input[name='report_type']:checked").val();
-        var contentName = $("#contentSelect").val();
+        var content_id = $("#contentSelect").val();
 
         if (reportType === "yearly") {
         	
@@ -30,7 +30,7 @@ $(document).ready(function() {
                 url: "/management/yearSaleList",
                 method: "GET",
                 data: {
-                    contentName: contentName
+                    content_id: content_id
                 },
                 success: function(response) {
                     var salesData = response;
@@ -46,8 +46,8 @@ $(document).ready(function() {
                         $.each(salesData, function(index, sale) {
                             var newRow = "<tr>" +
                                 "<td>" + formatDate(sale.subscription_date,reportType) + "</td>" +
-                                "<td>" + sale.subscription_price +"원"+ "</td>" +
-                                "<td>" + sale.content_id +"건"+ "</td>" +
+                                "<td>" + sale.sales +"원"+ "</td>" +
+                                "<td>" + sale.transaction_count +"건"+ "</td>" +
                                 "</tr>";
                             table.append(newRow);
                         });
@@ -70,7 +70,7 @@ $(document).ready(function() {
                 url: "/management/monthSaleList",
                 method: "GET",
                 data: {
-                    contentName: contentName,
+                	content_id: content_id,
                     year: selectedYear
                 },
                 success: function(response) {
@@ -87,8 +87,8 @@ $(document).ready(function() {
                         $.each(salesData, function(index, sale) {
                             var newRow = "<tr>" +
                                 "<td>" + formatDate(sale.subscription_date,reportType) + "</td>" +
-                                "<td>" + sale.subscription_price +"원"+ "</td>" +
-                                "<td>" + sale.content_id +"건"+ "</td>" +
+                                "<td>" + sale.sales +"원"+ "</td>" +
+                                "<td>" + sale.transaction_count +"건"+ "</td>" +
                                 "</tr>";
                             table.append(newRow);
                         });
@@ -115,11 +115,11 @@ function createChart(salesData, reportType) {
     });
 
     var revenues = salesData.map(function(sale) {
-        return sale.subscription_price;
+        return sale.sales;
     });
 
     var counts = salesData.map(function(sale) {
-        return Math.round(sale.content_id); // Rounding to remove decimals
+        return Math.round(sale.transaction_count); // Rounding to remove decimals
     });
 
     var ctx = document.getElementById('salesChart').getContext('2d');
@@ -129,7 +129,7 @@ function createChart(salesData, reportType) {
 
     // 차트 생성
     myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: years,
             datasets: [
@@ -179,7 +179,8 @@ function createChart(salesData, reportType) {
                     title: {
                         display: true,
                         text: '건수'
-                    }
+                    },
+                    offset: true // 이 옵션을 사용하여 Y 축 눈금을 위로 이동
                 }
             },
             plugins: {

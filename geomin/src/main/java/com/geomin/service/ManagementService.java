@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.SaleVO;
 import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
@@ -16,9 +17,9 @@ public interface ManagementService {
 
 	public void contentList(Model model);
 
-	public List<SubScriptionVO> yearSaleList(String contentName);
+	public List<SaleVO> yearSaleList(String content_id);
 	
-	public List<SubScriptionVO> monthSaleList(String contentName, String year);
+	public List<SaleVO> monthSaleList(String content_id, String year);
 	
 	public int emailEdit(UserVO userVo);
 }

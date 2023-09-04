@@ -59,11 +59,11 @@
 	        
 	        <label><input type="radio" name="report_type" value="monthly"> 월별 조회</label>
 	        <select id="contentSelect">
-	        	<option value="콘텐츠명1">콘텐츠명1</option>
-	        	<option value="콘텐츠명2">콘텐츠명2</option>
-	        	<option value="콘텐츠명3">콘텐츠명3</option>
-	        	<option value="콘텐츠명4">콘텐츠명4</option>
-	        	<option value="콘텐츠명5">콘텐츠명5</option>
+	        	<option value="0001">콘텐츠명1</option>
+	        	<option value="0002">콘텐츠명2</option>
+	        	<option value="0003">콘텐츠명3</option>
+	        	<option value="0004">콘텐츠명4</option>
+	        	<option value="0005">콘텐츠명5</option>
 	        </select>
         <button id="queryButton">조회</button>
 	    </div><br>
@@ -82,6 +82,12 @@
 	<div style="width: 80%; margin: auto;" id="chart">
     <canvas id="salesChart"></canvas>
   </div>
+  
+  <!-- 꺽은선 그래프 -->
+  <div style="width: 80%; margin: auto;" id="chart">
+    <canvas id="salesChart2"></canvas>
+  </div>
+  
         </div>
 	
     </div>

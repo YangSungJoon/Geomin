@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 
 import com.geomin.mapper.ManagementMapper;
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.SaleVO;
 import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
@@ -30,15 +31,15 @@ public class ManagementServiceImpl implements ManagementService{
 	}
 
 	@Override
-	public List<SubScriptionVO> yearSaleList(String contentName) {
-		System.out.println("contentName : " + contentName);
-	    return managementMapper.yearSaleList(contentName);
+	public List<SaleVO> yearSaleList(String content_id) {
+		System.out.println("content_id : " + content_id);
+	    return managementMapper.yearSaleList(content_id);
 	}
 
 	@Override
-	public List<SubScriptionVO> monthSaleList(String contentName, String year) {
+	public List<SaleVO> monthSaleList(String content_id, String year) {
 		
-	    return managementMapper.monthSaleList(contentName, year);
+	    return managementMapper.monthSaleList(content_id, year);
 	}
 
 	@Override
