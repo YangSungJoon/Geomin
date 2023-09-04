@@ -42,7 +42,7 @@
         </div>
         
         <div class = "name-content">
-            <p>학습자 : ${learner.user_name } ${userVO.user_name}
+            <p>학습자 : ${user.user_name}
             </p><hr>
         </div>
 
@@ -56,22 +56,14 @@
                     <td>제출기한</td>
                     <td>학습내용</td>
                 </tr>
-                <tr>
-                    <td class = "check_box"><input type="checkbox" name="checkbox" id="checkbox"></td>
-                    <td class = "contentName">창의인성</td>
-                    <td class = "readerName">이세돌</td>
-                    <td class = "workContent">'축'이란 무엇인가'</td>
-                    <td class = "sendDate">123456 원</td>
-                    <td class = "studyContent">축이란 바둑의 수를 계속 두어도 결국 잡히게 되는 상황을 말한다</td>
-                </tr>
                 
                 <c:forEach items = "${list}" var="worklist">
                 <tr>
                     <td class = "check_box"><input type="checkbox" name="checkbox" id="checkbox" onclick = 'checkOne(this)'></td>
-                    <td class = "contentName"><c:out value="${content.content_name }"/></td>
-                    <td class = "readerName"><c:out value="${leader.user_name }"/></td>
+                    <td class = "contentName"><c:out value=""/></td>
+                    <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
                     <td class = "workContent"><c:out value="${worklist.homework_content_leader }"/></td>
-                    <td class = "sendDate"><c:out value="${worklist.homework_deadline }"/></td>
+                    <td class = "sendDate" style = "color: red; font-weight: bold;"><c:out value="${worklist.homework_deadline }"/></td>
                     <td class = "studyContent">
                     
                     	<button id = "open">작성 하기</button>
@@ -83,10 +75,10 @@
                     			<div id = "profile">
                     				<div id = "desc">
                     				<div id = "content-box1">
-                    					<p class = "user">학습자 : ${learner.user_name }</p>
-                    					<p class = "user">학습지도자 : ${leader.user_name }</p>
-                    					<p class = "user">숙제 내용 : ${worklist.homework_content_leader }</p>
-                    					<p class = "user">제출기한 : ${worklist.homework_deadline }</p>
+                    					<p class = "user">학습자 : </p>
+                    					<p class = "user">학습지도자 : </p>
+                    					<p class = "user">숙제 내용 : </p>
+                    					<p class = "user">제출기한 : </p>
                     				</div>
                     				<div id = "content-box2">
                     					<strong>학습내용</strong> <input type="text" name="" id="studytext">

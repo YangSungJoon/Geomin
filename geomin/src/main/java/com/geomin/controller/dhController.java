@@ -47,24 +47,25 @@ public class dhController {
 //	}
 	
 	@GetMapping("/homework/homework_send")
-	public void getList(String user_id, String content_id, Model model) {
+	public String getList(@RequestParam(value = "user_id", required = false) String user_id, Model model) {
 		
 		
 		log.info("숙제 목록----------");
 		
 		log.info("숙제 리스트 출력-----------------------");
 		
-		model.addAttribute("list", homeworkService.getList());
+		model.addAttribute("list", homeworkService.getList(user_id));
 		
 		log.info("학습자 이름 출력-----------------------");
-		model.addAttribute("learner", homeworkService.getUserName(user_id));
+		model.addAttribute("user", homeworkService.getUserName(user_id));
 		
-		log.info("학습 지도자 이름 출력-----------------------");
-		model.addAttribute("leader", homeworkService.getLeaderName(user_id));
+//		log.info("학습 지도자 이름 출력-----------------------");
+//		model.addAttribute("leader", homeworkService.getLeaderName(user_id));
+//		
+//		log.info("콘텐츠명 출력-----------------------");
+//		model.addAttribute("content", homeworkService.getContentName(content_id));
 		
-		log.info("콘텐츠명 출력-----------------------");
-		model.addAttribute("content", homeworkService.getContentName(content_id));
-		
+		return "/homework/homework_send";
 	}
 	
 	@PostMapping("/homework/homework_create")

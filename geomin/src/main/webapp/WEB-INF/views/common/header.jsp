@@ -62,8 +62,8 @@
 
                 <li><a href = "#" id = "category-size">학습서비스</a>
                     <ul class = 'submenu'>
-                        <li><a href="#" id = "subcategory-size">학습그룹 가입신청</a></li>
-                        <li><a href="#" id = "subcategory-size">숙제 제출</a></li>
+                        <li><a href="/homework/study_group_join?user_id=${userId}" id = "subcategory-size">학습그룹 가입신청</a></li>
+                        <li><a href="/homework/homework_send?user_id=${userId}" id = "subcategory-size">숙제 제출</a></li>
                     </ul>
                 </li>
 

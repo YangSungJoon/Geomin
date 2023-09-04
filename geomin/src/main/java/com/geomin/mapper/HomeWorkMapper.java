@@ -13,13 +13,13 @@ public interface HomeWorkMapper {
 	//public List<HomeWorkVO> getList(HomeWorkVO vo);
 
 	// 목록
-	public List<HomeWorkVO> getList();
+	public List<HomeWorkVO> getList(String user_id);
 	
 	// 유저 이름 조회
 	public UserVO getUserName(String user_id);
 	
 	// 학습지도자 이름 조회
-	public UserVO getLeaderName(String user_id);
+	public HomeWorkVO getLeaderName(String user_id);
 	
 	// 학습 콘텐츠 명 조회
 	public ContentVO getContentName(String content_id);
