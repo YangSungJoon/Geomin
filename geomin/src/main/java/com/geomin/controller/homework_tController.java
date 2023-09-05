@@ -32,6 +32,7 @@ public class homework_tController {
 		System.out.println("user_id : ==========================" + subScriptionVO.getUser_id());
 		
 		contentService.groupApproval(subScriptionVO, cri,  model);
+		contentService.homework_option(subScriptionVO, model);
 		
 		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
 		PageDto pageDto = new PageDto(cri, cnt);
@@ -67,8 +68,25 @@ public class homework_tController {
 		
 		contentService.homework_add(subScriptionVO);
 		contentService.groupApproval(subScriptionVO, cri,  model);
+		contentService.homework_option(subScriptionVO, model);
 		
 		return "homework_t/homework_add";
+	}
+	
+	@PostMapping("homework_sel")
+	public String homework_sel(SubScriptionVO subScriptionVO, Criteria cri, Model model) {
+		
+		System.out.println("user_id : ==========================" + subScriptionVO.getUser_id());
+		
+		contentService.groupApproval(subScriptionVO, cri,  model);
+		contentService.homework_option(subScriptionVO, model);
+		
+		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+		PageDto pageDto = new PageDto(cri, cnt);
+		
+		model.addAttribute("pageDto", pageDto);
+		
+		return "/homework_t/homework_add";
 	}
 	
 	

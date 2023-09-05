@@ -39,6 +39,7 @@ totalCnt : ${totalCnt } <br>
 	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
 	<input type="text" name="total" value="${pageDto.total }">
 	<input name="user_id" value="${userId}">
+
 			
 	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
 	</form>
@@ -71,6 +72,7 @@ totalCnt : ${totalCnt } <br>
 	            <table>
 	                <tr class = "table_menu">
 	                    <td class = "check_box"></td>
+	                    <td>그룹명</td>
 	                    <td>학습자명</td>
 	                    <td>숙제제출기한</td>
 	                    <td>제출일자</td>
@@ -85,9 +87,10 @@ totalCnt : ${totalCnt } <br>
 					        <td class="check_box">
 					        	<input type="checkbox" name="homework_no" class="check1" id="checkbox" value="${li.homework_no}">
 					        </td>
+					        <td>${li.group_name }</td>
 					        <td>${li.user_name}</td>
 					        <td >${li.homework_deadline}</td>
-					        <td >${li.homework_subdate}</td>
+					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.homework_subdate}</td>
 					        <td> ${li.homework_content_learner }</td>
 					        <td>
 						      <select class="evaluation-select" onchange="updateEvaluationInput(this)">
@@ -104,9 +107,9 @@ totalCnt : ${totalCnt } <br>
 			<input type="text" name="evaluation" class="evaluation-input"  id="evaluation-input">
 	            
 	        </div>
+<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 </form>
 
-<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 
     </div>
 

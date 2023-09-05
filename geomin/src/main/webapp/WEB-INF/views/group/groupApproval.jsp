@@ -138,6 +138,7 @@ totalCnt : ${totalCnt } <br>
 	            <table>
 	                <tr class = "table_menu">
 	                    <td class = "check_box"></td>
+	                    <td>그룹명</td>
 	                    <td>콘텐츠명</td>
 	                    <td>학습자명</td>
 	                    <td>가입신청일자</td>
@@ -151,7 +152,8 @@ totalCnt : ${totalCnt } <br>
 					        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" value="${li.user_id_learner}">
 					        	<input type="checkbox" name="content_id" class="check2" id="checkbox" style="display: none;" value="${li.content_id}" >
 					        </td>
-					        <td >${li.content_name}</td>
+					        <td >${li.group_name }</td>
+					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.content_name}</td>
 					        <td >${li.learner_name}</td>
 					        <td >${li.group_appdate}</td>
 					        <td >${li.total_personnel}명</td>
@@ -166,8 +168,8 @@ totalCnt : ${totalCnt } <br>
 	                <button type = "submit" id = "send_button">승인</button>
 	            </div>
 	        </div>
-</form>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
+</form>
     </div>
 
 </body>

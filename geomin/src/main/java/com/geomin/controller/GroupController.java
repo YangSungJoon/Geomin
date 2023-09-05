@@ -31,9 +31,6 @@ public class GroupController {
 	public String group(SubScriptionVO subScriptionVO,String userid,Model model){
 		
 		System.err.println("user_id : ========================" + subScriptionVO.getUser_id());
-		System.out.println("total_personnel =================== : " + subScriptionVO.getTotal_personnel());
-		model.addAttribute("total_personnel",subScriptionVO.getTotal_personnel()); 
-		
 		contentService.option_content_id(subScriptionVO, model);
 		
 		
@@ -50,16 +47,16 @@ public class GroupController {
 		System.out.println("getUser_id : ===============" + subScriptionVO.getGroup_name());
 		System.out.println("getContent_name : ============" + subScriptionVO.getContent_id());
 		
+
 		
 		contentService.insertgroup(subScriptionVO, model);
 		
 	
 		subScriptionVO.setUser_id(session.getAttribute("userId").toString());
-		contentService.myGroup(subScriptionVO, cri,model);
 
+		contentService.option_content_id(subScriptionVO, model);
 		
-		
-		return "group/myGroup";
+		return "group/groupAdd";
 	}
 	
 	

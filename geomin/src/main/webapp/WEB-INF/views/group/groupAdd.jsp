@@ -64,6 +64,7 @@ totalCnt : ${totalCnt } <br>
 
 
 	<input type="text" name="user_id_leader" value="${userId}"><br>
+	<input type="text" name="learning_member" value="${learning_member}"><br>
 	
 
     </form>

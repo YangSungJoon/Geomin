@@ -88,11 +88,11 @@ subTotalCnt :  ${subTotalCnt }<br>
                 <c:forEach items="${subContentList }" var="li" varStatus="status">
 	                <tr>
 	                    <td class = "check_box"><input type="checkbox" name="content_id" id="checkbox" value="${li.content_id}"></td>
-	                    <td class = "packageName" >${li.content_name }</td>
+	                    <td class = "packageName" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.content_name }</td>
 	                    <td class = "people">${li.learning_member } 명</td>
 	                    <td class = "subPrice">${li.real_price }원</td>
 	                    <td class="subPrice-difficulty">${li.learning_difficulty}</td>
-	                    <td>${li.learning_content }</td>
+	                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.learning_content }</td>
 	                    <td>${li.subscription_date }</td>
 	                    <td>${li.paystatus }</td>
 	                </tr>
@@ -104,9 +104,9 @@ subTotalCnt :  ${subTotalCnt }<br>
             </div>
         </div>
     </div>
+<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 </form>
 
-<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 
 </body>
  <%@include file = "../common/footer.jsp" %> 

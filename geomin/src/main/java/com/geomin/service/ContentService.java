@@ -13,9 +13,9 @@ import com.geomin.vo.SubScriptionVO;
 @Service
 public interface ContentService {
 
-	public List<ContentVO> contentList(Criteria cri, Model model);
+	public List<ContentVO> contentList(SubScriptionVO subScriptionVO, Criteria cri, Model model);
 	
-	public int contentListCnt(Criteria cri);
+	public int contentListCnt(SubScriptionVO subScriptionVO, Criteria cri);
 	
 	public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO, Criteria cri, Model model);
 	
@@ -35,6 +35,8 @@ public interface ContentService {
 	
 	
 	public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO, Model model);
+
+	public List<SubScriptionVO> homework_option(SubScriptionVO subScriptionVO, Model model);
 	
 	
 	
