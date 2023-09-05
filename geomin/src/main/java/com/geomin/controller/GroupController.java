@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.geomin.service.ContentService;
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.Criteria;
 import com.geomin.vo.GroupVO;
+import com.geomin.vo.PageDto;
 import com.geomin.vo.SubScriptionVO;
 
 import lombok.extern.log4j.Log4j;
@@ -29,7 +31,11 @@ public class GroupController {
 	public String group(SubScriptionVO subScriptionVO,String userid,Model model){
 		
 		System.err.println("user_id : ========================" + subScriptionVO.getUser_id());
+		System.out.println("total_personnel =================== : " + subScriptionVO.getTotal_personnel());
+		model.addAttribute("total_personnel",subScriptionVO.getTotal_personnel()); 
+		
 		contentService.option_content_id(subScriptionVO, model);
+		
 		
 		
 		return "/group/groupAdd";
@@ -38,64 +44,87 @@ public class GroupController {
 
 	
 	@PostMapping("groupAdd")
-	public String insertgroup(SubScriptionVO subScriptionVO, GroupVO groupVO, Model model, HttpSession session) {
+	public String insertgroup(SubScriptionVO subScriptionVO,Criteria cri, GroupVO groupVO, Model model, HttpSession session) {
 		System.out.println("getUser_id : ===============" + session.getAttribute("userId").toString());
 		System.out.println("getContent_name : ============" + subScriptionVO.getContent_name());
 		System.out.println("getUser_id : ===============" + subScriptionVO.getGroup_name());
 		System.out.println("getContent_name : ============" + subScriptionVO.getContent_id());
 		
-		contentService.contentList(subScriptionVO, model);
-
-		contentService.insertgroup(subScriptionVO, model);
 		
+		contentService.insertgroup(subScriptionVO, model);
 		
 	
 		subScriptionVO.setUser_id(session.getAttribute("userId").toString());
-		contentService.myGroup(subScriptionVO, model);
+		contentService.myGroup(subScriptionVO, cri,model);
+
+		
 		
 		return "group/myGroup";
 	}
 	
 	
 	@GetMapping("groupApproval")
-	public String groupApproval(SubScriptionVO subScriptionVO, Model model) {
+	public String groupApproval(SubScriptionVO subScriptionVO, Criteria cri, Model model) {
 		System.out.println("user_id : ===================================" +  subScriptionVO.getUser_id());
 		
 		contentService.option_content_id(subScriptionVO, model);
-		contentService.groupApproval(subScriptionVO, model);
+		contentService.groupApproval(subScriptionVO,cri, model);
 
+		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+		PageDto pageDto = new PageDto(cri, cnt);
+		
+		model.addAttribute("pageDto", pageDto);
+		
 		return "group/groupApproval";
 	}
 	
 	
 	@PostMapping("Approval")
-	public String updateGroupyn(SubScriptionVO subScriptionVO, Model model) {
+	public String updateGroupyn(SubScriptionVO subScriptionVO, Criteria cri, Model model) {
 		System.out.println("content_id: ===================================" +  subScriptionVO.getContent_id());
+		
+		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+		PageDto pageDto = new PageDto(cri, cnt);
 		
 		contentService.updateGroupyn(subScriptionVO);
 		contentService.add_current(subScriptionVO);
 		
-		contentService.groupApproval(subScriptionVO, model);
+		contentService.groupApproval(subScriptionVO, cri, model);
 	
+		model.addAttribute("pageDto", pageDto);
+		
 		return "group/groupApproval";
 	}
 	
 	
 	@GetMapping("myGroup")
-	public String myGroup(SubScriptionVO subScriptionVO, Model model) {
-		contentService.myGroup(subScriptionVO, model);
+	public String myGroup(SubScriptionVO subScriptionVO,Criteria cri, Model model) {
+		
+		int cnt = contentService.myGroupCnt(subScriptionVO, cri);
+		
+		PageDto pageDto = new PageDto(cri, cnt);
+
+		contentService.myGroup(subScriptionVO, cri,  model);
+		
+		model.addAttribute("pageDto", pageDto);
 		
 		return "group/myGroup";
 	}
 	
 	
 	@PostMapping("delGroup")
-	public String delGroup(SubScriptionVO subScriptionVO, Model model) {
+	public String delGroup(SubScriptionVO subScriptionVO,Criteria cri, Model model) {
 		
 		System.err.println("group_id : =================================" + subScriptionVO.getGroup_id());
 		
+		int cnt = contentService.myGroupCnt(subScriptionVO, cri);
+		
+		PageDto pageDto = new PageDto(cri, cnt);
+		
 		contentService.delGroup(subScriptionVO);
-		contentService.myGroup(subScriptionVO, model);
+		contentService.myGroup(subScriptionVO, cri, model);
+		
+		model.addAttribute("pageDto", pageDto);
 		
 		return "group/myGroup";
 	}

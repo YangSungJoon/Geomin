@@ -8,8 +8,11 @@ import org.springframework.ui.Model;
 
 import com.geomin.mapper.ContentMapper;
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.Criteria;
 import com.geomin.vo.GroupVO;
+import com.geomin.vo.PageDto;
 import com.geomin.vo.SubScriptionVO;
+import com.sun.java.swing.plaf.motif.resources.motif;
 
 @Service
 public class ContentServiceImpl implements ContentService{
@@ -18,35 +21,43 @@ public class ContentServiceImpl implements ContentService{
 	private ContentMapper contentMapper;
 	
 	@Override
-	public List<ContentVO> contentList(SubScriptionVO subScriptionVO, Model model){
+	public List<ContentVO> contentList(Criteria cri, Model model){
 		
-		List<ContentVO> list = contentMapper.contentList(subScriptionVO);
+		List<ContentVO> list = contentMapper.contentList(cri);
 		
+		int totalCnt = contentMapper.contentListCnt(cri);
 		
+		//model.addAttribute("learning_difficulty", subScriptionVO.getLearning_difficulty());
 		
-		model.addAttribute("contentList", list);
-		model.addAttribute("learning_difficulty", subScriptionVO.getLearning_difficulty());
+		  model.addAttribute("totalCnt", totalCnt);
 		
-		return null;
+		return list;
 	}
 	
 	
 	@Override
-	public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO, Model model){
+	public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO,Criteria cri, Model model){
 		
-		List<SubScriptionVO> list = contentMapper.subContentList(subScriptionVO);
+		
+		
+		List<SubScriptionVO> list = contentMapper.subContentList(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
 		
 		System.out.println("list : " +  list);
 		
-		model.addAttribute("subContentList", list);
+		int totalCnt = contentMapper.subContentListCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
 		
-		return null;
+		model.addAttribute("subContentList", list);
+		model.addAttribute("subTotalCnt", totalCnt);
+		
+		return list;
 		
 	}
 	
 	@Override
-	public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO, Model model){
-		List<SubScriptionVO> list = contentMapper.groupApproval(subScriptionVO);
+	public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO, Criteria cri, Model model){
+		List<SubScriptionVO> list = contentMapper.groupApproval(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
+		
+		int total = contentMapper.groupApprovalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
 		
 		model.addAttribute("groupyn", subScriptionVO.getGroupyn());
 		
@@ -54,7 +65,7 @@ public class ContentServiceImpl implements ContentService{
 		
 		model.addAttribute("groupApproval", list);
 		
-		return null;
+		return list;
 		
 	}
 	
@@ -71,9 +82,9 @@ public class ContentServiceImpl implements ContentService{
 	}
 	
 	@Override
-	public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO, Model model){
+	public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO, Criteria cri, Model model){
 		
-		List<SubScriptionVO> list = contentMapper.myGroup(subScriptionVO);
+		List<SubScriptionVO> list = contentMapper.myGroup(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
 		
 		
 		
@@ -85,9 +96,9 @@ public class ContentServiceImpl implements ContentService{
 	}
 	
 	@Override
-	public List<SubScriptionVO> homeworkEval(SubScriptionVO subScriptionVO, Model model){
+	public List<SubScriptionVO> homeworkEval(SubScriptionVO subScriptionVO, Criteria cri, Model model){
 		
-		List<SubScriptionVO> list = contentMapper.homeworkEval(subScriptionVO);
+		List<SubScriptionVO> list = contentMapper.homeworkEval(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
 		
 		 
 		model.addAttribute("homeworkEval", list);
@@ -186,5 +197,30 @@ public class ContentServiceImpl implements ContentService{
 		int res = contentMapper.updateEvaluation(subScriptionVO);
 		
 		return res;
+	}
+	
+	@Override
+	public int contentListCnt(Criteria cri) {
+		return contentMapper.contentListCnt(cri);
+	}
+	
+	@Override
+	public int subContentListCnt(SubScriptionVO subScriptionVO, Criteria cri) {
+		return contentMapper.subContentListCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
+	}
+
+	@Override
+	public int groupApprovalCnt(SubScriptionVO subScriptionVO, Criteria cri) {
+		return contentMapper.groupApprovalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
+	}
+
+	@Override
+	public int myGroupCnt(SubScriptionVO subScriptionVO, Criteria cri) {
+		return contentMapper.myGroupCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
+	}
+
+	@Override
+	public int homeworkEvalCnt(SubScriptionVO subScriptionVO, Criteria cri) {
+		return contentMapper.homeworkEvalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
 	}
 }

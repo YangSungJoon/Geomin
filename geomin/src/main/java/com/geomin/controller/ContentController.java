@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.geomin.service.ContentService;
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.Criteria;
 import com.geomin.vo.GroupVO;
+import com.geomin.vo.PageDto;
 import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
@@ -28,39 +30,57 @@ public class ContentController {
 	ContentService contentService;
 	
 	@GetMapping("contentList")
-	public void contentList(SubScriptionVO subScriptionVO, Model model) {
+	public void contentList(SubScriptionVO subScriptionVO,Criteria cri, Model model) {
+		
+
+		System.out.println("cri : =================" + cri);
+		int cnt = contentService.contentListCnt(cri);
+
+		List<ContentVO> list = contentService.contentList(cri, model);
+		System.out.println("contentList : =====================" + list);
 		
 		
-		contentService.contentList(subScriptionVO, model);
+		PageDto pageDto = new PageDto(cri, cnt);
+		
+		model.addAttribute("pageDto", pageDto);
+		model.addAttribute("contentList", list);
+
 	}
 	
 
 	
 	
 	 @GetMapping("subContentList") 
-	 public String subContentList(Model model, SubScriptionVO subScriptionVO) { 
+	 public String subContentList(Model model, SubScriptionVO subScriptionVO, Criteria cri) { 
 			System.out.println("User_id ============================== :  " + subScriptionVO.getUser_id());
+			System.out.println("cri =========================" + cri);
 			
+			int cnt = contentService.subContentListCnt(subScriptionVO, cri);
 			
-		 contentService.subContentList(subScriptionVO, model);
+			List<SubScriptionVO> list = contentService.subContentList(subScriptionVO, cri, model);
+
+			contentService.subContentList(subScriptionVO, cri, model);
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			model.addAttribute("pageDto", pageDto);
 		 
 		 return "content/subContentList";
 	 }
 	 
 	 
 	 @GetMapping("contentRead") 
-	 public String contentRead(Model model, SubScriptionVO subScriptionVO) { 
+	 public String contentRead(Model model, SubScriptionVO subScriptionVO, Criteria cri) { 
 		 System.out.println("User_id ============================== :  " + subScriptionVO.getUser_id());
 		 
 		 
-		 contentService.subContentList(subScriptionVO, model);
+		 contentService.subContentList(subScriptionVO, cri, model);
 		 
 		 return "content/contentRead";
 	 }
 	 
 	
 	@PostMapping("subContentListAction")
-	public String subContentListAction(Model model, SubScriptionVO subScriptionVO) {
+	public String subContentListAction(Model model, SubScriptionVO subScriptionVO, Criteria cri) {
 
 		System.out.println("content_id ============================== :  " + subScriptionVO.getContent_id());
 		System.out.println("content_id ============================== :  " + subScriptionVO.getUser_id());
@@ -72,7 +92,7 @@ public class ContentController {
 		
 		contentService.insertContentPay(subScriptionVO);
 		
-		contentService.subContentList(subScriptionVO, model);
+		contentService.subContentList(subScriptionVO,cri, model);
 		
 		
 		
@@ -81,7 +101,7 @@ public class ContentController {
 	
 	
 	@PostMapping("payStatus")
-	public String payStatusUpdate(SubScriptionVO subScriptionVO, Model model) {
+	public String payStatusUpdate(SubScriptionVO subScriptionVO,Criteria cri, Model model) {
 		
 		System.out.println("content_id ============================== :  " + subScriptionVO.getContent_id());
 		
@@ -89,7 +109,7 @@ public class ContentController {
 		
 		contentService.deletePay(subScriptionVO);
 		
-		contentService.subContentList(subScriptionVO, model);
+		contentService.subContentList(subScriptionVO, cri, model);
 		
 		
 		

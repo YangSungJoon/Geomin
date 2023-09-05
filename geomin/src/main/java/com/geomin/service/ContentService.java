@@ -6,24 +6,38 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.Criteria;
 import com.geomin.vo.GroupVO;
 import com.geomin.vo.SubScriptionVO;
 
 @Service
 public interface ContentService {
 
-	public List<ContentVO> contentList(SubScriptionVO subScriptionVO, Model model);
+	public List<ContentVO> contentList(Criteria cri, Model model);
 	
-	public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO, Model model);
+	public int contentListCnt(Criteria cri);
 	
-	public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO, Model model);
+	public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO, Criteria cri, Model model);
+	
+	public int subContentListCnt(SubScriptionVO subScriptionVO, Criteria cri);
+	
+	public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO, Criteria cri, Model model);
+
+	public int groupApprovalCnt(SubScriptionVO subScriptionVO, Criteria cri);
+	
+	public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO, Criteria cri, Model model);
+
+	public int myGroupCnt(SubScriptionVO subScriptionVO, Criteria cri);
+	
+	public List<SubScriptionVO> homeworkEval(SubScriptionVO subScriptionVO, Criteria cri, Model model);
+
+	public int homeworkEvalCnt(SubScriptionVO subScriptionVO, Criteria cri);
+	
 	
 	public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO, Model model);
 	
-	public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO, Model model);
 	
 	
-	public List<SubScriptionVO> homeworkEval(SubScriptionVO subScriptionVO, Model model);
 	
 	
 	public int insertgroup(SubScriptionVO subScriptionVO, Model model);
@@ -45,5 +59,10 @@ public interface ContentService {
 	public int homework_add(SubScriptionVO subScriptionVO);
 
 	public int updateEvaluation(SubScriptionVO subScriptionVO);
+
+	
+	
+
+	
 	
 }

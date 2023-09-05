@@ -74,7 +74,19 @@
 </head>
  <%@include file = "../common/header.jsp" %> 
 <body>
+userId : ${userId} <br>
+pageDto : ${pageDto } <br>
+totalCnt : ${totalCnt } <br>
 
+	<form action="homework_add" 
+		method="get" name="homework_addGO" autocomplete="off" >
+
+	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="text" name="total" value="${pageDto.total }">
+	<input name="user_id" value="${userId}">
+			
+	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
+	</form>
 
 <div class = "intro-box">
         <div class = "left-sideBar">
@@ -165,6 +177,8 @@
 	            </div>
 	        </div>
 </form>
+
+<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
     </div>
 
 
