@@ -42,7 +42,7 @@
         </div>
         
 		      
-        <form action ="/homework/groupAdd" method = "post">
+        <form action ="/homework/study_group_join?user_id=${userId}" method = "post" onsubmit="submitForm()">
         <div class = "group-content-box">
             <h2 class = "join_info">가입 정보</h2> 
             <div class = "group_content">
@@ -56,7 +56,7 @@
                     	학습기간 : ${i.learning_start} ~ ${i.learning_end}
                     	가입현황 : - / ${i.group_personnel }명
                     ">
-                    ${i.group_name}${i.group_id }
+                    ${i.group_name}
                     </option>
                     </c:forEach>
                 </select>
@@ -75,7 +75,6 @@
         </div>
         
 
-		<input type="text" name="group_id" value="${i.group_id }">
         <div class = "send_button_box">
             <button type = "submit" id = "send_button" onclick = "send();">가입 신청</button>
         </div>

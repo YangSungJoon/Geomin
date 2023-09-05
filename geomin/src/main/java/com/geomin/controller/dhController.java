@@ -97,33 +97,20 @@ public class dhController {
 		return "/homework/study_group_join";
 	}
 	
-	@PostMapping("/homework/groupAdd")
-	public String groupAdd(@RequestParam(value = "user_id", required = false) String user_id, @RequestParam("group_id") String groupId, Model model) {
-		log.info("===============================그룹 가입 신청=========================");
+	@PostMapping("/homework/study_group_join")
+	public String groupAdd(@RequestParam("user_id") String user_id, GroupJoinVO groupjoinvo, Model model) {
+		log.info("그룹 가입 신청 ==================================");
 		
-		GroupJoinVO groupjoinVO = new GroupJoinVO();
-		groupjoinVO.setGroup_id(groupId);
+//		model.addAttribute("list", homeworkService.getGroupInfo());
+//		System.out.println(groupjoinvo.toString());
 		
-		groupjoinService.groupjoinAdd(groupjoinVO);
-		return "/homework/study_group_join";
+		groupjoinService.userInfo(user_id);
+		homeworkService.getGroupInfo();
+		groupjoinService.groupAdd(groupjoinvo);
+		
+		
+		return "redirect:/homework/study_group_join?user_id="+user_id;
 	}
-	
-	
-	
-//	@PostMapping("/homework/study_group_join")
-//	public String groupAdd(@RequestParam("user_id") String user_id, GroupJoinVO groupjoinvo, Model model) {
-//		log.info("그룹 가입 신청 ==================================");
-//		
-////		model.addAttribute("list", homeworkService.getGroupInfo());
-////		System.out.println(groupjoinvo.toString());
-//		
-//		groupjoinService.userInfo(user_id);
-//		homeworkService.getGroupInfo();
-//		groupjoinService.groupAdd(groupjoinvo);
-//		
-//		
-//		return "redirect:/homework/study_group_join?user_id="+user_id;
-//	}
 	
 //	@GetMapping("/homework/study_group_view")
 //	public String groupView(String group_id, Model model) {
