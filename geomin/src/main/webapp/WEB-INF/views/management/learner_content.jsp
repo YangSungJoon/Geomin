@@ -56,9 +56,9 @@
 				<p>학습난이도<span>*</span></p>
       		    <div class = "member_check">
                 <select name="learning_difficulty" id="learning_difficulty">
-                    <option value="초급">초급</option>
-                    <option value="중급">중급</option>
-                    <option value="고급">고급</option>
+                    <option value="1">초급</option>
+                    <option value="2">중급</option>
+                    <option value="3">고급</option>
                 </select>
             </div>		   
             
