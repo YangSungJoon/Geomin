@@ -21,11 +21,11 @@ public class ContentServiceImpl implements ContentService{
 	private ContentMapper contentMapper;
 	
 	@Override
-	public List<ContentVO> contentList(Criteria cri, Model model){
+	public List<ContentVO> contentList(SubScriptionVO subScriptionVO,Criteria cri, Model model){
 		
-		List<ContentVO> list = contentMapper.contentList(cri);
+		List<ContentVO> list = contentMapper.contentList(subScriptionVO.getLearning_difficulty(), cri.getStartNo(), cri.getEndNo());
 		
-		int totalCnt = contentMapper.contentListCnt(cri);
+		int totalCnt = contentMapper.contentListCnt(subScriptionVO.getLearning_difficulty(), cri.getStartNo(), cri.getEndNo());
 		
 		//model.addAttribute("learning_difficulty", subScriptionVO.getLearning_difficulty());
 		
@@ -55,9 +55,9 @@ public class ContentServiceImpl implements ContentService{
 	
 	@Override
 	public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO, Criteria cri, Model model){
-		List<SubScriptionVO> list = contentMapper.groupApproval(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
+		List<SubScriptionVO> list = contentMapper.groupApproval(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo(), subScriptionVO.getContent_name(), subScriptionVO.getGroupyn());
 		
-		int total = contentMapper.groupApprovalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
+		int total = contentMapper.groupApprovalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo(), subScriptionVO.getContent_name(), subScriptionVO.getGroupyn());
 		
 		model.addAttribute("groupyn", subScriptionVO.getGroupyn());
 		
@@ -102,6 +102,17 @@ public class ContentServiceImpl implements ContentService{
 		
 		 
 		model.addAttribute("homeworkEval", list);
+		
+		return null;
+	}
+	
+	@Override
+	public List<SubScriptionVO> homework_option(SubScriptionVO subScriptionVO,Model model){
+		
+		List<SubScriptionVO> list = contentMapper.homework_option(subScriptionVO);
+		
+		
+		model.addAttribute("homework_option", list);
 		
 		return null;
 	}
@@ -200,8 +211,8 @@ public class ContentServiceImpl implements ContentService{
 	}
 	
 	@Override
-	public int contentListCnt(Criteria cri) {
-		return contentMapper.contentListCnt(cri);
+	public int contentListCnt(SubScriptionVO subScriptionVO,Criteria cri) {
+		return contentMapper.contentListCnt(subScriptionVO.getLearning_difficulty(), cri.getStartNo(), cri.getEndNo());
 	}
 	
 	@Override
@@ -211,7 +222,7 @@ public class ContentServiceImpl implements ContentService{
 
 	@Override
 	public int groupApprovalCnt(SubScriptionVO subScriptionVO, Criteria cri) {
-		return contentMapper.groupApprovalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
+		return contentMapper.groupApprovalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo(), subScriptionVO.getContent_name(),subScriptionVO.getGroupyn());
 	}
 
 	@Override

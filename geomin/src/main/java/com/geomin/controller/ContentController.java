@@ -34,9 +34,9 @@ public class ContentController {
 		
 
 		System.out.println("cri : =================" + cri);
-		int cnt = contentService.contentListCnt(cri);
+		int cnt = contentService.contentListCnt(subScriptionVO, cri);
 
-		List<ContentVO> list = contentService.contentList(cri, model);
+		List<ContentVO> list = contentService.contentList(subScriptionVO, cri, model);
 		System.out.println("contentList : =====================" + list);
 		
 		
@@ -48,6 +48,24 @@ public class ContentController {
 	}
 	
 
+	@PostMapping("contentList")
+	public String contentListPost(SubScriptionVO subScriptionVO,Criteria cri, Model model) {
+		
+
+		System.out.println("cri : =================" + cri);
+		int cnt = contentService.contentListCnt(subScriptionVO, cri);
+
+		List<ContentVO> list = contentService.contentList(subScriptionVO, cri, model);
+		System.out.println("contentList : =====================" + list);
+		
+		
+		PageDto pageDto = new PageDto(cri, cnt);
+		
+		model.addAttribute("pageDto", pageDto);
+		model.addAttribute("contentList", list);
+
+		return "content/contentList";
+	}
 	
 	
 	 @GetMapping("subContentList") 
@@ -85,8 +103,6 @@ public class ContentController {
 		System.out.println("content_id ============================== :  " + subScriptionVO.getContent_id());
 		System.out.println("content_id ============================== :  " + subScriptionVO.getUser_id());
 
-		
-		
 		contentService.insertSubContent(subScriptionVO, model);
 
 		
@@ -94,6 +110,7 @@ public class ContentController {
 		
 		contentService.subContentList(subScriptionVO,cri, model);
 		
+
 		
 		
 		return "/content/subContentList";
@@ -111,6 +128,10 @@ public class ContentController {
 		
 		contentService.subContentList(subScriptionVO, cri, model);
 		
+		
+		int cnt = contentService.subContentListCnt(subScriptionVO, cri);
+		PageDto pageDto = new PageDto(cri, cnt);
+		model.addAttribute("pageDto", pageDto);
 		
 		
 		return "/content/subContentList";

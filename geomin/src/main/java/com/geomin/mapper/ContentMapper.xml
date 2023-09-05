@@ -17,6 +17,9 @@
             from content
             where 1=1
 	]]>
+            <include refid="learning_difficulty"></include>
+            
+            order by content_id desc
             ) a
         )
         where rn between #{startNo} AND #{endNo} 
@@ -34,7 +37,9 @@
             from content
             where 1=1
 	]]>
-
+			<include refid="learning_difficulty"></include>
+            
+            order by content_id desc
             ) a
         )
 	</select>
@@ -86,8 +91,9 @@
                     and g.group_id = l.group_id
                     and s.user_id = #{user_id}
 	]]>
-<!-- 			<include refid="sel_name"></include>
-			<include refid="homeworkGroupyn"></include> -->
+			<include refid="sel_name"></include>
+ 			<include refid="homeworkGroupyn"></include>
+				order by group_id desc
                 ) a
         )
         where rn between #{startNo} AND #{endNo} 
@@ -107,8 +113,9 @@
                     and g.group_id = l.group_id
                     and s.user_id = #{user_id}
 	]]>
-<!-- 			<include refid="sel_name"></include>
-			<include refid="homeworkGroupyn"></include> -->
+			<include refid="sel_name"></include>
+			<include refid="homeworkGroupyn"></include>
+				order by group_id desc
                 ) a
         )
 	</select>
@@ -126,6 +133,7 @@
                     from subscription s, groups g
                     where g.content_id = s.content_id
                     and g.user_id_leader = #{user_id}) a
+                    order by group_id desc
                     )
     	where rn between #{startNo} AND #{endNo} 
 	</select>
@@ -139,6 +147,7 @@
                     from subscription s, groups g
                     where g.content_id = s.content_id
                     and g.user_id_leader = #{user_id}) a
+                    order by group_id desc
                     )
 	</select>
 
@@ -158,9 +167,11 @@
         from(
             select rownum rn, a.*
             from(
-                    select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation
-                from homework h, users u
-                where u.user_id = h.user_id_learner) a
+                    select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation, h.HOMEWORK_SUBDATE, group_name
+                from homework h, users u, groups g
+                where u.user_id = h.user_id_learner
+                and h.group_id = g.group_id) a
+                order by HOMEWORK_SUBDATE desc
             )
        where rn between #{startNo} AND #{endNo} 
 	</select>
@@ -171,12 +182,20 @@
         from(
             select rownum rn, a.*
             from(
-                    select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation
-                from homework h, users u
-                where u.user_id = h.user_id_learner) a
+                    select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation, h.HOMEWORK_SUBDATE, group_name
+                from homework h, users u, groups g
+                where u.user_id = h.user_id_learner
+                and h.group_id = g.group_id) a
+                order by HOMEWORK_SUBDATE desc
             )
 	</select>
 	
+
+	<select id="homework_option" resultType="com.geomin.vo.SubScriptionVO">
+	        select c.content_name, g.group_name 
+        from groups g, content c
+        where c.content_id = g.content_id
+	</select>
 
 
 	<insert id="insertgroup">

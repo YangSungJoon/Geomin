@@ -3,6 +3,7 @@ package com.geomin.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.intellij.lang.annotations.Pattern;
 
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.Criteria;
@@ -11,18 +12,18 @@ import com.geomin.vo.SubScriptionVO;
 
 public interface ContentMapper {
 
-public List<ContentVO> contentList(Criteria cri);
+public List<ContentVO> contentList(@Param("learning_difficulty") String learning_difficulty,@Param("startNo") int startNo, @Param("endNo") int endNo);
 
-public int contentListCnt(Criteria cri);
+public int contentListCnt(@Param("learning_difficulty") String learning_difficulty,@Param("startNo") int startNo, @Param("endNo") int endNo);
 
 public List<SubScriptionVO> subContentList(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
 
 public int subContentListCnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
 
 
-public List<SubScriptionVO> groupApproval(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+public List<SubScriptionVO> groupApproval(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo, @Param("content_name") String content_name, @Param("groupyn") String groupyn);
 
-public int groupApprovalCnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+public int groupApprovalCnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo, @Param("content_name") String content_name, @Param("groupyn") String groupyn);
 
 
 public List<SubScriptionVO> myGroup(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
@@ -39,6 +40,7 @@ public int homeworkEvalCnt(@Param("user_id") String user_id,@Param("startNo") in
 
 public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO);
 
+public List<SubScriptionVO> homework_option(SubScriptionVO subScriptionVO);
 
 
 public int insertgroup(SubScriptionVO subScriptionVO);
