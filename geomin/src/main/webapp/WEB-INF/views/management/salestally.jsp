@@ -18,7 +18,7 @@
             <ul class = "clearFix">
                 <li class = "home">
                     <a href = "#">
-                        <img src="../image/homeicon.png" alt=""> /
+                        <img src="../resources/image/homeicon.png" alt=""> /
                     </a>
                 </li>
                 <li>

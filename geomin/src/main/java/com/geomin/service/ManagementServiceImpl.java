@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import com.geomin.mapper.ManagementMapper;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SaleVO;
-import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
 @Service
@@ -27,7 +26,12 @@ public class ManagementServiceImpl implements ManagementService{
 
 	@Override
 	public void contentList(Model model) {
-		
+		List<ContentVO> contentList = managementMapper.contentList();
+		model.addAttribute("contentList", contentList);
+	}
+	
+	public ContentVO contentListView(String contentId) {
+		return managementMapper.contentListView(contentId);
 	}
 
 	@Override
@@ -44,8 +48,17 @@ public class ManagementServiceImpl implements ManagementService{
 
 	@Override
 	public int emailEdit(UserVO userVo) {
-		// TODO Auto-generated method stub
 		return managementMapper.emailEdit(userVo);
+	}
+
+	@Override
+	public int contentUpdate(ContentVO contentVo) {
+		return managementMapper.contentUpdate(contentVo);
+	}
+
+	@Override
+	public int contentDelete(ContentVO contentVo) {
+		return managementMapper.contentDelete(contentVo);
 	}
 	
 }

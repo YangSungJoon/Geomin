@@ -106,6 +106,7 @@
                     <td>구독료</td>
                     <td>학습수준</td>
                     <td>학습내용</td>
+                    <td>삭제유무</td>
                 </tr>
                 <c:forEach items="${contentList }" var="li" varStatus="status">
 				    <tr>
@@ -117,6 +118,7 @@
 				        <td class="subPrice" >${li.real_price}원</td>
 				        <td class="subPrice-difficulty" >${li.learning_difficulty}</td>
 				        <td class="content" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.learning_content}</td>
+				        <td>${li.is_deleted}</td>
 				    </tr>
                 </c:forEach>
                

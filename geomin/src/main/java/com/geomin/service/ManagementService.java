@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SaleVO;
-import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
 @Service
@@ -22,4 +21,11 @@ public interface ManagementService {
 	public List<SaleVO> monthSaleList(String content_id, String year);
 	
 	public int emailEdit(UserVO userVo);
+
+	public ContentVO contentListView(String contentId);
+
+	public int contentUpdate(ContentVO contentVo);
+	
+	public int contentDelete(ContentVO contentVo);
+	
 }

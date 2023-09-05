@@ -2,8 +2,6 @@ package com.geomin.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,14 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.geomin.service.MailSendService;
 import com.geomin.service.ManagementService;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SaleVO;
-import com.geomin.vo.SubScriptionVO;
-import com.geomin.vo.UserVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -39,7 +34,53 @@ public class ManagementController {
 		managementService.contentList(model);
 		return "/management/learner_content";
 	}
+	
+	@GetMapping("contentListView")
+	public String contentListView(@RequestParam("content_id") String contentId, Model model){
 		
+		ContentVO contentVo = managementService.contentListView(contentId);
+		
+		model.addAttribute("contentVo", contentVo);
+		
+		return "/management/contentListView";
+	}
+	
+	@GetMapping("contentUpdate")
+	public String contentUpdateList(@RequestParam("content_id") String contentId, Model model) {
+	    ContentVO contentVo = managementService.contentListView(contentId);
+	    model.addAttribute("contentVo", contentVo);
+	    return "/management/contentUpdate";
+	}
+
+	@PostMapping("contentUpdate")
+	public String contentUpdate(ContentVO contentVo, Model model) {
+	    int result = managementService.contentUpdate(contentVo);
+
+	    if (result > 0) {
+	        model.addAttribute("updateSuccess", "true");
+	    } else {
+	        model.addAttribute("updateSuccess", "false");
+	    }
+
+	    return "redirect:/management/contentListView?content_id=" + contentVo.getContent_id();
+	}
+
+	@PostMapping("contentDelete")
+	public String contentDelete(@RequestParam("content_id") String contentId, Model model) {
+	    ContentVO contentVo = new ContentVO();
+	    contentVo.setContent_id(contentId);
+	    contentVo.setIs_deleted("Y"); // is_deleted 값을 "Y"로 설정
+	    int result = managementService.contentDelete(contentVo);
+
+	    if (result > 0) {
+	        model.addAttribute("deleteSuccess", true);
+	    } else {
+	        model.addAttribute("deleteSuccess", false);
+	    }
+
+	    return "redirect:/content/contentList";
+	}
+
 	
 	@PostMapping("insert_content")
 	public String insertContent(ContentVO contentVo, Model model) {

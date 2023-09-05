@@ -17,6 +17,10 @@
     <select id="contentList" resultType="com.geomin.vo.ContentVO">
 		select * from content
 	</select>
+	
+	 <select id="contentListView" resultType="com.geomin.vo.ContentVO">
+		select * from content where content_id = #{content_id}
+	</select>
 
 	 <select id="yearSaleList" resultType="com.geomin.vo.SaleVO">
         SELECT EXTRACT(YEAR FROM subscription_date) AS subscription_date,
@@ -38,9 +42,21 @@
         ORDER BY subscription_date
 	</select>
 
-	<update id="emailEdit">
-		update users set email = #{email}
-		where user_id= #{user_id}
+	<update id="contentUpdate">
+		 update content set
+	    content_name = #{content_name},
+	    learning_difficulty = #{learning_difficulty},
+	    learning_member = #{learning_member},
+	    price = #{price},
+	    sale = #{sale},
+	    real_price = #{real_price},
+	    learning_content = #{learning_content}
+	    where content_id = #{content_id}
+	</update>
+	
+	<update id="contentDelete">
+		update content set is_deleted = #{is_deleted}
+		where content_id = #{content_id}
 	</update>
 	
 </mapper>

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>공지등록</title>
-  <link rel="stylesheet" href="styles.css"> <!-- 스타일 시트 연결 -->
+  <link rel="stylesheet" href="../resources/css/announce_add.css"> <!-- 스타일 시트 연결 -->
 </head>
   <%@include file = "../common/header.jsp" %>
 <body>

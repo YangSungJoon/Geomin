@@ -13,7 +13,7 @@
         from(
             select 
             content_id,content_name, learning_difficulty, learning_member,
-            TO_CHAR(price, '9,999,999') as price, sale ||'%' as sale, to_char((price - (price * (sale / 100))),'9,999,999') as real_price, learning_content 
+            TO_CHAR(price, '9,999,999') as price, sale ||'%' as sale, to_char((price - (price * (sale / 100))),'9,999,999') as real_price, learning_content, is_deleted 
             from content
             where 1=1
 	]]>

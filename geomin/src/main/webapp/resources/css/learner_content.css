@@ -5,6 +5,25 @@
     float: left;
 }
 
+#addbtn{
+	border : 1px solid black;
+	
+}
+
+#add_button{
+    margin-left: 5rem;
+    margin-top: 1rem;
+    height: 2rem;
+    width : 4rem;
+    
+}
+
+.pakage_select{
+    margin-top: 1rem;
+    height: 2rem;    
+    width : 4rem;
+}
+
 .content_name{
     border: 1px solid black;
     width: 22rem;
@@ -19,28 +38,21 @@
 }
 
 .left_content{
-    height: 20rem;
+    height: 35rem;
     font-size: 20px;
     font-weight: bold;
     margin-top: 1.5rem;
     margin-left: 1rem;
     line-height: 2rem;
+    
+    
 }
 
 span{
     color: red;
 }
 
-#add_button{
-    margin-left: 5rem;
-    margin-top: 2rem;
-    height: 2rem;
-}
 
-.pakage_select{
-    margin-top: 2rem;
-    height: 2rem;    
-}
 
 #learning_content{
 	resize: none; /* 사용자가 크기 조절하지 못하게 설정 */

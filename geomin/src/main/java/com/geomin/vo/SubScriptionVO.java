@@ -14,6 +14,7 @@ public class SubScriptionVO {
 	private String sale;
 	private String real_price;
 	private String learning_content;
+	private String is_deleted;
 	
 	private String subscription_date;
 	private int subscription_price;
