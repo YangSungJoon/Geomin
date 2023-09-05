@@ -88,8 +88,20 @@
 <body>
 
 메인 콘텐츠 목록
-userId : ${userId}	
+userId : ${userId} <br>
+pageDto : ${pageDto } <br>
+totalCnt : ${totalCnt } <br>
 <input name="user_id" value="${userId}">
+
+	<form action="/group/groupApproval" 
+		method="get" name="groupApprovalGO" autocomplete="off" >
+
+	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="text" name="total" value="${pageDto.total }">
+	<input name="user_id" value="${userId}">
+			
+	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
+	</form>
 
 <div class = "intro-box">
         <div class = "left-sideBar">
@@ -155,8 +167,8 @@ userId : ${userId}
 	            </div>
 	        </div>
 </form>
+<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
     </div>
-
 
 </body>
  <%@include file = "../common/footer.jsp" %> 

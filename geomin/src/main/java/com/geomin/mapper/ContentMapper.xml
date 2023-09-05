@@ -7,60 +7,174 @@
 
 	<select id="contentList" resultType="com.geomin.vo.SubScriptionVO">
 	<![CDATA[
-	select 
-    content_id,content_name, learning_difficulty, learning_member,
-    TO_CHAR(price, '9,999,999') as price, sale ||'%' as sale, to_char((price - (price * (sale / 100))),'9,999,999') as real_price, learning_content 
-    from content
-    where 1=1
+    select * 
+    from (
+        select rownum rn, a.*
+        from(
+            select 
+            content_id,content_name, learning_difficulty, learning_member,
+            TO_CHAR(price, '9,999,999') as price, sale ||'%' as sale, to_char((price - (price * (sale / 100))),'9,999,999') as real_price, learning_content 
+            from content
+            where 1=1
 	]]>
-	<include refid="learning_difficulty"></include>
+            ) a
+        )
+        where rn between #{startNo} AND #{endNo} 
+	</select>
+	
+	<select id="contentListCnt" resultType="int">
+	<![CDATA[
+    select count(*) 
+    from (
+        select rownum rn, a.*
+        from(
+            select 
+            content_id,content_name, learning_difficulty, learning_member,
+            TO_CHAR(price, '9,999,999') as price, sale ||'%' as sale, to_char((price - (price * (sale / 100))),'9,999,999') as real_price, learning_content 
+            from content
+            where 1=1
+	]]>
+
+            ) a
+        )
 	</select>
 	
 	<select id="subContentList" resultType="com.geomin.vo.SubScriptionVO">
 	
-	select s.content_id ,c.CONTENT_NAME, c.LEARNING_MEMBER, TO_CHAR(c.price, '9,999,999') as price, to_char((c.price - (c.price * (c.sale / 100))),'9,999,999') as real_price,
-		 c.LEARNING_DIFFICULTY, c.LEARNING_CONTENT, to_char(s.subscription_date,'yyyy-MM-dd') as subscription_date,s.paystatus
-	from content c, subscription s
-	where c.content_id = s.content_id
-	and s.user_id = #{user_id}
-	order by s.subscription_date DESC
+        select * 
+            from(
+            select rownum rn, a.*
+            from(
+                    select s.content_id ,c.CONTENT_NAME, c.LEARNING_MEMBER, TO_CHAR(c.price, '9,999,999') as price, to_char((c.price - (c.price * (c.sale / 100))),'9,999,999') as real_price,
+                     c.LEARNING_DIFFICULTY, c.LEARNING_CONTENT, to_char(s.subscription_date,'yyyy-MM-dd') as subscription_date,s.paystatus
+                from content c, subscription s
+                where c.content_id = s.content_id
+                and s.user_id = #{user_id}
+                order by s.subscription_date DESC) a)
+    where rn between #{startNo} AND #{endNo} 
 	
 	</select>
 
-	<select id="groupApproval" resultType="com.geomin.vo.SubScriptionVO">
-	<![CDATA[
-	    select l.content_id, c.content_name, g.group_name,l.learner_name , to_char(l.group_appdate, 'yyyy-MM-dd') as group_appdate,
-      		  s.TOTAL_PERSONNEL, s.current_personnel, l.groupyn, s.user_id, l.user_id_learner, g.group_id 
-	    from learner_group l, content c, SUBSCRIPTION s, groups g
-	    where c.content_id = l.content_id
-		    and s.content_id = l.content_id
-		    and g.group_id = l.group_id
-			and s.user_id = #{user_id}
-	]]>
-			<include refid="sel_name"></include>
-			<include refid="homeworkGroupyn"></include>
+	
+	<select id="subContentListCnt" resultType="int">
+	
+        select count(*) 
+            from(
+            select rownum rn, a.*
+            from(
+                    select s.content_id ,c.CONTENT_NAME, c.LEARNING_MEMBER, TO_CHAR(c.price, '9,999,999') as price, to_char((c.price - (c.price * (c.sale / 100))),'9,999,999') as real_price,
+                     c.LEARNING_DIFFICULTY, c.LEARNING_CONTENT, to_char(s.subscription_date,'yyyy-MM-dd') as subscription_date,s.paystatus
+                from content c, subscription s
+                where c.content_id = s.content_id
+                and s.user_id = #{user_id}
+                order by s.subscription_date DESC) a)
+	
 	</select>
 
 
+	<select id="groupApproval" resultType="com.geomin.vo.SubScriptionVO">
+	<![CDATA[
+    select * 
+    from(
+        select rownum rn, a.*
+            from(
+                    select l.content_id, c.content_name, g.group_name,l.learner_name , to_char(l.group_appdate, 'yyyy-MM-dd') as group_appdate,
+                      s.TOTAL_PERSONNEL, s.current_personnel, l.groupyn, s.user_id, l.user_id_learner, g.group_id 
+                from learner_group l, content c, SUBSCRIPTION s, groups g
+                where c.content_id = l.content_id
+                    and s.content_id = l.content_id
+                    and g.group_id = l.group_id
+                    and s.user_id = #{user_id}
+	]]>
+<!-- 			<include refid="sel_name"></include>
+			<include refid="homeworkGroupyn"></include> -->
+                ) a
+        )
+        where rn between #{startNo} AND #{endNo} 
+	</select>
+
+	<select id="groupApprovalCnt" resultType="int">
+	<![CDATA[
+    select count(*) 
+    from(
+        select rownum rn, a.*
+            from(
+                    select l.content_id, c.content_name, g.group_name,l.learner_name , to_char(l.group_appdate, 'yyyy-MM-dd') as group_appdate,
+                      s.TOTAL_PERSONNEL, s.current_personnel, l.groupyn, s.user_id, l.user_id_learner, g.group_id 
+                from learner_group l, content c, SUBSCRIPTION s, groups g
+                where c.content_id = l.content_id
+                    and s.content_id = l.content_id
+                    and g.group_id = l.group_id
+                    and s.user_id = #{user_id}
+	]]>
+<!-- 			<include refid="sel_name"></include>
+			<include refid="homeworkGroupyn"></include> -->
+                ) a
+        )
+	</select>
+
+
+
+
+
+	<select id="myGroup" resultType="com.geomin.vo.SubScriptionVO">
+        select *
+        from(
+            select rownum rn, a.*
+                from(
+                        select distinct g.user_id_leader ,g.content_id, g.group_name, s.content_name, s.total_personnel, s.current_personnel, g.group_id
+                    from subscription s, groups g
+                    where g.content_id = s.content_id
+                    and g.user_id_leader = #{user_id}) a
+                    )
+    	where rn between #{startNo} AND #{endNo} 
+	</select>
+
+	<select id="myGroupCnt" resultType="int">
+        select count(*)
+        from(
+            select rownum rn, a.*
+                from(
+                        select distinct g.user_id_leader ,g.content_id, g.group_name, s.content_name, s.total_personnel, s.current_personnel, g.group_id
+                    from subscription s, groups g
+                    where g.content_id = s.content_id
+                    and g.user_id_leader = #{user_id}) a
+                    )
+	</select>
+
+
+
+
+
 	<select id="option_content_id" resultType="com.geomin.vo.SubScriptionVO">
-		select distinct content_id, content_name
+		select distinct content_id, content_name, total_personnel
 	            from subscription
 	            where user_id = #{user_id}
 	            order by content_id asc
 	</select>
-
-	<select id="myGroup" resultType="com.geomin.vo.SubScriptionVO">
-	    select distinct g.user_id_leader ,g.content_id, g.group_name, s.content_name, s.total_personnel, s.current_personnel, g.group_id
-		    from subscription s, groups g
-		    where g.content_id = s.content_id
-		    and g.user_id_leader = #{user_id}
+	
+	<select id="homeworkEval" resultType="com.geomin.vo.SubScriptionVO">
+        select *
+        from(
+            select rownum rn, a.*
+            from(
+                    select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation
+                from homework h, users u
+                where u.user_id = h.user_id_learner) a
+            )
+       where rn between #{startNo} AND #{endNo} 
 	</select>
 
 	
-	<select id="homeworkEval" resultType="com.geomin.vo.SubScriptionVO">
-		select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation
-			from homework h, users u
-			where u.user_id = h.user_id_learner
+	<select id="homeworkEvalCnt" resultType="int">
+        select count(*)
+        from(
+            select rownum rn, a.*
+            from(
+                    select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation
+                from homework h, users u
+                where u.user_id = h.user_id_learner) a
+            )
 	</select>
 	
 

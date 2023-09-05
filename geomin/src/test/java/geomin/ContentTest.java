@@ -1,8 +1,5 @@
 package geomin;
 
-import static org.junit.Assume.assumeNotNull;
-
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,12 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.geomin.mapper.ContentMapper;
-import com.geomin.vo.ContentVO;
-import com.geomin.vo.GroupVO;
-import com.geomin.vo.SubScriptionVO;
-import com.geomin.vo.UserVO;
+import com.geomin.vo.Criteria;
 
-import jdk.internal.org.jline.utils.Log;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,6 +20,12 @@ public class ContentTest {
 	@Autowired
 	ContentMapper contentMapper;
 	
+	/*
+	 * @Test public void cnt(Criteria cri) { int cnt =
+	 * contentMapper.contentListCnt(cri);
+	 * 
+	 * log.info(cnt); }
+	 */
 	/*
 	 * @Test public void test() { assumeNotNull(contentMapper);
 	 * 
@@ -90,50 +89,44 @@ public class ContentTest {
 	 * }
 	 */
 	 
-	
-	  @Test public void insertSubContentTest() {
-	  
-	  SubScriptionVO subscriptionVO = new SubScriptionVO();
-	  
-	  subscriptionVO.setContent_id("0004");
-	  subscriptionVO.setUser_id("ID1");
-	  
-	  
-	  contentMapper.insertSubContent(subscriptionVO);
-	  
-	  }
-	 
-	  
-	  @Test
-	  public void payStatusUpdate() {
-		  
-		  SubScriptionVO subscriptionVO = new SubScriptionVO();
-		  
-		  contentMapper.payStatusUpdate(subscriptionVO);
-		  
-	  }
-	  
-	  @Test
-	  public void contentPay() {
-		  SubScriptionVO subscriptionVO = new SubScriptionVO();
-		  
-		  subscriptionVO.setContent_id("0002");
-		  subscriptionVO.setReal_price("123123");
-		  
-		  contentMapper.insertContentPay(subscriptionVO);
-		  
-		  
-	  }
-	  
-	  @Test
-	  public void delete() {
-		  
-		  SubScriptionVO subscriptionVO = new SubScriptionVO();
-		  
-		  subscriptionVO.setContent_id("0004");
-		  
-		  contentMapper.deletePay(subscriptionVO);
-	  }
-	  
+	/*
+	 * @Test public void insertSubContentTest() {
+	 * 
+	 * SubScriptionVO subscriptionVO = new SubScriptionVO();
+	 * 
+	 * subscriptionVO.setContent_id("0004"); subscriptionVO.setUser_id("ID1");
+	 * 
+	 * 
+	 * contentMapper.insertSubContent(subscriptionVO);
+	 * 
+	 * }
+	 * 
+	 * 
+	 * @Test public void payStatusUpdate() {
+	 * 
+	 * SubScriptionVO subscriptionVO = new SubScriptionVO();
+	 * 
+	 * contentMapper.payStatusUpdate(subscriptionVO);
+	 * 
+	 * }
+	 * 
+	 * @Test public void contentPay() { SubScriptionVO subscriptionVO = new
+	 * SubScriptionVO();
+	 * 
+	 * subscriptionVO.setContent_id("0002"); subscriptionVO.setReal_price("123123");
+	 * 
+	 * contentMapper.insertContentPay(subscriptionVO);
+	 * 
+	 * 
+	 * }
+	 * 
+	 * @Test public void delete() {
+	 * 
+	 * SubScriptionVO subscriptionVO = new SubScriptionVO();
+	 * 
+	 * subscriptionVO.setContent_id("0004");
+	 * 
+	 * contentMapper.deletePay(subscriptionVO); }
+	 */
 
 }

@@ -2,23 +2,44 @@ package com.geomin.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.geomin.vo.ContentVO;
+import com.geomin.vo.Criteria;
 import com.geomin.vo.GroupVO;
 import com.geomin.vo.SubScriptionVO;
 
 public interface ContentMapper {
 
-public List<ContentVO> contentList(SubScriptionVO subScriptionVO);
+public List<ContentVO> contentList(Criteria cri);
 
-public List<SubScriptionVO> subContentList(SubScriptionVO subScriptionVO);
+public int contentListCnt(Criteria cri);
 
-public List<SubScriptionVO> groupApproval(SubScriptionVO subScriptionVO);
+public List<SubScriptionVO> subContentList(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+
+public int subContentListCnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+
+
+public List<SubScriptionVO> groupApproval(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+
+public int groupApprovalCnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+
+
+public List<SubScriptionVO> myGroup(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+
+public int myGroupCnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+
+
+public List<SubScriptionVO> homeworkEval(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+
+public int homeworkEvalCnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
+
+
+
 
 public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO);
 
-public List<SubScriptionVO> myGroup(SubScriptionVO subScriptionVO);
 
-public List<SubScriptionVO> homeworkEval(SubScriptionVO subScriptionVO);
 
 public int insertgroup(SubScriptionVO subScriptionVO);
 

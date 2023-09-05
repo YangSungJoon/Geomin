@@ -10,8 +10,12 @@
 </head>
 <%@include file = "../common/header.jsp" %>
 <body>
-
+userId : ${userId} <br>
+pageDto : ${pageDto } <br>
+totalCnt : ${totalCnt } <br>
 	<input type="text" name="user_id" value="${userId}"><br>
+
+
 
 <div class = "intro-box">
 

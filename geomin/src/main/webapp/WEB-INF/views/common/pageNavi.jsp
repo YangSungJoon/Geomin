@@ -28,11 +28,49 @@
 
   
 <script type="text/javascript">
-	function go(page){
+ 	function go(page){
   	  console.log("go테스트");
-		document.searchForm.pageNo.value = page;
-		document.searchForm.submit();
+ 		
+ 		let contentListGO = document.contentListGO;
+ 		let subContentListGO = document.subContentListGO;
+
+ 		let groupApprovalGO = document.groupApprovalGO;
+ 		let myGroupGO = document.myGroupGO;
+ 		
+ 		let homework_evaluationGO = document.homework_evaluationGO;
+ 		let homework_addGO = document.homework_addGO;
+ 		
+ 		if(contentListGO){
+		document.contentListGO.pageNo.value = page;
+		document.contentListGO.submit();
+ 			
+	 		} else if(subContentListGO){
+	 			document.subContentListGO.pageNo.value = page;
+	 			document.subContentListGO.submit();
+	 			
+		 		} else if(groupApprovalGO){
+			 		
+		 			document.groupApprovalGO.pageNo.value = page;
+		 			document.groupApprovalGO.submit(); 			
+			 			
+			 		} else if(myGroupGO){
+			 			document.myGroupGO.pageNo.value = page;
+			 			document.myGroupGO.submit(); 			
+			 			
+				 		} else if(homework_evaluationGO){
+				 			document.homework_evaluationGO.pageNo.value = page;
+				 			document.homework_evaluationGO.submit(); 			
+				 			
+					 		} else if(homework_addGO){
+					 			document.homework_addGO.pageNo.value = page;
+					 			document.homework_addGO.submit(); 			
+					 			
+					 		} 
+		 		
+		
 	}
+
+    
 </script>
 </head>
 <body>
@@ -72,6 +110,9 @@
 	  </ul>
 	</nav>
 </div>
+
+
+
 
 </body>
 </html>

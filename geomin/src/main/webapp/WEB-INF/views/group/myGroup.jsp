@@ -24,7 +24,19 @@
 <body>
 
 구독 콘텐츠 목록
+userId : ${userId} <br>
+pageDto : ${pageDto } <br>
+totalCnt : ${totalCnt } <br>
 
+	<form action="/group/myGroup" 
+		method="get" name="myGroupGO" autocomplete="off" >
+
+	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="text" name="total" value="${pageDto.total }">
+	<input name="user_id" value="${userId}">
+			
+	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
+	</form>
 
 <div class = "intro-box">
         <div class = "left-sideBar">
@@ -65,6 +77,7 @@
             </div>
         </div>
 </form>
+<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
     </div>
 
 </body>

@@ -46,7 +46,20 @@
  <%@include file = "../common/header.jsp" %> 
 <body>
 
-구독 콘텐츠 목록
+구독 콘텐츠 목록 <br>
+
+pageDto : ${pageDto }<br>
+subTotalCnt :  ${subTotalCnt }<br>
+
+	<form action="/content/subContentList" 
+		method="get" name="subContentListGO" autocomplete="off" >
+
+	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="text" name="total" value="${pageDto.total }">
+	<input name="user_id" value="${userId}">
+			
+	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
+	</form>
 
 <form action="payStatus" method="post">
 
@@ -92,6 +105,8 @@
         </div>
     </div>
 </form>
+
+<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 
 </body>
  <%@include file = "../common/footer.jsp" %> 

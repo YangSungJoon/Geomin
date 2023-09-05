@@ -68,13 +68,23 @@
  <%@include file = "../common/header.jsp" %> 
 <body>
 
-메인 콘텐츠 목록
-userId : ${userId}
+메인 콘텐츠 목록 <br>
+userId : ${userId} <br>
+pageDto : ${pageDto } <br>
+totalCnt : ${totalCnt } <br>
+	
 
+	<form action="/content/contentList" 
+			method="get" name="contentListGO" autocomplete="off" >
 
+	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="text" name="total" value="${pageDto.total }">
+	<input name="user_id" value="${userId}">
+			
+	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
+	</form>
 
 <div class = "intro-box">
-     
  <form action="contentList" method="get">
         <div class = "left-sideBar">
             <ul>
@@ -91,7 +101,7 @@ userId : ${userId}
                     <option value="3">고급</option>
 					
                 </select>
-                <input name="learning_difficulty" value="${learning_difficulty }">
+<%--                 <input name="learning_difficulty" value="${learning_difficulty }"> --%>
                 <button type = "submit" id = "level_check">조회</button>
             </p><hr>
         </div>
@@ -133,7 +143,7 @@ userId : ${userId}
 </form>
     </div>
 
-
+<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 </body>
  <%@include file = "../common/footer.jsp" %> 
 </html>

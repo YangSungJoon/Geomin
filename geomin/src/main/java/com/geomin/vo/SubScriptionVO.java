@@ -43,6 +43,7 @@ public class SubScriptionVO {
 	private String homework_subdate;
 	private String evaluation;
 	
+	private String user_type;
 	
 
 	
