@@ -16,14 +16,4 @@
 	<select id = "userInfo" resultType="com.geomin.vo.UserVO">
 		select * from users where user_id = #{user_id, jdbcType=VARCHAR}
 	</select>
-	
-	<!-- <insert id="groupjoinAdd">
-		insert into learner_group (user_id_learner, user_id_leader
-		, group_id, content_id, learner_name, group_appdate, groupyn)
-		select users.user_id, groups.user_id_leader, groups.group_id
-		, groups.content_id, users.user_name, sysdate, 'N'
-		from users
-		inner join groups on users.user_id = #{user_id}
-		where groups.group_id = #{group_id} 
-	</insert>  -->
 </mapper>
