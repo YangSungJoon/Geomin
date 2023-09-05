@@ -6,7 +6,7 @@
 	
 	<!-- 숙제 목록 조회 -->
 	<select id="getList" resultType="com.geomin.vo.HomeWorkVO">
-		select * from homework,users where user_id = user_id_learner and user_id = #{user_id}
+		select * from homework,users,content where users.user_id = homework.user_id_learner and users.user_id = #{user_id} and homework.user_id_leader = content.user_id and homework.content_id = content.content_id
 	</select>
 	
 	<!-- 학습자 이름 조회 -->
@@ -25,10 +25,8 @@
 	</select>
 	
 	<!-- 학습 콘텐츠명 조회 -->
-	<!-- 학습그룹 학습자 테이블 에서 학습숙제 내역 테이블의 회원ID, 학습컨텐츠ID 조인필요 -->
 	<select id="getContentName" resultType="com.geomin.vo.ContentVO">
-		select content.content_id, content.content_name from content, homework 
-		where homework.content_id = content.content_id and homework.content_id = '0002'
+		select content_name from users, homework, content where users.user_id = #{user_id} and #{user_id} = homework.user_id_learner and homework.content_id = content.content_id
 	</select>
 	
 	<!-- 그룹 정보 조회 -->
@@ -40,5 +38,21 @@
 	<select id = "getGroupId" resultType = "com.geomin.vo.GroupVO">
 		select group_id from groups
 	</select>
+	
+	<!-- 학습 내용 제출 -->
+	<update id="processHomework" parameterType="com.geomin.vo.HomeWorkVO">
+		update homework set homework.homework_content_learner = #{homework_content_learner},
+        homework.homework_subdate = sysdate where homework.group_id in (
+        select learner_group.group_id from learner_group
+        where learner_group.group_id = #{group_id, jdbcType=VARCHAR}
+    )
+	</update>
+	
+	<update id="update">
+		update homework
+		   set homework_content_learner = #{homework_content_learner}
+		   		, homework_subdate = sysdate
+		 where group_id = #{group_id}  
+	</update>
 	
 </mapper>

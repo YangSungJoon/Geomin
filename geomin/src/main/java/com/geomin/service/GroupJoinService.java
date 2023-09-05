@@ -11,4 +11,6 @@ public interface GroupJoinService {
 	public int groupAdd(GroupJoinVO groupjoinvo);
 	
 	public UserVO userInfo(String user_id);
+
+	public int groupjoinAdd(GroupJoinVO groupjoinVO);
 }

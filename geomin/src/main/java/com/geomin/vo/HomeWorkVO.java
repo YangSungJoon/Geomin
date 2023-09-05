@@ -1,11 +1,15 @@
 package com.geomin.vo;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
+@Getter
+@Setter
 public class HomeWorkVO {
 
-	private String homework_id; // 숙제 일련번호
+	private String homework_no; // 숙제 일련번호
 	private String group_id; // 그룹 id
 	private String content_id; // 학습 콘텐츠 id
 	private String content_name; // 콘텐츠 명
@@ -18,14 +22,10 @@ public class HomeWorkVO {
 	private String homework_content_learner; // 학습 내용(학습자가 학습 한)
 	private String evaluation; // 학습관리자 평가 ('우수', '보통', '미흡')
 	
-//	private String user_id;
-//	private String user_name;
-//	private String user_type;
-	
 	private String searchField; // 검색조건
 	private String searchWord;	// 검색어
 	
-	private String user_id;
+	private String user_id; // users테이블의 user_id
 	private String user_name;
 	private String user_pw;
 	private String user_type;
@@ -34,4 +34,12 @@ public class HomeWorkVO {
 	private String address;
 	private String datebirth;
 	private String gender;
+	
+	public String getHomework_content_learner() {
+        return homework_content_learner;
+    }
+
+    public void setHomework_content_learner(String homework_content_learner) {
+        this.homework_content_learner = homework_content_learner;
+    }
 }
