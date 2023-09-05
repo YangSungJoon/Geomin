@@ -33,4 +33,8 @@ public interface HomeWorkService {
 	
 	// 그룹 id 조회
 	public GroupVO getGroupId(String group_id);
+	
+	// 학습 내용 제출
+	public int update(HomeWorkVO homeworkVO);
+
 }

@@ -160,3 +160,8 @@ td{
     width: 4rem;
     height: 2.5rem;
 }
+
+#content_send_box{
+	width: 220px;
+	height: 80px;
+}

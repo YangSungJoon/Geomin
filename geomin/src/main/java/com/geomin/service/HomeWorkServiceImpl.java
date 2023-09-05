@@ -21,6 +21,9 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 	
 	@Autowired
 	private HomeWorkMapper homeworkMapper;
+	
+	@Autowired
+	private HomeWorkService homeworkService;
 
 	// 게시판 목록
 	@Override
@@ -56,6 +59,13 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 	public GroupVO getGroupId(String group_id) {
 		return homeworkMapper.getGroupId(group_id);
 	}
+
+	// 학습 내용 제출
+	@Override
+	public int update(HomeWorkVO homeworkVO) {
+		return homeworkMapper.update(homeworkVO);
+	}
+	
 
 	
 //	@Override

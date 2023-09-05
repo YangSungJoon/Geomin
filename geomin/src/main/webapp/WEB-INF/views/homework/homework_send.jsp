@@ -59,15 +59,8 @@
                 
                 <c:forEach items = "${list}" var="worklist">
                 <tr>
-                    <td class = "check_box"><input type="checkbox" name="checkbox" id="checkbox" onclick = 'checkOne(this)'></td>
-                    <td class = "contentName"><c:out value=""/></td>
-                    <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
-                    <td class = "workContent"><c:out value="${worklist.homework_content_leader }"/></td>
-                    <td class = "sendDate" style = "color: red; font-weight: bold;"><c:out value="${worklist.homework_deadline }"/></td>
-                    <td class = "studyContent">
-                    
-                    	<button id = "open">작성 하기</button>
-<form action="/homework/homework_create" method="post">
+                    <td class = "check_box"><input type="checkbox" name="checkbox" id="checkbox" onclick = 'checkOne(this)'>
+                    <button type = "button" id = "open">작성 하기</button>
                     	<div id = "modal-box">
                     		<div id = "modal-contents">
                     			<button id = "close">&times;</button>
@@ -75,10 +68,10 @@
                     			<div id = "profile">
                     				<div id = "desc">
                     				<div id = "content-box1">
-                    					<p class = "user">학습자 : </p>
-                    					<p class = "user">학습지도자 : </p>
-                    					<p class = "user">숙제 내용 : </p>
-                    					<p class = "user">제출기한 : </p>
+                    					<p class = "user">학습자 : ${worklist.user_name }</p>
+                    					<p class = "user">학습지도자 : ${worklist.user_id_leader }</p>
+                    					<p class = "user">숙제 내용 : ${worklist.homework_content_leader }</p>
+                    					<p class = "user">제출기한 : ${worklist.homework_deadline }</p>
                     				</div>
                     				<div id = "content-box2">
                     					<strong>학습내용</strong> <input type="text" name="" id="studytext">
@@ -91,7 +84,25 @@
                     			</div>
                     		</div>
                     	</div>
-                    	
+                    </td>
+     
+                    <td class = "contentName"><c:out value="${worklist.content_name }"/></td>
+                    <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
+                    <td class = "workContent"><c:out value="${worklist.homework_content_leader }"/></td>
+                    <td class = "sendDate" style = "color: red; font-weight: bold;"><c:out value="${worklist.homework_deadline }"/></td>
+                    <td class = "studyContent">
+                    <c:choose>
+                    <c:when test="${not empty worklist.homework_content_learner }">
+                   		<c:out value="${worklist.homework_content_learner }"/>
+                    </c:when>
+                    <c:otherwise>
+                    <form action="/homework/homework_sendAction" method="post">
+                    	<input type="text" name="content_send_box" id="content_send_box" placeholder = '학습 내용을 입력해주세요.'>
+                    	<input type="hidden" name="group_id" value="${worklist.group_id }">
+                    	<button type ="submit" onclick = "send()">제출</button>
+                    </form>
+                    </c:otherwise>
+                    </c:choose>
                     </td>
                     <!-- <td class = "studyContent"><c:out value="${worklist.homework_content_learner }"/></td> -->
                     </a>
@@ -100,41 +111,13 @@
             </table>
             
         </div>
-</form>
+
     </div>
-    
-    <script type = "text/javascript">
-    window.addEventListener('load', function(){
-        let open = document.getElementById('open');
-        let close = document.getElementById('close');
-        let modal = document.getElementById('modal-box');
-
-        
-        
-        open.addEventListener('click', function(){
-    		let startDate = document.querySelector('#subStartDate').value;
-    		let endDate = document.querySelector('#subEndDate').value;
-    		let modalprice = document.querySelector('.text-price').textContent;
-    		
-    		document.querySelector('#text-date').innerText = '대여 기간 : '+startDate+' ~ '+endDate;
-    		
-    		document.querySelector('.text-price').textContent = '가격 : '+modalprice;
-    		document.querySelector('#totalmodalprice').innerText = '최종가격 : '+modalprice*parseInt(diff/currDay);
-    		
-            modal.classList.add('active');
-        });
-
-        close.addEventListener('click', function(){
-            modal.classList.remove('active');
-        });
-    })
-    
-    document.getElementById("product-sellReserve").onclick = function(){
-    	alert("대여 예약 되었습니다.");
-    };
-    
-    
-    </script>
+<script>
+	function send(){
+    	alert('학습 내용 등록이 완료되었습니다.');
+	}
+</script>
 
 </body>
 <%@include file = "../common/footer.jsp" %>
