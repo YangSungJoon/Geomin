@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/homework_send.css">
 <link rel="stylesheet" href="../resources/css/modal.css">
+<link rel="stylesheet" href="../resources/css/study_group_join.css">
 <script src="../resources/js/homework_send.js"></script>
 <script src="../resources/js/modal.js"></script>
 
@@ -36,8 +37,8 @@
         </div>
         <div class = "left-sideBar">
             <ul>
-                <li class = "group_add"><a href = "#" id = "group_add">학습그룹 가입신청</a></li>
-                <li class = "work_send"><a href = "#" id = "work_send">숙제 제출</a></li>
+                <li class = "group_add"><a href = "/homework/study_group_join?user_id=${userId}" id = "group_add">학습그룹 가입신청</a></li>
+                <li class = "work_send"><a href = "/homework/homework_send?user_id=${userId}" id = "work_send">숙제 제출</a></li>
             </ul>
         </div>
         

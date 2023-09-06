@@ -91,6 +91,10 @@ public class dhController {
 		model.addAttribute("user", groupjoinService.userInfo(user_id));
 		model.addAttribute("list", homeworkService.getGroupInfo());
 		
+		log.info("==================================가입 정보 조회======================================");
+		//model.addAttribute("select", homeworkService.getGroupId(group_id));
+		//model.addAttribute("info", groupjoinService.selectGroup(group_id));
+		
 		// 학습자 이름 출력
 		//model.addAttribute("learner", homeworkService.getUserName(user_id));
 		
