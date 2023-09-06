@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", function() {
 <header>
     <div class = "header">
         <div class = "header_top">
-            <div id = "logo">로고</div>
-            <div id = "name">게임으로 배우는 바둑 교실</div>
+            <div id = "logo"><img src="../resources/image/logo.png"></div>
+            <div id = "name"><a href="/main/main" id ="regist">게임으로 배우는 바둑 교실</a></div>
             <div id = "login_menu">
                 <ul class = "login">
                   <c:choose>
