@@ -24,16 +24,16 @@
 <body>
 
 구독 콘텐츠 목록
-userId : ${userId} <br>
+<%-- userId : ${userId} <br>
 pageDto : ${pageDto } <br>
-totalCnt : ${totalCnt } <br>
+totalCnt : ${totalCnt } <br> --%>
 
 	<form action="/group/myGroup" 
 		method="get" name="myGroupGO" autocomplete="off" >
 
-	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
-	<input type="text" name="total" value="${pageDto.total }">
-	<input name="user_id" value="${userId}">
+	<input type="hidden" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="hidden" name="total" value="${pageDto.total }">
+	<input type="hidden" name="user_id" value="${userId}">
 			
 	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
 	</form>
@@ -51,7 +51,7 @@ totalCnt : ${totalCnt } <br>
 
 <form action="delGroup" method="post">
 
-<input name="user_id" value="${userId}">
+<input type="hidden" name="user_id" value="${userId}">
         <div class = "request-content">
             <table>
                 <tr class = "table_menu">
@@ -73,7 +73,7 @@ totalCnt : ${totalCnt } <br>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button">그룹 삭제</button>
+                <button type = "submit" id = "send_button" onclick="alert('그룹이 삭제 되었습니다.')">그룹 삭제</button>
             </div>
         </div>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />

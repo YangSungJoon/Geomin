@@ -65,6 +65,10 @@ public class homework_tController {
 		System.out.println("getHomework_content_leader : =====================" + subScriptionVO.getHomework_content_leader());
 		System.out.println("getHomework_no : =====================" + subScriptionVO.getHomework_no());
 		
+		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+		PageDto pageDto = new PageDto(cri, cnt);
+		
+		model.addAttribute("pageDto", pageDto);
 		
 		contentService.homework_add(subScriptionVO);
 		contentService.groupApproval(subScriptionVO, cri,  model);

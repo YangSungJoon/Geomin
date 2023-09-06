@@ -192,7 +192,7 @@
 	
 
 	<select id="homework_option" resultType="com.geomin.vo.SubScriptionVO">
-	        select c.content_name, g.group_name 
+	        select distinct c.content_name
         from groups g, content c
         where c.content_id = g.content_id
 	</select>

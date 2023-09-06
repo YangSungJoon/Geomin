@@ -51,7 +51,8 @@ public class ContentController {
 	@PostMapping("contentList")
 	public String contentListPost(SubScriptionVO subScriptionVO,Criteria cri, Model model) {
 		
-
+		
+		
 		System.out.println("cri : =================" + cri);
 		int cnt = contentService.contentListCnt(subScriptionVO, cri);
 
@@ -63,14 +64,18 @@ public class ContentController {
 		
 		model.addAttribute("pageDto", pageDto);
 		model.addAttribute("contentList", list);
+		
 
+		
 		return "content/contentList";
 	}
 	
 	
 	 @GetMapping("subContentList") 
 	 public String subContentList(Model model, SubScriptionVO subScriptionVO, Criteria cri) { 
-			System.out.println("User_id ============================== :  " + subScriptionVO.getUser_id());
+			
+		 
+		 System.out.println("User_id ============================== :  " + subScriptionVO.getUser_id());
 			System.out.println("cri =========================" + cri);
 			
 			int cnt = contentService.subContentListCnt(subScriptionVO, cri);
@@ -100,20 +105,35 @@ public class ContentController {
 	@PostMapping("subContentListAction")
 	public String subContentListAction(Model model, SubScriptionVO subScriptionVO, Criteria cri) {
 
-		System.out.println("content_id ============================== :  " + subScriptionVO.getContent_id());
-		System.out.println("content_id ============================== :  " + subScriptionVO.getUser_id());
+		try {
+			contentService.insertSubContent(subScriptionVO, model);
+			
+			
+			contentService.insertContentPay(subScriptionVO);
+			
+			contentService.subContentList(subScriptionVO,cri, model);
+			
+			
+			return "content/subContentList";
+			
+			
+		} catch (Exception e) {
+			int cnt = contentService.contentListCnt(subScriptionVO, cri);
 
-		contentService.insertSubContent(subScriptionVO, model);
-
+			List<ContentVO> list = contentService.contentList(subScriptionVO, cri, model);
+			System.out.println("contentList : =====================" + list);
+			
+			
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			model.addAttribute("pageDto", pageDto);
+			model.addAttribute("contentList", list);
+			
+			
+			return "content/contentList";
+		}
 		
-		contentService.insertContentPay(subScriptionVO);
 		
-		contentService.subContentList(subScriptionVO,cri, model);
-		
-
-		
-		
-		return "/content/subContentList";
 	}
 	
 	

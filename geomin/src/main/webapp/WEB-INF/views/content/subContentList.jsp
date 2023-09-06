@@ -47,23 +47,23 @@
 <body>
 
 구독 콘텐츠 목록 <br>
-
+<%-- 
 pageDto : ${pageDto }<br>
-subTotalCnt :  ${subTotalCnt }<br>
+subTotalCnt :  ${subTotalCnt }<br> --%>
 
 	<form action="/content/subContentList" 
 		method="get" name="subContentListGO" autocomplete="off" >
 
-	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
-	<input type="text" name="total" value="${pageDto.total }">
-	<input name="user_id" value="${userId}">
+	<input type="hidden" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="hidden" name="total" value="${pageDto.total }">
+	<input type="hidden" name="user_id" value="${userId}">
 			
 	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
 	</form>
 
 <form action="payStatus" method="post">
 
-<input name="user_id" value="${userId}">
+<input type="hidden" name="user_id" value="${userId}">
 
 <div class = "intro-box">
         <div class = "left-sideBar">
@@ -100,7 +100,7 @@ subTotalCnt :  ${subTotalCnt }<br>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button">결제 취소</button>
+                <button type = "submit" id = "send_button" onclick="alert('결제가 취소되었 습니다.')">결제 취소</button>
             </div>
         </div>
     </div>

@@ -88,17 +88,17 @@
 <body>
 
 메인 콘텐츠 목록
-userId : ${userId} <br>
+<%-- userId : ${userId} <br>
 pageDto : ${pageDto } <br>
-totalCnt : ${totalCnt } <br>
-<input name="user_id" value="${userId}">
+totalCnt : ${totalCnt } <br> --%>
+<input type="hidden" name="user_id" value="${userId}">
 
 	<form action="/group/groupApproval" 
 		method="get" name="groupApprovalGO" autocomplete="off" >
 
-	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
-	<input type="text" name="total" value="${pageDto.total }">
-	<input name="user_id" value="${userId}">
+	<input type="hidden" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="hidden" name="total" value="${pageDto.total }">
+	<input type="hidden" name="user_id" value="${userId}">
 			
 	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
 	</form>
@@ -115,25 +115,25 @@ totalCnt : ${totalCnt } <br>
         </div>
         
      <form action="groupApproval" method="get">
-     <input name="user_id" value="${userId}">
+     <input type="hidden" name="user_id" value="${userId}">
 	      <div class = "name-content">
 	          <p>콘텐츠명 &nbsp;
 	              <select id="search_name">
 	                  <option value="">전체 ↓</option>
 	               <c:forEach items="${option_content_id}" var="count">
 	                  <option value="${count.content_name}" >${count.content_name }</option>
-				   </c:forEach>
+				   </c:forEach>	
 	              </select>
 	              <button type = "submit" id = "name_check">조회</button>
 	          </p><hr>
 	      </div>
 	      
-	      <input name="content_name" value="${content_name }">
+	      <input type="hidden" name="content_name" value="${content_name }">
 	      
      </form>
         
 <form action="Approval" method="post">
-	<input name="user_id" value="${userId}">
+	<input type="hidden" name="user_id" value="${userId}">
 	        <div class = "request-content">
 	            <table>
 	                <tr class = "table_menu">
@@ -165,7 +165,7 @@ totalCnt : ${totalCnt } <br>
 					        
 	            </table>
 	            <div class = "send_button_box">
-	                <button type = "submit" id = "send_button">승인</button>
+	                <button type = "submit" id = "send_button" onclick="alert('승인되었습니다.')">승인</button>
 	            </div>
 	        </div>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />

@@ -10,10 +10,10 @@
 </head>
 <%@include file = "../common/header.jsp" %>
 <body>
-userId : ${userId} <br>
+<%-- userId : ${userId} <br>
 pageDto : ${pageDto } <br>
-totalCnt : ${totalCnt } <br>
-	<input type="text" name="user_id" value="${userId}"><br>
+totalCnt : ${totalCnt } <br> --%>
+	<input type="hidden" name="user_id" value="${userId}"><br>
 
 
 
@@ -54,7 +54,7 @@ totalCnt : ${totalCnt } <br>
                  <input type="date" name="learning_start"> ~ <input type="date" name="learning_end">
 
                 <div>
-                    <button type = "submit" id = "add_button">학습그룹 등록</button>
+                    <button type = "submit" id = "add_button" onclick="alert('그룹이 등록되었습니다.')">학습그룹 등록</button>
                 </div>
 
             </div>
@@ -63,8 +63,8 @@ totalCnt : ${totalCnt } <br>
 
 
 
-	<input type="text" name="user_id_leader" value="${userId}"><br>
-	<input type="text" name="learning_member" value="${learning_member}"><br>
+	<input type="hidden" name="user_id_leader" value="${userId}"><br>
+	<input type="hidden" name="learning_member" value="${learning_member}"><br>
 	
 
     </form>
