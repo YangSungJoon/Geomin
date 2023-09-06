@@ -1,6 +1,8 @@
 package com.geomin.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,20 +68,25 @@ public class ManagementController {
 	}
 
 	@PostMapping("contentDelete")
-	public String contentDelete(@RequestParam("content_id") String contentId, Model model) {
+	@ResponseBody
+	public Map<String, String> contentDelete(@RequestParam("content_id") String contentId) {
+	    Map<String, String> response = new HashMap<>();
+
 	    ContentVO contentVo = new ContentVO();
 	    contentVo.setContent_id(contentId);
 	    contentVo.setIs_deleted("Y"); // is_deleted 값을 "Y"로 설정
+
 	    int result = managementService.contentDelete(contentVo);
 
 	    if (result > 0) {
-	        model.addAttribute("deleteSuccess", true);
+	        response.put("success", "true");
 	    } else {
-	        model.addAttribute("deleteSuccess", false);
+	        response.put("success", "false");
 	    }
 
-	    return "redirect:/content/contentList";
+	    return response;
 	}
+
 
 	
 	@PostMapping("insert_content")

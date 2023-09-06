@@ -120,12 +120,13 @@ document.addEventListener("DOMContentLoaded", function() {
             url: "/management/contentDelete", // 실제 컨트롤러 URL로 수정
             data: { content_id: contentId },
             success: function(response) {
-                if (response.success) {
-                    // 삭제 성공 시 추가 동작 수행
+            	console.log(response.success);
+            	if (response.success === "true") {
+                    // 삭제 성공 시 리다이렉트
                     alert("삭제가 완료되었습니다.");
                     // 페이지 리로드 또는 리다이렉션을 수행
-                    location.reload(); // 페이지 리로드 예시
-                } else {
+                    window.location.href = "/content/contentList"; // contentList 페이지 URL로 변경
+                    } else {
                     alert("삭제 중 오류가 발생했습니다.");
                 }
             },
