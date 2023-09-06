@@ -35,11 +35,8 @@
         
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "/management/learner_content" id = "intro-hover">학습콘텐츠 등록</a></li>
-                <li class = "guide"><a href = "/management/announce_add" id = "insert_announce">공지 등록</a></li>
-                <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
-                <li class = "guide"><a href = "/management/qna" id = "qna">Q&A</a></li>
-                <li class = "guide"><a href = "/management/salestally" id = "guide-hover">매출집계 및 조회</a></li>
+                <li class = "site-intro"><a href = "/content/contentList" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
+                <li class = "guide"><a href = "/content/subContentList?user_id=${userId}" id = "guide-hover">나의 학습콘텐츠</a></li>
             </ul>
         </div>
   
@@ -54,10 +51,10 @@
 				<input type="text" name="content_name" class="content_name" id="content_name" value="${contentVo.content_name}"><br>
 				<p>학습난이도<span>*</span></p>
       		    <div class = "member_check">
-                <select name="learning_difficulty" id="learning_difficulty" value="${contentVo.learning_difficulty}">
-                    <option value="초급">초급</option>
-                    <option value="중급">중급</option>
-                    <option value="고급">고급</option>
+                <select name="learning_difficulty" id="learning_difficulty">
+                    <option value="1">초급</option>
+                    <option value="2">중급</option>
+                    <option value="3">고급</option>
                 </select>
             </div>		   
             

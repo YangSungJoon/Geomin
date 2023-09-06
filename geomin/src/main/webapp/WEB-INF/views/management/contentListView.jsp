@@ -5,7 +5,36 @@
 <head>
     <meta charset="UTF-8">
     <title>학습콘텐츠 목록</title>
-    <link rel="stylesheet" href="../resources/css/learner_content.css">
+    <style>
+    	
+
+#addbtn{
+	border : 1px solid black;
+	
+}
+
+.group_add_box h1{
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.left_content{
+    height: 35rem;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    line-height: 2rem;
+    
+    
+}
+    
+    	#pakage{
+    		width:200px;
+    	}
+    	
+    </style>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
 </head>
@@ -34,13 +63,12 @@
 
     <div class="left-sideBar">
         <ul>
-            <li class="site-intro"><a href="/management/learner_content" id="intro-hover">학습콘텐츠 등록</a></li>
-            <li class="guide"><a href="/management/announce_add" id="insert_announce">공지 등록</a></li>
-            <li class="guide"><a href="/management/announcement" id="announcement">공지사항</a></li>
-            <li class="guide"><a href="/management/qna" id="qna">Q&A</a></li>
-            <li class="guide"><a href="/management/salestally" id="guide-hover">매출집계 및 조회</a></li>
-        </ul>
-    </div>
+              
+                <li class = "site-intro"><a href = "/content/contentList" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
+                <li class = "guide"><a href = "/content/subContentList?user_id=${userId}" id = "guide-hover">나의 학습콘텐츠</a></li>
+            </ul>
+            
+   </div>
 
     <div class="group_add_box">
         <div class="left_content">
@@ -49,13 +77,15 @@
    
             <table border="1">
             	<tr>
-            		<th>패키지명</th>
-            		<td colspan="4">${contentVo.content_name}</td>
+            		<th id="pakage">패키지명</th>
+            		<td id="pakage2" colspan="4">${contentVo.content_name}</td>
+            		
             	</tr>
             	<tr>
-            		<th>학습 난이도</th>
-            		<td class="learning_difficulty">${contentVo.learning_difficulty}</td>
-            	</tr>
+				    <th>학습 난이도</th>
+				    <td class="learning_difficulty">${contentVo.learning_difficulty_str}</td>
+				</tr>
+
             	<tr>
             		<th>학습 가능 인원</th>
             		<td>${contentVo.learning_member}명</td>
@@ -73,15 +103,21 @@
             		<td>${contentVo.real_price}원</td>
             	</tr>
             	<tr>
-            		<th>학습 내용</th>
-            		<td>${contentVo.learning_content}</td>
+            		<th colspan="2">학습 내용</th>
+            	</tr>
+            	<tr>
+            		<td colspan="2">${contentVo.learning_content}</td>
             	</tr>
             </table>
     			<div id="addbtn">
-                   <button type="button" onclick="location.href='/management/contentUpdate?content_id=${contentVo.content_id}'">수정</button>
-
-					 <button type="button" class="contentDelete" onclick="deleteContent('${contentVo.content_id}')">삭제</button>
-                    
+    			<c:choose>
+                  <c:when test="${userVo.user_type == 3}">
+	                   <button type="button" onclick="location.href='/management/contentUpdate?content_id=${contentVo.content_id}'">수정</button>
+					   <button type="button" class="contentDelete" onclick="deleteContent('${contentVo.content_id}')">삭제</button>
+                  </c:when>
+                  <c:otherwise>
+                  </c:otherwise>
+                </c:choose>  
                 </div>
             </form>
         </div>
@@ -134,6 +170,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("서버 요청 중 오류가 발생했습니다.");
             }
         });
+    }
+    
+    function convertDifficulty(difficulty) {
+        switch (difficulty) {
+            case '1':
+                return '초급';
+            case '2':
+                return '중급';
+            case '3':
+                return '고급';
+            default:
+                return '알 수 없음';
+        }
     }
 </script>
 

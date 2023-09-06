@@ -41,6 +41,7 @@ public class ManagementController {
 	public String contentListView(@RequestParam("content_id") String contentId, Model model){
 		
 		ContentVO contentVo = managementService.contentListView(contentId);
+		contentVo.setLearning_difficulty_str();
 		
 		model.addAttribute("contentVo", contentVo);
 		

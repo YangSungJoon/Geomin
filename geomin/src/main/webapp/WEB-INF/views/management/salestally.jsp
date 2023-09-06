@@ -38,11 +38,23 @@
         
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "/management/learner_content" id = "intro-hover">학습콘텐츠 등록</a></li>
-                <li class = "guide"><a href = "/management/announce_add" id = "insert_announce">공지 등록</a></li>
-                <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
-                <li class = "guide"><a href = "/management/qna" id = "qna">Q&A</a></li>
-                <li class = "guide"><a href = "/management/salestally" id = "guide-hover">매출집계 및 조회</a></li>
+              <c:choose>
+                  	<c:when test="${userVo.user_type == 1}">
+	                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는질문</a></li>                
+                    </c:when>
+                    <c:when test="${userVo.user_type == 2}">
+	                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는질문</a></li>                
+                    </c:when>
+                    <c:otherwise>
+	                    <li class = "site-intro"><a href = "/management/learner_content" id = "intro-hover">학습콘텐츠 등록</a></li>
+		                <li class = "guide"><a href = "/management/announce_add" id = "insert_announce">공지 등록</a></li>
+		                <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+		                <li class = "guide"><a href = "/management/qna" id = "qna">자주하는질문</a></li>
+		                <li class = "guide"><a href = "/management/salestally" id = "guide-hover">매출집계 및 조회</a></li>
+                    </c:otherwise>
+               </c:choose>
             </ul>
         </div>
   
