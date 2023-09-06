@@ -76,17 +76,17 @@
 	</head>
 	 <%@include file = "../common/header.jsp" %> 
 	<body>
-	userId : ${userId} <br>
+<%-- 	userId : ${userId} <br>
 	pageDto : ${pageDto } <br>
 	totalCnt : ${totalCnt } <br>
-	
+	 --%>
 		<form action="homework_add" 
 			method="get" name="homework_addGO" autocomplete="off" >
 	
-		<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
-		<input type="text" name="total" value="${pageDto.total }">
-		<input name="user_id" value="${userId}">
-		<input name="groupyn" value="Y">
+		<input type="hidden" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+		<input type="hidden" name="total" value="${pageDto.total }">
+		<input type="hidden" name="user_id" value="${userId}">
+		<input type="hidden" name="groupyn" value="Y">
 				
 		<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
 		</form>
@@ -119,17 +119,17 @@
 		
 			      
 			              <button type = "submit" id = "name_check">조회</button>
-			      <input name="groupyn" value="Y">
-			      <input name="content_name" class="content_name" value="${content_name }">
-			      <input name="user_id"  value="${userId}">
+			      <input type="hidden" name="groupyn" value="Y">
+			      <input type="hidden" name="content_name" class="content_name" value="${content_name }">
+			      <input type="hidden" name="user_id"  value="${userId}">
 			      
 	</form>
 		      
 	<form action="homework_add" method="post">
-	<input name="user_id" value="${userId}">
-	<input name="user_id_leader" value="${userId}">
-	<input name="groupyn" value="Y">
-	  
+	<input type="hidden" name="user_id" value="${userId}">
+	<input type="hidden" name="user_id_leader" value="${userId}">
+	<input type="hidden" name="groupyn" value="Y">
+	  	
 	        
 	
 		        <div class = "request-content">
@@ -173,7 +173,7 @@
 				
 	
 		            <div class = "send_button_box">
-		                <button type = "submit" id = "send_button">숙제 전송</button>
+		                <button type = "submit" id = "send_button" onclick="alert('숙제가 전송 되었습니다.')">숙제 전송</button>
 		            </div>
 		        </div>
 	</form>

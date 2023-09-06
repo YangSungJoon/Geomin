@@ -48,6 +48,7 @@
             });
             
 
+
         };
 
     </script>
@@ -56,13 +57,12 @@
  <%@include file = "../common/header.jsp" %> 
 <body>
 
-
 	<form action="/content/contentList" 
 			method="get" name="contentListGO" autocomplete="off" >
 
-	<input type="text" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
-	<input type="text" name="total" value="${pageDto.total }">
-	<input type="text" name="user_id" value="${userId}">
+	<input type="hidden" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
+	<input type="hidden" name="total" value="${pageDto.total }">
+	<input type="hidden" name="user_id" value="${userId}">
 			
 	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
 	</form>
@@ -92,9 +92,9 @@
 </form>
 
 
-<form action="subContentListAction" method="post">
+<form action="subContentListAction" method="post" name="myForm">
 
-<input name="user_id" value="${userId}">
+<input type="hidden" name="user_id" value="${userId}">
         <div class = "request-content">
             <table>
                 <tr class = "table_menu">
@@ -130,6 +130,35 @@
 </form>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
     </div>
+
+<script>
+// JavaScript 코드 추가
+function showAlert(message) {
+    alert(message);
+}
+
+// 구독 신청 폼 submit 이벤트 처리
+document.querySelector("form[name='myForm']").addEventListener("submit", function (event) {
+    event.preventDefault(); // 기본 동작 방지 (페이지 새로고침 방지)
+
+    // 여기에서 AJAX 요청을 수행하고, 성공 또는 실패에 따라 showAlert 함수 호출
+    fetch("subContentListAction", {
+        method: "POST",
+        body: new FormData(this), // 폼 데이터를 전송
+    })
+    .then(response => {
+        if (response.ok) {
+            showAlert("구독 성공!");
+        } else {
+            showAlert("구독 실패!");
+        }
+    })
+    .catch(error => {
+        console.error("오류 발생:", error);
+        showAlert("구독 실패! 오류 발생");
+    });
+});
+</script>
 
 </body>
  <%@include file = "../common/footer.jsp" %> 
