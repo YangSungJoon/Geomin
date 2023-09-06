@@ -26,4 +26,9 @@ public class GroupJoinServiceImpl implements GroupJoinService {
 		return groupjoinMapper.userInfo(user_id);
 	}
 
+	@Override
+	public GroupJoinVO selectGroup(String group_id) {
+		return groupjoinMapper.selectGroup(group_id);
+	}
+
 }

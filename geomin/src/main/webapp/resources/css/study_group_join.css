@@ -30,11 +30,13 @@
 }
 
 .sub_content{
-    width: 35rem;
-    height: 20rem;
-    line-height: 3rem;
+    width: 550px;
+    height: 230px;
     font-size: 20px;
     font-weight: bold;
+    margin-right: 20rem;
+    margin-top: 3rem;
+    line-height: 2rem;
 }
 
 #select{
@@ -45,6 +47,26 @@
     font-size: 15px;
 }
 
-.join_info{
-    
+#select_info{
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    border: 2px solid black;
+    font-size: 15px;
+}
+
+#left_info{
+    float: left;
+    width: 250px;
+    height: 60px;
+    border-right: 2px solid black;
+    line-height: 2rem;
+}
+
+.right_info{
+	float: left;
+    width: 250px;
+    height: 60px;
+    text-align: center;
+    line-height: 2rem;
 }

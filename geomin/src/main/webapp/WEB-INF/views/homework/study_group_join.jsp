@@ -18,7 +18,7 @@
             <ul class = "clearFix">
                 <li class = "home">
                     <a href = "#">
-                        <img src="../image/homeicon.png" alt=""> /
+                        <img src="../resources/image/homeicon.png" alt=""> /
                     </a>
                 </li>
                 <li>
@@ -36,8 +36,8 @@
 
         <div class = "left-sideBar">
             <ul>
-                <li class = "site-intro"><a href = "#" id = "intro-hover">학습그룹 가입신청</a></li>
-                <li class = "guide"><a href = "../html/guide.html" id = "guide-hover">숙제 제출</a></li>
+                <li class = "site-intro"><a href = "/homework/study_group_join?user_id=${userId}" id = "intro-hover">학습그룹 가입신청</a></li>
+                <li class = "guide"><a href = "/homework/homework_send?user_id=${userId}" id = "guide-hover">숙제 제출</a></li>
             </ul>
         </div>
         
@@ -46,31 +46,51 @@
         <div class = "group-content-box">
             <h2 class = "join_info">가입 정보</h2> 
             <div class = "group_content">
-                <strong style='font-size: 27px'>그룹명</strong>
-                	
-                <select id = "select" name = "select" onchange = "onChange(this)" style='margin-left: 1rem'>
+            
+            <div id = "left_info">
+                <strong style='font-size: 27px'>그룹 정보 보기</strong>
+                <select id = "select_info" name = "infoview" onchange = "onChange(this)" style='margin-left: 1rem'>
                     <option value="그룹을 선택해주세요.">선택</option>
         			<c:forEach items = "${list}" var="i">
-                    <option value="
-                    	학습지도자 : ${i.user_id_leader}
-                    	학습기간 : ${i.learning_start} ~ ${i.learning_end}
-                    	가입현황 : - / ${i.group_personnel }명
+                    <option value="${i.group_id }
+                    				<br>
+                    				학습 지도자 : ${i.user_id_leader}<br>
+                    				학습 기간 : ${i.learning_start} ~ 
+                    							${i.learning_end}<br>
+        							가입현황 : ${i.group_personnel}<br>
                     ">
-                    ${i.group_name}
-                    </option>
+                    	${i.group_name}         
+                    </option>    
                     </c:forEach>
                 </select>
-                	<p style = "float:right;">신청자 : ${user.user_name }</p>
-                <br>
-                <div id = "result"></div>
                 <div class = "sub_content" id = "select_view">
-                    <br>
-                    <!--<c:forEach items = "${list }" var = "list">
+                    <!-- <br>
+                    <c:forEach items = "${list }" var = "list">
                     <p>학습지도자 명 : ${list.user_id_leader } </p>
                     <p>학습기간 : ${list.learning_start } ~ ${list.learning_end }</p>
                     <p>가입현황 : -  / ${list.group_personnel }명</p>
-                    </c:forEach>-->
+                    </c:forEach> -->
+                    
                 </div>
+            </div>
+            
+            <div class = "right_info">
+            	<strong style='font-size: 27px'>신청 그룹 선택</strong>
+                <select id = "select" name = "group_id" onchange = "onChange(this)" style='margin-left: 1rem'>
+                    <option value="그룹을 선택해주세요.">선택</option>
+                    <c:forEach items = "${list}" var="list">
+                    <option value="${list.group_id}">
+                    ${list.group_name }
+                    </option>
+                    </c:forEach>
+                </select>
+                <br>
+                <p style = "float:right;"><strong>신청자 : </strong>${user.user_name }</p>
+            </div>
+                	
+                <br>
+                <div id = "result"></div>
+                
             </div>
         </div>
         

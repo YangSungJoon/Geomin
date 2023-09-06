@@ -36,5 +36,4 @@ public interface HomeWorkService {
 	
 	// 학습 내용 제출
 	public int update(HomeWorkVO homeworkVO);
-
 }

@@ -25,7 +25,6 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 	@Autowired
 	private HomeWorkService homeworkService;
 
-	// 게시판 목록
 	@Override
 	public List<HomeWorkVO> getList(String user_id) {
 		return homeworkMapper.getList(user_id);
