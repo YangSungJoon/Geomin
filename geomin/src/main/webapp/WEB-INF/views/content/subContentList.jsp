@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/content_request.css">
-    
+    aaaa : ${successMessage }   
      <script>
         window.onload = function() {
             const difficultyCells = document.querySelectorAll('.subPrice-difficulty');
@@ -35,6 +35,13 @@
                 cell.textContent = difficultyText;
             });
             
+            document.getElementById('search_level').addEventListener('change', function() {
+            	
+            	var selectedSearch_level = this.value;
+            	
+            	document.querySelector('input[name="learning_difficulty"]').value = selectedSearch_level;
+            	
+            });
             
             
             
@@ -47,6 +54,10 @@
 <body>
 
 구독 콘텐츠 목록 <br>
+<c:if test="${not empty successMessage}">
+    <script>alert('${successMessage}');</script>
+</c:if>
+
 <%-- 
 pageDto : ${pageDto }<br>
 subTotalCnt :  ${subTotalCnt }<br> --%>
@@ -94,19 +105,67 @@ subTotalCnt :  ${subTotalCnt }<br> --%>
 	                    <td class="subPrice-difficulty">${li.learning_difficulty}</td>
 	                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.learning_content }</td>
 	                    <td>${li.subscription_date }</td>
-	                    <td>${li.paystatus }</td>
+	                    <td><input type="checkbox" name="paystatus" id="checkbox2" value="${li.paystatus}">${li.paystatus }</td>
 	                </tr>
                 </c:forEach>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button" onclick="alert('결제가 취소되었 습니다.')">결제 취소</button>
+                <button type = "submit" id = "send_button" >결제 취소</button>
             </div>
         </div>
     </div>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 </form>
 
+<script>
+//삭제유무가 Y면 불가 처리
+document.addEventListener("DOMContentLoaded", function() {
+    var checkbox1Elements = document.querySelectorAll('input[name="content_id"]');
+    var checkbox2Elements = document.querySelectorAll('input[name="paystatus"]');
+
+    for (var i = 0; i < checkbox1Elements.length; i++) {
+        checkbox1Elements[i].addEventListener("change", function() {
+            var index = Array.from(checkbox1Elements).indexOf(this);
+            checkbox2Elements[index].checked = this.checked;
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var checkbox1Elements = document.querySelectorAll('input[name="content_id"]');
+    var checkbox2Elements = document.querySelectorAll('input[name="paystatus"]');
+    
+    var sendButton = document.getElementById("send_button");
+    
+    sendButton.addEventListener("click", function() {
+        var checkedCheckbox = null;
+        var message = "공백";
+        
+        for (var i = 0; i < checkbox1Elements.length; i++) {
+            if (checkbox1Elements[i].checked) {
+                checkedCheckbox = checkbox1Elements[i];
+                break;
+            }
+        }
+        
+        if (checkedCheckbox) {
+            var index = Array.from(checkbox1Elements).indexOf(checkedCheckbox);
+            var isDeletedCheckbox = checkbox2Elements[index];
+            
+            if (isDeletedCheckbox.value === 'Y') {
+                message = "결제가 취소 되었습니다.";
+            } else if (isDeletedCheckbox.value === 'C') {
+                message = "이미 결제취소된 컨텐츠입니다.";
+            } 
+        } else {
+            message = "체크된 콘텐츠가 없습니다. 다시 확인해주세요.";
+        }
+        
+        alert(message);
+    });
+});
+</script>
 
 </body>
  <%@include file = "../common/footer.jsp" %> 

@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/content_request.css">
-     
 
        
      <script>
@@ -56,6 +55,8 @@
 </head>
  <%@include file = "../common/header.jsp" %> 
 <body>
+
+
 
 	<form action="/content/contentList" 
 			method="get" name="contentListGO" autocomplete="off" >
@@ -110,7 +111,7 @@
                 </tr>
                 <c:forEach items="${contentList }" var="li" varStatus="status">
 				    <tr>
-				        <td class="check_box"><input type="checkbox" name="content_id" id="checkbox" value="${li.content_id}"></td>
+				        <td class="check_box"><input type="checkbox" name="content_id" id="checkbox1" value="${li.content_id}"></td>
 				        <td class="packageName" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 				        <td class="people" >${li.learning_member} 명</td>
 				        <td class="price" >${li.price}원</td>
@@ -118,44 +119,63 @@
 				        <td class="subPrice" >${li.real_price}원</td>
 				        <td class="subPrice-difficulty" >${li.learning_difficulty}</td>
 				        <td class="content" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.learning_content}</td>
-				        <td>${li.is_deleted}</td>
+				        <td ><input type="checkbox" name="is_deleted" id="checkbox2" value="${li.is_deleted}"> ${li.is_deleted}</td>
 				    </tr>
                 </c:forEach>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button">구독신청</button>
+                <button type = "submit" id = "send_button" >구독신청</button>
             </div>
         </div>
 </form>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
     </div>
-
 <script>
-// JavaScript 코드 추가
-function showAlert(message) {
-    alert(message);
-}
+// 삭제유무가 Y면 불가 처리
+document.addEventListener("DOMContentLoaded", function() {
+    var checkbox1Elements = document.querySelectorAll('input[name="content_id"]');
+    var checkbox2Elements = document.querySelectorAll('input[name="is_deleted"]');
 
-// 구독 신청 폼 submit 이벤트 처리
-document.querySelector("form[name='myForm']").addEventListener("submit", function (event) {
-    event.preventDefault(); // 기본 동작 방지 (페이지 새로고침 방지)
+    for (var i = 0; i < checkbox1Elements.length; i++) {
+        checkbox1Elements[i].addEventListener("change", function() {
+            var index = Array.from(checkbox1Elements).indexOf(this);
+            checkbox2Elements[index].checked = this.checked;
+        });
+    }
+});
 
-    // 여기에서 AJAX 요청을 수행하고, 성공 또는 실패에 따라 showAlert 함수 호출
-    fetch("subContentListAction", {
-        method: "POST",
-        body: new FormData(this), // 폼 데이터를 전송
-    })
-    .then(response => {
-        if (response.ok) {
-            showAlert("구독 성공!");
-        } else {
-            showAlert("구독 실패!");
+document.addEventListener("DOMContentLoaded", function() {
+    var checkbox1Elements = document.querySelectorAll('input[name="content_id"]');
+    var checkbox2Elements = document.querySelectorAll('input[name="is_deleted"]');
+    
+    var sendButton = document.getElementById("send_button");
+    
+    sendButton.addEventListener("click", function() {
+        var checkedCheckbox = null;
+        var message = "공백";
+        
+        for (var i = 0; i < checkbox1Elements.length; i++) {
+            if (checkbox1Elements[i].checked) {
+                checkedCheckbox = checkbox1Elements[i];
+                break;
+            }
         }
-    })
-    .catch(error => {
-        console.error("오류 발생:", error);
-        showAlert("구독 실패! 오류 발생");
+        
+        if (checkedCheckbox) {
+            var index = Array.from(checkbox1Elements).indexOf(checkedCheckbox);
+            var isDeletedCheckbox = checkbox2Elements[index];
+            
+            if (isDeletedCheckbox.value === 'N') {
+                message = "구독신청이 완료 되었습니다.";
+            } else if (isDeletedCheckbox.value === 'Y') {
+                message = "삭제된 콘텐츠입니다. 다시 신청해주세요.";
+            } 
+        } else {
+            message = "체크된 콘텐츠가 없습니다. 다시 확인해주세요.";
+        }
+        
+        alert(message);
     });
 });
 </script>
