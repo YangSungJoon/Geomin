@@ -37,7 +37,8 @@
         </div>
         <div class = "intro-content">
             <h1>바둑 교실 이용 가이드</h1>
-            <img id="guide_image" src="../resources/image/guide.png" alt="이미지">
+            <br><br>
+            <img id="guide_image" src="../resources/image/guide.png" alt="이미지"><br><br>
             <p>안녕하세요. 저희  어린이 바둑교육 사이트 한기원에 오신걸 환영합니다. </p>
             <p>저희 바둑교실은 먼저 운영자님이 학습콘텐츠를 등록합니다.</p>
           <p>  그리고 학습지도자(선생님)께서 학습콘텐츠를 구독하고 학습그룹을 만듭니다.</p>

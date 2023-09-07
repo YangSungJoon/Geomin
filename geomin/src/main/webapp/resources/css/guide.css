@@ -1,5 +1,4 @@
 .intro-box{
-    border: 2px solid black;
     width: 80rem;
     height: 60rem;
 }
@@ -11,6 +10,7 @@
     float: left;
     line-height: 3rem;
     margin-top: 0.5rem;
+    margin-right: 1rem;
 }
 
 .site-intro{
@@ -30,7 +30,7 @@
     border-radius: 10rem;
     text-align: center;
     margin-top: 1rem;
-    background-color: #f9f9f9 !important;
+    background-color: #f9f9f9;
 }
 
 #guide-hover:hover{
@@ -62,12 +62,16 @@
 }
 
 .intro-content{
-    border: 3px solid black;
+	margin-left: 23rem;
     width: 47rem;
-    height: 55rem;
-    padding: 10px;
+    height: 58rem;
+    margin-top: 1.5rem;
 }
 
 h1{
     text-align: center;
+}
+
+.guide_image{
+	text-align: center;
 }

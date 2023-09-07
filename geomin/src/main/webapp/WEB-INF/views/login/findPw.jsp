@@ -13,8 +13,22 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-        
-            <div id="wrap_container">
+<div class='regi_area'>
+		<div class="intro-box">
+			<div class="location">
+				<ul class="clearFix">
+					<li class="home"><a href="#"> 
+						<img src="../resources/image/homeicon.png" alt=""> 
+					</a></li>
+					<li><a href="#"> / 비밀번호 찾기  </a></li>
+				</ul>
+			</div>
+			<div class="left-sideBar">
+				<ul>
+                <li class = "site-intro"><a href = "/login/findId" id = "intro-hover">비밀번호 찾기</a></li>
+            </ul>
+			</div>        
+        <div id="wrap_container">
         <form id="findPwTest">
                 <div class="findPw_title">
                     <h2><span class="glyphicon glyphicon-lock"></span> 비밀번호 찾기</h2>
@@ -24,31 +38,32 @@
                 </div>
                   
                     	<div class="form-group">
-                            <label for="userId"><span class="glyphicon glyphicon-id" style="font-size : 20px">id</span></label>
+                            <label for="userId"><span class="glyphicon glyphicon-id" style="font-size : 20px"></span></label>
                             <input type="text" class="userId" id="userId" 
-                            placeholder="가입시 등록한 아이디를 입력하세요." value="wed478">
+                            placeholder="아이디를 입력하세요." value="wed478">
                         </div>
                         <div class="form-group">
-                            <label for="userEmail"><span class="glyphicon glyphicon-user" style="font-size : 20px">email</span></label>
+                            <label for="userEmail"><span class="glyphicon glyphicon-user" style="font-size : 20px"></span></label>
                             <input type="text" class="userEmail" id="userEmail" 
                             placeholder="가입시 등록한 이메일을 입력하세요." value="wed478@naver.com">
                         </div>
                         <div class="form-group">
-                            <label for="userName"><span class="glyphicon glyphicon-eye-open" style="font-size : 20px">name</span></label>
+                            <label for="userName"><span class="glyphicon glyphicon-eye-open" style="font-size : 20px"></span></label>
                             <input type="text" class="userName" id="userName" 
-                            placeholder="가입시 등록한 이름을 입력하세요." value="양성준">
+                            placeholder="이름을 입력하세요." value="양성준">
                         </div>
                         <div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
                         
                         <br>
                 <div class="findPw_submit">
-                    <button type="button" class="checkEmail" id="checkEmail">보내기 </button>&nbsp;
-                    <button type="button" class="returnlogin" id="returnlogin"
+                    <button type="button" class="buttonA btnPush btnColor" id="checkEmail">보내기 </button>&nbsp;
+                    <button type="button" class="buttonA btnPush btnColor" id="returnlogin"
                     onclick = "location.href='/login/login'">취소</button>
                    </div>
 				</form>
         </div>
-           
+       </div>
+</div> 
       
 <script>
 $(document).ready(function () {

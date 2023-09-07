@@ -16,6 +16,22 @@
 <%@include file = "../common/header.jsp" %>
 <body>
     <div class = "home-box">
+    
+	    <div class = "location">
+            <ul class = "clearFix">
+                <li class = "home">
+                    <a href = "/login/login">
+                        <img src="../resources/image/homeicon.png" alt=""> /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        홈
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
         <div id='banner'>
 		    <div class="arrow" id="left">&lang;</div>
             <img src="../resources/image/pic-1.jpeg" alt="">
@@ -26,7 +42,7 @@
         <hr>
 
         <div id = "recommand-box">
-            <h2>인기 강의</h2>
+            <h2>추천 강의</h2>
             <div class = "recommand-image1">
                 <img src="../resources/image/a.png" alt="이미지">
                 <p>강의 1</p>

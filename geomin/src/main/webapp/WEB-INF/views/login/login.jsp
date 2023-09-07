@@ -12,7 +12,7 @@
 </head>
 <%@include file = "../common/header.jsp" %>
 <body>
-<form action='/loginAction' method='post'>
+
     <div class = "intro-box">
         <div class = "location">
             <ul class = "clearFix">
@@ -35,40 +35,38 @@
             </ul>
         </div>
 
-    <div class='login_box'>
-        <div class='login_center slide-in'>
-            <div class='login_logo'>
-                회원 로그인
-            </div>
+        <div class="container">
+          <div class="sign-in-container">
+          <form action='/loginAction' method='post'>
+              <h1>Login</h1>
+              <div class="social-links">
+                <div>
+                  <a href="#"><i aria-hidden="true"><img src="../resources/image/kakao.png"></i></a>
+                </div>
+                <div>
+                  <a href="#"><i aria-hidden="true"><img src="../resources/image/naver.png"></i></a>
+                </div>
+                <div>
+                  <a href="#"><i aria-hidden="true"><img src="../resources/image/facebook.png"></i></a>
+                </div>
+              </div>
+              <input type="text" name="userId" placeholder="Id">
+              <input type="password" name = "userPw" placeholder="Password">
+          
+              <button type = "submit" class="form_btn">로그인</button>
+          </form>
+          </div>
+          
+          
+          <div class="overlay-right">
+            <button id="signUp" class = "buttonA btnPush btnColor" onclick="location.href='/login/regist'">회원가입</button><br>
+            <button id="signUp" class="buttonA btnPush btnColor" onclick="location.href='/login/findId'">아이디 찾기</button><br>
+            <button id="signUp" class="buttonA btnPush btnColor" onclick="location.href='/login/findPw'">비밀번호 찾기</button>
+          </div>
         </div>
-    </div>
-    
-    <div class = "login_content_box">
-    <div class = "login_menu">
-        <div class='login_box_id'>
-            <h5>아이디</h5>
-            <input type="text" name="userId" id="userId" placeholder='' autocomplete='off' value="">
-        </div>
-        <div class='login_box_pw'>
-            <h5>비밀번호</h5>
-            <input type="password" name="userPw" id="userPw" autocomplete='off' value="">
-        </div>
-    </div>
-        <div class='login_button'>
-            <button type="submit" id="button_login">로그인</button> 
-        </div>
-        <br><br>
-        <hr>
-
-        <div class='login_bottom'>
-            <div><a href="/login/findId">아이디 찾기</a></div>
-            <div><a href="/login/findPw">비밀번호 찾기</a></div>
-            <div><a href="/login/regist">회원가입</a></div>
-        </div>
-    </div>
-
+        
 </div>
-</form>
+
       <script>
         <%-- 로그인 실패 시 메시지가 있는 경우에만 alert 창을 띄웁니다. --%>
         
