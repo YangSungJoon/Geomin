@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SaleVO;
+import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
 @Service
@@ -28,4 +29,5 @@ public interface ManagementService {
 	
 	public int contentDelete(ContentVO contentVo);
 	
+	public List<SubScriptionVO> contentSelect();
 }

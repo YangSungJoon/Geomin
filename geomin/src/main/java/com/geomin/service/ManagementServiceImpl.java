@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import com.geomin.mapper.ManagementMapper;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SaleVO;
+import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
 @Service
@@ -59,6 +60,12 @@ public class ManagementServiceImpl implements ManagementService{
 	@Override
 	public int contentDelete(ContentVO contentVo) {
 		return managementMapper.contentDelete(contentVo);
+	}
+
+	@Override
+	public List<SubScriptionVO> contentSelect() {
+		
+		return managementMapper.contentSelect();
 	}
 	
 }

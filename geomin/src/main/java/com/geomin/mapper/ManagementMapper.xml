@@ -59,4 +59,10 @@
 		where content_id = #{content_id}
 	</update>
 	
+	<!-- management-mapper.xml -->
+	<select id="contentSelect" resultType="com.geomin.vo.SubScriptionVO">
+	    SELECT content_id, content_name FROM subscription
+	</select>
+
+	
 </mapper>

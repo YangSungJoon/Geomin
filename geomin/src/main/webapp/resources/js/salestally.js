@@ -192,4 +192,3 @@ function createChart(salesData, reportType) {
     });
 }
 
-

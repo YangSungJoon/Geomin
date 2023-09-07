@@ -1,5 +1,6 @@
 package com.geomin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.geomin.service.MailSendService;
 import com.geomin.service.ManagementService;
+import com.geomin.vo.AnnouncementVO;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SaleVO;
+import com.geomin.vo.SubScriptionVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -103,11 +106,24 @@ public class ManagementController {
 	}
 	
 	@GetMapping("salestally")
-	public String salestally(Model model){
-		
-		return "/management/salestally";
-	}
+	public String salestally(Model model) {
+	    List<SubScriptionVO> contentNameList = managementService.contentSelect();
+	    
+	 // 중복을 제거할 데이터 배열
+	    List<SubScriptionVO> uniqueContentNameList = new ArrayList<>();
+	    Map<String, SubScriptionVO> contentMap = new HashMap<>();
 
+	    for (SubScriptionVO content : contentNameList) {
+	        if (!contentMap.containsKey(content.getContent_name())) {
+	            uniqueContentNameList.add(content);
+	            contentMap.put(content.getContent_name(), content);
+	        }
+	    }
+	    
+	    model.addAttribute("contentNameList", uniqueContentNameList);
+	    return "/management/salestally";
+	}
+	
 	@GetMapping("yearSaleList")
 	@ResponseBody
 	public List<SaleVO> yearSaleList(@RequestParam String content_id) {

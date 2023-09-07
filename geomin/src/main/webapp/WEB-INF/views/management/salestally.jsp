@@ -70,13 +70,14 @@
 	        </select>
 	        
 	        <label><input type="radio" name="report_type" value="monthly"> 월별 조회</label>
-	        <select id="contentSelect">
-	        	<option value="0001">콘텐츠명1</option>
-	        	<option value="0002">콘텐츠명2</option>
-	        	<option value="0003">콘텐츠명3</option>
-	        	<option value="0004">콘텐츠명4</option>
-	        	<option value="0005">콘텐츠명5</option>
-	        </select>
+	        
+	       <select id="contentSelect">
+			    <c:forEach items="${contentNameList}" var="content">
+			        <option value="${content.content_id}">${content.content_name}</option>
+			    </c:forEach>
+			</select>
+
+
         <button id="queryButton">조회</button>
 	    </div><br>
 	    <div id="salesList">

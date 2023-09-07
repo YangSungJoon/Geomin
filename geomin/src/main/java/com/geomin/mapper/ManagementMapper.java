@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SaleVO;
+import com.geomin.vo.SubScriptionVO;
 import com.geomin.vo.UserVO;
 
 public interface ManagementMapper {
@@ -26,5 +27,5 @@ public interface ManagementMapper {
 	
 	public int contentDelete(ContentVO contentVo);
 
-	
+	public List<SubScriptionVO> contentSelect();
 }
