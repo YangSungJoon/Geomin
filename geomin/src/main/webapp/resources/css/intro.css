@@ -1,5 +1,4 @@
 .intro-box{
-    /*border: 2px solid black;*/
     width: 80rem;
     height: 65rem;
 }
@@ -16,7 +15,7 @@
 .site-intro{
     width: 100%;
     font-weight: bold;
-    background-color: #f9f9f9 !important;
+    background-color: #f9f9f9;
     border-radius: 10rem;
     text-align: center;
 }
@@ -62,9 +61,9 @@
 }
 
 .intro-content{
-    border: 3px solid black;
+	margin-left: 23rem;
     width: 47rem;
-    height: 56rem;
+    height: 58rem;
 }
 
 h1{
@@ -77,3 +76,8 @@ h1{
         margin: 40px;
         
     }
+    
+h3{
+	text-align: center;
+	margin-top: 1.5rem;
+}

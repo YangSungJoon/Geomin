@@ -1,58 +1,24 @@
-	*{
-    		margin: 0px auto;  
-    		 		
-   			padding: 0px;   			
-    		box-sizing: border-box;
-    		text-decoration: none;
-      }
-
-
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+       
        #login_container{
-          border : 1px solid black; 
-          width: 300px;
-          height: 450px; 
-          margin: auto;         
-          background-color: rgba(128, 128, 128, 0.068);
-          justify-content: center; /* 수평 가운데 정렬 */
-          align-items: center; /* 수직 가운데 정렬 */
-          padding : 20px;
-          margin-top : 30px; 
-          
+		    width: 550px;
+		    height: 500px;
+		    margin: auto;
+		    background-color: #f5f6f8;
+		    justify-content: center;
+		    align-items: center;
+		    padding: 20px;
+		    margin-top: 7rem;
+		    margin-left: 28rem;
+		    border-radius: 2rem;
+		    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #dee1e0;
         }
         
         #id_answer{
         	font-size : 20px;
         }
         
-         .login_btn1 {
-            width : 45%;
-        	height : 100%;
-        	font-size : 17px;
-        	color : white;
-        	background-color: #229964;
-        	border-radius: 10px;
-		 }
-        
-        #login_btn2 {
-          width : 100%;
-          height : 50px;
-		  display: flex;
-		  justify-content: center; /* Horizontally center align */
-		  margin-top: 10px;
-		  margin-bottom : 0px;
-		 }
-        
-        .btn_login{
-        	width : 80%;
-        	heigth : 40px;
-        	font-size : 20px;
-        	color : white;
-        	background-color: #4285f4;
-        	border-radius: 10px;
-        	display: flex;
-        	justify-content: center; /* 수평 가운데 정렬 */
-            align-items: center; /* 수직 가운데 정렬 */
-        }
+         
         
         #title{
         	display: flex;
@@ -75,48 +41,79 @@
         }
         
         #email {
-        	
             height : 30px;
             width : 90%;
+            font-weight: bold;
         }
         
         #findId_login{
         	height : 40px;
         	width : 100%;
         }
-        
-        .btn_findId{
-        	width : 45%;
-        	height : 100%;
-        	font-size : 20px;
-        	color : white;
-        	background-color: #229964;
-        	border-radius: 10px;
-        	padding-left : 10px;
-        	
-        }
-        
-       
-		 
-		 #btn_findPw {
-		 	width : 100%;
-		 	height : 50px;
-		 /*	border : 1px solid black; */
-		 }
-        
-        .btn_findPw{
-        	width : 90%;
-        	height : 100%;
-        	font-size : 20px;
-        	color : white;
-        	background-color: #4285f4;
-        	border-radius: 10px;
-        	display: flex;
-        	justify-content: center; /* 수평 가운데 정렬 */
-            align-items: center; /* 수직 가운데 정렬 */
-        
-        }
 
-		
-		
+form input {
+	  background: #eee;
+	  padding: 16px;
+	  margin: 8px 0;
+	  width: 65%;
+	  border: 0;
+	  outline: none;
+	  border-radius: 20px;
+	  box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+	  margin-top: 1rem;
+}
+
+button{
+	  border-radius: 20px;
+	  border: none;
+	  outline: none;
+	  font-size: 12px;
+	  font-weight: bold;
+	  padding: 15px 45px;
+	  margin: 14px;
+	  letter-spacing: 1px;
+	  text-transform: uppercase;
+	  cursor: pointer;
+	  transition: transform 80ms ease-in;
+	  width: 180px;
+}
+
+.buttonA{
+    transition: all 0.2s;
+    cursor: pointer;
+	box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
+
+.btnColor{
+	background: revert;
+}
+.btnColor.btnPush{
+	box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+}
+
+.btnPush:hover{
+	margin-top: 15px;
+  	margin-bottom: 5px;
+}
+
+.btnColor.btnPush:hover{
+	box-shadow: 0px 0px 0px 0px lightgray;
+}
+
+#findId_login{
+	width: 
+}
+
+div#login_btn2 {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#findId_login {
+    text-align: center;
+}
+
+.form-group {
+    text-align: center;
+}
         

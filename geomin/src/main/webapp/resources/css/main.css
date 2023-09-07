@@ -15,6 +15,7 @@
     transition: 1s;
     background-size : 100% 100%;
     background-image: url('../image/pic-1.jpeg');
+    margin-top: 1rem;
 }
 
 #banner img{

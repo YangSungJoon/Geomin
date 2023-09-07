@@ -1,3 +1,5 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
 .login_box{
     width: 60rem;
     align-items: center;
@@ -84,4 +86,138 @@
 
 .login_bottom div:hover{
     background-color: rgb(226, 240, 253);
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.container {
+  border-radius: 10px;
+  box-shadow: -5px -5px 10px #fff, 5px 5px 10px #dee1e0;
+  position: absolute;
+  width: 900px;
+  height: 550px;
+  overflow: hidden;
+  background: #f5f6f8;
+  margin-top: 5rem;
+  margin-left: 19rem;
+}
+
+form input {
+  background: #eee;
+  padding: 16px;
+  margin: 8px 0;
+  width: 65%;
+  border: 0;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+  margin-top: 1rem;
+}
+button {
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 15px 45px;
+  margin: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 80ms ease-in;
+}
+.form_btn {
+  box-shadow: -5px -5px 8px #fff, 5px 5px 8px #babebc;
+}
+.form_btn:active {
+  box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
+
+.buttonA{
+    transition: all 0.2s;
+    cursor: pointer;
+	box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
+
+.btnColor{
+	background: revert;
+}
+.btnColor.btnPush{
+	box-shadow: -5px -5px 8px #fff, 5px 5px 8px #babebc;
+}
+
+.btnPush:hover{
+	margin-top: 15px;
+  	margin-bottom: 5px;
+}
+
+.btnColor.btnPush:hover{
+	box-shadow: 0px 0px 0px 0px lightgray;
+}
+
+.sign-in-container {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  transition: all 0.5s;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.overlay-right {
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #f5f6f8;
+  color: #fff;
+  border-left: 3px solid #f8f8f8;
+}
+.social-links {
+  margin: 20px 0;
+  margin-top: 3rem;
+}
+
+.social-links img{
+	width: 40px;
+  	height: 40px;
+  	text-align: center;
+  	margin-top: 0.3rem;
+}
+
+form h1 {
+  font-weight: bold;
+  margin: 0;
+  color: #000;
+  font-size: 40px;
+}
+
+.social-links div {
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  border-radius: 50%;
+  box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+  cursor: pointer;
+}
+.social-links a {
+  color: #000;
+}
+.social-links div:active {
+  box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
 }

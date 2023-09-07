@@ -20,12 +20,13 @@
 					<li class="home"><a href="#"> 
 						<img src="../resources/image/homeicon.png" alt=""> 
 					</a></li>
-					<li><a href="#"> 회원가입 / </a></li>
-					<li><a href="#"> 회원등록 </a></li>
+					<li><a href="#"> / 회원가입  </a></li>
 				</ul>
 			</div>
 			<div class="left-sideBar">
-				
+				<ul>
+                <li class = "site-intro"><a href = "/login/regist" id = "intro-hover">회원가입</a></li>
+            </ul>
 			</div>
 			<div class='regi_center slide-in'>
 				<div class='regi_logo'>정보 입력</div>
@@ -120,7 +121,7 @@
 				<!-- 중복확인 결과를 저장할 hidden input 요소 -->
     				<input type="hidden" name="idCheckRes" id="idCheckRes">
 				<div class='regi_button'>
-					<button id='button_register' type="submit">회원가입</button>
+					<button id='button_register' type="submit" class = "button btnPush btnColor">회원가입</button>
 				</div>
 			</div>
 		</div>

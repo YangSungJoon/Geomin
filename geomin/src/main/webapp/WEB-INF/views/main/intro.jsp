@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href = "#">
+                    <a href = "/main/intro">
                         사이트 소개
                     </a>
                 </li>

@@ -60,7 +60,11 @@ ul{
     float: left;
     text-align: center;
     font-weight: bold;
-    border: 3px solid lightgray;
+}
+
+#logo img{
+	width: 180px;
+	height: 45px;
 }
 
 .login{
@@ -157,7 +161,6 @@ ul{
 }
 
 .intro-box{
-    border: 2px solid black;
     width: 80rem;
     height: 60rem;
 }
@@ -196,7 +199,7 @@ ul{
 }
 
 .location{
-    background-color: #f8f8f8;
+    background-color: #f5f6f8;
     padding: 7px;
     height: 2.3rem;
 }

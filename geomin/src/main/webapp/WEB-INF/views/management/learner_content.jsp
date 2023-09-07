@@ -57,36 +57,39 @@
   
         <div class = "group_add_box">
 		<form action="/management/insert_content" method="post">
-        <div id="addbtn">
-                    <button type = "submit" id = "add_button">등록</button>
-                    <button type="button" class="pakage_select" onclick="location.href='/content/contentList'">조회</button>
-                    
-                </div>
             <div class = "left_content">
-				<p>패키지명<span>*</span></p>
-				<input type="text" name="content_name" class="content_name" id="content_name"><br>
-				<p>학습난이도<span>*</span></p>
+				<p>패키지명<span id = "star">*</span></p>
+				<input type="text" name="content_name" class="content_name" id="content_name" style='width:150px;'>
+				<br>
+				<p>학습난이도<span id = "star">*</span></p>
       		    <div class = "member_check">
                 <select name="learning_difficulty" id="learning_difficulty">
                     <option value="1">초급</option>
                     <option value="2">중급</option>
                     <option value="3">고급</option>
                 </select>
-            </div>		   
-            
-                <p>학습가능인원<span>*</span></p>
+            	</div>		
+                <p>학습가능인원<span id = "star">*</span></p>
                 
 			    <input type="number" class="learning_member" name="learning_member" min="1">
 			 
-                <p>정가<span>*</span></p>
-                <input type="text" id="price" name="price" value="">원
-               <p>할인<span>*</span></p>
-                <input type="text" id="sale" name="sale" value="">%
-                <p>판매가<span>*</span></p>
-                <input type="text" id="real_price" name="real_price">원
-				 <p>패키지내용<span>*</span></p>
+			 	<br>
+                <p>정가<span id = "star">*</span></p>
+                <input type="text" id="price" name="price" value=""> 원
+               	<br>
+                <p>할인<span id = "star">*</span></p>
+                <input type="text" id="sale" name="sale" value=""> %
+                <br>
+                <p>판매가<span id = "star">*</span></p>
+                <input type="text" id="real_price" name="real_price"> 원
+				<br>
+				<p>패키지 내용<span id = "star">*</span></p>
                 <textarea cols="50" rows="5" id="learning_content" name="learning_content"></textarea>
-
+				<br>
+					<div class = "button_box">
+						<button type = "submit" id = "add_button" class = "button btnPush btnColor">등록</button>
+		                <button type="button" id="pakage_select" class = "button btnPush btnColor2" onclick="location.href='/content/contentList'">조회</button>
+					</div>
             	</div>
     		</form>
 
