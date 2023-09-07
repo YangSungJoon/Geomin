@@ -41,22 +41,49 @@ public class GroupController {
 
 	
 	@PostMapping("groupAdd")
-	public String insertgroup(SubScriptionVO subScriptionVO,Criteria cri, GroupVO groupVO, Model model, HttpSession session) {
-		System.out.println("getUser_id : ===============" + session.getAttribute("userId").toString());
-		System.out.println("getContent_name : ============" + subScriptionVO.getContent_name());
-		System.out.println("getUser_id : ===============" + subScriptionVO.getGroup_name());
-		System.out.println("getContent_name : ============" + subScriptionVO.getContent_id());
-		
+	public String insertgroup(SubScriptionVO subScriptionVO,Criteria cri, Model model, HttpSession session) {
 
+		if(subScriptionVO.getGroup_name() != "" && 
+				subScriptionVO.getGroup_personnel() != "" && 
+				subScriptionVO.getLearning_start() != "" &&
+				subScriptionVO.getLearning_end() != "") {
+			contentService.insertgroup(subScriptionVO, model);
+			
+			subScriptionVO.setUser_id(session.getAttribute("userId").toString());
+			
+			contentService.option_content_id(subScriptionVO, model);
+			
+			System.out.println("getUser_id : ===============" + session.getAttribute("userId").toString());
+			System.out.println("getGroup_personnel : ============" + subScriptionVO.getGroup_personnel());
+			System.out.println("getGroup_name : ===============" + subScriptionVO.getGroup_name());
+			System.out.println("getContent_id : ============" + subScriptionVO.getContent_id());
+			System.out.println("getLearning_start : ===============" + subScriptionVO.getLearning_start());
+			System.out.println("getLearning_end : ===============" + subScriptionVO.getLearning_end());
+			
+			
+			System.out.println("성공=========================");
+			
+			return "group/groupAdd";
+			
+		} else {
+			System.out.println("getUser_id : ===============" + session.getAttribute("userId").toString());
+			System.out.println("getGroup_personnel : ============" + subScriptionVO.getGroup_personnel());
+			System.out.println("getGroup_name : ===============" + subScriptionVO.getGroup_name());
+			System.out.println("getContent_id : ============" + subScriptionVO.getContent_id());
+			System.out.println("getLearning_start : ===============" + subScriptionVO.getLearning_start());
+			System.out.println("getLearning_end : ===============" + subScriptionVO.getLearning_end());
+			
+			subScriptionVO.setUser_id(session.getAttribute("userId").toString());
+			
+			
+			contentService.option_content_id(subScriptionVO, model);
+			
+			System.out.println("실패=========================");
+			
+			return "group/groupAdd";
+		}
 		
-		contentService.insertgroup(subScriptionVO, model);
 		
-	
-		subScriptionVO.setUser_id(session.getAttribute("userId").toString());
-
-		contentService.option_content_id(subScriptionVO, model);
-		
-		return "group/groupAdd";
 	}
 	
 	
@@ -80,17 +107,36 @@ public class GroupController {
 	public String updateGroupyn(SubScriptionVO subScriptionVO, Criteria cri, Model model) {
 		System.out.println("content_id: ===================================" +  subScriptionVO.getContent_id());
 		
-		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
-		PageDto pageDto = new PageDto(cri, cnt);
+		System.out.println("total_personnel : ======================" + subScriptionVO.getTotal_personnel());
+		System.out.println("current_personnel : ======================" + subScriptionVO.getCurrent_personnel());
 		
-		contentService.updateGroupyn(subScriptionVO);
-		contentService.add_current(subScriptionVO);
 		
-		contentService.groupApproval(subScriptionVO, cri, model);
-	
-		model.addAttribute("pageDto", pageDto);
+		if(subScriptionVO.getCurrent_personnel() < subScriptionVO.getTotal_personnel()) {
+			System.out.println("현재인원 < 총인원");
+			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			contentService.updateGroupyn(subScriptionVO);
+			contentService.add_current(subScriptionVO);
+			
+			contentService.groupApproval(subScriptionVO, cri, model);
+			
+			model.addAttribute("pageDto", pageDto);
+			
+			return "group/groupApproval";
+		} else {
+			
+			System.out.println("현재인원 >= 총인원");
+			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			contentService.groupApproval(subScriptionVO, cri, model);
+			
+			model.addAttribute("pageDto", pageDto);
+			
+			return "group/groupApproval";
+		}
 		
-		return "group/groupApproval";
 	}
 	
 	

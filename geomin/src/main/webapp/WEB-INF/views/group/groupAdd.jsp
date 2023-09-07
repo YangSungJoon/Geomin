@@ -54,7 +54,7 @@ totalCnt : ${totalCnt } <br> --%>
                  <input type="date" name="learning_start"> ~ <input type="date" name="learning_end">
 
                 <div>
-                    <button type = "submit" id = "add_button" onclick="alert('그룹이 등록되었습니다.')">학습그룹 등록</button>
+                    <button type = "submit" id = "add_button">학습그룹 등록</button>
                 </div>
 
             </div>
@@ -65,11 +65,34 @@ totalCnt : ${totalCnt } <br> --%>
 
 	<input type="hidden" name="user_id_leader" value="${userId}"><br>
 	<input type="hidden" name="learning_member" value="${learning_member}"><br>
-	
+	<input type="hidden" name="user_id" value="${userId}"><br>
 
     </form>
     </div>
     
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var form = document.querySelector("form");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // 폼 제출을 일시 중지
+
+            var groupName = document.querySelector('input[name="group_name"]').value.trim();
+            var groupPersonnel = document.querySelector('input[name="group_personnel"]').value.trim();
+            var learningStart = document.querySelector('input[name="learning_start"]').value.trim();
+            var learningEnd = document.querySelector('input[name="learning_end"]').value.trim();
+
+            var errorMessage = "";
+
+            if (groupName === "" || groupPersonnel === "" || learningStart === "" || learningEnd === "") {
+                alert("내용을 전부 입력해주세요.");
+            } else {
+                alert("그룹이 생성되었습니다.");
+                form.submit(); // 폼 제출
+            }
+        });
+    });
+</script>
     
 </body>
 <%@include file = "../common/footer.jsp" %>

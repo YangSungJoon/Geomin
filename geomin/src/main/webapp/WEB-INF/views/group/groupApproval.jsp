@@ -62,19 +62,42 @@
         
 
             
-            // check1 클래스를 가진 요소들을 모두 가져옴
+         // check1 클래스를 가진 요소들을 모두 가져옴
             const check1Elements = document.querySelectorAll('.check1');
-            
+
+            // check3, check4 클래스를 가진 요소들을 모두 가져옴
+            const check3Elements = document.querySelectorAll('.check3');
+            const check4Elements = document.querySelectorAll('.check4');
+            const check5Elements = document.querySelectorAll('.check5');
+
             // 가져온 요소들에 대해 반복문 실행
-            check1Elements.forEach(function(check1Element) {
-              // check1 클래스를 가진 체크박스가 클릭되었을 때 실행되는 함수 등록
-              check1Element.addEventListener('click', function() {
-                // 연관된 check2 클래스를 가진 체크박스를 찾아서 클릭 처리
-                const associatedCheck2 = this.parentElement.querySelector('.check2');
-                if (associatedCheck2) {
-                  associatedCheck2.click(); // check2 체크박스 클릭
-                }
-              });
+            check1Elements.forEach(function(check1Element, index) {
+                // check1 클래스를 가진 체크박스가 클릭되었을 때 실행되는 함수 등록
+                check1Element.addEventListener('click', function() {
+                    // 연관된 check2 클래스를 가진 체크박스를 찾아서 클릭 처리
+                    const associatedCheck2 = this.parentElement.querySelector('.check2');
+                    if (associatedCheck2) {
+                        associatedCheck2.click(); // check2 체크박스 클릭
+                    }
+
+                    // 연관된 check3 클래스를 가진 체크박스를 찾아서 클릭 처리
+                    const associatedCheck3 = check3Elements[index];
+                    if (associatedCheck3) {
+                        associatedCheck3.click(); // check3 체크박스 클릭
+                    }
+
+                    // 연관된 check4 클래스를 가진 체크박스를 찾아서 클릭 처리
+                    const associatedCheck4 = check4Elements[index];
+                    if (associatedCheck4) {
+                        associatedCheck4.click(); // check4 체크박스 클릭
+                    }
+                    
+                    // 연관된 check5 클래스를 가진 체크박스를 찾아서 클릭 처리
+                    const associatedCheck5 = check5Elements[index];
+                    if (associatedCheck5) {
+                        associatedCheck5.click(); // check4 체크박스 클릭
+                    }
+                });
             });
             
         };
@@ -156,9 +179,9 @@ totalCnt : ${totalCnt } <br> --%>
 					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.content_name}</td>
 					        <td >${li.learner_name}</td>
 					        <td >${li.group_appdate}</td>
-					        <td >${li.total_personnel}명</td>
-					        <td >${li.current_personnel}명</td>
-					        <td >${li.groupyn}</td>
+					        <td ><input type="checkbox" name="total_personnel" class="check3" id="checkbox" value="${li.total_personnel}" >${li.total_personnel}명</td>
+					        <td ><input type="checkbox" name="current_personnel" class="check4" id="checkbox" value="${li.current_personnel}" >${li.current_personnel}명</td>
+					        <td ><input type="checkbox" name="current_personnel" class="check5" id="checkbox" value="${li.current_personnel}" >${li.groupyn}</td>
 					    </tr>
 	                </c:forEach> 
 	               
