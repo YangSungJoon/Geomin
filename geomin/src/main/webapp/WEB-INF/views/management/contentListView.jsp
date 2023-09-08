@@ -28,10 +28,26 @@
     
     
 }
+
+
+.baduk_image img{
+	width: 300px;
+	height: 200px;
+	border: 1px solid black;
+	float: left;
+}
     
     	#pakage{
     		width:200px;
     	}
+    	
+.table_box{
+	border: 1px solid black;
+	width:600px;
+	height: 700px;
+	float: left;
+}    	
+    	
     	
     </style>
     
@@ -71,10 +87,22 @@
    </div>
 
     <div class="group_add_box">
-        <div class="left_content">
-        <form action="/management/contentUpdate" method="post">
+    	<div class="baduk_image">
+    		<c:choose>
+                  <c:when test="${contentVo.learning_difficulty_str == '초급'}">
+    				  <img src="../resources/image/baduk1.jpg" alt="초급"/>                 
+	              </c:when>
+	              <c:when test="${contentVo.learning_difficulty_str == '중급'}">
+    				  <img src="../resources/image/baduk2.jpg" alt="중급"/>                 
+	              </c:when>
+                  <c:when test="${contentVo.learning_difficulty_str == '고급'}">
+    				  <img src="../resources/image/baduk3.jpg" alt="고급"/>                 
+	              </c:when>
+            </c:choose>  
+   		</div>
+    		<form action="/management/contentUpdate" method="post">
         <input type="hidden" name="content_id" value="${param.content_id}">
-   
+   		<div class ="table_box">
             <table border="1">
             	<tr>
             		<th id="pakage">패키지명</th>
@@ -109,6 +137,11 @@
             		<td colspan="2">${contentVo.learning_content}</td>
             	</tr>
             </table>
+            </div>
+            </form>
+    	</div>
+        <div class="left_content">
+        	<!-- 운영자 계정에서만 보이는 버튼 -->
     			<div id="addbtn">
     			<c:choose>
                   <c:when test="${userVo.user_type == 3}">
@@ -119,9 +152,7 @@
                   </c:otherwise>
                 </c:choose>  
                 </div>
-            </form>
         </div>
-    </div>
 </div>
 </body>
 

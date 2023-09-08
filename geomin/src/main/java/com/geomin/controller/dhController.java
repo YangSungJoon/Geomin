@@ -79,7 +79,7 @@ public class dhController {
 		
 		int res = homeworkService.update(homeworkVO);
 		
-			return "redirect:";
+			return "redirect:/main/main";
 		
 		
 	}
