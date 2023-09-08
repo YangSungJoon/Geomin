@@ -189,7 +189,7 @@
 						        <td>${li.group_name }</td>
 						        <td >${li.content_name}</td>
 						        <td >${li.learner_name}</td>
-						        <td> ${li.groupyn }</td>
+						        <%-- <td> ${li.groupyn }</td> --%>
 						    </tr>
 		                </c:forEach> 
 		            </table>

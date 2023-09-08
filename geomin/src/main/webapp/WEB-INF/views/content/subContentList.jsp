@@ -99,13 +99,13 @@ subTotalCnt :  ${subTotalCnt }<br> --%>
                 <c:forEach items="${subContentList }" var="li" varStatus="status">
 	                <tr>
 	                    <td class = "check_box"><input type="checkbox" name="content_id" id="checkbox" value="${li.content_id}"></td>
-	                    <td class = "packageName" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.content_name }</td>
+	                    <td class = "packageName" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 	                    <td class = "people">${li.learning_member } 명</td>
 	                    <td class = "subPrice">${li.real_price }원</td>
 	                    <td class="subPrice-difficulty">${li.learning_difficulty}</td>
 	                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.learning_content }</td>
 	                    <td>${li.subscription_date }</td>
-	                    <td><input type="checkbox" name="paystatus" id="checkbox2" value="${li.paystatus}">${li.paystatus }</td>
+	                    <td><input type="checkbox" name="paystatus" id="checkbox2" style="display: none;" value="${li.paystatus}">${li.paystatus }</td>
 	                </tr>
                 </c:forEach>
                

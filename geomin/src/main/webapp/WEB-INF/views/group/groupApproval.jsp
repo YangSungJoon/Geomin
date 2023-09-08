@@ -176,7 +176,7 @@ totalCnt : ${totalCnt } <br> --%>
 					        	<input type="checkbox" name="content_id" class="check2" id="checkbox" style="display: none;" value="${li.content_id}" >
 					        </td>
 					        <td >${li.group_name }</td>
-					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.content_name}</td>
+					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 					        <td >${li.learner_name}</td>
 					        <td >${li.group_appdate}</td>
 					        <td ><input type="checkbox" name="total_personnel" class="check3" id="checkbox" style="display: none;" value="${li.total_personnel}" >${li.total_personnel}명</td>
