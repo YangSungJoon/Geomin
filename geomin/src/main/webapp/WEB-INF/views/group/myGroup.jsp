@@ -65,7 +65,7 @@ totalCnt : ${totalCnt } <br> --%>
 	                <tr>
 	                    <td class = "check_box"><input type="checkbox" name="group_id" id="checkbox" value="${li.group_id}"></td>
 	                    <td >${li.group_name }</td>
-	                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.content_name }</td>
+	                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 	                    <td >${li.total_personnel }</td>
 	                    <td >${li.current_personnel}</td>
 	                </tr>
