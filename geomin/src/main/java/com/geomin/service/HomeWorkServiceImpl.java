@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.geomin.mapper.HomeWorkMapper;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
-import com.geomin.vo.HomeWorkCriteria;
 import com.geomin.vo.HomeWorkVO;
 import com.geomin.vo.UserVO;
 
@@ -21,9 +19,6 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 	
 	@Autowired
 	private HomeWorkMapper homeworkMapper;
-	
-	@Autowired
-	private HomeWorkService homeworkService;
 
 	@Override
 	public List<HomeWorkVO> getList(String user_id) {

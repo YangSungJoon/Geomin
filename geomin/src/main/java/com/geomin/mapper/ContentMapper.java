@@ -3,11 +3,8 @@ package com.geomin.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.intellij.lang.annotations.Pattern;
 
 import com.geomin.vo.ContentVO;
-import com.geomin.vo.Criteria;
-import com.geomin.vo.GroupVO;
 import com.geomin.vo.SubScriptionVO;
 
 public interface ContentMapper {

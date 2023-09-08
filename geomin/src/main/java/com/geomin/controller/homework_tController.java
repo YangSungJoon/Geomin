@@ -13,7 +13,6 @@ import com.geomin.vo.PageDto;
 import com.geomin.vo.SubScriptionVO;
 
 import lombok.extern.log4j.Log4j;
-import oracle.jdbc.proxy.annotation.Post;
 
 @RequestMapping("/homework_t/*")
 @Controller

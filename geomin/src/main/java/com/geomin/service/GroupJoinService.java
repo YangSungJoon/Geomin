@@ -3,7 +3,6 @@ package com.geomin.service;
 import org.springframework.stereotype.Service;
 
 import com.geomin.vo.GroupJoinVO;
-import com.geomin.vo.GroupVO;
 import com.geomin.vo.UserVO;
 
 @Service

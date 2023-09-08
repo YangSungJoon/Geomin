@@ -1,26 +1,17 @@
 package com.geomin.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.geomin.service.GroupJoinService;
 import com.geomin.service.HomeWorkService;
-import com.geomin.service.UserService;
 import com.geomin.vo.GroupJoinVO;
-import com.geomin.vo.HomeWorkCriteria;
 import com.geomin.vo.HomeWorkVO;
-import com.geomin.vo.UserVO;
-import com.geomin.vo.homeworkFormDto;
 
 import lombok.extern.log4j.Log4j;
 
@@ -30,9 +21,6 @@ public class dhController {
 	
 	@Autowired
 	private HomeWorkService homeworkService;
-	
-	@Autowired
-	private UserService userService;
 	
 	@Autowired
 	private GroupJoinService groupjoinService;

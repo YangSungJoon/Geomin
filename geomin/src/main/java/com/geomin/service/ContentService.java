@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.Criteria;
-import com.geomin.vo.GroupVO;
 import com.geomin.vo.SubScriptionVO;
 
 @Service

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.geomin.service.MailSendService;
 import com.geomin.service.ManagementService;
-import com.geomin.vo.AnnouncementVO;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.SaleVO;
 import com.geomin.vo.SubScriptionVO;

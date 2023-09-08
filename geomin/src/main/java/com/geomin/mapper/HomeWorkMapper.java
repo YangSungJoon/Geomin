@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
-import com.geomin.vo.HomeWorkCriteria;
 import com.geomin.vo.HomeWorkVO;
 import com.geomin.vo.UserVO;
 

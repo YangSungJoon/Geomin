@@ -10,14 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.geomin.service.ContentService;
-import com.geomin.vo.ContentVO;
 import com.geomin.vo.Criteria;
-import com.geomin.vo.GroupVO;
 import com.geomin.vo.PageDto;
 import com.geomin.vo.SubScriptionVO;
 
 import lombok.extern.log4j.Log4j;
-import oracle.jdbc.proxy.annotation.Post;
 
 @RequestMapping("/group/*")
 @Controller
