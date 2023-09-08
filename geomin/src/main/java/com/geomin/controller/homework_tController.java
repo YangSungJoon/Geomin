@@ -64,17 +64,32 @@ public class homework_tController {
 		System.out.println("getHomework_content_leader : =====================" + subScriptionVO.getHomework_content_leader());
 		System.out.println("getHomework_content_leader : =====================" + subScriptionVO.getHomework_content_leader());
 		System.out.println("getHomework_no : =====================" + subScriptionVO.getHomework_no());
+		if(subScriptionVO.getHomework_content_leader() != ""  &&
+			subScriptionVO.getHomework_deadline() != "" &&
+			subScriptionVO.getContent_id() != null) {
+			
+			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			model.addAttribute("pageDto", pageDto);
+			
+			contentService.homework_add(subScriptionVO);
+			contentService.groupApproval(subScriptionVO, cri,  model);
+			contentService.homework_option(subScriptionVO, model);
+			
+			return "homework_t/homework_add";
+		} else {
+			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			model.addAttribute("pageDto", pageDto);
+			
+			contentService.groupApproval(subScriptionVO, cri,  model);
+			contentService.homework_option(subScriptionVO, model);
+			
+			return "homework_t/homework_add";
+		}
 		
-		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
-		PageDto pageDto = new PageDto(cri, cnt);
-		
-		model.addAttribute("pageDto", pageDto);
-		
-		contentService.homework_add(subScriptionVO);
-		contentService.groupApproval(subScriptionVO, cri,  model);
-		contentService.homework_option(subScriptionVO, model);
-		
-		return "homework_t/homework_add";
 	}
 	
 	@PostMapping("homework_sel")
@@ -114,15 +129,30 @@ public class homework_tController {
 		System.out.println("getHomework_no : ==============================" +  subScriptionVO.getHomework_no());
 		System.out.println("getEvaluation : ==============================" +  subScriptionVO.getEvaluation());
 		
-		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
-		PageDto pageDto = new PageDto(cri, cnt);
-		
-		model.addAttribute("pageDto", pageDto);
-		
-		contentService.updateEvaluation(subScriptionVO);
-		contentService.homeworkEval(subScriptionVO, cri, model);
-		
-		return "homework_t/homework_evaluation";
+		if(subScriptionVO.getHomework_no() != null &&
+			subScriptionVO.getEvaluation() != "") {
+			
+			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			model.addAttribute("pageDto", pageDto);
+			
+			contentService.updateEvaluation(subScriptionVO);
+			contentService.homeworkEval(subScriptionVO, cri, model);
+			
+			return "homework_t/homework_evaluation";
+			
+		} else {
+			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			model.addAttribute("pageDto", pageDto);
+			
+			contentService.homeworkEval(subScriptionVO, cri, model);
+			
+			return "homework_t/homework_evaluation";
+			
+		}
 		
 	}
 	

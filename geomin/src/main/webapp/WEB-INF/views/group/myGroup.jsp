@@ -73,12 +73,36 @@ totalCnt : ${totalCnt } <br> --%>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button" onclick="alert('그룹이 삭제 되었습니다.')">그룹 삭제</button>
+                <button type = "submit" id = "send_button" >그룹 삭제</button>
             </div>
         </div>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 </form>
     </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sendButton = document.getElementById('send_button');
+        sendButton.addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let isChecked = false;
+
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    isChecked = true;
+                }
+            });
+
+            if (isChecked) {
+                // 그룹이 선택된 경우
+                alert('그룹이 삭제되었습니다.');
+            } else {
+                // 그룹이 선택되지 않은 경우
+                alert('삭제할 그룹을 선택해주세요.');
+            }
+        });
+    });
+</script>
 
 </body>
  <%@include file = "../common/footer.jsp" %> 

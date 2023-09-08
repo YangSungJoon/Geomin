@@ -160,16 +160,30 @@ public class GroupController {
 		
 		System.err.println("group_id : =================================" + subScriptionVO.getGroup_id());
 		
-		int cnt = contentService.myGroupCnt(subScriptionVO, cri);
+		if(subScriptionVO.getGroup_id() != null) {
+			int cnt = contentService.myGroupCnt(subScriptionVO, cri);
+			
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			contentService.delGroup(subScriptionVO);
+			contentService.myGroup(subScriptionVO, cri, model);
+			
+			model.addAttribute("pageDto", pageDto);
+			
+			return "group/myGroup";
+			
+		} else {
+			int cnt = contentService.myGroupCnt(subScriptionVO, cri);
+			
+			PageDto pageDto = new PageDto(cri, cnt);
+			
+			contentService.myGroup(subScriptionVO, cri, model);
+			
+			model.addAttribute("pageDto", pageDto);
+			
+			return "group/myGroup";
+		}
 		
-		PageDto pageDto = new PageDto(cri, cnt);
-		
-		contentService.delGroup(subScriptionVO);
-		contentService.myGroup(subScriptionVO, cri, model);
-		
-		model.addAttribute("pageDto", pageDto);
-		
-		return "group/myGroup";
 	}
 	
 }

@@ -114,7 +114,7 @@
 <%-- userId : ${userId} <br>
 pageDto : ${pageDto } <br>
 totalCnt : ${totalCnt } <br> --%>
-<input type="hidden" name="user_id" value="${userId}">
+<input type="hidden" name="user_id" id="form1" value="${userId}">
 
 	<form action="/group/groupApproval" 
 		method="get" name="groupApprovalGO" autocomplete="off" >
@@ -155,7 +155,7 @@ totalCnt : ${totalCnt } <br> --%>
 	      
      </form>
         
-<form action="Approval" method="post">
+<form action="Approval" id="form2" method="post">
 	<input type="hidden" name="user_id" value="${userId}">
 	        <div class = "request-content">
 	            <table>
@@ -179,21 +179,75 @@ totalCnt : ${totalCnt } <br> --%>
 					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.content_name}</td>
 					        <td >${li.learner_name}</td>
 					        <td >${li.group_appdate}</td>
-					        <td ><input type="checkbox" name="total_personnel" class="check3" id="checkbox" value="${li.total_personnel}" >${li.total_personnel}명</td>
-					        <td ><input type="checkbox" name="current_personnel" class="check4" id="checkbox" value="${li.current_personnel}" >${li.current_personnel}명</td>
-					        <td ><input type="checkbox" name="current_personnel" class="check5" id="checkbox" value="${li.current_personnel}" >${li.groupyn}</td>
+					        <td ><input type="checkbox" name="total_personnel" class="check3" id="checkbox" style="display: none;" value="${li.total_personnel}" >${li.total_personnel}명</td>
+					        <td ><input type="checkbox" name="current_personnel" class="check4" id="checkbox" style="display: none;" value="${li.current_personnel}" >${li.current_personnel}명</td>
+					        <td ><input type="checkbox" name="groupyn" class="check5" id="checkbox" style="display: none;" value="${li.groupyn}" >${li.groupyn}</td>
 					    </tr>
 	                </c:forEach> 
 	               
 					        
 	            </table>
 	            <div class = "send_button_box">
-	                <button type = "submit" id = "send_button" onclick="alert('승인되었습니다.')">승인</button>
+	                <button type = "submit" id = "send_button">승인</button>
 	            </div>
 	        </div>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 </form>
     </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var form2 = document.querySelector("#form2"); // form2 선택
+
+        var sendButton = document.getElementById("send_button");
+        
+        sendButton.addEventListener("click", function(event) {
+            event.preventDefault(); // 폼 제출을 일시 중지
+
+            var checkbox1Elements = document.querySelectorAll('.check1');
+            var checkbox2Elements = document.querySelectorAll('.check2');
+            var checkbox3Elements = document.querySelectorAll('.check3');
+            var checkbox4Elements = document.querySelectorAll('.check4');
+            var checkbox5Elements = document.querySelectorAll('.check5');
+
+            var errorMessage = "";
+            var approval = true; // 승인 여부
+            var content_id = ""; // content_id 변수 초기화
+            
+            checkbox1Elements.forEach(function(checkbox1Element, index) {
+                if (checkbox1Element.checked) {
+                    var total_personnel = parseInt(checkbox3Elements[index].value.trim());
+                    var current_personnel = parseInt(checkbox4Elements[index].value.trim());
+                    var groupyn = checkbox5Elements[index].value.trim();
+                    content_id = checkbox2Elements[index].value.trim(); // content_id 값 설정
+
+                    
+                    if (groupyn === "Y") {
+                        errorMessage = "이미 승인된 학습자가 포함되어 있습니다.";
+                        approval = false;
+                        return;
+                    } else if (total_personnel <= current_personnel) {
+                        errorMessage = "총 인원수를 초과했습니다.";
+                        approval = false;
+                        return;
+                    }
+                }
+            });
+
+            if (!content_id) {
+                errorMessage = "학습자를 선택해주세요."; // content_id가 없는 경우
+                approval = false;
+            }
+            
+            if (approval) {
+                alert("승인 되었습니다.");
+                form2.submit(); // form2 제출
+            } else {
+                alert(errorMessage);
+            }
+        });
+    });
+</script>
 
 </body>
  <%@include file = "../common/footer.jsp" %> 

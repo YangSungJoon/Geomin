@@ -69,6 +69,43 @@
 	        });
 	    
 	        
+	        
+	     // 숙제 전송 버튼 클릭 시 유효성 검사
+	        document.getElementById('send_button').addEventListener('click', function (e) {
+	            // group_id 선택 여부 확인
+	            var groupIds = document.querySelectorAll('input[name="group_id"]');
+	            var isGroupSelected = false;
+	            groupIds.forEach(function (groupId) {
+	                if (groupId.checked) {
+	                    isGroupSelected = true;
+	                }
+	            });
+
+	            if (!isGroupSelected) {
+	                alert('학습자를 선택해주세요.');
+	                e.preventDefault(); // 폼 전송 방지
+	                return;
+	            }
+
+	            // homework_content_leader 입력 여부 확인
+	            var homeworkContent = document.querySelector('input[name="homework_content_leader"]').value.trim();
+	            if (homeworkContent === '') {
+	                alert('내용을 입력해주세요.');
+	                e.preventDefault(); // 폼 전송 방지
+	                return;
+	            }
+
+	            // homework_deadline 입력 여부 확인
+	            var homeworkDeadline = document.querySelector('input[name="homework_deadline"]').value;
+	            if (homeworkDeadline === '') {
+	                alert('마감기한을 설정해주세요.');
+	                e.preventDefault(); // 폼 전송 방지
+	                return;
+	            }
+
+	            // 성공적으로 숙제가 전송되었을 때
+	            alert('숙제가 전송되었습니다.');
+	        });
 	
 	   };
 	</script>   
@@ -147,7 +184,7 @@
 						        <td class="check_box">
 						        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" value="${li.user_id_learner}">
 						        	<input type="checkbox" name="group_id" class="check2" id="checkbox" style="display: none;" value="${li.group_id }" >
-						        	<input type="checkbox" name="content_id" class="check3" id="checkbox"  style="display: none;" value="${li.content_id}" >
+						        	<input type="checkbox" name="content_id" class="check3" id="checkbox" style="display: none;"  value="${li.content_id}" >
 						        </td>
 						        <td>${li.group_name }</td>
 						        <td >${li.content_name}</td>
@@ -173,16 +210,13 @@
 				
 	
 		            <div class = "send_button_box">
-		                <button type = "submit" id = "send_button" onclick="alert('숙제가 전송 되었습니다.')">숙제 전송</button>
+		                <button type = "submit" id = "send_button" >숙제 전송</button>
 		            </div>
 		        </div>
 	</form>
 	
 	<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 	    </div>
-	
-	
-	
 	
 	
 	
