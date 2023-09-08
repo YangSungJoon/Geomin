@@ -101,7 +101,7 @@ public class ManagementController {
 			model.addAttribute("insertSuccess", "true");
 		}
 				
-		return "redirect:/management/learner_content";
+		return "redirect:/content/contentList";
 	}
 	
 	@GetMapping("salestally")

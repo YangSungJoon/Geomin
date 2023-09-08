@@ -79,7 +79,13 @@ public class UserController {
         	    
            session.setAttribute("userVo", userVo);
            session.setAttribute("userId", userVo.getUser_id());
-           return "redirect:/main/main";
+
+           // 'user_type'에 따라 다른 경로로 리다이렉트
+           if ("2".equals(userVo.getUser_type())) {
+               return "redirect:/homework/homework_send?user_id="+user_id; // 'user_type'이 '2'인 경우 다른 경로로 리다이렉트
+           } else {
+               return "redirect:/main/main"; // 그 외의 경우 기본 메인 페이지로 리다이렉트
+           }
 
 		} else {
 			// 로그인 실패

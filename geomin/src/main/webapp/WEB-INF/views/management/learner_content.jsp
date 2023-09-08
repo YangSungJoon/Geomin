@@ -88,7 +88,6 @@
 				<br>
 					<div class = "button_box">
 						<button type = "submit" id = "add_button" class = "button btnPush btnColor">등록</button>
-		                <button type="button" id="pakage_select" class = "button btnPush btnColor2" onclick="location.href='/content/contentList'">조회</button>
 					</div>
             	</div>
     		</form>
