@@ -113,8 +113,7 @@ public class ContentController {
 			 contentService.insertContentPay(subScriptionVO);
 			 contentService.subContentList(subScriptionVO, cri, model);
 			 
-			 
-			 return "content/subContentList";
+			 return "redirect:/content/contentList";
 			 
 		 } else if("Y".equals(subScriptionVO.getIs_deleted())){
 			 int cnt = contentService.contentListCnt(subScriptionVO, cri);
@@ -126,7 +125,7 @@ public class ContentController {
 			 model.addAttribute("pageDto", pageDto);
 			 model.addAttribute("contentList", list);
 			 
-			 return "content/contentList";
+			 return "redirect:/content/contentList";
 			 
 		 } else {
 			 int cnt = contentService.contentListCnt(subScriptionVO, cri);
@@ -138,7 +137,7 @@ public class ContentController {
 			 model.addAttribute("pageDto", pageDto);
 			 model.addAttribute("contentList", list);
 			 
-			 return "content/contentList";
+			 return "redirect:/content/contentList";
 		 }
 		 
 	 }

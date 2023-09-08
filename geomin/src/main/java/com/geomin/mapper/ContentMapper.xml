@@ -159,6 +159,7 @@
 		select distinct content_id, content_name, total_personnel
 	            from subscription
 	            where user_id = #{user_id}
+	            and paystatus != 'C'
 	            order by content_id asc
 	</select>
 	
