@@ -172,7 +172,7 @@ totalCnt : ${totalCnt } <br> --%>
 	                 <c:forEach items="${groupApproval }" var="li" varStatus="status">
 					    <tr>
 					        <td class="check_box">
-					        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" value="${li.user_id_learner}">
+					        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" onclick='checkOnlyOne(this)' value="${li.user_id_learner}">
 					        	<input type="checkbox" name="content_id" class="check2" id="checkbox" style="display: none;" value="${li.content_id}" >
 					        </td>
 					        <td >${li.group_name }</td>
@@ -196,6 +196,52 @@ totalCnt : ${totalCnt } <br> --%>
     </div>
 
 <script>
+
+//check 중복 체크 방지
+function checkOnlyOne(element) {
+	  
+	  const checkboxes 
+	      = document.getElementsByName("user_id_learner");
+	  
+	  checkboxes.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  
+	  const checkboxes2 
+      = document.getElementsByName("content_id");
+  
+	  	  checkboxes2.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  const checkboxes3 
+      = document.getElementsByName("total_personnel");
+  
+	  	  checkboxes3.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  const checkboxes4 
+      = document.getElementsByName("current_personnel");
+  
+	  	  checkboxes4.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  const checkboxes5 
+      = document.getElementsByName("groupyn");
+  
+	  	  checkboxes5.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  
+	  element.checked = true;
+	  
+	  
+	}
+
     document.addEventListener("DOMContentLoaded", function() {
         var form2 = document.querySelector("#form2"); // form2 선택
 

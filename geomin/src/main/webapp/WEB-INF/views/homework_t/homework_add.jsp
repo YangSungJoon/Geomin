@@ -182,9 +182,9 @@
 		                 <c:forEach items="${groupApproval }" var="li" varStatus="status">
 						    <tr>
 						        <td class="check_box">
-						        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" value="${li.user_id_learner}">
+						        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" onclick='checkOnlyOne(this)' value="${li.user_id_learner}">
 						        	<input type="checkbox" name="group_id" class="check2" id="checkbox" style="display: none;" value="${li.group_id }" >
-						        	<input type="checkbox" name="content_id" class="check3" id="checkbox" style="display: none;"  value="${li.content_id}" >
+						        	<input type="checkbox" name="content_id" class="check3" id="checkbox"  style="display: none;" value="${li.content_id}" >
 						        </td>
 						        <td>${li.group_name }</td>
 						        <td >${li.content_name}</td>
@@ -218,7 +218,37 @@
 	<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 	    </div>
 	
-	
+	<script >
+	//check 중복 체크 방지
+	function checkOnlyOne(element) {
+		  
+		  const checkboxes 
+		      = document.getElementsByName("user_id_learner");
+		  
+		  checkboxes.forEach((cb) => {
+		    cb.checked = false;
+		  })
+		  
+		  
+		  const checkboxes2 
+	      = document.getElementsByName("group_id");
+	  
+		  	  checkboxes2.forEach((cb) => {
+		    cb.checked = false;
+		  })
+		  const checkboxes3 
+	      = document.getElementsByName("content_id");
+	  
+		  	  checkboxes3.forEach((cb) => {
+		    cb.checked = false;
+		  })
+		  
+		  
+		  element.checked = true;
+		  
+		  
+		}
+	</script>
 	
 	</body>
 	 <%@include file = "../common/footer.jsp" %> 

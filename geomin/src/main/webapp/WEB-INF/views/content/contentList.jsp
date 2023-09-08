@@ -111,7 +111,7 @@
                 </tr>
                 <c:forEach items="${contentList }" var="li" varStatus="status">
 				    <tr>
-				        <td class="check_box"><input type="checkbox" name="content_id" id="checkbox1" value="${li.content_id}"></td>
+				        <td class="check_box"><input type="checkbox" name="content_id" id="checkbox1"  onclick='checkOnlyOne(this)' value="${li.content_id}"></td>
 				        <td class="packageName" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 				        <td class="people" >${li.learning_member} 명</td>
 				        <td class="price" >${li.price}원</td>
@@ -132,6 +132,31 @@
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
     </div>
 <script>
+
+// check 중복 체크 방지
+function checkOnlyOne(element) {
+	  
+	  const checkboxes 
+	      = document.getElementsByName("content_id");
+	  
+	  checkboxes.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  
+	  const checkboxes2 
+      = document.getElementsByName("is_deleted");
+  
+	  	  checkboxes2.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  
+	  element.checked = true;
+	  
+	  
+	}
+
 // 삭제유무가 Y면 불가 처리
 document.addEventListener("DOMContentLoaded", function() {
     var checkbox1Elements = document.querySelectorAll('input[name="content_id"]');
