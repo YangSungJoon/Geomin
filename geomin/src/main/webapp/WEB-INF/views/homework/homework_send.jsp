@@ -50,7 +50,6 @@
         <div class = "request-content">
             <table>
                 <tr class = "table_menu">
-                    <td class = "check_box"></td>
                     <td>학습 콘텐츠</td>
                     <td>학습지도자</td>
                     <td>숙제 내용</td>
@@ -60,33 +59,6 @@
                 
                 <c:forEach items = "${list}" var="worklist">
                 <tr>
-                    <td class = "check_box"><input type="checkbox" name="checkbox" id="checkbox" onclick = 'checkOne(this)'>
-                    <button type = "button" id = "open">작성 하기</button>
-                    	<div id = "modal-box">
-                    		<div id = "modal-contents">
-                    			<button id = "close">&times;</button>
-                    			<h2 id ="title">학습 내용 작성</h2>
-                    			<div id = "profile">
-                    				<div id = "desc">
-                    				<div id = "content-box1">
-                    					<p class = "user">학습자 : ${worklist.user_name }</p>
-                    					<p class = "user">학습지도자 : ${worklist.user_id_leader }</p>
-                    					<p class = "user">숙제 내용 : ${worklist.homework_content_leader }</p>
-                    					<p class = "user">제출기한 : ${worklist.homework_deadline }</p>
-                    				</div>
-                    				<div id = "content-box2">
-                    					<strong>학습내용</strong> <input type="text" name="" id="studytext">
-                    				</div>
-                    					<div class = "sendbtn-box">
-								                <button type = "submit" id = "send_button">숙제 제출</button>
-                    					</div>	
-                    				</div>
-                    				
-                    			</div>
-                    		</div>
-                    	</div>
-                    </td>
-     
                     <td class = "contentName"><c:out value="${worklist.content_name }"/></td>
                     <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
                     <td class = "workContent"><c:out value="${worklist.homework_content_leader }"/></td>

@@ -59,18 +59,18 @@ document.addEventListener("DOMContentLoaded", function() {
 <header>
     <div class = "header">
         <div class = "header_top">
-            <div id = "logo"><img src="../resources/image/logo.png"></div>
+            <div id = "logo"><a href="/main/main" id ="regist"><img src="../resources/image/logo.png"></a></div>
             <div id = "name"><a href="/main/main" id ="regist">게임으로 배우는 바둑 교실</a></div>
             <div id = "login_menu">
                 <ul class = "login">
                   <c:choose>
                   	<c:when test="${empty userVo }">
-                    <li class='header_user'><a href="/login/regist" id ="regist">회원가입</a></li>
-                    <li class='header_login'><a href="/login/login">로그인</a></li>
+                    <li class='header_user buttonH btnPushH btnColorH'><a href="/login/regist" id ="regist">회원가입</a></li>
+                    <li class='header_login buttonH btnPushH btnColorH'><a href="/login/login">로그인</a></li>
                     </c:when>
                     <c:otherwise>
-                    <li class='header_user'><a href="/login/profile">${userVo.user_name }</a>님 환영합니다.</li>
-                    <li class='header_login'><a href="/logout">로그아웃</a></li>
+                    <li class='header_user buttonH btnColorH btnPushH'><a href="/login/profile"><strong>My Page</strong></a><strong></strong></li>
+                    <li class='header_login buttonH btnColorH btnPushH'><a href="/logout"><strong>로그아웃</strong></a></li>
                     </c:otherwise>
                  </c:choose>
                 </ul>

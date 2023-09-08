@@ -1,238 +1,194 @@
-.regi_area {
-	width: 80rem;
-	display: flex;
-	align-items: center;
-	
-	/*border : 3px solid black;*/
-	height: 75rem;
-	/* background-color: bisque; */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+       
+       #wrap_container{
+		    width: 600px;
+		    height: 850px;
+		    margin: auto;
+		    background-color: #ebecf0;
+		    justify-content: center;
+		    align-items: center;
+		    padding: 20px;
+		    margin-top: 3.5rem;
+		    margin-left: 28rem;
+		    border-radius: 2rem;
+		    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #dee1e0;
+		    text-align: center;
+        }
+        
+        #id_answer{
+        	font-size : 20px;
+        }
+        
+         
+        
+        #title{
+        	display: flex;
+        	justify-content: center; /* 수평 가운데 정렬 */
+            align-items: center; /* 수직 가운데 정렬 */
+         /*   border : 1px solid black; */
+            height : 60px;
+        }
+        
+        .mb-4 {
+        	display: flex;
+        	justify-content: center; /* 수평 가운데 정렬 */
+           
+        }
+        
+        #form-group{
+        	display: flex;
+        	justify-content: center; /* 수평 가운데 정렬 */
+            align-items: center; /* 수직 가운데 정렬 */
+        }
+        
+        #email {
+            height : 30px;
+            width : 90%;
+            font-weight: bold;
+        }
+        
+        #findId_login{
+        	height : 40px;
+        	width : 100%;
+        }
+
+
+
+#findId_login{
+	width: 
 }
 
-.regi_center {
-	width: 45rem;
-	margin-left: 23rem;
-	/* background-color: blanchedalmond; */
-	line-height: 2rem;
+div#login_btn2 {
+    margin-top: 2rem;
+    text-align: center;
 }
 
-.regi_logo {
-	width: 100%;
+#findId_login {
+    text-align: center;
+}
+
+.form-group {
+    text-align: center;
+}
+
+h2{
 	text-align: center;
-	margin: 2.5rem 0;
-	font-size: 2.2rem;
-	font-weight: bold;
+	line-height: 4rem;
 }
 
-div[class^=regi_box] {
-	font-size: 1.2rem;
-	margin: 1rem 0;
-}
-
-div[class^=regi_box] input {
-	margin: 0.4rem 0;
-	width: 100%;
-	height: 2.5rem;
-	font-size: 0.9rem;
-	padding: 1rem;
-}
-
-.regi_button {
-	width: 100%;
-	height: 3rem;
-	display: inline-block;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 1.5rem;
-	color: white;
-	border-radius: var(- -border-radius);
-}
-
-#button_register:hover {
-	background-color: var(- -main-color-hover);
-	color: gray;
-}
-
-div[class^=regi_box] input {
-	width: 100%;
-	height: 2rem;
-	border: none;
-	border: 1px solid rgb(177, 177, 177);
-}
-
-.regi_social_regi {
-	width: 100%;
-}
-
-.regi_social_regi [class^='regi'] {
-	width: 100%;
-	height: 3.3rem;
-	background-color: white;
-	border: 1px solid rgb(203, 203, 203);
-	border-radius: var(- -border-radius);
-	margin-bottom: 0.5rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: larger;
-	cursor: pointer;
-}
-
-.regi_social_regi [class^='regi']:hover {
-	background-color: #f3f3f3;
-}
-
-.regi_box_pw {
-	margin-top: 1rem;
-}
-
-input:focus {
-	outline: 2.5px solid var(- -main-color);
-	border-radius: 0.3rem;
-	box-shadow: none;
-}
-
-.regi_box_phone div h5 {
-	display: flex;
-	float: left;
-	gap: 1rem;
-}
-
-.phoneCheck {
-	border-radius: var(- -border-radius);
-	color: white;
-	background-color: var(- -main-color);
-	width: 8rem;
-	font-size: 0.9rem;
-	border: none;
-}
-
-.phoneCheck:hover {
-	background-color: var(- -main-color-hover);
-}
-
-.regi_box_phone_check.active {
-	display: flex;
-	gap: 1rem;
-}
-
-#button_register {
-	font-weight: bold;
+h4{
 	text-align: center;
-	width: 120px;
+	line-height: 4rem;
 }
 
-.regi_box_id div {
-	display: flex;
-	float: left;
-}
-
-#idCheck {
-	border: 1px solid gray;
+.findPw_submit{
 	text-align: center;
-	width: 20%;
 }
 
-#id_check:hover {
-	background-color: #ceccccd7;
-}
-
-.id_check_box {
-	width: 100%;
-	height: 2rem;
-}
-
-.regi_box_pw div {
-	display: flex;
-	float: left;
-}
-
-.regi_box_pw_check div {
-	display: flex;
-	float: left;
-}
-
-.regi_box_birth div {
-	display: flex;
-	float: left;
-}
-
-.regi_box_member {
-	
-}
-
-.regi_box_member div {
-	display: flex;
-	float: left;
-}
-
-.member_check {
-	margin-left: 1rem;
-}
-
-#userType {
-	width: 7rem;
-	height: 3rem;
-	font-size: 15px;
-	font-weight: bold;
-	border: 2px solid rgb(203, 203, 203);
-	background-color: #f6f6f6;
+h5{
+	font-size: 17px;
 }
 
 .star {
 	color: red;
 }
 
-.check {
-	margin-bottom: 2rem;
-	font-size: 16px;
-}
-
-.check label {
-	margin-left: 0px;
-}
-
-#male {
-	border: 3px solid red;
-}
-
-#female {
-	border: 3px solid black;
-}
-
-.id_check_box {
-	/*border : 1px solid black;*/
-	height: 45px;
-}
-
-#userId {
-	width: 78%;
-}
-
-#idbox {
-	/*border : 1px solid blue;*/
-	width: 100%;
-}
-
-#id1 {
-	/*border : 1px solid red;*/
-	text-align: left;
-	margin-left: 0px;
-}
-
-.gender_box{
-	font-size: 1.2rem;
+.regi_box_id{
+	line-height: 1.6rem;
 	margin-top: 1.5rem;
 }
 
-.emailEdit, .phoneEdit{
-    display: flex;
-    float: left;
-    width: 100px;
-    line-height: 5px;
+.regi_box_name{
+	line-height: 1.6rem;
 }
 
-.passwordEdit{
-    width: 100px;
+.regi_box_birth{
+	margin-top: 1rem;
+	line-height: 1.6rem;
 }
-  
+
+.regi_box_member{
+	margin-top: 1rem;
+	line-height: 1.6rem;
+}
+
+.gender_box{
+	margin-top: 1rem;
+	line-height: 1.6rem;
+}
+
+.regi_box_phone{
+    margin-top: -1.5rem;
+    line-height: 1.6rem;
+    height: 65px;
+}
+
+.email_box{
+	margin-top: -0.5rem;
+	line-height: 1.6rem;
+}
+
+.regi_logo{
+	border-bottom: 4px solid #f5f7f9;
+}
+
+input{
+	background: #f5f5f9;
+	  padding: 16px;
+	  margin: 8px 0;
+	  width: 65%;
+	  border: 0;
+	  outline: none;
+	  border-radius: 20px;
+	  box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+	  margin-top: 1rem;
+}
+
+.regi_box_pw {
+    text-align: center;
+    margin-left: 1rem;
+}
+
+.regi_box_pw_check {
+    text-align: center;
+    margin-left: 1rem;
+}
+
+.buttonB{
+	  border-radius: 20px;
+	  border: none;
+	  outline: none;
+	  font-size: 12px;
+	  font-weight: bold;
+	  margin: 14px;
+	  letter-spacing: 1px;
+	  text-transform: uppercase;
+	  cursor: pointer;
+	  width: 110px;
+	  padding: 0;
+	  height: 45px;
+	  transition: all 0.2s;
+	  box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
+
+.btnColor{
+	background: revert;
+}
+.btnColor.btnPush{
+	box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+}
+
+.btnPush:hover{
+	margin-top: 15px;
+  	margin-bottom: 5px;
+}
+
+.btnColor.btnPush:hover{
+	box-shadow: 0px 0px 0px 0px lightgray;
+}
+
+.edit_button_box{
+	width:100%;
+	height: 50px;
+}
+

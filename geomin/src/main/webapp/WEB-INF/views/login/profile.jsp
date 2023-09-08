@@ -25,37 +25,39 @@
 					<li class="home"><a href="#"> 
 						<img src="../resources/image/homeicon.png" alt=""> 
 					</a></li>
-					<li><a href="#"> 회원가입 / </a></li>
-					<li><a href="#"> 회원등록 </a></li>
+					<li><a href="#"> 홈 / </a></li>
+					<li><a href="#"> My Page </a></li>
 				</ul>
 			</div>
 			<div class="left-sideBar">
 				<ul>
-					
-					<li class="guide"><a href="#" id="guide-hover">회원 정보</a></li>
-				</ul>
+                <li class = "site-intro"><a href = "/login/profile" id = "intro-hover">회원 정보</a></li>
+            </ul>
 			</div>
+			
+			
+<div id="wrap_container">
 			<div class='regi_center slide-in'>
-				<div class='regi_logo'>회원 정보</div>
+				<h2><div class='regi_logo'>회원 정보</div></h2>
 				
 				<div class='regi_box_id'>
                 <div>
                 <h5>아이디</h5>
                 	
-               	<div>	<span id="userId">${userVo.user_id}</span>      </div>                   
+               	<div>	<span id="userId">&nbsp; ${userVo.user_id}</span>      </div>                   
                	</div> 	
             </div><br>
 				
 				<div class='regi_box_name'>
 					<div>
 					<h5>이름</h5>
-						${userVo.user_name}
+						&nbsp; ${userVo.user_name}
 					</div>
 				</div>
 				<div class='regi_box_birth'>
 					
 						<h5>생년월일</h5>
-						${userVo.datebirth}
+						&nbsp; ${userVo.datebirth}
 				</div>
 				
 
@@ -63,16 +65,16 @@
 			    <h5>회원구분</h5>
 			    <c:choose>
 			        <c:when test="${userVo.user_type == '1'}">
-			            학습지도자
+			            &nbsp; 학습지도자
 			        </c:when>
 			        <c:when test="${userVo.user_type == '2'}">
-			            학습자
+			           &nbsp;  학습자
 			        </c:when>
 			        <c:when test="${userVo.user_type == '3'}">
-			            운영자
+			           &nbsp;  운영자
 			        </c:when>
 			        <c:otherwise>
-			            기타
+			            &nbsp; 기타
 			        </c:otherwise>
 			    </c:choose>
 			</div>
@@ -81,13 +83,13 @@
                 <h5>성별</h5>
 			    <c:choose>
 			        <c:when test="${userVo.gender == '남자'}">
-			            남자
+			            &nbsp; 남자
 			        </c:when>
 			        <c:when test="${userVo.gender == '여자'}">
-			            여자
+			            &nbsp; 여자
 			        </c:when>
 			        <c:otherwise>
-			            기타
+			           &nbsp;  기타
 			        </c:otherwise>
 			    </c:choose>
             </div>
@@ -95,26 +97,23 @@
             <div class='regi_box_id'>
             		<input type="hidden" id="emailFormEmail" name="email" value="">
             	
-            	<div>
+            	<div class = "email_box">
 					<h5>이메일 주소</h5>
-					<h5 class="star">&nbsp*</h5>
+					&nbsp; ${userVo.email }
 				</div><br>
-					<div>${userVo.email }</div>
-					
 				
 				</div><br>
 
 				<div class='regi_box_phone'>
 				<div>
 					<h5>전화번호</h5>
-					<h5 class="star">&nbsp*</h5>
+					&nbsp; ${userVo.phonenumber }
 				</div><br>
-				${userVo.phonenumber }
+				
 				</div>
 					<div class='regi_box_pw'>
 					<div>
-						<h5>비밀번호</h5>
-						<h5 class="star">&nbsp*</h5>
+						<h5>비밀번호 &nbsp;<span class = "star">*</span></h5>
 					</div>
 					<input type="password" name="userPw" id="userPw"
 						placeholder='공백없이 영문(대/소문자) 숫자 및 특수문자 조합 8-15자' maxlength='15'
@@ -122,18 +121,19 @@
 				</div>
 				<div class='regi_box_pw_check'>
 					<div>
-						<h5>비밀번호 확인</h5>
-						<h5 class="star">&nbsp*</h5>
+						<h5>비밀번호 확인 &nbsp;<span class = "star">*</span></h5>
 					</div>
 					<input type="password" name="userPwCheck" id="userPwCheck"
 						placeholder='비밀번호를 한번 더 입력하세요' maxlength='15' autocomplete='off'
 						style='text-align: center;' value="">
+				</div>
+				<div class = "edit_button_box">
+					<input type="button" class="buttonB btnColor btnPush" value="수정하기" onclick="passwordEditAction()">
 				</div>		
-				<input type="button" class="passwordEdit" value="수정하기" onclick="passwordEditAction()">
-							
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 <script>
 function passwordEditAction() {

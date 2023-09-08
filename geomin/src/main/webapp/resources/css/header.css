@@ -23,15 +23,17 @@ ul{
 }
 
 .header_login{
-	/*border:1px solid red;*/
-	width: 5rem;
-	
+    /* width: 5rem; */
+    width: 80px;
+    line-height: 5rem;
 }
 
 .header_user{
-	/*border : 1px solid black;*/
-	width: 10rem;
-	text-align: right;
+    /* width: 10rem; */
+    /* text-align: right; */
+    /*float: left;*/
+    width: 80px;
+    line-height: 5rem;
 }
 
 .header .header_top{
@@ -68,11 +70,11 @@ ul{
 }
 
 .login{
-    width: 20rem;
-    height: 5rem;
-    display: flex;
+   height: 5rem;
+    display: inline-flex;
     margin-right: 0.5rem;
     vertical-align: text-bottom;
+    text-align: center;
 }
 
 #login_menu{
@@ -132,7 +134,7 @@ ul{
 }
 
 .categoryMenu li a:hover{
-    background-color: whitesmoke;
+    background-color: #f5f5f9;
     color: black;
 }
 
@@ -177,7 +179,7 @@ ul{
 .site-intro{
     width: 100%;
     font-weight: bold;
-    background-color: #f9f9f9 !important;
+    background-color: #ebecf0;
     border-radius: 10rem;
     text-align: center;
 }
@@ -199,7 +201,7 @@ ul{
 }
 
 .location{
-    background-color: #f5f6f8;
+    background-color: #ebecf0;
     padding: 7px;
     height: 2.3rem;
 }
@@ -220,4 +222,34 @@ ul{
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 0.5px;
+}
+
+.buttonH{
+  	display: block;
+    position: relative;
+    float: left;
+    width: 80px;
+    padding: 0;
+    margin: 10px 10px 10px 0;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 5px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btnColorH{
+    background-color: #f5f5f9;
+}
+.btnColorH.btnPushH{
+	box-shadow: 0px 5px 0px 0px gainsboro;
+}
+
+.btnPushH:hover{
+	margin-top: 15px;
+  	margin-bottom: 5px;
+}
+
+.btnColorH.btnPushH:hover{
+	box-shadow: 0px 0px 0px 0px lightgray;
 }
