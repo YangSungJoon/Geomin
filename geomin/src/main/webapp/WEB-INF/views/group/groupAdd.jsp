@@ -42,9 +42,11 @@ totalCnt : ${totalCnt } <br> --%>
 				<p>콘텐츠 명<span>*</span></p>
       		   <select name="content_id">
 				<c:forEach items="${option_content_id }" var="li" varStatus="status">
-				   	<option  value="${li.content_id }">${li.content_name }</option>
+				   	<option  value="${li.content_id }" data-total-personnel="${li.total_personnel}">${li.content_name }</option>
 			    </c:forEach>
 			   </select>
+			   
+
             
                 <p>그룹명<span>*</span></p>
                 <input type="text" name="group_name">
@@ -71,6 +73,28 @@ totalCnt : ${totalCnt } <br> --%>
     </div>
     
 <script>
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var contentSelect = document.querySelector('select[name="content_id"]');
+    var groupPersonnelInput = document.querySelector('input[name="group_personnel"]');
+
+    // 초기 선택값 설정
+    updateGroupPersonnel(contentSelect, groupPersonnelInput);
+
+    contentSelect.addEventListener("change", function() {
+        updateGroupPersonnel(contentSelect, groupPersonnelInput);
+    });
+});
+
+function updateGroupPersonnel(contentSelect, groupPersonnelInput) {
+    var selectedOption = contentSelect.options[contentSelect.selectedIndex];
+    var totalPersonnel = selectedOption.getAttribute("data-total-personnel");
+    groupPersonnelInput.value = totalPersonnel;
+}
+
+
     document.addEventListener("DOMContentLoaded", function() {
         var form = document.querySelector("form");
 
