@@ -10,7 +10,7 @@
 .regi_center {
 	width: 45rem;
     margin-left: 23rem;
-    background-color: #f5f6f8;
+    background-color: #ebecf0;
     line-height: 2rem;
     border-radius: 3rem;
     padding: 2rem;
@@ -147,6 +147,7 @@ input:focus {
 	width: 100px;
 	height: 40px;
 	margin-left: 1.5rem;
+	background-color: #ebecf0;
 }
 
 #id_check:hover {
@@ -192,7 +193,7 @@ input:focus {
 	font-size: 15px;
 	font-weight: bold;
 	border: 2px solid rgb(203, 203, 203);
-	background-color: #f6f6f6;
+	background-color: #f5f5f9;
 }
 
 .star {
@@ -264,7 +265,7 @@ button{
 }
 
 .btnColor{
-	background: revert;
+	background: #ebecf0;
 }
 .btnColor.btnPush{
 	box-shadow: 0px 5px 0px 0px silver;
