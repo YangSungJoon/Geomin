@@ -169,10 +169,10 @@ document.addEventListener("DOMContentLoaded", function() {
             if (isDeletedCheckbox.value === 'N') {
                 message = "구독신청이 완료 되었습니다.";
             } else if (isDeletedCheckbox.value === 'Y') {
-                message = "삭제된 콘텐츠입니다. 다시 신청해주세요.";
+                message = "삭제된 패키지 입니다. 다시 신청해주세요.";
             } 
         } else {
-            message = "체크된 콘텐츠가 없습니다. 다시 확인해주세요.";
+            message = "선택된 패키지가 없습니다. 다시 확인해주세요.";
         }
         
         alert(message);

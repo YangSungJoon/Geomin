@@ -23,6 +23,8 @@
 		    // input 요소의 값을 선택한 옵션 값으로 설정합니다.
 		    inputElement.value = selectedValue;
 		};
+		
+
 </script>
 
 </head>
@@ -59,12 +61,12 @@ totalCnt : ${totalCnt } <br> --%>
 		      
 
 	      
-<form action="updateEvaluation" method="post">
+<form action="updateEvaluation" method="post" onsubmit="return validateForm();">
 <input type="hidden" name="user_id" value="${userId}">
 	<input type="hidden" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
 	<input type="hidden" name="total" value="${pageDto.total }">  
 	
-		              <button type = "submit" onclick="alert('점수가 저장 되었습니다.')">저장</button>
+		              <button type = "submit" id = "send_button" >저장</button>
         
 
 	        <div class = "request-content">
@@ -112,6 +114,33 @@ totalCnt : ${totalCnt } <br> --%>
 
     </div>
 
+<script>
+// 저장 버튼 클릭 시 유효성 검사
+function validateForm() {
+    // homework_no 선택 여부 확인
+    var homeworkNoElements = document.querySelectorAll('input[name="homework_no"]');
+    var isHomeworkNoSelected = false;
+    homeworkNoElements.forEach(function (homeworkNoElement) {
+        if (homeworkNoElement.checked) {
+            isHomeworkNoSelected = true;
+        }
+    });
+
+    // evaluation 입력 여부 확인
+    var evaluationValue = document.getElementById('evaluation-input').value.trim();
+    if (!isHomeworkNoSelected) {
+        alert('학습자를 선택해주세요.');
+        return false; // 폼 전송 방지
+    } else if (evaluationValue === '') {
+        alert('평가점수를 선택해주세요.');
+        return false; // 폼 전송 방지
+    }
+
+    // 성공적으로 등록되었을 때
+    alert('점수가 등록되었습니다.');
+    return true; // 폼 전송 허용
+}
+</script>
 
 
 </body>

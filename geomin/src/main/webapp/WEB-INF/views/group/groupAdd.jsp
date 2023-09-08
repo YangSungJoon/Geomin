@@ -70,7 +70,7 @@ totalCnt : ${totalCnt } <br> --%>
     </form>
     </div>
     
-    <script>
+<script>
     document.addEventListener("DOMContentLoaded", function() {
         var form = document.querySelector("form");
 
