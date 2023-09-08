@@ -86,7 +86,7 @@ totalCnt : ${totalCnt } <br> --%>
 	                 <c:forEach items="${homeworkEval }" var="li" varStatus="status">
 					    <tr>
 					        <td class="check_box">
-					        	<input type="checkbox" name="homework_no" class="check1" id="checkbox" value="${li.homework_no}">
+					        	<input type="checkbox" name="homework_no" class="check1" id="checkbox" onclick='checkOnlyOne(this)' value="${li.homework_no}">
 					        </td>
 					        <td>${li.group_name }</td>
 					        <td>${li.user_name}</td>
@@ -115,6 +115,27 @@ totalCnt : ${totalCnt } <br> --%>
     </div>
 
 <script>
+
+//check 중복 체크 방지
+function checkOnlyOne(element) {
+	  
+	  const checkboxes 
+	      = document.getElementsByName("homework_no");
+	  
+	  checkboxes.forEach((cb) => {
+	    cb.checked = false;
+	    
+        // 해당 행의 셀렉트 박스 초기화
+        var selectElement = cb.closest('tr').querySelector('.evaluation-select');
+        selectElement.selectedIndex = "";
+	    
+	  })
+	  
+	  element.checked = true;
+	  
+	  
+	}
+
 // 저장 버튼 클릭 시 유효성 검사
 function validateForm() {
     // homework_no 선택 여부 확인
