@@ -9,6 +9,7 @@
 		select * from homework,users,content where users.user_id = 
 		homework.user_id_learner and users.user_id = #{user_id} 
 		and homework.content_id = content.content_id
+		order by homework.homework_deadline asc
 	</select>
 	
 	<!-- 학습자 이름 조회 -->
