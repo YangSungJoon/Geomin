@@ -47,7 +47,7 @@
 
 
 					<div class="right_info">
-						<strong style='font-size: 27px'>신청 그룹 선택</strong> 
+						<strong style='font-size: 27px'>그룹 선택</strong> 
 						<select id="select" name="group_id" style='margin-left: 1rem' onchange="onChange(this)">
 							<option value="그룹을 선택해주세요.">선택</option>
 							<c:forEach items="${list}" var="list">

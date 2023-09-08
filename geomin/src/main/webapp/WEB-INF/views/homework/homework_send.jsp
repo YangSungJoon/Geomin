@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/homework_send.css">
 <link rel="stylesheet" href="../resources/css/modal.css">
-<link rel="stylesheet" href="../resources/css/study_group_join.css">
 <script src="../resources/js/homework_send.js"></script>
 <script src="../resources/js/modal.js"></script>
 
@@ -37,8 +36,8 @@
         </div>
         <div class = "left-sideBar">
             <ul>
-                <li class = "group_add"><a href = "/homework/study_group_join?user_id=${userId}" id = "group_add">학습그룹 가입신청</a></li>
-                <li class = "work_send"><a href = "/homework/homework_send?user_id=${userId}" id = "work_send">숙제 제출</a></li>
+                <li class = "site-intro"><a href = "/homework/study_group_join?user_id=${userId}" id = "group_add">학습그룹 가입신청</a></li>
+                <li class = "guide"><a href = "/homework/homework_send?user_id=${userId}" id = "work_send">숙제 제출</a></li>
             </ul>
         </div>
         
@@ -47,19 +46,19 @@
             </p><hr>
         </div>
 
-        <div class = "request-content">
-            <table>
+        
+            <table class = "table-fill">
                 <tr class = "table_menu">
-                    <td>학습 콘텐츠</td>
-                    <td>학습지도자</td>
-                    <td>숙제 내용</td>
-                    <td>제출기한</td>
-                    <td>학습내용</td>
+                    <th class = "top_content">학습 콘텐츠</th>
+                    <th class = "top_leader">학습지도자</th>
+                    <th class = "top_content_info">숙제 내용</th>
+                    <th class = "top_deadline">제출기한</th>
+                    <th class = "top_content_send">학습내용</th>
                 </tr>
                 
                 <c:forEach items = "${list}" var="worklist">
                 <tr>
-                    <td class = "contentName"><c:out value="${worklist.content_name }"/></td>
+                    <td class = "contentName button btnColor btnPush"><a href ="/management/contentListView?content_id=${worklist.content_id}"><strong><c:out value="${worklist.content_name }"/></strong></a></td>
                     <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
                     <td class = "workContent"><c:out value="${worklist.homework_content_leader }"/></td>
                     <td class = "sendDate" style = "color: red; font-weight: bold;"><c:out value="${worklist.homework_deadline }"/></td>
@@ -70,9 +69,11 @@
                     </c:when>
                     <c:otherwise>
                     <form action="/homework/homework_sendAction" method="post">
+                    <div class = "bottom-button_box">
                     	<input type="text" name="content_send_box" id="content_send_box" placeholder = '학습 내용을 입력해주세요.'>
                     	<input type="hidden" name="group_id" value="${worklist.group_id }">
-                    	<button type ="submit" onclick = "send()">제출</button>
+                    	<button type ="submit" onclick = "send()" class = "buttonS buttonPush buttonColor">제출</button>
+                    	</div>
                     </form>
                     </c:otherwise>
                     </c:choose>
