@@ -80,13 +80,6 @@ public class StudyController {
 		model.addAttribute("user", groupjoinService.userInfo(user_id));
 		model.addAttribute("list", homeworkService.getGroupInfo());
 		
-		log.info("==================================가입 정보 조회======================================");
-		//model.addAttribute("select", homeworkService.getGroupId(group_id));
-		//model.addAttribute("info", groupjoinService.selectGroup(group_id));
-		
-		// 학습자 이름 출력
-		//model.addAttribute("learner", homeworkService.getUserName(user_id));
-		
 		return "/homework/study_group_join";
 	}
 	
@@ -105,14 +98,15 @@ public class StudyController {
 		return "redirect:/homework/study_group_join?user_id="+user_id;
 	}
 	
-//	@GetMapping("/homework/study_group_view")
-//	public String groupView(String group_id, Model model) {
-//		log.info("그룹 정보 조회=========================");
-//		
-//		model.addAttribute("list", homeworkService.getGroupInfo());
-//		model.addAttribute("id", homeworkService.getGroupId(group_id));
-//		
-//		return "/homework/study_group_join";
-//	}
+	@GetMapping("/homework/study_group_info")
+	public String groupInfo(@RequestParam(value = "user_id", required = false) String user_id, GroupJoinVO groupjoinvo, Model model) {
+		
+		log.info("========================가입된 그룹 정보 조회=========================");
+		model.addAttribute("list", groupjoinService.JoinGroupInfo(user_id));
+		log.info("========================승인 대기 중인 그룹 정보 조회=========================");
+		model.addAttribute("list2", groupjoinService.JoinGroupInfo2(user_id));
+		
+		return "/homework/study_group_info";
+	}
 	
 }

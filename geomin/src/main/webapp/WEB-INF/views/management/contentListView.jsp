@@ -5,52 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>학습콘텐츠 목록</title>
-    <style>
-    	
-
-#addbtn{
-	border : 1px solid black;
-	
-}
-
-.group_add_box h1{
-    margin-top: 1.5rem;
-    margin-left: 1.5rem;
-}
-
-.left_content{
-    height: 35rem;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 1.5rem;
-    margin-left: 1rem;
-    line-height: 2rem;
-    
-    
-}
-
-
-.baduk_image img{
-	width: 300px;
-	height: 200px;
-	border: 1px solid black;
-	float: left;
-}
-    
-    	#pakage{
-    		width:200px;
-    	}
-    	
-.table_box{
-	border: 1px solid black;
-	width:600px;
-	height: 700px;
-	float: left;
-}    	
-    	
-    	
-    </style>
-    
+    <link rel="stylesheet" href="../resources/css/contentListView.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
 </head>
@@ -86,27 +41,28 @@
             
    </div>
 
-    <div class="group_add_box">
-    	<div class="baduk_image">
-    		<c:choose>
-                  <c:when test="${contentVo.learning_difficulty_str == '초급'}">
-    				  <img src="../resources/image/baduk1.jpg" alt="초급"/>                 
-	              </c:when>
-	              <c:when test="${contentVo.learning_difficulty_str == '중급'}">
-    				  <img src="../resources/image/baduk2.jpg" alt="중급"/>                 
-	              </c:when>
-                  <c:when test="${contentVo.learning_difficulty_str == '고급'}">
-    				  <img src="../resources/image/baduk3.jpg" alt="고급"/>                 
-	              </c:when>
-            </c:choose>  
-   		</div>
+    <div class="content_list_box">
+    	
     		<form action="/management/contentUpdate" method="post">
         <input type="hidden" name="content_id" value="${param.content_id}">
    		<div class ="table_box">
-            <table border="1">
-            	<tr>
+            <table>
+            	<tr class = "table_line">
             		<th id="pakage">패키지명</th>
-            		<td id="pakage2" colspan="4">${contentVo.content_name}</td>
+            		<td id="pakageNameF" colspan="3">${contentVo.content_name}</td>
+            		<td><div class="baduk_image">
+			    		<c:choose>
+			                  <c:when test="${contentVo.learning_difficulty_str == '초급'}">
+			    				  <img src="../resources/image/baduk1.jpg" alt="초급"/>                 
+				              </c:when>
+				              <c:when test="${contentVo.learning_difficulty_str == '중급'}">
+			    				  <img src="../resources/image/baduk2.jpg" alt="중급"/>                 
+				              </c:when>
+			                  <c:when test="${contentVo.learning_difficulty_str == '고급'}">
+			    				  <img src="../resources/image/baduk3.jpg" alt="고급"/>                 
+				              </c:when>
+			            </c:choose>  
+   					</div></td>
             		
             	</tr>
             	<tr>
@@ -131,10 +87,10 @@
             		<td>${contentVo.real_price}원</td>
             	</tr>
             	<tr>
-            		<th colspan="2">학습 내용</th>
+            		<th colspan="8">학습 내용</th>
             	</tr>
             	<tr>
-            		<td colspan="2">${contentVo.learning_content}</td>
+            		<td colspan="8">${contentVo.learning_content}</td>
             	</tr>
             </table>
             </div>

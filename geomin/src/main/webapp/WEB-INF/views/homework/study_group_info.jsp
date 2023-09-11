@@ -23,7 +23,7 @@
 						src="../resources/image/homeicon.png" alt=""> /
 				</a></li>
 				<li><a href="#"> 학습 서비스 / </a></li>
-				<li><a href="#"> 학습그룹 가입신청 </a></li>
+				<li><a href="#"> 나의 그룹 </a></li>
 			</ul>
 		</div>
 
@@ -40,43 +40,43 @@
 			</ul>
 		</div>
 
-
-		<form action="/homework/study_group_join?user_id=${userId}"
-			method="post" onsubmit="submitForm()">
 			<div class="group-content-box">
-				<h2 class="join_info">가입 정보</h2>
+				<h2 class="join_info">나의 그룹</h2>
 				<div class="group_content">
 
 
 					<div class="right_info">
-						<strong style='font-size: 27px'>그룹 선택</strong> 
+						<strong style='font-size: 27px'>가입된 그룹 정보</strong> 
 						<select id="select" name="group_id" style='margin-left: 1rem' onchange="onChange(this)">
 							<option value="그룹을 선택해주세요.">선택</option>
 							<c:forEach items="${list}" var="list">
 								<option value="${list.group_id}" 
 									data-all-data="
 									학습 지도자 : ${list.user_id_leader}<br>
-                    				학습 기간 : ${list.learning_start} ~ 
-                    							${list.learning_end}<br>
-        							학급 수 : ${list.group_personnel}명<br>">${list.group_name }</option>
+									학습 기간 : ${list.learning_start} ~ 
+                    							${list.learning_end}<br>">${list.group_name }</option>
 							</c:forEach>
 						</select> <br>
 						<p style="float: right; margin-top: 1rem;">
-							<strong>신청자 : </strong>${user.user_name }</p>
+						
+						<div class = "group_select_view">
+							<strong style='font-size: 26px'><span class = "group_name_color">승인 대기중인 그룹</span></strong>
+							<select id = "select" name = "group_id" style='margin-left: 1rem' onchange="onChange(this)">
+								<c:forEach items="${list2}" var="list2">
+									<option value = "${list2.group_id }"
+										data-all-data="
+										학습 지도자 : ${list2.user_id_leader}<br>
+										학습 기간 : ${list2.learning_start} ~ 
+                    							${list2.learning_end}<br>">${list2.group_name }</option>
+								</c:forEach>
+							</select>
+						</div>
 					</div>
 					<br>
 
 					<div id="result"></div>
 				</div>
 			</div>
-
-
-			<div class="send_button_box">
-				<button type="submit" class = "button btnColor btnPush" id="send_button" onclick="send();">가입
-					신청</button>
-			</div>
-		</form>
-
 	</div>
 
 	<script>
@@ -86,11 +86,6 @@
 			const resultDiv = document.getElementById('result');
 			resultDiv.innerHTML = allData;
 		}
-
-		function send() {
-			alert('가입 신청이 완료되었습니다.');
-		}
-
 	</script>
 
 </body>
