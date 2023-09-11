@@ -1,5 +1,7 @@
 package com.geomin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,16 @@ public class GroupJoinServiceImpl implements GroupJoinService {
 	@Override
 	public GroupJoinVO selectGroup(String group_id) {
 		return groupjoinMapper.selectGroup(group_id);
+	}
+
+	@Override
+	public List<GroupJoinVO> JoinGroupInfo(String user_id) {
+		return groupjoinMapper.JoinGroupInfo(user_id);
+	}
+	
+	@Override
+	public List<GroupJoinVO> JoinGroupInfo2(String user_id) {
+		return groupjoinMapper.JoinGroupInfo2(user_id);
 	}
 
 }

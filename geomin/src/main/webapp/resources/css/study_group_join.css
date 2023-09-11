@@ -172,4 +172,12 @@ h2.join_info {
     border-bottom: 4px solid #F8F8F8;
     line-height: 4.5rem;
 }
-        
+
+
+.group_select_view{
+	margin-top: 1.5rem;
+}
+
+.group_name_color{
+	color: red;
+}

@@ -21,4 +21,26 @@
 	<select id = "selectGroup" resultType="com.geomin.vo.GroupJoinVO">
 		select * from groups where group_id = #{group_id};
 	</select>
+	
+	<!-- 가입된 그룹 정보 조회 -->
+	<select id = "JoinGroupInfo" resultType = "com.geomin.vo.GroupJoinVO">
+		select user_id, learner_group.group_id, groups.group_name, groups.learning_start
+		, groups.learning_end, learner_group.user_id_leader, groupyn
+		from groups, learner_group, users 
+		where users.user_id = learner_group.user_id_learner
+		and users.user_id = #{user_id}
+		and groups.group_id = learner_group.group_id
+		and learner_group.groupyn = 'Y'
+	</select>
+	
+	<!-- 승인 대기중 그룹 정보 조회 -->
+	<select id = "JoinGroupInfo2" resultType = "com.geomin.vo.GroupJoinVO">
+		select user_id, learner_group.group_id, groups.group_name, groups.learning_start
+		, groups.learning_end, learner_group.user_id_leader, groupyn
+		from groups, learner_group, users 
+		where users.user_id = learner_group.user_id_learner
+		and users.user_id = #{user_id}
+		and groups.group_id = learner_group.group_id
+		and learner_group.groupyn = 'N'
+	</select>
 </mapper>

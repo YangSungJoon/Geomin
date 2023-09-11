@@ -1,5 +1,4 @@
 .intro-box{
-    border: 2px solid black;
     width: 80rem;
     height: 60rem;
 }
@@ -92,19 +91,6 @@ option{
     text-align: center;
 }
 
-table{
-    border: 3px solid black;
-    text-align: center;
-    width: 60rem;
-    height: 15rem;
-    margin-right: 2.3rem;
-    margin-top: 2rem;
-}
-
-td{
-    border: 1px solid black;
-}
-
 .check_box{
     width: 3rem;
     height: 2.5rem;
@@ -167,4 +153,61 @@ td{
     margin-right: 5rem;
     width: 4rem;
     height: 2.5rem;
+}
+
+.content_list_box{
+	border: 3px solid blue;
+	width: 45rem;
+    margin-left: 23rem;
+    background-color: #ebecf0;
+    line-height: 2rem;
+    border-radius: 3rem;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #dee1e0;
+	
+}
+
+#addbtn{
+	border : 1px solid black;
+	}
+	
+img{
+	width: 280px;
+    height: 220px;
+}
+
+#pakage{
+	border: 1px solid #6ea3d9;
+    background-color: #d7f4ff;
+    border-radius: 16px;
+    box-shadow: inset 0 0 8px #2db3f3;
+    width: 230px;
+    height: 160px;
+}
+
+table{
+	width: 650px;
+	border: 1px solid black;
+}
+
+th{
+    border: 1px solid #ffffff;
+    background-color: #fafdff;
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px #2db3f3;
+}
+
+tr{
+	border: 1px solid black;
+}
+
+td#pakageNameF {
+    border: 1px solid black;
+    width: 110px;
+    text-align: center;
+}
+
+.table_line{
+	border: 1px solid black;
 }

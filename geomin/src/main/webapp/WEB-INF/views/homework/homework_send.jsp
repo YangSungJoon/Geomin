@@ -38,6 +38,8 @@
             <ul>
                 <li class = "site-intro"><a href = "/homework/study_group_join?user_id=${userId}" id = "group_add">학습그룹 가입신청</a></li>
                 <li class = "guide"><a href = "/homework/homework_send?user_id=${userId}" id = "work_send">숙제 제출</a></li>
+                <li class="guide"><a
+					href="/homework/study_group_info?user_id=${userId}" id="guide-hover">나의 그룹</a></li>
             </ul>
         </div>
         
