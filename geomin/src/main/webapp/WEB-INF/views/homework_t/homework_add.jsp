@@ -9,8 +9,7 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="../resources/css/footer.css">
 	    <link rel="stylesheet" href="../resources/css/header.css">
-	    <link rel="stylesheet" href="../resources/css/content_request.css">
-
+	    <link rel="stylesheet" href="../resources/css/homework_add.css">
 	   <script>
 	   
 	   window.onload = function() {
@@ -107,25 +106,6 @@
 		</form>
 	
 	<div class = "intro-box">
-	<div class = "location">
-            <ul class = "clearFix">
-                <li class = "home">
-                    <a href = "#">
-                        <img src="../resources/image/homeicon.png" alt=""> /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        강사 마당 /
-                    </a>
-                </li>
-                <li>
-                    <a href = "#">
-                        숙제 전송
-                    </a>
-                </li>
-            </ul>
-        </div>
 	        <div class = "left-sideBar">
 	            <ul>
 	                <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
@@ -140,6 +120,7 @@
 	 <form action="homework_sel" method="post">
 	 
 		        <div class = "name-content">
+	
 			  	          	콘텐츠명 &nbsp;
 				              <select id="content_id">
 				                  <option value="">전체 ↓</option>
@@ -148,10 +129,10 @@
 							   </c:forEach>
 				              </select>
 				              
-				              <button type = "submit" id = "name_check" class = "buttonB btnPush btnColor">조회</button>
-						      <input type="hidden" name="groupyn" value="Y">
-						      <input type="hidden" name="content_name" class="content_name" value="${content_name }">
-						      <input type="hidden" name="user_id"  value="${userId}">
+	              <button type = "submit" id = "name_check" class = "buttonB btnPush btnColor">조회</button>
+			      <input type="hidden" name="groupyn" value="Y">
+			      <input type="hidden" name="content_name" class="content_name" value="${content_name }">
+			      <input type="hidden" name="user_id"  value="${userId}">
 	<%-- ${pageDto.cri.exercise_name ==  ex.exercise_name ? 'selected' : '' } --%>
 		        </div>
 			      
@@ -164,17 +145,15 @@
 	  	
 	        
 	
-		        <div class = "main-content-box">
+<div class = "main-content-box">
 		            <table class = "table-fill">
 		                <tr class = "table_menu">
 		                    <th class = "check_box"></th>
 		                    <th class = "top_content">콘텐츠명</th>
 		                    <th class = "top_people">그룹명</th>
 		                    <th class = "top_people">학습자명</th>
-		                    
-		                    
 		                </tr>
-		                 <c:forEach items="${homework_add_list }" var="li" varStatus="status">
+		                 <c:forEach items="${groupApproval }" var="li" varStatus="status">
 						    <tr>
 						        <td class="check_box">
 						        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" onclick='checkOnlyOne(this)' value="${li.user_id_learner}">
@@ -191,8 +170,7 @@
 	
 		            
 		            
-		            
-		         <div class = "bottom__box">
+		           <div class = "bottom__box">
 		            <div>
 		            	<strong>숙제내용</strong>
 		            	<br>
@@ -208,14 +186,14 @@
 		            <div class = "send_button_box">
 		                <button type = "submit" id = "send_button" class = "buttonB btnPush btnColor">숙제 전송</button>
 		            </div>
-		            
-		         </div>
-		 </div>
+		            </div>
+</div>
 	</form>
 	
 	<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 	    </div>
 	
+
 	
 	</body>
 	 <%@include file = "../common/footer.jsp" %> 

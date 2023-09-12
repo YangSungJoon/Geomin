@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
-    <link rel="stylesheet" href="../resources/css/content_request.css">
+    <link rel="stylesheet" href="../resources/css/myGroup.css">
     
      <script>
         window.onload = function() {
@@ -22,8 +22,6 @@
 </head>
  <%@include file = "../common/header.jsp" %> 
 <body>
-
-구독 콘텐츠 목록
 <%-- userId : ${userId} <br>
 pageDto : ${pageDto } <br>
 totalCnt : ${totalCnt } <br> --%>
@@ -39,6 +37,25 @@ totalCnt : ${totalCnt } <br> --%>
 	</form>
 
 <div class = "intro-box">
+		<div class = "location">
+            <ul class = "clearFix">
+                <li class = "home">
+                    <a href = "#">
+                        <img src="../resources/image/homeicon.png" alt=""> /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        강사 마당 /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        나의 그룹
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
@@ -48,18 +65,23 @@ totalCnt : ${totalCnt } <br> --%>
                 <li class = "guide"><a href = "/homework_t/homework_evaluation?user_id=${userId }" id = "guide-hover">숙제 평가</a></li>
             </ul>
         </div>
-
+        
+        <div class = "name-content">
+	          <p>학습그룹 가입승인&nbsp;
+	          </p><hr>
+	      </div>
+        
 <form action="delGroup" method="post">
 
 <input type="hidden" name="user_id" value="${userId}">
         <div class = "request-content">
-            <table>
+            <table class = "table-fill">
                 <tr class = "table_menu">
-                    <td class = "check_box"></td>
-                    <td>그룹명</td>
-                    <td>콘텐츠명</td>
-                    <td>총인원</td>
-                    <td>현재인원</td>
+                    <th class = "check_box"></th>
+                    <th class = "top_content">콘텐츠명</th>
+                    <th class = "top_people">그룹명</th>
+                    <th class = "top_sale">총인원</th>
+                    <th class = "top_sale">현재인원</th>
                 </tr>
                 <c:forEach items="${myGroup }" var="li" varStatus="status">
 	                <tr>

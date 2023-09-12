@@ -85,16 +85,18 @@ document.addEventListener("DOMContentLoaded", function() {
          <c:choose>
             <c:when test="${empty userVo}">
                 <!-- 로그인하지 않은 사용자 -->
-                <li><a href = "#" id = "category-size-service">서비스 안내</a>
-                    <ul class = 'submenu'>
+                <li class = "frame"><a href = "#" class = "custom-btn btntopmenu">서비스 안내</a>
+                	<ul class = 'submenu'>
                         <li><a href="/main/intro" id = "subcategory-11">사이트 소개</a></li>
                         <li><a href="/main/guide" id = "subcategory-12">이용가이드</a></li>
                     </ul>
                 </li>
-                <li><a href="#" style="color: gray;" class="gray1">구독서비스</a></li>
-                <li><a href="#" style="color: gray;" class="gray1">강사마당</a></li>
-                <li><a href="#" style="color: gray;" class="gray1">학습서비스</a></li>
-                <li><a href = "#" id = "category-size-admin">관리마당</a>
+                
+                
+                <li><a href="#" style="color: gray;"  class = "custom-btn btntopmenu">구독서비스</a></li>
+                <li><a href="#" style="color: gray;"  class = "custom-btn btntopmenu">강사마당</a></li>
+                <li><a href="#" style="color: gray;"  class = "custom-btn btntopmenu">학습서비스</a></li>
+                <li><a href = "#" id = "category-size-admin" class = "custom-btn btntopmenu">관리마당</a>
                 	<ul class = 'submenu'>
                 		<li><a href="/management/announcement" id = "subcategory-52">공지사항</a></li>
                 	</ul>
@@ -106,33 +108,33 @@ document.addEventListener("DOMContentLoaded", function() {
                 <c:choose>
                     <c:when test="${userVo.user_type == 1}">
                         <!-- 사용자 유형이 1 (학습자)인 경우 -->
-                        <li><a href = "#" id = "category-size-service">서비스 안내</a>
+                        <li><a href = "#" id = "category-size-service" class = "custom-btn btntopmenu">서비스 안내</a>
                     <ul class = 'submenu'>
                         <li><a href="/main/intro" id = "subcategory-11">사이트 소개</a></li>
                         <li><a href="/main/guide" id = "subcategory-12">이용가이드</a></li>
                     </ul>
                 </li>
         
-                <li><a href = "#" id = "category-size-subscription">구독서비스</a>
+                <li><a href = "#" id = "category-size-subscription" class = "custom-btn btntopmenu">구독서비스</a>
                     <ul class = 'submenu'>
                         <li><a href="/content/contentList" id = "subcategory-21">학습콘텐츠 구독</a></li>
                         <li><a href="/content/subContentList?user_id=${userId}" id = "subcategory-22">나의 학습콘텐츠</a></li>
                     </ul>
                 </li>
 
-                <li><a href = "#" id = "category-size-instructor">강사마당</a>
+                <li><a href = "#" id = "category-size-instructor" class = "custom-btn btntopmenu">강사마당</a>
                     <ul class = 'submenu'>
                         <li><a href="/group/groupAdd?user_id=${userId}"  id = "subcategory-31">학습그룹 등록</a></li>
                         <li><a href="/group/groupApproval?user_id=${userId}" id = "subcategory-32">학습그룹 가입승인</a></li>
-                        <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "subcategory-33">나의 그룹</a></li>
+                        <li><a href = "/group/myGroup?user_id=${userId}" id = "subcategory-33">나의 그룹</a></li>
                         <li><a href="/homework_t/homework_add?user_id=${userId }&groupyn=Y" id = "subcategory-34">숙제 전송</a></li>
                         <li><a href="/homework_t/homework_evaluation?user_id=${userId }" id = "subcategory-35">숙제 평가</a></li>
                     </ul>
                 </li>
 
-               <li><a href="#" style="color: gray;" class="gray2">학습서비스</a></li>
+               <li><a href="#" style="color: gray;" class="gray2" class = "custom-btn btntopmenu">학습서비스</a></li>
 
-                <li><a href = "#" id = "category-size-admin">관리마당</a>
+                <li><a href = "#" id = "category-size-admin" class = "custom-btn btntopmenu">관리마당</a>
                     <ul class = 'submenu'>
                         <li><a href="/management/announcement" id = "subcategory-52">공지사항</a></li>
                     </ul>
@@ -140,21 +142,22 @@ document.addEventListener("DOMContentLoaded", function() {
                     </c:when>
                     <c:when test="${userVo.user_type == 2}">
                         <!-- 사용자 유형이 2(학습자)인 경우 -->
-                <li><a href = "#" id = "category-size-service">서비스 안내</a>
+                <li><a href = "#" id = "category-size-service" class = "custom-btn btntopmenu">서비스 안내</a>
                     <ul class = 'submenu'>
                         <li><a href="/main/intro" id = "subcategory-11">사이트 소개</a></li>
                         <li><a href="/main/guide" id = "subcategory-12">이용가이드</a></li>
                     </ul>
                 </li>
-                        <li><a href="#" style="color: gray;" class="gray3">구독서비스</a></li>
-                        <li><a href="#" style="color: gray;" class="gray3">강사마당</a></li>
-                <li><a href = "#" id = "category-size-study">학습서비스</a>
+                        <li><a href="#" style="color: gray;" class="gray3" class = "custom-btn btntopmenu">구독서비스</a></li>
+                        <li><a href="#" style="color: gray;" class="gray3" class = "custom-btn btntopmenu">강사마당</a></li>
+                <li><a href = "#" id = "category-size-study" class = "custom-btn btntopmenu">학습서비스</a>
                     <ul class = 'submenu'>
                         <li><a href="/homework/study_group_join?user_id=${userId}" id = "subcategory-41">학습그룹 가입신청</a></li>
                         <li><a href="/homework/homework_send?user_id=${userId}" id = "subcategory-42">숙제 제출</a></li>
+                        <li><a href="/homework/study_group_info?user_id=${userId}" id = "subcategory-43">나의 그룹</a></li>
                     </ul>
                 </li>
-                        <li><a href = "#" id = "category-size-admin">관리마당</a>
+                        <li><a href = "#" id = "category-size-admin" class = "custom-btn btntopmenu">관리마당</a>
                     <ul class = 'submenu'>
                         <li><a href="/management/announcement" id = "subcategory-52">공지사항</a></li>
                     </ul>
@@ -163,38 +166,38 @@ document.addEventListener("DOMContentLoaded", function() {
                     
                     <c:otherwise>
                     	 <!-- 사용자 유형이 3(운영자)인 경우 -->
-                <li><a href = "#" id = "category-size-service">서비스 안내</a>
+                <li><a href = "#" id = "category-size-service" class = "custom-btn btntopmenu">서비스 안내</a>
                     <ul class = 'submenu'>
                         <li><a href="/main/intro" id = "subcategory-11">사이트 소개</a></li>
                         <li><a href="/main/guide" id = "subcategory-12">이용가이드</a></li>
                     </ul>
                 </li>
         
-                <li><a href = "#" id = "category-size-subscription">구독서비스</a>
+                <li><a href = "#" id = "category-size-subscription" class = "custom-btn btntopmenu">구독서비스</a>
                     <ul class = 'submenu'>
                         <li><a href="/content/contentList" id = "subcategory-21">학습콘텐츠 구독</a></li>
                         <li><a href="/content/subContentList?user_id=${userId}" id = "subcategory-22">나의 학습콘텐츠</a></li>
                     </ul>
                 </li>
 
-                <li><a href = "#" id = "category-size-instructor">강사마당</a>
+                <li><a href = "#" id = "category-size-instructor" class = "custom-btn btntopmenu">강사마당</a>
                     <ul class = 'submenu'>
                         <li><a href="/group/groupAdd?user_id=${userId}"  id = "subcategory-31">학습그룹 등록</a></li>
                         <li><a href="/group/groupApproval?user_id=${userId}" id = "subcategory-32">학습그룹 가입승인</a></li>
-                        <li class = "guide"><a href = "/group/myGroup?user_id=${userId}" id = "subcategory-33">나의 그룹</a></li>
+                        <li><a href = "/group/myGroup?user_id=${userId}" id = "subcategory-33">나의 그룹</a></li>
                         <li><a href="/homework_t/homework_add?user_id=${userId }&groupyn=Y" id = "subcategory-34">숙제 전송</a></li>
                         <li><a href="/homework_t/homework_evaluation?user_id=${userId }" id = "subcategory-35">숙제 평가</a></li>
                     </ul>
                 </li>
 
-                <li><a href = "#" id = "category-size-study">학습서비스</a>
+                <li><a href = "#" id = "category-size-study" class = "custom-btn btntopmenu">학습서비스</a>
                     <ul class = 'submenu'>
                         <li><a href="/homework/study_group_join?user_id=${userId}" id = "subcategory-41">학습그룹 가입신청</a></li>
                         <li><a href="/homework/homework_send?user_id=${userId}" id = "subcategory-42">숙제 제출</a></li>
                     </ul>
                 </li>
 
-                <li><a href = "#" id = "category-size-admin">관리마당</a>
+                <li><a href = "#" id = "category-size-admin" class = "custom-btn btntopmenu">관리마당</a>
                     <ul class = 'submenu'>
                         <li><a href="/management/learner_content" id = "subcategory-51">학습콘텐츠 등록</a></li>
                         <li><a href="/management/announcement" id = "subcategory-52">공지사항</a></li>

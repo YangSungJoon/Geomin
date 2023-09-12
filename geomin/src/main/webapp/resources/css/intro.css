@@ -80,13 +80,15 @@ h1{
 h3{
 	text-align: center;
 	margin-top: 1.5rem;
+	border-bottom: 4px solid #ebecf0;
+    line-height: 5rem;
 }
 
 .intro_container {
     line-height: 1.8rem;
 }
 
-span {
+#itag {
     font-size: 23px;
     font-weight: bold;
     margin-right: 0.5rem;
