@@ -30,10 +30,10 @@ public class homework_tController {
 		
 		System.out.println("user_id : ==========================" + subScriptionVO.getUser_id());
 		
-		contentService.groupApproval(subScriptionVO, cri,  model);
+		contentService.homework_add_list(subScriptionVO, cri, model);
 		contentService.homework_option(subScriptionVO, model);
 		
-		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+		int cnt = contentService.homework_add_list_Cnt(subScriptionVO, cri);
 		PageDto pageDto = new PageDto(cri, cnt);
 		
 		model.addAttribute("pageDto", pageDto);
@@ -92,22 +92,22 @@ public class homework_tController {
 						subScriptionVO.getContent_id() != null) {
 				
 					System.out.println("카운트!=============================");
-					int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+					int cnt = contentService.homework_add_list_Cnt(subScriptionVO, cri);
 					PageDto pageDto = new PageDto(cri, cnt);
 					
 					model.addAttribute("pageDto", pageDto);
 					
 					contentService.homework_add(subScriptionVO);
-					contentService.groupApproval(subScriptionVO, cri,  model);
+					contentService.homework_add_list(subScriptionVO, cri, model);
 					contentService.homework_option(subScriptionVO, model);
 					
 				} else {
-					int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+					int cnt = contentService.homework_add_list_Cnt(subScriptionVO, cri);
 					PageDto pageDto = new PageDto(cri, cnt);
 					
 					model.addAttribute("pageDto", pageDto);
 					
-					contentService.groupApproval(subScriptionVO, cri,  model);
+					contentService.homework_add_list(subScriptionVO, cri, model);
 					contentService.homework_option(subScriptionVO, model);
 					
 					return "homework_t/homework_add";
@@ -116,12 +116,12 @@ public class homework_tController {
 			
 			return "homework_t/homework_add";
 		} catch (Exception e) {
-			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+			int cnt = contentService.homework_add_list_Cnt(subScriptionVO, cri);
 			PageDto pageDto = new PageDto(cri, cnt);
 			
 			model.addAttribute("pageDto", pageDto);
 			
-			contentService.groupApproval(subScriptionVO, cri,  model);
+			contentService.homework_add_list(subScriptionVO, cri, model);
 			contentService.homework_option(subScriptionVO, model);
 			
 			return "homework_t/homework_add";
@@ -138,7 +138,7 @@ public class homework_tController {
 		
 		System.out.println("user_id : ==========================" + subScriptionVO.getUser_id());
 		
-		contentService.groupApproval(subScriptionVO, cri,  model);
+		contentService.homework_add_list(subScriptionVO, cri,  model);
 		contentService.homework_option(subScriptionVO, model);
 		
 		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
@@ -170,22 +170,31 @@ public class homework_tController {
 		System.out.println("getHomework_no : ==============================" +  subScriptionVO.getHomework_no());
 		System.out.println("getEvaluation : ==============================" +  subScriptionVO.getEvaluation());
 		
+
+		 
+		
 		try {
 			String[] homework_no_Arr = subScriptionVO.getHomework_no().split(",");
+			
+			
 			String[] evaluation_Arr = subScriptionVO.getEvaluation().split(",");
 			
 			for(int i = 0; i < homework_no_Arr.length; i++) {
 				
 				String homework_no = homework_no_Arr[i];
-				String evaluation = evaluation_Arr[i];
 				
+				
+				  String evaluation = evaluation_Arr[i];
+				 
 				subScriptionVO.setHomework_no(homework_no);
-				subScriptionVO.setEvaluation(evaluation);
 				
+					
+				  subScriptionVO.setEvaluation(evaluation);
+				 
 				if(subScriptionVO.getHomework_no() != null &&
 						subScriptionVO.getEvaluation() != "") {
 					
-					int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+					int cnt = contentService.homeworkEvalCnt(subScriptionVO, cri);
 					PageDto pageDto = new PageDto(cri, cnt);
 					
 					model.addAttribute("pageDto", pageDto);
@@ -195,7 +204,7 @@ public class homework_tController {
 					
 					
 				} else {
-					int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+					int cnt = contentService.homeworkEvalCnt(subScriptionVO, cri);
 					PageDto pageDto = new PageDto(cri, cnt);
 					
 					model.addAttribute("pageDto", pageDto);
@@ -209,7 +218,7 @@ public class homework_tController {
 			return "homework_t/homework_evaluation";
 			
 		} catch (Exception e) {
-			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+			int cnt = contentService.homeworkEvalCnt(subScriptionVO, cri);
 			PageDto pageDto = new PageDto(cri, cnt);
 			
 			model.addAttribute("pageDto", pageDto);

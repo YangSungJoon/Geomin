@@ -66,16 +66,16 @@ totalCnt : ${totalCnt } <br> --%>
 	                    <td class = "check_box"><input type="checkbox" name="group_id" id="checkbox1" onclick='checkOnlyOne(this)' value="${li.group_id}">
 	                    						<input type="checkbox" name="content_id" id="checkbox2"  value="${li.content_id}"></td>
 	                    
-	                    <td >${li.group_name }</td>
-	                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
-	                    <td >${li.total_personnel }</td>
-	                    <td >${li.current_personnel}</td>
+	                    <td class="contentName button btnColor btnPush" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
+	                    <td class = "people" >${li.group_name }</td>
+	                    <td class = "sale"  >${li.total_personnel }</td>
+	                    <td class = "sale"  >${li.current_personnel}</td>
 	                </tr>
                 </c:forEach>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button" >그룹 삭제</button>
+                <button type = "submit" id = "send_button" class = "buttonA btnPush btnColor">그룹 삭제</button>
             </div>
         </div>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
@@ -83,18 +83,17 @@ totalCnt : ${totalCnt } <br> --%>
     </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    var checkbox1Elements = document.querySelectorAll('input[name="group_id"]');
+    var checkbox2Elements = document.querySelectorAll('input[name="content_id"]');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const checkbox1 = document.getElementById('checkbox1');
-    const checkbox2 = document.getElementById('checkbox2');
-
-    checkbox1.addEventListener('click', function() {
-        checkbox2.checked = checkbox1.checked;
-    });
+    for (var i = 0; i < checkbox1Elements.length; i++) {
+        checkbox1Elements[i].addEventListener("change", function() {
+            var index = Array.from(checkbox1Elements).indexOf(this);
+            checkbox2Elements[index].checked = this.checked;
+        });
+    }
 });
-
-
-
 
 
     document.addEventListener('DOMContentLoaded', function() {

@@ -32,6 +32,9 @@ public List<SubScriptionVO> homeworkEval(@Param("user_id") String user_id,@Param
 
 public int homeworkEvalCnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo);
 
+public List<SubScriptionVO> homework_add_list(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo, @Param("content_name") String content_name, @Param("groupyn") String groupyn);
+
+public int homework_add_list_Cnt(@Param("user_id") String user_id,@Param("startNo") int startNo, @Param("endNo") int endNo, @Param("content_name") String content_name, @Param("groupyn") String groupyn);
 
 
 

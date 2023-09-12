@@ -145,7 +145,7 @@ public class GroupController {
 		    		contentService.option_content_id(subScriptionVO, model);
 		    		contentService.groupApproval(subScriptionVO, cri, model);
 		    		
-		    		subScriptionVO.setGroupyn("1");
+		    		
 		    		
 		    		model.addAttribute("pageDto", pageDto);
 
@@ -165,7 +165,6 @@ public class GroupController {
 		    	}
 		    }
 		    
-		    subScriptionVO.setGroupyn("");
 		    return "group/groupApproval";
 		} catch (Exception e) {
     		int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);

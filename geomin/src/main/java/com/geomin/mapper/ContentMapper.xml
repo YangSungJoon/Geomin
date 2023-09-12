@@ -92,7 +92,7 @@
                     and s.user_id = #{user_id}
 	]]>
 			<include refid="sel_name"></include>
- 			<include refid="homeworkGroupyn"></include>
+ 			
 				order by group_id desc
                 ) a
         )
@@ -114,14 +114,53 @@
                     and s.user_id = #{user_id}
 	]]>
 			<include refid="sel_name"></include>
-			<include refid="homeworkGroupyn"></include>
 				order by group_id desc
                 ) a
         )
 	</select>
 
+	<select id="homework_add_list" resultType="com.geomin.vo.SubScriptionVO">
+		<![CDATA[
+    select * 
+    from(
+        select rownum rn, a.*
+            from(
+                    select l.content_id, c.content_name, g.group_name,l.learner_name , to_char(l.group_appdate, 'yyyy-MM-dd') as group_appdate,
+                      s.TOTAL_PERSONNEL, s.current_personnel, l.groupyn, s.user_id, l.user_id_learner, g.group_id 
+                from learner_group l, content c, SUBSCRIPTION s, groups g
+                where c.content_id = l.content_id
+                    and s.content_id = l.content_id
+                    and g.group_id = l.group_id
+                    and s.user_id = #{user_id}
+                    and groupyn = 'Y'
+	]]>
+ 				<include refid="sel_name"></include>
+				order by group_id desc
+                ) a
+        )
+        where rn between #{startNo} AND #{endNo} 
+	</select>
 
-
+	<select id="homework_add_list_Cnt" resultType="int">
+	<![CDATA[
+    select count(*) 
+    from(
+        select rownum rn, a.*
+            from(
+                    select l.content_id, c.content_name, g.group_name,l.learner_name , to_char(l.group_appdate, 'yyyy-MM-dd') as group_appdate,
+                      s.TOTAL_PERSONNEL, s.current_personnel, l.groupyn, s.user_id, l.user_id_learner, g.group_id 
+                from learner_group l, content c, SUBSCRIPTION s, groups g
+                where c.content_id = l.content_id
+                    and s.content_id = l.content_id
+                    and g.group_id = l.group_id
+                    and s.user_id = #{user_id}
+                    and groupyn = 'Y'
+	]]>
+				<include refid="sel_name"></include>
+				order by group_id desc
+                ) a
+        )
+	</select>
 
 
 	<select id="myGroup" resultType="com.geomin.vo.SubScriptionVO">
@@ -240,6 +279,7 @@
            update LEARNER_GROUP
 		    set groupyn = 'Y'
 		    where user_id_learner= #{user_id_learner}
+		    and content_id = #{content_id}
     </update>
 
 	<update id="add_current">

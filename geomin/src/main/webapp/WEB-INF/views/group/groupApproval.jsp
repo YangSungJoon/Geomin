@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
-    <link rel="stylesheet" href="../resources/css/content_request.css">
+  <link rel="stylesheet" href="../resources/css/groupApproval.css">
     
      <script>
         window.onload = function() {
@@ -110,10 +110,6 @@
  <%@include file = "../common/header.jsp" %> 
 <body>
 
-메인 콘텐츠 목록
-<%-- userId : ${userId} <br>
-pageDto : ${pageDto } <br>
-totalCnt : ${totalCnt } <br> --%>
 <input type="hidden" name="user_id" id="form1" value="${userId}">
 
 	<form action="/group/groupApproval" 
@@ -127,6 +123,25 @@ totalCnt : ${totalCnt } <br> --%>
 	</form>
 
 <div class = "intro-box">
+		<div class = "location">
+            <ul class = "clearFix">
+                <li class = "home">
+                    <a href = "#">
+                        <img src="../resources/image/homeicon.png" alt=""> /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        구독 서비스 /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        학습콘텐츠 검색 및 구독신청
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
@@ -147,7 +162,7 @@ totalCnt : ${totalCnt } <br> --%>
 	                  <option value="${count.content_name}" >${count.content_name }</option>
 				   </c:forEach>	
 	              </select>
-	              <button type = "submit" id = "name_check">조회</button>
+	               <button type = "submit" id = "name_check" class = "buttonB btnPush btnColor">조회</button>
 	          </p><hr>
 	      </div>
 	      
@@ -157,32 +172,32 @@ totalCnt : ${totalCnt } <br> --%>
         
 <form action="Approval" id="form2" method="post">
 	<input type="hidden" name="user_id" value="${userId}">
-	        <div class = "request-content">
-	            <table>
+	        <div class = "main-content-box">
+	            <table class = "table-fill">
 	                <tr class = "table_menu">
-	                    <td class = "check_box"></td>
-	                    <td>그룹명</td>
-	                    <td>콘텐츠명</td>
-	                    <td>학습자명</td>
-	                    <td>가입신청일자</td>
-	                    <td>총 인원</td>
-	                    <td>현재 인원</td>
-	                    <td>승인여부</td>
+	                    <th class = "check_box"></th>
+	                    <th class = "top_content">콘텐츠명</th>
+	                    <th class = "top_people">그룹명</th>
+	                    <th class = "top_subPrice">학습자명</th>
+	                    <th class="top_price">가입신청일자</th>
+	                    <th class = "top_sale">총 인원</th>
+	                    <th class = "top_sale">현재 인원</th>
+	                    <th class = "top_yn">승인여부</th>
 	                </tr>
 	                 <c:forEach items="${groupApproval }" var="li" varStatus="status">
 					    <tr>
-					        <td class="check_box">
+					           <td class="check_box">
 					        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" onclick='checkOnlyOne(this)' value="${li.user_id_learner}">
 					        	<input type="checkbox" name="content_id" class="check2" id="checkbox" style="display: none;" value="${li.content_id}" >
 					        </td>
-					        <td >${li.group_name }</td>
-					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
-					        <td >${li.learner_name}</td>
-					        <td >${li.group_appdate}</td>
-					        <td ><input type="checkbox" name="total_personnel" class="check3" id="checkbox"  value="${li.total_personnel}" >${li.total_personnel}명</td>
-					        <td ><input type="checkbox" name="current_personnel" class="check4" id="checkbox"  value="${li.current_personnel}" >${li.current_personnel}명</td>
-					        <td ><input type="checkbox" name="groupyn" class="check5" id="checkbox" value="${li.groupyn}" >${li.groupyn}</td>
-					    </tr>
+					        <td class="contentName button btnColor btnPush" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
+					        <td class="people" >${li.group_name }</td>
+					        <td class="subPrice" >${li.learner_name}</td>
+					        <td class="price" >${li.group_appdate}</td>
+					        <td class = "sale" ><input type="checkbox" name="total_personnel" class="check3" id="checkbox" style="display: none;" value="${li.total_personnel}" >${li.total_personnel}명</td>
+					        <td class = "sale" ><input type="checkbox" name="current_personnel" class="check4" id="checkbox" style="display: none;" value="${li.current_personnel}" >${li.current_personnel}명</td>
+					        <td class = "yn" ><input type="checkbox" name="groupyn" class="check5" id="checkbox" style="display: none;" value="${li.groupyn}" >${li.groupyn}</td>
+					   </tr>
 	                </c:forEach> 
 	               
 					        

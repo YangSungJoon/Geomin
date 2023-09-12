@@ -6,10 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/footer.css">
-    <link rel="stylesheet" href="../resources/css/header.css">
+<title>콘텐츠 리스트</title>
     <link rel="stylesheet" href="../resources/css/content_request.css">
+    
 
        
      <script>
@@ -68,7 +67,27 @@
 	<button type="submit" class="btnSearch" style="display: none;" onclick="go(1)"></button>
 	</form>
 
+
 <div class = "intro-box">
+		<div class = "location">
+            <ul class = "clearFix">
+                <li class = "home">
+                    <a href = "#">
+                        <img src="../resources/image/homeicon.png" alt=""> /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        구독 서비스 /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        학습콘텐츠 검색 및 구독신청
+                    </a>
+                </li>
+            </ul>
+        </div>
  <form action="contentList" method="post">
         <div class = "left-sideBar">
             <ul>
@@ -85,7 +104,7 @@
 				    <option value="3" <c:if test="${param.learning_difficulty == '3'}">selected="selected"</c:if>>고급</option>
 					
                 </select>
-                <button type = "submit" id = "level_check">조회</button>
+                <button type = "submit" class ="buttonB btnPush btnColor" id = "level_check">조회</button>
 
                  <input type="hidden" name="learning_difficulty" value="${learning_difficulty }">
             </p><hr>
@@ -96,36 +115,36 @@
 <form action="subContentListAction" method="post" name="myForm">
 
 <input type="hidden" name="user_id" value="${userId}">
-        <div class = "request-content">
-            <table>
-                <tr class = "table_menu">
-                    <td class = "check_box"></td>
-                    <td>패키지명</td>
-                    <td>학습가능인원</td>
-                    <td>정가</td>
-                    <td>할일율</td>
-                    <td>구독료</td>
-                    <td>학습수준</td>
-                    <td>학습내용</td>
-                    <td>삭제유무</td>
-                </tr>
+        <div class = "main-content-box">
+	            <table class = "table-fill">
+	                <tr class = "table_menu">
+	                    <th class = "check_box"></th>
+	                    <th class = "top_content">패키지명</th>
+	                    <th class = "top_people">학습가능인원</th>
+	                    <th class="top_price">정가</th>
+	                    <th class = "top_sale">할인율</th>
+	                    <th class = "top_subPrice">구독료</th>
+	                    <th class = "top_level">수준</th>
+	                    <th class = "top_workContent">학습내용</th>
+	                    <th class = "top_yn">삭제유무</th>
+	                </tr>
                 <c:forEach items="${contentList }" var="li" varStatus="status">
 				    <tr>
 				        <td class="check_box"><input type="checkbox" name="content_id" id="checkbox1"  onclick='checkOnlyOne(this)' value="${li.content_id}"></td>
-				        <td class="packageName" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
+				         <td class="contentName button btnColor btnPush"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 				        <td class="people" >${li.learning_member} 명</td>
 				        <td class="price" >${li.price}원</td>
-				        <td>${li.sale }</td>
+				        <td class = "sale">${li.sale }</td>
 				        <td class="subPrice" >${li.real_price}원</td>
-				        <td class="subPrice-difficulty" >${li.learning_difficulty}</td>
-				        <td class="content" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.learning_content}</td>
-				        <td ><input type="checkbox" name="is_deleted" id="checkbox2"  value="${li.is_deleted}"> ${li.is_deleted}</td>
+				        <td class="level" >${li.learning_difficulty}</td>
+				        <td class="workContent">${li.learning_content}</td>
+				        <td class = "yn"><input type="checkbox" name="is_deleted" id="checkbox2"  value="${li.is_deleted}"> ${li.is_deleted}</td>
 				    </tr>
                 </c:forEach>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button" >구독신청</button>
+                <button type = "submit" class = "buttonA btnPush btnColor" id = "send_button" >구독신청</button>
             </div>
         </div>
 </form>
