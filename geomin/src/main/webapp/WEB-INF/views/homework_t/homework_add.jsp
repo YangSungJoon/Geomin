@@ -218,37 +218,7 @@
 	<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 	    </div>
 	
-	<script >
-	//check 중복 체크 방지
-	function checkOnlyOne(element) {
-		  
-		  const checkboxes 
-		      = document.getElementsByName("user_id_learner");
-		  
-		  checkboxes.forEach((cb) => {
-		    cb.checked = false;
-		  })
-		  
-		  
-		  const checkboxes2 
-	      = document.getElementsByName("group_id");
-	  
-		  	  checkboxes2.forEach((cb) => {
-		    cb.checked = false;
-		  })
-		  const checkboxes3 
-	      = document.getElementsByName("content_id");
-	  
-		  	  checkboxes3.forEach((cb) => {
-		    cb.checked = false;
-		  })
-		  
-		  
-		  element.checked = true;
-		  
-		  
-		}
-	</script>
+
 	
 	</body>
 	 <%@include file = "../common/footer.jsp" %> 

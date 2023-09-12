@@ -61,6 +61,7 @@ public interface ContentService {
 
 	public int updateEvaluation(SubScriptionVO subScriptionVO);
 
+	public int personReset(SubScriptionVO subScriptionVO);
 	
 	
 

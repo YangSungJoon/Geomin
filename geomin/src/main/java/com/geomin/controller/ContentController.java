@@ -103,19 +103,46 @@ public class ContentController {
 	
 	 @PostMapping("subContentListAction")
 	 public String subContentListAction(Model model, SubScriptionVO subScriptionVO, Criteria cri) {
-		 
 		 System.out.println("getIs_deleted : =====================" + subScriptionVO.getIs_deleted());
+		 System.out.println("getContent_id : =====================" + subScriptionVO.getContent_id());
 		 
 		 
-		 // is_deleted가 'N'인 경우에만 성공으로 처리
-		 if ("N".equals(subScriptionVO.getIs_deleted())) {
-			 contentService.insertSubContent(subScriptionVO, model);
-			 contentService.insertContentPay(subScriptionVO);
-			 contentService.subContentList(subScriptionVO, cri, model);
+		 try {
+			 // content_id와 is_deleted를 가져옴
+			 String[] contentIds = subScriptionVO.getContent_id().split(",");
+			 String[] isDeletedValues = subScriptionVO.getIs_deleted().split(",");
 			 
+			 
+			 for (int i = 0; i < contentIds.length; i++) {
+				 String contentId = contentIds[i];
+				 String isDeleted = isDeletedValues[i];
+				 
+				 subScriptionVO.setContent_id(contentId);
+				 subScriptionVO.setIs_deleted(isDeleted);
+				 
+				 System.out.println("getIs_deleted : =====================" + subScriptionVO.getIs_deleted());
+				 System.out.println("getContent_id : =====================" + subScriptionVO.getContent_id());
+				 
+				 // is_deleted가 'N'인 경우에만 성공으로 처리
+				 if ("N".equals(subScriptionVO.getIs_deleted())) {
+					 contentService.insertSubContent(subScriptionVO, model);
+					 contentService.insertContentPay(subScriptionVO);
+					 contentService.subContentList(subScriptionVO, cri, model);
+				 } else {
+					 int cnt = contentService.contentListCnt(subScriptionVO, cri);
+					 List<ContentVO> list = contentService.contentList(subScriptionVO, cri, model);
+					 System.out.println("contentList : =====================" + list);
+					 
+					 PageDto pageDto = new PageDto(cri, cnt);
+					 
+					 model.addAttribute("pageDto", pageDto);
+					 model.addAttribute("contentList", list);
+					 return "redirect:/content/contentList";
+				 }
+			 }
 			 return "redirect:/content/contentList";
-			 
-		 } else if("Y".equals(subScriptionVO.getIs_deleted())){
+			
+		} catch (Exception e) {
 			 int cnt = contentService.contentListCnt(subScriptionVO, cri);
 			 List<ContentVO> list = contentService.contentList(subScriptionVO, cri, model);
 			 System.out.println("contentList : =====================" + list);
@@ -124,24 +151,10 @@ public class ContentController {
 			 
 			 model.addAttribute("pageDto", pageDto);
 			 model.addAttribute("contentList", list);
-			 
 			 return "redirect:/content/contentList";
-			 
-		 } else {
-			 int cnt = contentService.contentListCnt(subScriptionVO, cri);
-			 List<ContentVO> list = contentService.contentList(subScriptionVO, cri, model);
-			 System.out.println("contentList : =====================" + list);
-			 
-			 PageDto pageDto = new PageDto(cri, cnt);
-			 
-			 model.addAttribute("pageDto", pageDto);
-			 model.addAttribute("contentList", list);
-			 
-			 return "redirect:/content/contentList";
-		 }
-		 
+		}
 	 }
-	 
+		    
 /*	@PostMapping("subContentListAction")
 	public String subContentListAction(Model model, SubScriptionVO subScriptionVO, Criteria cri, RedirectAttributes redirectAttributes) {
 
@@ -192,22 +205,48 @@ public class ContentController {
 		
 		System.out.println("content_id ============================== :  " + subScriptionVO.getContent_id());
 		
-		if(subScriptionVO.getContent_id() != null) {
-			contentService.payStatusUpdate(subScriptionVO);
+		try {
+			String[] content_idArr = subScriptionVO.getContent_id().split(",");
+			String[] paystatusArr = subScriptionVO.getPaystatus().split(",");
 			
-			contentService.deletePay(subScriptionVO);
-			
-			contentService.subContentList(subScriptionVO, cri, model);
-			
-			
-			int cnt = contentService.subContentListCnt(subScriptionVO, cri);
-			PageDto pageDto = new PageDto(cri, cnt);
-			model.addAttribute("pageDto", pageDto);
-			
-			
+			for (int i = 0; i < content_idArr.length; i++) {
+				String contentId = content_idArr[i];
+				String paystatus = paystatusArr[i];
+				
+				subScriptionVO.setContent_id(contentId);
+				subScriptionVO.setPaystatus(paystatus);
+				
+				if ("Y".equals(subScriptionVO.getPaystatus())) {
+					contentService.payStatusUpdate(subScriptionVO);
+					
+					contentService.deletePay(subScriptionVO);
+					
+					contentService.subContentList(subScriptionVO, cri, model);
+					
+					
+					int cnt = contentService.subContentListCnt(subScriptionVO, cri);
+					PageDto pageDto = new PageDto(cri, cnt);
+					model.addAttribute("pageDto", pageDto);
+					
+					
+					
+					
+				} else {
+					contentService.subContentList(subScriptionVO, cri, model);
+					
+					int cnt = contentService.subContentListCnt(subScriptionVO, cri);
+					PageDto pageDto = new PageDto(cri, cnt);
+					model.addAttribute("pageDto", pageDto);
+					
+					
+					return "/content/subContentList";
+					
+				}
+				
+			}
 			return "/content/subContentList";
 			
-		} else {
+		} catch (Exception e) {
 			contentService.subContentList(subScriptionVO, cri, model);
 			
 			int cnt = contentService.subContentListCnt(subScriptionVO, cri);
@@ -217,6 +256,7 @@ public class ContentController {
 			
 			return "/content/subContentList";
 		}
+		
 		
 				
 	}

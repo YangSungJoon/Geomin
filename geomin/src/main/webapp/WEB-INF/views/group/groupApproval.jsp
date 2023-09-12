@@ -179,9 +179,9 @@ totalCnt : ${totalCnt } <br> --%>
 					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 					        <td >${li.learner_name}</td>
 					        <td >${li.group_appdate}</td>
-					        <td ><input type="checkbox" name="total_personnel" class="check3" id="checkbox" style="display: none;" value="${li.total_personnel}" >${li.total_personnel}명</td>
-					        <td ><input type="checkbox" name="current_personnel" class="check4" id="checkbox" style="display: none;" value="${li.current_personnel}" >${li.current_personnel}명</td>
-					        <td ><input type="checkbox" name="groupyn" class="check5" id="checkbox" style="display: none;" value="${li.groupyn}" >${li.groupyn}</td>
+					        <td ><input type="checkbox" name="total_personnel" class="check3" id="checkbox"  value="${li.total_personnel}" >${li.total_personnel}명</td>
+					        <td ><input type="checkbox" name="current_personnel" class="check4" id="checkbox"  value="${li.current_personnel}" >${li.current_personnel}명</td>
+					        <td ><input type="checkbox" name="groupyn" class="check5" id="checkbox" value="${li.groupyn}" >${li.groupyn}</td>
 					    </tr>
 	                </c:forEach> 
 	               
@@ -197,50 +197,6 @@ totalCnt : ${totalCnt } <br> --%>
 
 <script>
 
-//check 중복 체크 방지
-function checkOnlyOne(element) {
-	  
-	  const checkboxes 
-	      = document.getElementsByName("user_id_learner");
-	  
-	  checkboxes.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  
-	  const checkboxes2 
-      = document.getElementsByName("content_id");
-  
-	  	  checkboxes2.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  const checkboxes3 
-      = document.getElementsByName("total_personnel");
-  
-	  	  checkboxes3.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  const checkboxes4 
-      = document.getElementsByName("current_personnel");
-  
-	  	  checkboxes4.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  const checkboxes5 
-      = document.getElementsByName("groupyn");
-  
-	  	  checkboxes5.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  
-	  element.checked = true;
-	  
-	  
-	}
 
     document.addEventListener("DOMContentLoaded", function() {
         var form2 = document.querySelector("#form2"); // form2 선택
