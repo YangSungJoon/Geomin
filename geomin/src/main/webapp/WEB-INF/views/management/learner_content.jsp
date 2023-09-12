@@ -20,12 +20,12 @@
                 </li>
                 <li>
                     <a href = "#">
-                        강사 마당 /
+                        관리 마당 /
                     </a>
                 </li>
                 <li>
                     <a href = "#">
-                        학습그룹 등록
+                        학습콘텐츠 등록
                     </a>
                 </li>
             </ul>
@@ -37,18 +37,18 @@
             <ul>
               <c:choose>
                   	<c:when test="${userVo.user_type == 1}">
-	                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
-                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는질문</a></li>                
+	                    <li class = "site-intro"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는 질문</a></li>                
                     </c:when>
                     <c:when test="${userVo.user_type == 2}">
-	                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
-                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는질문</a></li>                
+	                    <li class = "site-intro"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는 질문</a></li>                
                     </c:when>
                     <c:otherwise>
 	                    <li class = "site-intro"><a href = "/management/learner_content" id = "intro-hover">학습콘텐츠 등록</a></li>
 		                <li class = "guide"><a href = "/management/announce_add" id = "insert_announce">공지 등록</a></li>
 		                <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
-		                <li class = "guide"><a href = "/management/qna" id = "qna">자주하는질문</a></li>
+		                <li class = "guide"><a href = "/management/qna" id = "qna">자주하는 질문</a></li>
 		                <li class = "guide"><a href = "/management/salestally" id = "guide-hover">매출집계 및 조회</a></li>
                     </c:otherwise>
                </c:choose>
@@ -58,10 +58,10 @@
         <div class = "group_add_box">
 		<form action="/management/insert_content" method="post">
             <div class = "left_content">
-				<p>패키지명<span id = "star">*</span></p>
+				<p class = "top_name">패키지명<span id = "star">*</span></p>
 				<input type="text" name="content_name" class="content_name" id="content_name" style='width:150px;'>
 				<br>
-				<p>학습난이도<span id = "star">*</span></p>
+				<p class = "margin-top2">학습난이도<span id = "star">*</span></p>
       		    <div class = "member_check">
                 <select name="learning_difficulty" id="learning_difficulty">
                     <option value="1">초급</option>
@@ -69,27 +69,27 @@
                     <option value="3">고급</option>
                 </select>
             	</div>		
-                <p>학습가능인원<span id = "star">*</span></p>
+                <p class = "margin-top1">학습가능인원<span id = "star">*</span></p>
                 
 			    <input type="number" class="learning_member" name="learning_member" min="1">
 			 
 			 	<br>
                 <p>정가<span id = "star">*</span></p>
-                <input type="text" id="price" name="price" value=""> 원
+                <input type="text" id="price" name="price" value=""> <strong>원</strong>
                	<br>
                 <p>할인<span id = "star">*</span></p>
-                <input type="text" id="sale" name="sale" value=""> %
+                <input type="text" id="sale" name="sale" value=""> <strong>%</strong>
                 <br>
                 <p>판매가<span id = "star">*</span></p>
-                <input type="text" id="real_price" name="real_price"> 원
+                <input type="text" id="real_price" name="real_price"> <strong>원</strong>
 				<br>
 				<p>패키지 내용<span id = "star">*</span></p>
                 <textarea cols="50" rows="5" id="learning_content" name="learning_content"></textarea>
 				<br>
-					<div class = "button_box">
-						<button type = "submit" id = "add_button" class = "button btnPush btnColor">등록</button>
-					</div>
+				<div id="addbtn">
+						<button type = "submit" id = "add_button" class = "buttonB btnPush btnColor">등록</button>
             	</div>
+            </div>
     		</form>
 
         </div>

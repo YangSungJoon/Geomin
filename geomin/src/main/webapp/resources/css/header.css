@@ -179,10 +179,13 @@ ul{
 .site-intro{
     width: 100%;
     font-weight: bold;
-    background-color: #ebecf0;
     border-radius: 10rem;
     text-align: center;
     margin-left: -1rem;
+}
+
+.site-intro:hover{
+	background-color: #ebecf0;
 }
 
 #intro-hover:hover{
@@ -195,10 +198,16 @@ ul{
     border-radius: 10rem;
     text-align: center;
     margin-top: 1rem;
+    margin-left: -1rem;
+}
+
+.guide:hover{
+	background-color: #ebecf0;
 }
 
 #guide-hover:hover{
     color: #bbb;
+    background-color: #ebecf0;
 }
 
 .location{

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>학습콘텐츠 목록</title>
-<link rel="stylesheet" href="../resources/css/learner_content.css">
+<link rel="stylesheet" href="../resources/css/contentUpdate.css">
 </head>
 <%@include file = "../common/header.jsp" %>
 <body>
@@ -45,11 +45,9 @@
         	<input type="hidden" name="content_id" value="${param.content_id}">
         
             <div class = "left_content">
-           
-				 
-				<p>패키지명<span>*</span></p>
+				<p class = "top_name">패키지명<span>*</span></p>
 				<input type="text" name="content_name" class="content_name" id="content_name" value="${contentVo.content_name}"><br>
-				<p>학습난이도<span>*</span></p>
+				<p class = "margin-top2">학습 난이도<span>*</span></p>
       		    <div class = "member_check">
                 <select name="learning_difficulty" id="learning_difficulty">
                     <option value="1">초급</option>
@@ -58,7 +56,7 @@
                 </select>
             </div>		   
             
-                <p>학습가능인원<span>*</span></p>
+                <p class = "margin-top1">학습가능인원<span>*</span></p>
                 
 			    <input type="number" class="learning_member" name="learning_member" min="1" value="${contentVo.learning_member}">
 			 
@@ -73,7 +71,7 @@
 				
             	</div>
 	<div id="addbtn">
-                    <button type = "submit" id = "contentUpdate" >수정하기</button>
+                    <button type = "submit" class = "buttonB btnPush btnColor" id = "contentUpdate" >수정하기</button>
                     
                 </div>
     		</form>

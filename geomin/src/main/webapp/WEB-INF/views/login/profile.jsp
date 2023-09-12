@@ -8,7 +8,6 @@
     <title>회원정보</title>
     
     <link rel="stylesheet" href="../resources/css/profile.css">
-    <link rel="stylesheet" href="../resources/css/intro.css">
     
     <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

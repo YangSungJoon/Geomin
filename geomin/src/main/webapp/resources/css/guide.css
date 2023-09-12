@@ -62,7 +62,7 @@
 }
 
 .intro-content{
-	margin-left: 23rem;
+	margin-left: 22rem;
     width: 47rem;
     height: 58rem;
     margin-top: 1.5rem;
@@ -70,8 +70,16 @@
 
 h1{
     text-align: center;
+    margin-top: 1rem;
+    border-bottom: 5px solid #ebecf0;
+    line-height: 7rem;
 }
 
 .guide_image{
 	text-align: center;
+}
+
+img#guide_image {
+    text-align: center;
+    display: flex;
 }

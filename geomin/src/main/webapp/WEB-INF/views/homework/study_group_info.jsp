@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/study_group_join.css">
+<link rel="stylesheet" href="../resources/css/study_group_info.css">
 <script src="../resources/js/study_group_join.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
