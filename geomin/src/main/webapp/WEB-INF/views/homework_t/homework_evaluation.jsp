@@ -94,7 +94,7 @@ totalCnt : ${totalCnt } <br> --%>
 					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.homework_subdate}</td>
 					        <td> ${li.homework_content_learner }</td>
 					        <td>
-						      <select class="evaluation-select" onchange="updateEvaluationInput(this)">
+						      <select class="evaluation-select" name="evaluation"  onchange="updateEvaluationInput(this)">
 				                  <option value="">선택</option>
 				                  <option value="우수">우수</option>
 				                  <option value="보통">보통</option>
@@ -105,7 +105,7 @@ totalCnt : ${totalCnt } <br> --%>
 					    </tr>
 	                </c:forEach> 
 	            </table>
-			<input type="hidden" name="evaluation" class="evaluation-input"  id="evaluation-input">
+
 	            
 	        </div>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
@@ -115,29 +115,33 @@ totalCnt : ${totalCnt } <br> --%>
     </div>
 
 <script>
+function updateEvaluationInput(selectElement) {
+    // 선택한 옵션의 값을 가져옵니다.
+    var selectedValue = selectElement.value;
+    
+    // 콤마(,)를 제거한 후 앞뒤 공백을 제거합니다.
+    selectedValue = selectedValue.replace(/,/g, '').trim();
+    
+    // input 요소를 찾습니다.
+    var inputElement = document.getElementById('evaluation-input');
+    
+    // input 요소의 값을 선택한 옵션 값으로 설정합니다.
+    inputElement.value = selectedValue;
+};
 
-//check 중복 체크 방지
-function checkOnlyOne(element) {
-	  
-	  const checkboxes 
-	      = document.getElementsByName("homework_no");
-	  
-	  checkboxes.forEach((cb) => {
-	    cb.checked = false;
-	    
-        // 해당 행의 셀렉트 박스 초기화
-        var selectElement = cb.closest('tr').querySelector('.evaluation-select');
-        selectElement.selectedIndex = "";
-	    
-	  })
-	  
-	  element.checked = true;
-	  
-	  
-	}
 
 // 저장 버튼 클릭 시 유효성 검사
 function validateForm() {
+    // evaluation 선택 여부 확인
+    var evaluationSelect = document.querySelector('select[name="evaluation"]');
+    var selectedValue = evaluationSelect.value;
+    
+    // 선택된 값이 없는 경우
+    if (selectedValue === '') {
+        alert('평가를 선택해주세요.');
+        return false; // 폼 전송 방지
+    }
+
     // homework_no 선택 여부 확인
     var homeworkNoElements = document.querySelectorAll('input[name="homework_no"]');
     var isHomeworkNoSelected = false;
@@ -147,13 +151,8 @@ function validateForm() {
         }
     });
 
-    // evaluation 입력 여부 확인
-    var evaluationValue = document.getElementById('evaluation-input').value.trim();
     if (!isHomeworkNoSelected) {
         alert('학습자를 선택해주세요.');
-        return false; // 폼 전송 방지
-    } else if (evaluationValue === '') {
-        alert('평가점수를 선택해주세요.');
         return false; // 폼 전송 방지
     }
 

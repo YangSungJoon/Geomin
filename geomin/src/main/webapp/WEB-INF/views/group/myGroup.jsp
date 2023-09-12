@@ -63,7 +63,9 @@ totalCnt : ${totalCnt } <br> --%>
                 </tr>
                 <c:forEach items="${myGroup }" var="li" varStatus="status">
 	                <tr>
-	                    <td class = "check_box"><input type="checkbox" name="group_id" id="checkbox" onclick='checkOnlyOne(this)' value="${li.group_id}"></td>
+	                    <td class = "check_box"><input type="checkbox" name="group_id" id="checkbox1" onclick='checkOnlyOne(this)' value="${li.group_id}">
+	                    						<input type="checkbox" name="content_id" id="checkbox2"  value="${li.content_id}"></td>
+	                    
 	                    <td >${li.group_name }</td>
 	                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 	                    <td >${li.total_personnel }</td>
@@ -82,20 +84,17 @@ totalCnt : ${totalCnt } <br> --%>
 
 <script>
 
-//check 중복 체크 방지
-function checkOnlyOne(element) {
-	  
-	  const checkboxes 
-	      = document.getElementsByName("group_id");
-	  
-	  checkboxes.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  element.checked = true;
-	  
-	  
-	}
+document.addEventListener('DOMContentLoaded', function() {
+    const checkbox1 = document.getElementById('checkbox1');
+    const checkbox2 = document.getElementById('checkbox2');
+
+    checkbox1.addEventListener('click', function() {
+        checkbox2.checked = checkbox1.checked;
+    });
+});
+
+
+
 
 
     document.addEventListener('DOMContentLoaded', function() {

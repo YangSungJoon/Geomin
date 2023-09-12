@@ -63,21 +63,59 @@ public class homework_tController {
 		System.out.println("getHomework_content_leader : =====================" + subScriptionVO.getHomework_content_leader());
 		System.out.println("getHomework_content_leader : =====================" + subScriptionVO.getHomework_content_leader());
 		System.out.println("getHomework_no : =====================" + subScriptionVO.getHomework_no());
-		if(subScriptionVO.getHomework_content_leader() != ""  &&
-			subScriptionVO.getHomework_deadline() != "" &&
-			subScriptionVO.getContent_id() != null) {
+		
+		
+		try {
+			String[] group_id_Arr = subScriptionVO.getGroup_id().split(",");
+			String[] content_id_Arr = subScriptionVO.getContent_id().split(",");
+			String[] user_id_learner_Arr = subScriptionVO.getUser_id_learner().split(",");
+			String[] homework_content_leader_Arr = subScriptionVO.getHomework_content_leader().split(",");
+			String[] homework_deadline_Arr = subScriptionVO.getHomework_deadline().split(",");
 			
-			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
-			PageDto pageDto = new PageDto(cri, cnt);
+
 			
-			model.addAttribute("pageDto", pageDto);
-			
-			contentService.homework_add(subScriptionVO);
-			contentService.groupApproval(subScriptionVO, cri,  model);
-			contentService.homework_option(subScriptionVO, model);
+			for(int i =0; i < user_id_learner_Arr.length; i++) {
+				String group_id = group_id_Arr[i];
+				String content_id = content_id_Arr[i];
+				String user_id_learner = user_id_learner_Arr[i];
+				String homework_content_leader = homework_content_leader_Arr[0];
+				String homework_deadline = homework_deadline_Arr[0];
+				
+				subScriptionVO.setGroup_id(group_id);
+				subScriptionVO.setContent_id(content_id);
+				subScriptionVO.setUser_id_learner(user_id_learner);
+				subScriptionVO.setHomework_content_leader(homework_content_leader);
+				subScriptionVO.setHomework_deadline(homework_deadline);
+				
+				if(subScriptionVO.getHomework_content_leader() != ""  &&
+						subScriptionVO.getHomework_deadline() != "" &&
+						subScriptionVO.getContent_id() != null) {
+				
+					System.out.println("카운트!=============================");
+					int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+					PageDto pageDto = new PageDto(cri, cnt);
+					
+					model.addAttribute("pageDto", pageDto);
+					
+					contentService.homework_add(subScriptionVO);
+					contentService.groupApproval(subScriptionVO, cri,  model);
+					contentService.homework_option(subScriptionVO, model);
+					
+				} else {
+					int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+					PageDto pageDto = new PageDto(cri, cnt);
+					
+					model.addAttribute("pageDto", pageDto);
+					
+					contentService.groupApproval(subScriptionVO, cri,  model);
+					contentService.homework_option(subScriptionVO, model);
+					
+					return "homework_t/homework_add";
+				}
+			}
 			
 			return "homework_t/homework_add";
-		} else {
+		} catch (Exception e) {
 			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
 			PageDto pageDto = new PageDto(cri, cnt);
 			
@@ -88,6 +126,10 @@ public class homework_tController {
 			
 			return "homework_t/homework_add";
 		}
+     	
+     	
+     	
+		
 		
 	}
 	
@@ -128,30 +170,57 @@ public class homework_tController {
 		System.out.println("getHomework_no : ==============================" +  subScriptionVO.getHomework_no());
 		System.out.println("getEvaluation : ==============================" +  subScriptionVO.getEvaluation());
 		
-		if(subScriptionVO.getHomework_no() != null &&
-			subScriptionVO.getEvaluation() != "") {
+		try {
+			String[] homework_no_Arr = subScriptionVO.getHomework_no().split(",");
+			String[] evaluation_Arr = subScriptionVO.getEvaluation().split(",");
 			
+			for(int i = 0; i < homework_no_Arr.length; i++) {
+				
+				String homework_no = homework_no_Arr[i];
+				String evaluation = evaluation_Arr[i];
+				
+				subScriptionVO.setHomework_no(homework_no);
+				subScriptionVO.setEvaluation(evaluation);
+				
+				if(subScriptionVO.getHomework_no() != null &&
+						subScriptionVO.getEvaluation() != "") {
+					
+					int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+					PageDto pageDto = new PageDto(cri, cnt);
+					
+					model.addAttribute("pageDto", pageDto);
+					
+					contentService.updateEvaluation(subScriptionVO);
+					contentService.homeworkEval(subScriptionVO, cri, model);
+					
+					
+				} else {
+					int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
+					PageDto pageDto = new PageDto(cri, cnt);
+					
+					model.addAttribute("pageDto", pageDto);
+					
+					contentService.homeworkEval(subScriptionVO, cri, model);
+					
+					return "homework_t/homework_evaluation";
+					
+				}
+			}
+			return "homework_t/homework_evaluation";
+			
+		} catch (Exception e) {
 			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
 			PageDto pageDto = new PageDto(cri, cnt);
 			
 			model.addAttribute("pageDto", pageDto);
 			
-			contentService.updateEvaluation(subScriptionVO);
 			contentService.homeworkEval(subScriptionVO, cri, model);
 			
 			return "homework_t/homework_evaluation";
-			
-		} else {
-			int cnt = contentService.groupApprovalCnt(subScriptionVO, cri);
-			PageDto pageDto = new PageDto(cri, cnt);
-			
-			model.addAttribute("pageDto", pageDto);
-			
-			contentService.homeworkEval(subScriptionVO, cri, model);
-			
-			return "homework_t/homework_evaluation";
-			
 		}
+		
+		
+		
 		
 	}
 	

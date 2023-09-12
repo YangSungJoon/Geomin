@@ -267,6 +267,10 @@
    		update homework set evaluation = #{evaluation} where homework_no = #{homework_no}
     </update>
     
+    <update id="personReset">
+    update subscription set current_personnel = 0 where content_id = #{content_id}
+    </update>
+    
    	<sql id="sel_name">
 		<choose>
    			<when test="content_name != null and content_name != ''">

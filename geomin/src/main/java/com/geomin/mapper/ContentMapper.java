@@ -60,5 +60,7 @@ public int homework_add(SubScriptionVO subScriptionVO);
 
 public int updateEvaluation(SubScriptionVO subScriptionVO);
 
+public int personReset(SubScriptionVO subScriptionVO);
+
 
 }

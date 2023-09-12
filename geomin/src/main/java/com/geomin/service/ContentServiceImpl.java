@@ -208,6 +208,13 @@ public class ContentServiceImpl implements ContentService{
 	}
 	
 	@Override
+	public int personReset(SubScriptionVO subScriptionVO) {
+		int res = contentMapper.personReset(subScriptionVO);
+		
+		return res;
+	}
+	
+	@Override
 	public int contentListCnt(SubScriptionVO subScriptionVO,Criteria cri) {
 		return contentMapper.contentListCnt(subScriptionVO.getLearning_difficulty(), cri.getStartNo(), cri.getEndNo());
 	}
@@ -231,4 +238,6 @@ public class ContentServiceImpl implements ContentService{
 	public int homeworkEvalCnt(SubScriptionVO subScriptionVO, Criteria cri) {
 		return contentMapper.homeworkEvalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
 	}
+	
+
 }

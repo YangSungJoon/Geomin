@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/content_request.css">
-    aaaa : ${successMessage }   
      <script>
         window.onload = function() {
             const difficultyCells = document.querySelectorAll('.subPrice-difficulty');
@@ -120,29 +119,7 @@ subTotalCnt :  ${subTotalCnt }<br> --%>
 
 <script>
 
-//check 중복 체크 방지
-function checkOnlyOne(element) {
-	  
-	  const checkboxes 
-	      = document.getElementsByName("content_id");
-	  
-	  checkboxes.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  
-	  const checkboxes2 
-      = document.getElementsByName("paystatus");
-  
-	  	  checkboxes2.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  
-	  element.checked = true;
-	  
-	  
-	}
+
 
 //삭제유무가 Y면 불가 처리
 document.addEventListener("DOMContentLoaded", function() {

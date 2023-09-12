@@ -119,7 +119,7 @@
 				        <td class="subPrice" >${li.real_price}원</td>
 				        <td class="subPrice-difficulty" >${li.learning_difficulty}</td>
 				        <td class="content" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.learning_content}</td>
-				        <td ><input type="checkbox" name="is_deleted" id="checkbox2" style="display: none;" value="${li.is_deleted}"> ${li.is_deleted}</td>
+				        <td ><input type="checkbox" name="is_deleted" id="checkbox2"  value="${li.is_deleted}"> ${li.is_deleted}</td>
 				    </tr>
                 </c:forEach>
                
@@ -133,31 +133,9 @@
     </div>
 <script>
 
-// check 중복 체크 방지
-function checkOnlyOne(element) {
-	  
-	  const checkboxes 
-	      = document.getElementsByName("content_id");
-	  
-	  checkboxes.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  
-	  const checkboxes2 
-      = document.getElementsByName("is_deleted");
-  
-	  	  checkboxes2.forEach((cb) => {
-	    cb.checked = false;
-	  })
-	  
-	  
-	  element.checked = true;
-	  
-	  
-	}
 
-// 삭제유무가 Y면 불가 처리
+
+//삭제유무가 Y면 불가 처리
 document.addEventListener("DOMContentLoaded", function() {
     var checkbox1Elements = document.querySelectorAll('input[name="content_id"]');
     var checkbox2Elements = document.querySelectorAll('input[name="is_deleted"]');
@@ -179,23 +157,24 @@ document.addEventListener("DOMContentLoaded", function() {
     sendButton.addEventListener("click", function() {
         var checkedCheckbox = null;
         var message = "공백";
+        var hasDeletedPackage = false; // 'Y'가 하나라도 있으면 true로 설정
         
         for (var i = 0; i < checkbox1Elements.length; i++) {
             if (checkbox1Elements[i].checked) {
                 checkedCheckbox = checkbox1Elements[i];
-                break;
+                var isDeletedCheckbox = checkbox2Elements[i]; // 현재 체크된 체크박스의 is_deleted
+                
+                if (isDeletedCheckbox.value === 'Y') {
+                    hasDeletedPackage = true;
+                    break; // 'Y'를 찾았으므로 반복문 종료
+                }
             }
         }
         
-        if (checkedCheckbox) {
-            var index = Array.from(checkbox1Elements).indexOf(checkedCheckbox);
-            var isDeletedCheckbox = checkbox2Elements[index];
-            
-            if (isDeletedCheckbox.value === 'N') {
-                message = "구독신청이 완료 되었습니다.";
-            } else if (isDeletedCheckbox.value === 'Y') {
-                message = "삭제된 패키지 입니다. 다시 신청해주세요.";
-            } 
+        if (hasDeletedPackage) {
+            message = "삭제된 패키지가 있습니다. 다시 신청해주세요.";
+        } else if (checkedCheckbox) {
+            message = "구독신청이 완료 되었습니다.";
         } else {
             message = "선택된 패키지가 없습니다. 다시 확인해주세요.";
         }
