@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>학습콘텐츠 목록</title>
+    <title>학습 콘텐츠 정보</title>
     <link rel="stylesheet" href="../resources/css/contentListView.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
@@ -21,12 +21,7 @@
             </li>
             <li>
                 <a href="#">
-                    강사 마당 /
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    학습그룹 등록
+                   	패키지 정보
                 </a>
             </li>
         </ul>
@@ -48,8 +43,7 @@
    		<div class ="table_box">
             <table>
             	<tr class = "table_line">
-            		<th id="pakage">패키지명</th>
-            		<td id="pakageNameF" colspan="3">${contentVo.content_name}</td>
+            		<th id="pakage" colspan = "4">패키지</th>
             		<td><div class="baduk_image">
 			    		<c:choose>
 			                  <c:when test="${contentVo.learning_difficulty_str == '초급'}">
@@ -63,52 +57,53 @@
 				              </c:when>
 			            </c:choose>  
    					</div></td>
-            		
+            		<td id="pakageNameF" colspan="4">${contentVo.content_name}</td>
             	</tr>
             	<tr>
 				    <th>학습 난이도</th>
-				    <td class="learning_difficulty">${contentVo.learning_difficulty_str}</td>
+				    <td class="learning_difficulty" colspan= "8">${contentVo.learning_difficulty_str}</td>
 				</tr>
 
             	<tr>
             		<th>학습 가능 인원</th>
-            		<td>${contentVo.learning_member}명</td>
+            		<td colspan= "8">${contentVo.learning_member}명</td>
             	</tr>
             	<tr>
             		<th id="price">정가</th>
-            		<td>${contentVo.price}원</td>
+            		<td colspan= "8">${contentVo.price}원</td>
             	</tr>
             	<tr>
             		<th id="sale">할인</th>
-            		<td>${contentVo.sale}%</td>
+            		<td colspan= "8">${contentVo.sale}%</td>
             	</tr>
             	<tr>
             		<th id="real_price">판매가</th>
-            		<td>${contentVo.real_price}원</td>
+            		<td colspan= "8">${contentVo.real_price}원</td>
             	</tr>
             	<tr>
-            		<th colspan="8">학습 내용</th>
+            		<th colspan="8" class = "study_content_th">학습 내용</th>
             	</tr>
             	<tr>
-            		<td colspan="8">${contentVo.learning_content}</td>
+            		<td colspan="8" class = "study_content_th">${contentVo.learning_content}</td>
             	</tr>
             </table>
             </div>
             </form>
-    	</div>
-        <div class="left_content">
+            <div class="left_content">
         	<!-- 운영자 계정에서만 보이는 버튼 -->
     			<div id="addbtn">
     			<c:choose>
                   <c:when test="${userVo.user_type == 3}">
-	                   <button type="button" onclick="location.href='/management/contentUpdate?content_id=${contentVo.content_id}'">수정</button>
-					   <button type="button" class="contentDelete" onclick="deleteContent('${contentVo.content_id}')">삭제</button>
+	                   <button type="button" class = "buttonA btnPush btnColor" onclick="location.href='/management/contentUpdate?content_id=${contentVo.content_id}'">수정</button>
+					   <button type="button" class="contentDelete buttonA btnPush btnColor" onclick="deleteContent('${contentVo.content_id}')">삭제</button>
                   </c:when>
                   <c:otherwise>
                   </c:otherwise>
                 </c:choose>  
                 </div>
         </div>
+    	</div>
+        
 </div>
 </body>
 

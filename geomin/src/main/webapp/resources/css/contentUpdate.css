@@ -136,13 +136,12 @@ input{
 	  background: #f5f5f9;
 	  padding: 16px;
 	  margin: 8px 0;
+	  width: 65%;
 	  border: 0;
 	  outline: none;
 	  border-radius: 20px;
 	  box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
 	  margin-top: 1rem;
-	      font-weight: bold;
-    text-align: center;
 }
 
 .regi_box_pw {
@@ -213,6 +212,7 @@ textarea{
 	background: #f5f5f9;
 	  padding: 16px;
 	  margin: 8px 0;
+	  width: 65%;
 	  border: 0;
 	  outline: none;
 	  border-radius: 20px;

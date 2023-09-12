@@ -34,15 +34,15 @@
 	            <ul>
 	              <c:choose>
 	                  	<c:when test="${userVo.user_type == 1}">
-		                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+		                    <li class = "site-intro"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
 	                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는 질문</a></li>                
 	                    </c:when>
 	                    <c:when test="${userVo.user_type == 2}">
-		                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+		                    <li class = "site-intro"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
 	                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는 질문</a></li>                
 	                    </c:when>
 	                    <c:when test="${empty userVo}">
-		                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+		                    <li class = "site-intro"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
 	                		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는 질문</a></li>                
 	                    </c:when>
 	                    <c:otherwise>

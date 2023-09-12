@@ -23,12 +23,12 @@
                 </li>
                 <li>
                     <a href = "#">
-                        강사 마당 /
+                        관리 마당 /
                     </a>
                 </li>
                 <li>
                     <a href = "#">
-                        학습그룹 등록
+                        매출집계 및 조회
                     </a>
                 </li>
             </ul>
@@ -40,11 +40,11 @@
             <ul>
               <c:choose>
                   	<c:when test="${userVo.user_type == 1}">
-	                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+	                    <li class = "site-intro"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
                 		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는질문</a></li>                
                     </c:when>
                     <c:when test="${userVo.user_type == 2}">
-	                    <li class = "guide"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
+	                    <li class = "site-intro"><a href = "/management/announcement" id = "announcement">공지사항</a></li>
                 		<li class = "guide"><a href = "/management/qna" id = "qna">자주하는질문</a></li>                
                     </c:when>
                     <c:otherwise>
@@ -59,6 +59,7 @@
         </div>
   
         <div class = "group_sales">
+        <h2>매출 집계 및 조회</h2>
 		<div id="select">
 	        <label><input type="radio" name="report_type" value="yearly" > 년도별 조회</label>
 	        <select id="yearSelect">
@@ -68,17 +69,17 @@
 	        	<option value="2024">2024</option>
 	        	<option value="2025">2025</option>
 	        </select>
-	        
+	        <br>
 	        <label><input type="radio" name="report_type" value="monthly"> 월별 조회</label>
 	        
-	       <select id="contentSelect">
+	       <select id="contentectbox">
 			    <c:forEach items="${contentNameList}" var="content">
 			        <option value="${content.content_id}">${content.content_name}</option>
 			    </c:forEach>
 			</select>
 
 
-        <button id="queryButton">조회</button>
+        <button id="queryButton" class = "buttonB btnPush btnColor">조회</button>
 	    </div><br>
 	    <div id="salesList">
 	    	<table border="1px" id="resultTable">

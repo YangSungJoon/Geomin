@@ -6,22 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/study_group_add.css">
+<link rel="stylesheet" href="../resources/css/groupadd.css">
 </head>
 <%@include file = "../common/header.jsp" %>
 <body>
 <%-- userId : ${userId} <br>
 pageDto : ${pageDto } <br>
 totalCnt : ${totalCnt } <br> --%>
-	<input type="hidden" name="user_id" value="${userId}"><br>
+	<input type="hidden" name="user_id" value="${userId}">
 
-
-
-<div class = "intro-box">
-
-        
-        
-        
+<div class="intro-box">
+			<div class="location">
+				<ul class="clearFix">
+					<li class="home"><a href="#"> 
+						<img src="../resources/image/homeicon.png" alt=""> 
+					</a></li>
+					<li><a href="#"> / 강사마당  </a></li>
+					<li><a href="#"> / 학습그룹 등록  </a></li>
+				</ul>
+			</div>
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
@@ -34,29 +37,38 @@ totalCnt : ${totalCnt } <br> --%>
         
    <form action="groupAdd" method="post" >
 
-        <div class = "group_add_box">
+        <div id = "wrap_container">
 
-            <div><h1>정보 입력</h1></div>
-            <hr>
+            <div class ="h2_container_box">
+            	<h2>정보 입력</h2>
+            </div>
+            
             <div class = "left_content">
-				<p>콘텐츠 명<span>*</span></p>
-      		   <select name="content_id">
+				<p>콘텐츠 명<span class = "star">*</span></p>
+				
+      		   <select name="content_id" id = "type">
 				<c:forEach items="${option_content_id }" var="li" varStatus="status">
 				   	<option  value="${li.content_id }" data-total-personnel="${li.total_personnel}">${li.content_name }</option>
 			    </c:forEach>
 			   </select>
 			   
 
-            
-                <p>그룹명<span>*</span></p>
-                <input type="text" name="group_name">
-                <p>그룹인원<span>*</span></p>
-                <input type="text" name="group_personnel" >
-                <p>학습기간<span>*</span></p>
-                 <input type="date" name="learning_start"> ~ <input type="date" name="learning_end">
-
-                <div>
-                    <button type = "submit" id = "add_button">학습그룹 등록</button>
+            	<div class="form_group">
+                	<p>그룹명<span class = "star">*</span></p>
+                	<input type="text" name="group_name">
+                </div>
+                
+                <div class="form_group">
+	                <p>그룹인원<span class = "star">*</span></p>
+	                <input type="text" name="group_personnel" >
+                </div>
+                <div class="form_group">
+	                <p>학습기간<span class = "star">*</span></p>
+	                 <input type="date" name="learning_start"> ~ <input type="date" name="learning_end">
+				</div>
+				
+                <div class = "button__box">
+                    <button type = "submit" id = "add_button"  class ="buttonA btnPush btnColor">학습그룹 등록</button>
                 </div>
 
             </div>
@@ -71,7 +83,6 @@ totalCnt : ${totalCnt } <br> --%>
 
     </form>
     </div>
-    
 <script>
 
 

@@ -1,9 +1,15 @@
 .group_sales{
-    border: 3px solid blue;
-    height: 40rem;
-    width: 37rem;
-    float: left;
-    padding : 20px;
+    width: 550px;
+    height: 600px;
+    margin: auto;
+    background-color: #ebecf0;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 7rem;
+    margin-left: 28rem;
+    border-radius: 2rem;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #dee1e0;
 }
 
 .content_name{
@@ -28,9 +34,6 @@
     line-height: 2rem;
 }
 
-span{
-    color: red;
-}
 
 #add_button{
     margin-left: 5rem;
@@ -50,4 +53,90 @@ span{
 #salesChart{
 	border : 1px solid black;
 	height : 200px;
+}
+
+h2{
+	text-align: center;
+	line-height: 4rem;
+    border-bottom: 5px solid #f9faff;
+}
+
+div#select {
+    margin-top: 3rem;
+    line-height: 3rem;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+#yearSelect {
+    width: 110px;
+    height: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 2px solid rgb(203, 203, 203);
+    background-color: #f5f5f9;
+    text-align: center;
+    /* margin-top: 2rem; */
+    margin-left: 1rem;
+    /* line-height: 2rem; */
+}
+
+#contentectbox {
+    width: 110px;
+    height: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 2px solid rgb(203, 203, 203);
+    background-color: #f5f5f9;
+    text-align: center;
+    /* margin-top: 2rem; */
+    margin-left: 1rem;
+    /* line-height: 2rem; */
+}
+
+.buttonA {
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 15px 45px;
+  margin: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 80ms ease-in;
+}
+
+.buttonB{
+    transition: all 0.2s;
+    cursor: pointer;
+	box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+	border-radius: 20px;
+	  border: none;
+	  outline: none;
+	  font-size: 12px;
+	  font-weight: bold;
+	  margin: 14px;
+	  letter-spacing: 1px;
+	  text-transform: uppercase;
+	  cursor: pointer;
+	  width: 65px;
+    height: 35px;
+}
+
+.btnColor{
+	background: revert;
+}
+.btnColor.btnPush{
+	box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+}
+
+.btnPush:hover{
+	margin-top: 15px;
+  	margin-bottom: 5px;
+}
+
+.btnColor.btnPush:hover{
+	box-shadow: 0px 0px 0px 0px lightgray;
 }

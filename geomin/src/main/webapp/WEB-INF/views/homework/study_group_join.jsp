@@ -67,14 +67,15 @@
 					<br>
 
 					<div id="result"></div>
+					<div class="send_button_box">
+				<button type="submit" class = "buttonB btnColor btnPush" id="send_button" onclick="send();">가입
+					신청</button>
+			</div>
 				</div>
 			</div>
 
 
-			<div class="send_button_box">
-				<button type="submit" class = "button btnColor btnPush" id="send_button" onclick="send();">가입
-					신청</button>
-			</div>
+			
 		</form>
 
 	</div>

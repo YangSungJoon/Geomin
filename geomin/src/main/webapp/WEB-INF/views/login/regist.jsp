@@ -8,7 +8,6 @@
     <title>Document</title>
     
     <link rel="stylesheet" href="../resources/css/regist.css">
-    <link rel="stylesheet" href="../resources/css/intro.css">
     <script src='../resources/js/regist.js'></script>
 </head>
 <%@include file = "../common/header.jsp" %>
