@@ -20,23 +20,19 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 	@Autowired
 	private HomeWorkMapper homeworkMapper;
 
-	@Override
-	public List<HomeWorkVO> getList(String user_id) {
-		return homeworkMapper.getList(user_id);
-	}
 
 	// 학습자 이름 조회
 	@Override
 	public UserVO getUserName(String user_id) {
 		return homeworkMapper.getUserName(user_id);
 	}
-
+/*
 	// 학습지도자 이름 조회
 	@Override
 	public HomeWorkVO getLeaderName(String user_id) {
 		return homeworkMapper.getLeaderName(user_id);
 	}
-
+*/
 	// 학습 콘텐츠 명 조회
 	@Override
 	public ContentVO getContentName(String content_id) {
@@ -59,6 +55,28 @@ public class HomeWorkServiceImpl implements HomeWorkService {
 	public int update(HomeWorkVO homeworkVO) {
 		return homeworkMapper.update(homeworkVO);
 	}
+
+	// 그룹 가입별 학생 로그인
+	    @Override
+	    public int groupLogin(String user_id) {
+	        return homeworkMapper.groupLogin(user_id);
+	    }
+
+		@Override
+		public List<HomeWorkVO> getList(String user_id) {
+			return homeworkMapper.getList(user_id);
+		}
+
+		// 학습지도자 이름 조회
+		@Override
+		public HomeWorkVO getLeaderName(String user_id_leader) {
+			return homeworkMapper.getLeaderName(user_id_leader);
+		}
+		
+
+	
+
+
 	
 
 	

@@ -19,7 +19,7 @@
 	</select>
 	
 	<select id = "selectGroup" resultType="com.geomin.vo.GroupJoinVO">
-		select * from groups where group_id = #{group_id};
+		select * from groups where group_id = #{group_id}
 	</select>
 	
 	<!-- 가입된 그룹 정보 조회 -->

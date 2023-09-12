@@ -2,6 +2,8 @@ package com.geomin.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
 import com.geomin.vo.HomeWorkVO;
@@ -18,7 +20,7 @@ public interface HomeWorkMapper {
 	public UserVO getUserName(String user_id);
 	
 	// 학습지도자 이름 조회
-	public HomeWorkVO getLeaderName(String user_id);
+	public HomeWorkVO getLeaderName(String user_id_leader);
 	
 	// 학습 콘텐츠 명 조회
 	public ContentVO getContentName(String content_id);
@@ -31,4 +33,13 @@ public interface HomeWorkMapper {
 	
 	// 학습 내용 제출
 	public int update(HomeWorkVO homeworkVO);
+	
+	//void update(HomeWorkVO homeworkVO);
+
+	// 그룹 가입별 학생 로그인
+	public int groupLogin(String user_id);
+
+
+
+
 }

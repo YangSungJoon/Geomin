@@ -18,10 +18,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.geomin.service.UserService;
+import com.geomin.vo.HomeWorkVO;
 import com.geomin.vo.UserVO;
+
+import lombok.extern.log4j.Log4j;
+
+import com.geomin.service.HomeWorkService;
+import com.geomin.service.HomeWorkServiceImpl;
 import com.geomin.service.MailService;
 
 @Controller
+@Log4j
 public class UserController {
 
 	@Autowired
@@ -32,6 +39,9 @@ public class UserController {
 	
 	@Autowired
 	MailService mailService;
+	
+	@Autowired
+	HomeWorkService homeworkService;
 
 	@GetMapping("/login/login")
 	public String login() {
@@ -60,39 +70,49 @@ public class UserController {
 	
 	
 	@PostMapping("/loginAction")
-	public String loginAction(@RequestParam("userId") String user_id, 
-			@RequestParam("userPw") String user_pw,			
-			Model model, HttpSession session) {
+	public String loginAction(@RequestParam("userId") String user_id,
+	    @RequestParam("userPw") String user_pw,            
+	    Model model, HttpSession session) {
 
-		UserVO userVo = new UserVO();
-		userVo.setUser_id(user_id);
-		userVo.setUser_pw(user_pw);
+	    UserVO userVo = new UserVO();
+	    userVo.setUser_id(user_id);
+	    userVo.setUser_pw(user_pw);
 
-		System.out.println("user_id : " + user_id);
-		System.out.println("user_pw : " + user_pw);
-		userVo = userService.login(userVo);
-        
-        if (userVo != null) {
-           	// 인증 성공: 세션에 사용자 정보를 저장하고 home 페이지로 리다이렉트합니다.
-            
-            // 로그인 성공
-        	    
-           session.setAttribute("userVo", userVo);
-           session.setAttribute("userId", userVo.getUser_id());
+	    userVo = userService.login(userVo);
+	    
+	    if (userVo != null) {
+	        // 인증 성공
 
-           // 'user_type'에 따라 다른 경로로 리다이렉트
-           if ("2".equals(userVo.getUser_type())) {
-               return "redirect:/homework/homework_send?user_id="+user_id; // 'user_type'이 '2'인 경우 다른 경로로 리다이렉트
-           } else {
-               return "redirect:/main/main"; // 그 외의 경우 기본 메인 페이지로 리다이렉트
-           }
+	        session.setAttribute("userVo", userVo);
+	        session.setAttribute("userId", userVo.getUser_id());
 
-		} else {
-			// 로그인 실패
-			model.addAttribute("errorMSG", "잘못된 아이디 또는 비밀번호 입니다.");
-			return "login/login";
-		}
+	        // 학습그룹에 가입되어 있는지 확인
+	        int isGroupMember = homeworkService.groupLogin(user_id);
+
+	        // 'user_type'에 따라 다른 경로로 리다이렉트
+	        if ("2".equals(userVo.getUser_type())) {
+	            if (isGroupMember > 0) {
+	            	System.out.println("isGroupMember : " +isGroupMember);
+	                // user_type이 2이고 그룹에 속한 경우
+	                log.info("User is a group member, redirecting to /homework/homework_send");
+	                return "redirect:/homework/homework_send?user_id=" + user_id;
+	            } else {
+	                // user_type이 2이고 그룹에 속하지 않은 경우
+	                log.info("User is not a group member, redirecting to /homework/study_group_join");
+	                return "redirect:/homework/study_group_join";
+	            }
+	        } else {
+	            log.info("User is not of type 2, redirecting to /main/main");
+	            return "redirect:/main/main"; // 그 외의 경우 기본 홈 페이지로 리다이렉트
+	        }
+
+	    } else {
+	        // 로그인 실패
+	        model.addAttribute("errorMSG", "잘못된 아이디 또는 비밀번호 입니다.");
+	        return "login/login";
+	    }
 	}
+
 	
 	@PostMapping("/login/regist")
 	@ResponseBody

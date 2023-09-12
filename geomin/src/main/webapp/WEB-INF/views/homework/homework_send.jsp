@@ -60,10 +60,11 @@
                 
                 <c:forEach items = "${list}" var="worklist">
                 <tr>
-                    <td class = "contentName button btnColor btnPush"><a href ="/management/contentListView?content_id=${worklist.content_id}"><strong><c:out value="${worklist.content_name }"/></strong></a></td>
+                    <td class = "contentName button btnColor btnPush"><a href ="/management/contentListView?content_id=${worklist.content_id}">
+                    <strong><c:out value="${worklist.content_name }"/></strong></a></td>
                     <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
                     <td class = "workContent"><c:out value="${worklist.homework_content_leader }"/></td>
-                    <td class = "sendDate" style = "color: red; font-weight: bold;"><c:out value="${worklist.homework_deadline }"/></td>
+                    <td class = "sendDate" style = "color: red; font-weight: bold;" ><c:out value="${worklist.homework_deadline }"/></td>
                     <td class = "studyContent">
                     <c:choose>
                     <c:when test="${not empty worklist.homework_content_learner }">
@@ -72,8 +73,9 @@
                     <c:otherwise>
                     <form action="/homework/homework_sendAction" method="post">
                     <div class = "bottom-button_box">
-                    	<input type="text" name="content_send_box" id="content_send_box" placeholder = '학습 내용을 입력해주세요.'>
-                    	<input type="hidden" name="group_id" value="${worklist.group_id }">
+                    	<input type="hidden" name="user_id" value="${userId}">
+                    	<input type="text" name="homework_content_learner" id="content_send_box" placeholder = '학습 내용을 입력해주세요.'>
+                    	<input type="hidden" name="user_id_learner" value="${worklist.user_id_learner }">
                     	<button type ="submit" onclick = "send()" class = "buttonS buttonPush buttonColor">제출</button>
                     	</div>
                     </form>
@@ -81,14 +83,12 @@
                     </c:choose>
                     </td>
                     <!-- <td class = "studyContent"><c:out value="${worklist.homework_content_learner }"/></td> -->
-                    </a>
                 </tr>
                 </c:forEach>
             </table>
             
         </div>
 
-    </div>
 <script>
 	function send(){
     	alert('학습 내용 등록이 완료되었습니다.');
