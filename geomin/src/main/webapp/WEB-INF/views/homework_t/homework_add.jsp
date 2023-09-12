@@ -10,29 +10,7 @@
 	<link rel="stylesheet" href="../resources/css/footer.css">
 	    <link rel="stylesheet" href="../resources/css/header.css">
 	    <link rel="stylesheet" href="../resources/css/content_request.css">
-	    <style>
-	    .homeworkContent {
-	        width: 90%; /* 원하는 너비로 조절하세요 */
-	        height: 150px;
-	        padding: 10px; /* 입력란 내부 여백 설정 */
-	        box-sizing: border-box; /* 내부 여백을 포함한 크기 계산 */
-	    }
-	    
-	    .deadline {
-	        width: 20%; /* 원하는 너비로 조절하세요 */
-	        height: 30px;
-	        padding: 10px; /* 내부 여백 설정 */
-	        box-sizing: border-box; /* 내부 여백을 포함한 크기 계산 */
-	        margin: 0 auto; /* 가운데 정렬 */
-	        display: block;
-	        text-align: center;
-	    }
-	    
-	    .deadlineBox {
-	        text-align: center; /* 가운데 정렬 */
-	    }
-	
-	</style>
+
 	   <script>
 	   
 	   window.onload = function() {
