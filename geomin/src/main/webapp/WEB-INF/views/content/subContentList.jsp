@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/content_request.css">
+    <div style="display: none;">aaaa : ${successMessage }</div>   
      <script>
         window.onload = function() {
             const difficultyCells = document.querySelectorAll('.subPrice-difficulty');
@@ -76,6 +77,25 @@ subTotalCnt :  ${subTotalCnt }<br> --%>
 <input type="hidden" name="user_id" value="${userId}">
 
 <div class = "intro-box">
+		<div class = "location">
+            <ul class = "clearFix">
+                <li class = "home">
+                    <a href = "#">
+                        <img src="../resources/image/homeicon.png" alt=""> /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        구독 서비스 /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        나의 학습콘텐츠
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/content/contentList" id = "intro-hover">학습콘텐츠 검색 및 구독신청</a></li>
@@ -83,17 +103,22 @@ subTotalCnt :  ${subTotalCnt }<br> --%>
             </ul>
         </div>
 
-        <div class = "request-content">
-            <table>
+		<div class = "name-content">
+            <p>나의 학습 콘텐츠 &nbsp;</p>
+            <hr>
+        </div>
+ 
+        <div class = "main-content-box">
+            <table class = "table-fill">
                 <tr class = "table_menu">
-                    <td class = "check_box"></td>
-                    <td>패키지명</td>
-                    <td>학습가능인원</td>
-                    <td>구독료</td>
-                    <td>학습수준</td>
-                    <td>학습내용</td>
-                    <td>구독신청일</td>
-                    <td>결제상태</td>
+                    <th class = "check_box"></th>
+                    <th class = "top_content">패키지명</th>
+                    <th class = "top_people">학습가능인원</th>
+                    <th class = "top_subPrice">구독료</th>
+                    <th class = "top_level">수준</th>
+                    <th class = "top_workContent">학습내용</th>
+                    <th class="top_price">구독신청일</th>
+                    <th class = "top_yn">결제상태</th>
                 </tr>
                 <c:forEach items="${subContentList }" var="li" varStatus="status">
 	                <tr>
@@ -101,16 +126,16 @@ subTotalCnt :  ${subTotalCnt }<br> --%>
 	                    <td class = "packageName" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 	                    <td class = "people">${li.learning_member } 명</td>
 	                    <td class = "subPrice">${li.real_price }원</td>
-	                    <td class="subPrice-difficulty">${li.learning_difficulty}</td>
-	                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.learning_content }</td>
-	                    <td>${li.subscription_date }</td>
-	                    <td><input type="checkbox" name="paystatus" id="checkbox2" style="display: none;" value="${li.paystatus}">${li.paystatus }</td>
+	                    <td class="level">${li.learning_difficulty}</td>
+	                    <td class="workContent">${li.learning_content }</td>
+	                    <td class="price" >${li.subscription_date }</td>
+	                    <td class = "yn"><input type="checkbox" name="paystatus" id="checkbox2" style="display: none;" value="${li.paystatus}">${li.paystatus }</td>
 	                </tr>
                 </c:forEach>
                
             </table>
             <div class = "send_button_box">
-                <button type = "submit" id = "send_button" >결제 취소</button>
+                <button type = "submit" id = "send_button" class = "buttonA btnPush btnColor">결제 취소</button>
             </div>
         </div>
     </div>

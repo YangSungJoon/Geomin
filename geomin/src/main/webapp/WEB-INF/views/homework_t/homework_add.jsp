@@ -129,6 +129,25 @@
 		</form>
 	
 	<div class = "intro-box">
+	<div class = "location">
+            <ul class = "clearFix">
+                <li class = "home">
+                    <a href = "#">
+                        <img src="../resources/image/homeicon.png" alt=""> /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        강사 마당 /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        숙제 전송
+                    </a>
+                </li>
+            </ul>
+        </div>
 	        <div class = "left-sideBar">
 	            <ul>
 	                <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
@@ -143,7 +162,6 @@
 	 <form action="homework_sel" method="post">
 	 
 		        <div class = "name-content">
-	
 			  	          	콘텐츠명 &nbsp;
 				              <select id="content_id">
 				                  <option value="">전체 ↓</option>
@@ -151,14 +169,13 @@
 				                  <option value="${li.content_name}" ${li.content_name == content_name ? 'selected' : '' } >${li.content_name }</option>
 							   </c:forEach>
 				              </select>
+				              
+				              <button type = "submit" id = "name_check" class = "buttonB btnPush btnColor">조회</button>
+						      <input type="hidden" name="groupyn" value="Y">
+						      <input type="hidden" name="content_name" class="content_name" value="${content_name }">
+						      <input type="hidden" name="user_id"  value="${userId}">
 	<%-- ${pageDto.cri.exercise_name ==  ex.exercise_name ? 'selected' : '' } --%>
 		        </div>
-		
-			      
-			              <button type = "submit" id = "name_check">조회</button>
-			      <input type="hidden" name="groupyn" value="Y">
-			      <input type="hidden" name="content_name" class="content_name" value="${content_name }">
-			      <input type="hidden" name="user_id"  value="${userId}">
 			      
 	</form>
 		      
@@ -169,26 +186,26 @@
 	  	
 	        
 	
-		        <div class = "request-content">
-		            <table>
+		        <div class = "main-content-box">
+		            <table class = "table-fill">
 		                <tr class = "table_menu">
-		                    <td class = "check_box"></td>
-		                    <td>그룹명</td>
-		                    <td>콘텐츠명</td>
-		                    <td>학습자명</td>
+		                    <th class = "check_box"></th>
+		                    <th class = "top_content">콘텐츠명</th>
+		                    <th class = "top_people">그룹명</th>
+		                    <th class = "top_people">학습자명</th>
 		                    
 		                    
 		                </tr>
-		                 <c:forEach items="${groupApproval }" var="li" varStatus="status">
+		                 <c:forEach items="${homework_add_list }" var="li" varStatus="status">
 						    <tr>
 						        <td class="check_box">
 						        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" onclick='checkOnlyOne(this)' value="${li.user_id_learner}">
 						        	<input type="checkbox" name="group_id" class="check2" id="checkbox" style="display: none;" value="${li.group_id }" >
 						        	<input type="checkbox" name="content_id" class="check3" id="checkbox"  style="display: none;" value="${li.content_id}" >
 						        </td>
-						        <td>${li.group_name }</td>
-						        <td >${li.content_name}</td>
-						        <td >${li.learner_name}</td>
+						        <td  class = "contentName button btnColor btnPush">${li.content_name}</td>
+						        <td class = "people">${li.group_name }</td>
+						        <td  class = "people">${li.learner_name}</td>
 						        <%-- <td> ${li.groupyn }</td> --%>
 						    </tr>
 		                </c:forEach> 
@@ -197,28 +214,30 @@
 		            
 		            
 		            
+		         <div class = "bottom__box">
 		            <div>
-		            	숙제내용
+		            	<strong>숙제내용</strong>
 		            	<br>
 		            	<input type="text" class="homeworkContent" name="homework_content_leader">
 		            </div>
 		        	<br>
 		            <div class="deadlineBox">
-		            	제출기한
+		            	<strong style = "color: red;">제출기한</strong>
 		            	<input type="date" class="deadline" name="homework_deadline">
 		            </div>
 				
 	
 		            <div class = "send_button_box">
-		                <button type = "submit" id = "send_button" >숙제 전송</button>
+		                <button type = "submit" id = "send_button" class = "buttonB btnPush btnColor">숙제 전송</button>
 		            </div>
-		        </div>
+		            
+		         </div>
+		 </div>
 	</form>
 	
 	<jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />
 	    </div>
 	
-
 	
 	</body>
 	 <%@include file = "../common/footer.jsp" %> 

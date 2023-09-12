@@ -32,11 +32,14 @@ public interface ContentService {
 
 	public int homeworkEvalCnt(SubScriptionVO subScriptionVO, Criteria cri);
 	
+	public List<SubScriptionVO> homework_add_list(SubScriptionVO subScriptionVO, Criteria cri, Model model);
+	
+	public int homework_add_list_Cnt(SubScriptionVO subScriptionVO, Criteria cri);
+
 	
 	public List<SubScriptionVO> option_content_id(SubScriptionVO subScriptionVO, Model model);
 
 	public List<SubScriptionVO> homework_option(SubScriptionVO subScriptionVO, Model model);
-	
 	
 	
 	

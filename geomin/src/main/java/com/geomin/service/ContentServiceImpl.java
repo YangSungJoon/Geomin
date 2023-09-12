@@ -65,6 +65,26 @@ public class ContentServiceImpl implements ContentService{
 		return list;
 		
 	}
+
+	
+	@Override
+	public List<SubScriptionVO> homework_add_list(SubScriptionVO subScriptionVO, Criteria cri, Model model){
+		
+		List<SubScriptionVO> list = contentMapper.homework_add_list(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo(), subScriptionVO.getContent_name(), subScriptionVO.getGroupyn());
+		
+		int total = contentMapper.homework_add_list_Cnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo(), subScriptionVO.getContent_name(), subScriptionVO.getGroupyn());
+		
+		model.addAttribute("groupyn", subScriptionVO.getGroupyn());
+		
+		model.addAttribute("content_name",subScriptionVO.getContent_name());
+		
+		model.addAttribute("homework_add_list", list);
+		
+		model.addAttribute("total", total);
+		
+		return null;
+	}
+	
 	
 
 	@Override
@@ -102,7 +122,7 @@ public class ContentServiceImpl implements ContentService{
 		
 		return null;
 	}
-	
+
 	@Override
 	public List<SubScriptionVO> homework_option(SubScriptionVO subScriptionVO,Model model){
 		
@@ -236,6 +256,11 @@ public class ContentServiceImpl implements ContentService{
 
 	@Override
 	public int homeworkEvalCnt(SubScriptionVO subScriptionVO, Criteria cri) {
+		return contentMapper.homeworkEvalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
+	}
+	
+	@Override
+	public int homework_add_list_Cnt(SubScriptionVO subScriptionVO, Criteria cri) {
 		return contentMapper.homeworkEvalCnt(subScriptionVO.getUser_id(), cri.getStartNo(), cri.getEndNo());
 	}
 	
