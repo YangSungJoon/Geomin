@@ -5,46 +5,53 @@
 }
 
 #banner{
-    /* position:relative; */
-    width: 100%;
-    height: 20rem;
-    /* border:2px solid #ccc; */
+	position: relative;
+    width: 1200px;
+    height: 400px;
+    border: 2px solid #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: 1s;
-    background-size : 100% 100%;
-    background-image: url('../image/pic-1.jpeg');
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
-#banner img{
-    width: 100%;
-    height: 20rem;
+div#left {
+    margin-right: 70rem;
+}
+
+div#right {
+    margin-left: -1.5rem;
 }
 
 .arrow {
-    margin: 0;
-    /* z-index:100; */
-    font-size:2em;
-    padding:10px;
-    background:#dddddd00;
-    color:#222;
-    opacity:0.2;
+  z-index:100;
+  font-size:5em;
+  padding:10px;
+  background:#ddd;
+  color:#222;
+  opacity:0.2;
 }
 
 .arrow:hover {
-    opacity:1;
+  opacity:1;
+}
+
+img{
+	width: 100px;
+	height: 100px;
 }
 
 #recommand-box{
     width: 80rem;
-    height: 25rem;
-    margin-top: 1rem;
+    height: 30rem;
+    border-top: 5px solid #ebecf0;
+    margin-top: 3rem;
 }
 
 .recommand-image1{
     width: 20rem;
+    max-widht: 20rem;
     float: left;
     margin-left: 5rem;
 }
@@ -63,39 +70,83 @@
 
 .recommand-image1 img{
     width: 19.5rem;
-    height: 11rem;
+    height: 13rem;
     margin-top: 2rem;
     border: 2px solid #bbb;
     float: left;
+        margin-left: 0.25rem;
 }
 
 .recommand-image1 p{
     line-height: 3rem;
     font-weight: bold;
+    text-align: center;
+    
 }
 
 .recommand-image2 p{
     line-height: 3rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .recommand-image3 p{
     line-height: 3rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .recommand-image2 img{
     width: 19.5rem;
-    height: 11rem;
+    height: 13rem;
     margin-top: 2rem;
     border: 2px solid #bbb;
     float: left;
+        margin-left: 0.25rem;
 }
 
 .recommand-image3 img{
     width: 19.5rem;
-    height: 11rem;
+    height: 13rem;
     margin-top: 2rem;
     border: 2px solid #bbb;
     float: left;
+        margin-left: 0.25rem;
+}
+
+h2 {
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.box-fixed{
+	margin-top: 2rem;
+}
+
+.pacName{
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.pacName:hover{
+	color: #bbb;
+}
+
+.pac_content{
+    background: #f5f5f9;
+    padding: 16px;
+    margin: 8px 0;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0px 2px 10px #babebc, inset -5px -5px 12px #fff;
+    margin-top: 1rem;
+}
+
+#pac_select{
+	font-size: 15px;
+}
+
+.con_price{
+	color:red;
 }

@@ -83,3 +83,21 @@ img#guide_image {
     text-align: center;
     display: flex;
 }
+
+#hello{
+	font-weight: bold;
+	font-size: 25px;
+}
+
+p {
+    line-height: 2rem;
+}
+
+p.ptext {
+    margin-left: 1.5rem;
+    border-bottom: 1px solid;
+    line-height: 2.5rem;
+    color: black;
+    font-weight: bold;
+    margin-top: 0.8rem;
+}
