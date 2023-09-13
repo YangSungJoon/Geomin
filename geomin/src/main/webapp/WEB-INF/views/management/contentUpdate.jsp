@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>학습콘텐츠 목록</title>
+<title>학습콘텐츠 수정</title>
 <link rel="stylesheet" href="../resources/css/contentUpdate.css">
 </head>
 <%@include file = "../common/header.jsp" %>

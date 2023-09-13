@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.geomin.service.AnnouncementService;
 import com.geomin.service.ManagementService;
 import com.geomin.vo.AnnouncementVO;
+import com.geomin.vo.Criteria;
+import com.geomin.vo.PageDto;
+import com.geomin.vo.SubScriptionVO;
 
 @RequestMapping("/management/*")
 @Controller
@@ -24,7 +27,7 @@ public class AnnouncementController {
 	
 	@Autowired
 	AnnouncementService announcementService;
-	
+		
 	@GetMapping("announce_add")
 	public String announce_add(){
 		return "/management/announce_add";
@@ -39,31 +42,32 @@ public class AnnouncementController {
 	}
 	
 	@GetMapping("announcement")
-	public String announcement(Model model){
+	public String announcement(String announcement_type,Criteria cri, Model model){
+		 // 게시물의 총 개수 가져오기
+        int cnt = announcementService.getTotalAnnouncementCount("1", cri);
 		
-//		List<AnnouncementVO> announceList = announcementService.getAllAnnouncements();
-		List<AnnouncementVO> type1List = announcementService.getAllAnnouncements("1");
-		List<AnnouncementVO> type2List = announcementService.getAllAnnouncements("2");
-//		
-//		for (AnnouncementVO announcement : announceList) {
-//	        if ("1".equals(announcement.getAnnouncement_type())) {
-//	            type1List.add(announcement);
-//	        } else if ("2".equals(announcement.getAnnouncement_type())) {
-//	            type2List.add(announcement);
-//	        }
-//	    }
+		List<AnnouncementVO> type1List = announcementService.getAllAnnouncements("1", cri, model);
+		
+		PageDto pageDto = new PageDto(cri, cnt);
+		
+		 model.addAttribute("pageDto", pageDto);
 		 model.addAttribute("type1List", type1List);
-		 model.addAttribute("type2List", type2List);
 		return "/management/announcement";
 	}
 	
-	@GetMapping("qna")
-	public String qna(Model model){
-	    List<AnnouncementVO> type2List = announcementService.getAllAnnouncements("2");
-	    
-	    model.addAttribute("type2List", type2List);
-	    
-	    return "/management/qna";
+	@GetMapping("faq")
+	public String faq(String announcement_type,Criteria cri, Model model){
+		 // 게시물의 총 개수 가져오기
+        int cnt = announcementService.getTotalAnnouncementCount("2", cri);
+		
+		List<AnnouncementVO> type2List = announcementService.getAllAnnouncements("2", cri, model);
+		
+		PageDto pageDto = new PageDto(cri, cnt);
+		
+		 model.addAttribute("pageDto", pageDto);
+		 model.addAttribute("type2List", type2List);
+		 
+	    return "/management/faq";
 	}
 	
 	@PostMapping("announceInsert")
@@ -82,7 +86,6 @@ public class AnnouncementController {
 	    }
 	    return "redirect:/management/announcement";
 	}
-
 
 
 }

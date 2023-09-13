@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>숙제 제출</title>
 <link rel="stylesheet" href="../resources/css/homework_send.css">
 <link rel="stylesheet" href="../resources/css/modal.css">
 <script src="../resources/js/homework_send.js"></script>

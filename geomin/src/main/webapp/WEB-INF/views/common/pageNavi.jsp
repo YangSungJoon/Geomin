@@ -72,6 +72,9 @@
  		let homework_evaluationGO = document.homework_evaluationGO;
  		let homework_addGO = document.homework_addGO;
  		
+ 		let announcementGO = document.announcementGO;
+ 		let faqGO = document.faqGO;
+ 		
  		if(contentListGO){
 		document.contentListGO.pageNo.value = page;
 		document.contentListGO.submit();
@@ -97,8 +100,14 @@
 					 			document.homework_addGO.pageNo.value = page;
 					 			document.homework_addGO.submit(); 			
 					 			
-					 		} 
-		 		
+					 			} else if(announcementGO){
+						 			document.announcementGO.pageNo.value = page;
+						 			document.announcementGO.submit(); 
+						 			
+						 			} else if(faqGO){
+							 			document.faqGO.pageNo.value = page;
+							 			document.faqGO.submit(); 				 							 		
+						 			}
 		
 	}
 

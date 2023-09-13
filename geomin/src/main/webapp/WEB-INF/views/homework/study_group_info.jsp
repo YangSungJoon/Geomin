@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나의 그룹</title>
 <link rel="stylesheet" href="../resources/css/study_group_info.css">
 <script src="../resources/js/study_group_join.js"></script>
 <script

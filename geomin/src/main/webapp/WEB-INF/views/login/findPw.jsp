@@ -40,17 +40,17 @@
                     	<div class="form-group">
                             <label for="userId"><span class="glyphicon glyphicon-id" style="font-size : 20px"></span></label>
                             <input type="text" class="userId" id="userId" 
-                            placeholder="아이디를 입력하세요." value="wed478">
+                            placeholder="아이디를 입력하세요.">
                         </div>
                         <div class="form-group">
                             <label for="userEmail"><span class="glyphicon glyphicon-user" style="font-size : 20px"></span></label>
                             <input type="text" class="userEmail" id="userEmail" 
-                            placeholder="가입시 등록한 이메일을 입력하세요." value="wed478@naver.com">
+                            placeholder="가입시 등록한 이메일을 입력하세요." >
                         </div>
                         <div class="form-group">
                             <label for="userName"><span class="glyphicon glyphicon-eye-open" style="font-size : 20px"></span></label>
                             <input type="text" class="userName" id="userName" 
-                            placeholder="이름을 입력하세요." value="양성준">
+                            placeholder="이름을 입력하세요.">
                         </div>
                         <div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
                         

@@ -45,24 +45,24 @@
 	            <div class = "recommand-image1">
 	                <img src="../resources/image/baduk1.jpg" alt="이미지">
 	                <div class = "pac_content">
-		                <a href = "#"><p class = "pacName">패키지 명 1 <span id = "pac_select">👈</span></p></a>
-		                <p class= "con_price">100,000 원</p>
+		                <a href = "/management/contentListView?content_id=0001"><p class = "pacName">어린이 바둑 기초반 <span id = "pac_select">👈</span></p></a>
+		                <p class= "con_price">34,000 원</p>
 	                </div>
 	            </div>
 	
 	            <div class = "recommand-image2">
 	                <img src="../resources/image/baduk2.jpg" alt="이미지">
 	                <div class = "pac_content">
-		                <a href = "#"><p class = "pacName">패키지 명 2 <span id = "pac_select">👈</span><p></a>
-		                <p class= "con_price">50,000 원</p>
+		                <a href = "/management/contentListView?content_id=0002"><p class = "pacName">중급 바둑 수법 마스터 <span id = "pac_select">👈</span><p></a>
+		                <p class= "con_price">45,000 원</p>
 	                </div>
 	            </div>
 	
 	            <div class = "recommand-image3">
 	                <img src="../resources/image/baduk3.jpg" alt="이미지">
 	                <div class = "pac_content">
-		                <a href = "#"><p class = "pacName">패키지 명 3 <span id = "pac_select">👈</span></p></a>
-		                <p class= "con_price">75,000 원</p>
+		                <a href = "/management/contentListView?content_id=0003"><p class = "pacName">고급 바둑 마스터 클래스 <span id = "pac_select">👈</span></p></a>
+		                <p class= "con_price">63,750 원</p>
 	                </div>
 	            </div>
 			</div>

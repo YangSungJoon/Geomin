@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>학습그룹 등록</title>
 <link rel="stylesheet" href="../resources/css/groupadd.css">
 </head>
 <%@include file = "../common/header.jsp" %>

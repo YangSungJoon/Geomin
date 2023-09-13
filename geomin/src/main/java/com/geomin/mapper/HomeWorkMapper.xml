@@ -6,7 +6,7 @@
 	
 	<!-- 숙제 목록 조회 -->
 	<select id="getList" resultType="com.geomin.vo.HomeWorkVO">
-	    select c.content_name
+	    select c.content_id, c.content_name
 	    , h.user_id_leader
 	    , to_char(h.homework_deadline, 'yyyy-MM-dd') as homework_deadline
 	    , h.homework_content_leader, h.homework_content_learner

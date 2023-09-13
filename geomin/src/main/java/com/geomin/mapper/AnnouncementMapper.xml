@@ -13,11 +13,39 @@
     </insert>
     
      <select id="getAllAnnouncements" resultType="com.geomin.vo.AnnouncementVO">
-        SELECT * FROM ANNOUNCEMENT where announcement_type = #{type}
+        select * 
+    from (
+        select rownum rn, a.*
+        from(
+            select *            
+            from announcement
+            where announcement_type=#{announcement_type}
+
+            
+            order by announcement_id desc
+            ) a
+        )
+        where rn between #{startNo} AND #{endNo}
     </select>
     
     <select id="getAnnouncementById" parameterType="String" resultType="com.geomin.vo.AnnouncementVO">
     SELECT * FROM ANNOUNCEMENT WHERE ANNOUNCEMENT_ID = #{announcement_id}
 </select>
     
+     <!-- 게시물 총 개수 가져오기 -->
+    <select id="getTotalAnnouncementCount" resultType="int">
+           select count(*)
+    from (
+        select rownum rn, a.*
+        from(
+            select *            
+            from announcement
+            where announcement_type=#{announcement_type}
+
+            
+            order by announcement_id desc
+            ) a
+        )
+        
+    </select>
   </mapper>

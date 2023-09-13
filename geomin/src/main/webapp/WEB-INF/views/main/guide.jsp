@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이용 가이드</title>
 <link rel="stylesheet" href="../resources/css/guide.css">
 </head>
 <%@include file = "../common/header.jsp" %>
