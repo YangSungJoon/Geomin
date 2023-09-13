@@ -23,7 +23,7 @@ $(document).ready(function() {
     $("#queryButton").click(function() {
         var reportType = $("input[name='report_type']:checked").val();
         var content_id = $("#contentSelect").val();
-
+        console.log("content_id : ", content_id);
         if (reportType === "yearly") {
         	
             $.ajax({

@@ -32,7 +32,7 @@ public class managementTest {
 	@Autowired
     HomeWorkMapper homeworkMapper;
 
-/*
+
 	
 	@Test
 	public void contentTest() {
@@ -45,7 +45,7 @@ public class managementTest {
 	    });
 	}
 	
-	
+	/*
 	
 	@Test
 	public void getListTest() {

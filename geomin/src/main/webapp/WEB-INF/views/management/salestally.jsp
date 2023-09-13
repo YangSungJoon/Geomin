@@ -63,16 +63,16 @@
 		<div id="select">
 	        <label><input type="radio" name="report_type" value="yearly" > 년도별 조회</label>
 	        <select id="yearSelect">
+	        	<option value="2020">2020</option>
 	        	<option value="2021">2021</option>
 	        	<option value="2022">2022</option>
 	        	<option value="2023">2023</option>
-	        	<option value="2024">2024</option>
-	        	<option value="2025">2025</option>
+	        	
 	        </select>
 	        <br>
 	        <label><input type="radio" name="report_type" value="monthly"> 월별 조회</label>
 	        
-	       <select id="contentectbox">
+	       <select id="contentSelect">
 			    <c:forEach items="${contentNameList}" var="content">
 			        <option value="${content.content_id}">${content.content_name}</option>
 			    </c:forEach>
