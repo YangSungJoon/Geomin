@@ -12,7 +12,7 @@
     <div style="display: none;">aaaa : ${successMessage }</div>   
      <script>
         window.onload = function() {
-            const difficultyCells = document.querySelectorAll('.subPrice-difficulty');
+            const difficultyCells = document.querySelectorAll('.level');
 
             difficultyCells.forEach(cell => {
                 const difficultyValue = cell.textContent.trim();
