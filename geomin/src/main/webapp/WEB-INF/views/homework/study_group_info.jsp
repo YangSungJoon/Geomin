@@ -57,6 +57,7 @@
                     							${list.learning_end}<br>">${list.group_name }</option>
 							</c:forEach>
 						</select> <br>
+						</div>
 						<p style="float: right; margin-top: 1rem;">
 						
 						<div class = "group_select_view">
@@ -70,7 +71,6 @@
                     							${list2.learning_end}<br>">${list2.group_name }</option>
 								</c:forEach>
 							</select>
-						</div>
 					</div>
 					<br>
 

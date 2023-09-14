@@ -58,7 +58,7 @@
 	<select id="groupLogin" resultType="int">
 	    select count(*)
 	    from users
-	    left join homework on users.user_id = homework.user_id_learner
+	    left join learner_group on users.user_id = learner_group.user_id_learner
 	    where user_type = 2 and group_id is not null
 	    and user_id = #{user_id}
 	</select>

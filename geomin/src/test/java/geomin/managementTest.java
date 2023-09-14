@@ -45,7 +45,7 @@ public class managementTest {
 	    });
 	}
 	
-	/*
+	
 	
 	@Test
 	public void getListTest() {
@@ -54,13 +54,13 @@ public class managementTest {
 	    // 테스트에 필요한 파라미터 값을 설정
 	    String user_id = "study1";
 
-	    List<HomeWorkVO> list = homeworkMapper.getListTest(user_id);
+	    List<HomeWorkVO> list = homeworkMapper.getList(user_id);
 
 	    list.forEach(sale -> {
 	        log.info(sale.getUser_id());
 	    });
 	}
-	*/
+	
 	
 	@Test
 	public void getLeaderTest() {
