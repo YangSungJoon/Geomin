@@ -20,7 +20,9 @@
 	
 	<select id = "selectGroup" resultType="com.geomin.vo.GroupJoinVO">
 		select groups.group_id, (SELECT user_name FROM users WHERE user_id = groups.user_id_leader) AS user_id_leader
-	    , groups.content_id, groups.group_name, groups.group_personnel, groups.learning_start, groups.learning_end 
+	    , groups.content_id, groups.group_name, groups.group_personnel
+	    , TO_CHAR(groups.learning_start, 'yyyy-MM-dd') AS learning_start
+	    , TO_CHAR(groups.learning_end, 'yyyy-MM-dd') AS learning_end 
 	    from groups, users 
 	    where users.user_id = groups.user_id_leader
 	    and group_id = #{group_id}

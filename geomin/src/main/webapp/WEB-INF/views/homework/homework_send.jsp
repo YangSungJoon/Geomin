@@ -75,7 +75,7 @@
                     <div class = "bottom-button_box">
                     	<input type="hidden" name="user_id" value="${userId}">
                     	<input type="text" name="homework_content_learner" id="content_send_box" placeholder = '학습 내용을 입력해주세요.'>
-                    	<input type="hidden" name="user_id_learner" value="${worklist.user_id_learner }">
+                    	<input type="hidden" name="homework_no" value="${worklist.homework_no}">
                     	<button type ="submit" onclick = "send()" class = "buttonS buttonPush buttonColor">제출</button>
                     	</div>
                     </form>

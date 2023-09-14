@@ -10,7 +10,7 @@
 	    , (SELECT user_name FROM users WHERE user_id = h.user_id_leader) AS user_id_leader
 	    , to_char(h.homework_deadline, 'yyyy-MM-dd') as homework_deadline
 	    , h.homework_content_leader, h.homework_content_learner
-	    , h.user_id_learner
+	    , h.user_id_learner, h.homework_no
 	    from homework h ,users u, content c  
 	    where u.user_id = h.user_id_learner 
 	    and u.user_id = #{user_id}
@@ -53,7 +53,7 @@
 	    update homework
 	    set homework_content_learner = #{homework_content_learner}
 	    , homework_subdate = sysdate
-	    where user_id_learner = #{user_id_learner}  
+	    where homework_no= #{homework_no}
 	</update>
 
 	<select id="groupLogin" resultType="int">
