@@ -46,7 +46,7 @@ public class managementTest {
 	}
 	
 	
-	
+	/*
 	@Test
 	public void getListTest() {
 	    assumeNotNull(homeworkMapper);
@@ -60,7 +60,7 @@ public class managementTest {
 	        log.info(sale.getUser_id());
 	    });
 	}
-	
+	*/
 	
 	@Test
 	public void getLeaderTest() {

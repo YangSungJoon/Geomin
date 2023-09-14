@@ -86,7 +86,7 @@ public class StudyController {
 
 	    // 모델에 데이터를 추가하여 JSP로 전달
 	    model.addAttribute("homeworkVO", homeworkVO);
-
+	    System.out.println("update컨텐츠 : " + homeworkVO.getHomework_content_learner());
 	    return "redirect:/homework/homework_send?user_id=" + homeworkVO.getUser_id();
 	}
 

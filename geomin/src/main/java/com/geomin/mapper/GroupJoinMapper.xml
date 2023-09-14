@@ -19,28 +19,48 @@
 	</select>
 	
 	<select id = "selectGroup" resultType="com.geomin.vo.GroupJoinVO">
-		select * from groups where group_id = #{group_id}
+		select groups.group_id, (SELECT user_name FROM users WHERE user_id = groups.user_id_leader) AS user_id_leader
+	    , groups.content_id, groups.group_name, groups.group_personnel, groups.learning_start, groups.learning_end 
+	    from groups, users 
+	    where users.user_id = groups.user_id_leader
+	    and group_id = #{group_id}
 	</select>
 	
 	<!-- 가입된 그룹 정보 조회 -->
 	<select id = "JoinGroupInfo" resultType = "com.geomin.vo.GroupJoinVO">
-		select user_id, learner_group.group_id, groups.group_name, to_char(groups.learning_start, 'yyyy-MM-dd') as learning_start
-		, to_char(groups.learning_end, 'yyyy-MM-dd') as learning_end, learner_group.user_id_leader, groupyn
-		from groups, learner_group, users 
-		where users.user_id = learner_group.user_id_learner
-		and users.user_id = #{user_id}
-		and groups.group_id = learner_group.group_id
-		and learner_group.groupyn = 'Y'
+		SELECT
+	    user_id,
+	    learner_group.group_id,
+	    groups.group_name,
+	    TO_CHAR(groups.learning_start, 'yyyy-MM-dd') AS learning_start,
+	    TO_CHAR(groups.learning_end, 'yyyy-MM-dd') AS learning_end,
+	    (SELECT user_name FROM users WHERE user_id = learner_group.user_id_leader) AS user_id_leader,
+	    groupyn
+		FROM
+	    groups, learner_group, users
+		WHERE
+	    users.user_id = learner_group.user_id_learner
+	    AND users.user_id = #{user_id}
+	    AND groups.group_id = learner_group.group_id
+	    AND learner_group.groupyn = 'Y'
 	</select>
 	
 	<!-- 승인 대기중 그룹 정보 조회 -->
 	<select id = "JoinGroupInfo2" resultType = "com.geomin.vo.GroupJoinVO">
-		select user_id, learner_group.group_id, groups.group_name, to_char(groups.learning_start, 'yyyy-MM-dd') as learning_start
-		, to_char(groups.learning_end, 'yyyy-MM-dd') as learning_end, learner_group.user_id_leader, groupyn
-		from groups, learner_group, users 
-		where users.user_id = learner_group.user_id_learner
-		and users.user_id = #{user_id}
-		and groups.group_id = learner_group.group_id
-		and learner_group.groupyn = 'N'
+		SELECT
+	    user_id,
+	    learner_group.group_id,
+	    groups.group_name,
+	    TO_CHAR(groups.learning_start, 'yyyy-MM-dd') AS learning_start,
+	    TO_CHAR(groups.learning_end, 'yyyy-MM-dd') AS learning_end,
+	    (SELECT user_name FROM users WHERE user_id = learner_group.user_id_leader) AS user_id_leader,
+	    groupyn
+		FROM
+	    groups, learner_group, users
+		WHERE
+	    users.user_id = learner_group.user_id_learner
+	    AND users.user_id = #{user_id}
+	    AND groups.group_id = learner_group.group_id
+	    AND learner_group.groupyn = 'N'
 	</select>
 </mapper>
