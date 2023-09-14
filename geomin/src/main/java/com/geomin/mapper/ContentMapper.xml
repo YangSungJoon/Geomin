@@ -207,7 +207,8 @@
         from(
             select rownum rn, a.*
             from(
-                    select u.user_name, h.HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation, h.HOMEWORK_SUBDATE, group_name
+                    select u.user_name, 
+                    to_char(h.HOMEWORK_DEADLINE, 'yyyy-MM-dd') as HOMEWORK_DEADLINE, sysdate,  HOMEWORK_CONTENT_LEARNER, h.group_id, h.homework_no, h.evaluation, h.HOMEWORK_SUBDATE, group_name
                 from homework h, users u, groups g
                 where u.user_id = h.user_id_learner
                 and h.group_id = g.group_id) a

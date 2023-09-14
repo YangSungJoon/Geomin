@@ -67,7 +67,7 @@ totalCnt : ${totalCnt } <br> --%>
         </div>
         
         <div class = "name-content">
-	          <p>학습그룹 가입승인&nbsp;
+	          <p>나의 그룹&nbsp;
 	          </p><hr>
 	      </div>
         
