@@ -8,7 +8,7 @@
 <title>나의 학습콘텐츠</title>
 <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
-    <link rel="stylesheet" href="../resources/css/content_request.css">
+    <link rel="stylesheet" href="../resources/css/subcontentList.css">
     <div style="display: none;">aaaa : ${successMessage }</div>   
      <script>
         window.onload = function() {
@@ -52,8 +52,6 @@
 </head>
  <%@include file = "../common/header.jsp" %> 
 <body>
-
-구독 콘텐츠 목록 <br>
 <c:if test="${not empty successMessage}">
     <script>alert('${successMessage}');</script>
 </c:if>
@@ -123,7 +121,7 @@ subTotalCnt :  ${subTotalCnt }<br> --%>
                 <c:forEach items="${subContentList }" var="li" varStatus="status">
 	                <tr>
 	                    <td class = "check_box"><input type="checkbox" name="content_id" id="checkbox" onclick='checkOnlyOne(this)' value="${li.content_id}"></td>
-	                    <td class = "packageName" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
+	                    <td class = "packageName buttonB btnPush btnColor" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 	                    <td class = "people">${li.learning_member } 명</td>
 	                    <td class = "subPrice">${li.real_price }원</td>
 	                    <td class="level">${li.learning_difficulty}</td>

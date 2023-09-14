@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>콘텐츠 리스트</title>
-    <link rel="stylesheet" href="../resources/css/content_request.css">
+    <link rel="stylesheet" href="../resources/css/contentList.css">
     
 
        

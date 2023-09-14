@@ -153,6 +153,7 @@ tr:hover td {
 	max-width: 150px;
     width: 150px;
     height: 100px;
+    max-height: 100px;
 }
 
 .table_menu{
@@ -238,28 +239,38 @@ tr:hover td {
 .top_content{
 	width: 100px;
 	height: 70px;
+	max-width: 100px;
+	max-height: 70px;
 }
 
 .top_leader{
 	width: 100px;
 	height: 70px;
+	max-width: 100px;
+	max-height: 70px;
 	
 }
 
 .top_content_info{
 	width: 220px;
 	height: 70px;
+	max-width: 220px;
+	max-height: 70px;
 	
 }
 
 .top_deadline{
 	width: 120px;
 	height: 70px;
+	max-width: 120px;
+	max-height: 70px;
 }
 
 .top_content_send{
 	width: 350px;
 	height: 70px;
+	max-width: 350px;
+	max-height: 70px;
 }
 
 .bottom-button_box{
@@ -284,14 +295,11 @@ strong:hover{
 }
 
 .main-content-box{
-    .main-content-box {
-    border: 3px solid black;
     max-width: 1050px;
     height: 950px;
     margin-left: 250px;
     width: 1050px;
     max-height: 950px;
-}
 }
 
 .container.d-flex.justify-content-center {

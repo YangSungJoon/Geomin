@@ -107,6 +107,25 @@
 		</form>
 	
 	<div class = "intro-box">
+	<div class = "location">
+            <ul class = "clearFix">
+                <li class = "home">
+                    <a href = "#">
+                        <img src="../resources/image/homeicon.png" alt=""> /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        강사 마당 /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        숙제 전송
+                    </a>
+                </li>
+            </ul>
+        </div>
 	        <div class = "left-sideBar">
 	            <ul>
 	                <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
