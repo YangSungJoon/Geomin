@@ -125,7 +125,7 @@ subTotalCnt :  ${subTotalCnt }<br> --%>
 	                    <td class = "people">${li.learning_member } 명</td>
 	                    <td class = "subPrice">${li.real_price }원</td>
 	                    <td class="level">${li.learning_difficulty}</td>
-	                    <td class="workContent">${li.learning_content }</td>
+	                    <td class="workContent"style="white-space: nowrap; overflow: auto; ellipsis; max-width: 200px;">${li.learning_content }</td>
 	                    <td class="price" >${li.subscription_date }</td>
 	                    <td class = "yn"><input type="checkbox" name="paystatus" id="checkbox2" style="display: none;" value="${li.paystatus}">${li.paystatus }</td>
 	                </tr>

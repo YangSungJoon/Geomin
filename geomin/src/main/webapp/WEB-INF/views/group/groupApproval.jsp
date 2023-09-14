@@ -190,7 +190,7 @@
 					        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" onclick='checkOnlyOne(this)' value="${li.user_id_learner}">
 					        	<input type="checkbox" name="content_id" class="check2" id="checkbox" style="display: none;" value="${li.content_id}" >
 					        </td>
-					        <td class="contentName button btnColor btnPush" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
+					        <td class="contentName button btnColor btnPush" style="white-space: nowrap; overflow: auto; ellipsis;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 					        <td class="people" >${li.group_name }</td>
 					        <td class="subPrice" >${li.learner_name}</td>
 					        <td class="price" >${li.group_appdate}</td>
