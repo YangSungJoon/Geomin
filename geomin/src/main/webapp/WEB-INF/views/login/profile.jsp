@@ -201,45 +201,6 @@ function verifyEmail() {
 }
 
 
-function editEmail() {
-    var email = document.getElementById("emailEditInput").value;
-    var emailNumber = document.getElementById("emailNumberInput").value;
-
-    if (email.trim() === "") {
-        alert("이메일을 입력하세요.");
-        return;
-    }
-    if (emailNumber.trim() === "") {
-        alert("인증번호를 입력하세요.");
-        return;
-    }
-
-    // 이메일과 인증번호를 서버로 전송하여 이메일 변경을 요청하는 Restful API 요청
-    fetch("/management/emailEdit", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            user_id: "사용자 아이디", // 사용자 아이디를 여기에 설정
-            email: email,
-            emailNumber: emailNumber
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data === "success") {
-            alert("이메일이 성공적으로 변경되었습니다.");
-            // 페이지를 새로고침하거나 필요한 동작을 수행하세요.
-        } else {
-            alert("이메일 변경에 실패했습니다.");
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("서버와의 통신 중 오류가 발생했습니다.");
-    });
-}
 
 </script>
 
