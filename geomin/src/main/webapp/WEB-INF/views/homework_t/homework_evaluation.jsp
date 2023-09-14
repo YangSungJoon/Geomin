@@ -118,7 +118,7 @@ totalCnt : ${totalCnt } <br> --%>
 					        <td class = "people">${li.user_name}</td>
 					        <td  class = "people">${li.homework_deadline}</td>
 					        <td  class = "people" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.homework_subdate}</td>
-					        <td class = "people"> ${li.homework_content_learner }</td>
+					        <td class = "people" style="white-space: nowrap; overflow: auto; ellipsis; max-width: 200px;"> ${li.homework_content_learner }</td>
 					        <td class = "point">
 						      <select class="evaluation-select" onchange="updateEvaluationInput(this)">
 				                  <option value="">선택</option>
