@@ -132,12 +132,12 @@
                 </li>
                 <li>
                     <a href = "#">
-                        구독 서비스 /
+                        강사 마당 /
                     </a>
                 </li>
                 <li>
                     <a href = "#">
-                        학습콘텐츠 검색 및 구독신청
+                        학습그룹 가입승인
                     </a>
                 </li>
             </ul>
@@ -203,7 +203,7 @@
 					        
 	            </table>
 	            <div class = "send_button_box">
-	                <button type = "submit" id = "send_button">승인</button>
+	                <button type = "submit" id = "send_button" class = "buttonB btnPush btnColor">승인</button>
 	            </div>
 	        </div>
 <jsp:include page="/WEB-INF/views/common/pageNavi.jsp" />

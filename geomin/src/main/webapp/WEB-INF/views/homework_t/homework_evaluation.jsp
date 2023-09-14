@@ -9,7 +9,7 @@
 <title>숙제 평가</title>
 <link rel="stylesheet" href="../resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/header.css">
-    <link rel="stylesheet" href="../resources/css/content_request.css">
+    <link rel="stylesheet" href="../resources/css/homework_evaluation.css">
 
 <script>
 	
@@ -53,6 +53,25 @@ totalCnt : ${totalCnt } <br> --%>
 	</form>
 
 <div class = "intro-box">
+<div class = "location">
+            <ul class = "clearFix">
+                <li class = "home">
+                    <a href = "#">
+                        <img src="../resources/image/homeicon.png" alt=""> /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        강사 마당 /
+                    </a>
+                </li>
+                <li>
+                    <a href = "#">
+                        숙제 평가
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class = "left-sideBar">
             <ul>
                 <li class = "site-intro"><a href = "/group/groupAdd?user_id=${userId}" id = "intro-hover">학습그룹 등록</a></li>
@@ -63,6 +82,7 @@ totalCnt : ${totalCnt } <br> --%>
             </ul>
         </div>
         
+        
 
 		      
 
@@ -71,21 +91,21 @@ totalCnt : ${totalCnt } <br> --%>
 <input type="hidden" name="user_id" value="${userId}">
 	<input type="hidden" name="pageNo" id="pageNo" value="${pageDto.cri.pageNo }">
 	<input type="hidden" name="total" value="${pageDto.total }">  
-	
-		              <button type = "submit" id = "send_button" >저장</button>
-        
-
-	        <div class = "request-content">
-	            <table>
+		<div class = "name-content">
+			숙제 평가 &nbsp;
+              <button type = "submit" id = "send_button" class = "buttonB btnPush btnColor">저장</button>
+		</div>
+	        <div class = "main-content-box">
+	            <table class = "table-fill">
 	                <tr class = "table_menu">
-	                    <td class = "check_box"></td>
-	                    <td>그룹명</td>
-	                    <td>학습자명</td>
-	                    <td>숙제제출기한</td>
-	                    <td>제출일자</td>
-	                    <td>학습내용</td>
-	                    <td>평가</td>
-	                    <td>점수</td>
+	                    <th class = "check_box"></th>
+	                    <th class = "top_people">그룹명</th>
+	                    <th class = "top_people">학습자명</th>
+	                    <th class = "top_people">숙제제출기한</th>
+	                    <th class = "top_people">제출일자</th>
+	                    <th class = "top_people">학습내용</th>
+	                    <th class = "top_point">평가</th>
+	                    <th class = "top_point">점수</th>
 	                    
 	                    
 	                </tr>
@@ -94,12 +114,12 @@ totalCnt : ${totalCnt } <br> --%>
 					        <td class="check_box">
 					        	<input type="checkbox" name="homework_no" class="check1" id="checkbox" value="${li.homework_no}">
 					        </td>
-					        <td>${li.group_name }</td>
-					        <td>${li.user_name}</td>
-					        <td >${li.homework_deadline}</td>
-					        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.homework_subdate}</td>
-					        <td> ${li.homework_content_learner }</td>
-					        <td>
+					        <td class = "people">${li.group_name }</td>
+					        <td class = "people">${li.user_name}</td>
+					        <td  class = "people">${li.homework_deadline}</td>
+					        <td  class = "people" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.homework_subdate}</td>
+					        <td class = "people"> ${li.homework_content_learner }</td>
+					        <td class = "point">
 						      <select class="evaluation-select" onchange="updateEvaluationInput(this)">
 				                  <option value="">선택</option>
 				                  <option value="우수">우수</option>
@@ -107,7 +127,7 @@ totalCnt : ${totalCnt } <br> --%>
 				                  <option value="미흡">미흡</option>
 				              </select>
 					        </td>
-					        <td>${li.evaluation }</td>
+					        <td class = "point">${li.evaluation }</td>
 					    </tr>
 	                </c:forEach> 
 	            </table>

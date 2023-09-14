@@ -130,6 +130,7 @@ tr:hover td {
 .top_workContent{
 	width: 220px;
 	height: 70px;
+	max-width: 220px;
 }
 
 .sendDate{
