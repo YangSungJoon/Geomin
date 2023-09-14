@@ -27,7 +27,7 @@ public class ContentController {
 	
 	@GetMapping("contentList")
 	public void contentList(SubScriptionVO subScriptionVO,Criteria cri, Model model) {
-		
+
 
 		System.out.println("cri : =================" + cri);
 		int cnt = contentService.contentListCnt(subScriptionVO, cri);

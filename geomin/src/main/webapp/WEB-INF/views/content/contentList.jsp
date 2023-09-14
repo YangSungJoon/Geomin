@@ -6,14 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>학습콘텐츠 구독</title>
+<title>콘텐츠 리스트</title>
     <link rel="stylesheet" href="../resources/css/content_request.css">
     
 
        
      <script>
         window.onload = function() {
-            const difficultyCells = document.querySelectorAll('.subPrice-difficulty');
+        	
+            const difficultyCells = document.querySelectorAll('.level');
 
             difficultyCells.forEach(cell => {
                 const difficultyValue = cell.textContent.trim();
@@ -106,7 +107,7 @@
                 </select>
                 <button type = "submit" class ="buttonB btnPush btnColor" id = "level_check">조회</button>
 
-                 <input type="text" name="learning_difficulty" value="${learning_difficulty }">
+                 <input type="hidden" name="learning_difficulty" value="${learning_difficulty }">
             </p><hr>
         </div>
 </form>
@@ -135,15 +136,8 @@
 				        <td class="people" >${li.learning_member} 명</td>
 				        <td class="price" >${li.price}원</td>
 				        <td class = "sale">${li.sale }</td>
-				        <td class="subPrice" >${li.real_price}원</td>				   
-				        <td class="level">
-						  <c:choose>
-						    <c:when test="${li.learning_difficulty == '1'}">초급</c:when>
-						    <c:when test="${li.learning_difficulty == '2'}">중급</c:when>
-						    <c:when test="${li.learning_difficulty == '3'}">고급</c:when>
-						    <c:otherwise>기타</c:otherwise>
-						  </c:choose>
-						</td>
+				        <td class="subPrice" >${li.real_price}원</td>
+				        <td class="level" >${li.learning_difficulty}</td>
 				        <td class="workContent">${li.learning_content}</td>
 				        <td class = "yn"><input type="checkbox" name="is_deleted" id="checkbox2"  value="${li.is_deleted}"> ${li.is_deleted}</td>
 				    </tr>
