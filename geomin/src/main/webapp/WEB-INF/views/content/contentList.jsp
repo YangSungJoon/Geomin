@@ -139,7 +139,7 @@
 				        <td class="subPrice" >${li.real_price}원</td>
 				        <td class="level" >${li.learning_difficulty}</td>
 				        <td class="workContent">${li.learning_content}</td>
-				        <td class = "yn"><input type="checkbox" name="is_deleted" id="checkbox2"  value="${li.is_deleted}"> ${li.is_deleted}</td>
+				        <td class = "yn"><input type="checkbox" name="is_deleted" style="display: none;" id="checkbox2"  value="${li.is_deleted}"> ${li.is_deleted}</td>
 				    </tr>
                 </c:forEach>
                

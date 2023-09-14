@@ -86,7 +86,7 @@ totalCnt : ${totalCnt } <br> --%>
                 <c:forEach items="${myGroup }" var="li" varStatus="status">
 	                <tr>
 	                    <td class = "check_box"><input type="checkbox" name="group_id" id="checkbox1" onclick='checkOnlyOne(this)' value="${li.group_id}">
-	                    						<input type="checkbox" name="content_id" id="checkbox2"  value="${li.content_id}"></td>
+	                    						<input type="checkbox" name="content_id" id="checkbox2" style="display: none;"  value="${li.content_id}"></td>
 	                    
 	                    <td class="contentName button btnColor btnPush" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 	                    <td class = "people" >${li.group_name }</td>
