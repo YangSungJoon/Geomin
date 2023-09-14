@@ -6,10 +6,11 @@
 	<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>숙제 전송</title>
+	<title>Insert title here</title>
 	<link rel="stylesheet" href="../resources/css/footer.css">
 	    <link rel="stylesheet" href="../resources/css/header.css">
 	    <link rel="stylesheet" href="../resources/css/homework_add.css">
+	    
 	   <script>
 	   
 	   window.onload = function() {
@@ -153,7 +154,7 @@
 		                    <th class = "top_people">그룹명</th>
 		                    <th class = "top_people">학습자명</th>
 		                </tr>
-		                 <c:forEach items="${groupApproval }" var="li" varStatus="status">
+		                 <c:forEach items="${homework_add_list }" var="li" varStatus="status">
 						    <tr>
 						        <td class="check_box">
 						        	<input type="checkbox" name="user_id_learner" class="check1" id="checkbox" onclick='checkOnlyOne(this)' value="${li.user_id_learner}">
