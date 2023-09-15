@@ -211,6 +211,20 @@ public class ContentServiceImpl implements ContentService{
 		
 		return res;
 	}
+
+	@Override
+	public int delGroup_leaner(SubScriptionVO subScriptionVO) {
+		int res = contentMapper.delGroup_leaner(subScriptionVO);
+		
+		return res;
+	}
+
+	@Override
+	public int delGroup_homework(SubScriptionVO subScriptionVO) {
+		int res = contentMapper.delGroup_homework(subScriptionVO);
+		
+		return res;
+	}
 	
 	
 	@Override
