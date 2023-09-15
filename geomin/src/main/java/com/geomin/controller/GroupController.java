@@ -218,6 +218,9 @@ public class GroupController {
 					PageDto pageDto = new PageDto(cri, cnt);
 					
 					contentService.delGroup(subScriptionVO);
+					contentService.delGroup_leaner(subScriptionVO);
+					contentService.delGroup_homework(subScriptionVO);
+					
 					contentService.personReset(subScriptionVO);
 					contentService.myGroup(subScriptionVO, cri, model);
 					

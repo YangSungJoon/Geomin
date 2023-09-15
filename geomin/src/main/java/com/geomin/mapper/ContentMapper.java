@@ -59,6 +59,11 @@ public int add_current(SubScriptionVO subScriptionVO);
 
 public int delGroup(SubScriptionVO subScriptionVO);
 
+public int delGroup_leaner(SubScriptionVO subScriptionVO);
+
+public int delGroup_homework(SubScriptionVO subScriptionVO);
+
+
 public int homework_add(SubScriptionVO subScriptionVO);
 
 public int updateEvaluation(SubScriptionVO subScriptionVO);
