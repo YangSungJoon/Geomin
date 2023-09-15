@@ -63,6 +63,7 @@
 						<div class = "group_select_view">
 							<strong style='font-size: 26px'><span class = "group_name_color">승인 대기중인 그룹</span></strong>
 							<select id = "select" name = "group_id" style='margin-left: 1rem' onchange="onChange(this)">
+							<option value = "선택">선택</option>
 								<c:forEach items="${list2}" var="list2">
 									<option value = "${list2.group_id }"
 										data-all-data="
