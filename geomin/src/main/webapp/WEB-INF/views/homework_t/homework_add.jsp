@@ -141,7 +141,7 @@
 	 
 		        <div class = "name-content">
 	
-			  	          	콘텐츠명 &nbsp;
+			  	          	숙제 전송 &nbsp;
 				              <select id="content_id">
 				                  <option value="">전체 ↓</option>
 				               <c:forEach items="${homework_option}" var="li">

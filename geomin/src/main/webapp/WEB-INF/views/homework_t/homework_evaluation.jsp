@@ -11,6 +11,41 @@
     <link rel="stylesheet" href="../resources/css/header.css">
     <link rel="stylesheet" href="../resources/css/homework_evaluation.css">
 
+<style>
+/* 모달 전체 화면을 덮는 배경 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  overflow: auto;
+}
+
+/* 모달 창 */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+  position: relative;
+}
+
+/* 모달 창 닫기 버튼 */
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+</style>
+
 <script>
 	
 function updateEvaluationInput(selectElement) {
@@ -118,7 +153,9 @@ totalCnt : ${totalCnt } <br> --%>
 					        <td class = "people">${li.user_name}</td>
 					        <td  class = "people">${li.homework_deadline}</td>
 					        <td  class = "people" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.homework_subdate}</td>
-					        <td class = "people" style="white-space: nowrap; overflow: auto; ellipsis; max-width: 200px;"> ${li.homework_content_learner }</td>
+					        <td class="people" style="white-space: nowrap; overflow: auto; max-width: 200px;">
+							  <span class="show-modal" style="cursor: pointer;" onclick="openModal('${li.homework_content_learner}')"> ${li.homework_content_learner}</span>
+							</td>
 					        <td class = "point">
 						      <select class="evaluation-select" onchange="updateEvaluationInput(this)">
 				                  <option value="">선택</option>
@@ -138,9 +175,53 @@ totalCnt : ${totalCnt } <br> --%>
 </form>
 
 
+
+
     </div>
 
+<!-- 모달 창을 나타내는 div -->
+<div id="myModal" class="modal">
+  <!-- 모달 창 내용 -->
+  <div class="modal-content">
+    <!-- 모달 창 닫기 버튼 -->
+    <span class="close">&times;</span>
+    <!-- 모달 창에 표시할 내용 -->
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+
 <script>
+
+//모달 창 열기
+function openModal(content) {
+  var modal = document.getElementById('myModal');
+  var modalContent = document.getElementById('modal-content');
+  modal.style.display = 'block';
+  modalContent.innerHTML = content;
+}
+
+// 모달 창 닫기
+function closeModal() {
+  var modal = document.getElementById('myModal');
+  modal.style.display = 'none';
+}
+
+// 모달 창 닫기 버튼 클릭 시 닫기
+var closeBtn = document.getElementsByClassName('close')[0];
+closeBtn.addEventListener('click', closeModal);
+
+// 모달 창 바깥 클릭 시 닫기
+window.addEventListener('click', function(event) {
+  var modal = document.getElementById('myModal');
+  if (event.target == modal) {
+    closeModal();
+  }
+});
+</script>
+
+
+
 // 저장 버튼 클릭 시 유효성 검사
 function validateForm() {
     // homework_no 선택 여부 확인
