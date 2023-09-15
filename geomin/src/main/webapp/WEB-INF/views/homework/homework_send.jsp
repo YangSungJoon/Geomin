@@ -63,7 +63,7 @@
                     <td class = "contentName button btnColor btnPush"><a href ="/management/contentListView?content_id=${worklist.content_id}">
                     <strong><c:out value="${worklist.content_name }"/></strong></a></td>
                     <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
-                    <td class = "workContent" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px;" onclick="openModal('${worklist.homework_content_leader}')"><c:out value="${worklist.homework_content_leader }"/></td>
+                    <td class = "workContent" style="white-space: nowrap; cursor: pointer; overflow: hidden; text-overflow: ellipsis; max-width: 220px;" onclick="openModal('${worklist.homework_content_leader}')"><c:out value="${worklist.homework_content_leader }"/></td>
                     <td class = "sendDate" style = "color: red; font-weight: bold;" ><c:out value="${worklist.homework_deadline }"/></td>
                     <td class = "studyContent"style="white-space: nowrap; overflow: auto; max-width: 200px;">
                     <c:choose>
