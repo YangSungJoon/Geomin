@@ -27,13 +27,16 @@
 
 /* 모달 창 */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 800px;
-  position: relative;
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    border: 3px solid #888;
+    width: 700px;
+    max-width: 700px;
+    position: relative;
+    height: 200px;
+    border-radius: 2rem;
+    max-height: 200px;
 }
 
 /* 모달 창 닫기 버튼 */
@@ -43,6 +46,12 @@
   right: 0;
   padding: 10px;
   cursor: pointer;
+}
+
+.modal_h3{
+   	text-align: center;
+    border-bottom: 3px solid#ebecf0;
+    line-height: 3rem;
 }
 </style>
 
@@ -184,6 +193,7 @@ totalCnt : ${totalCnt } <br> --%>
   <!-- 모달 창 내용 -->
   <div class="modal-content">
     <!-- 모달 창 닫기 버튼 -->
+    <h3 class = "modal_h3">학습 내용</h3>
     <span class="close">&times;</span>
     <!-- 모달 창에 표시할 내용 -->
     <div id="modal-content"></div>
