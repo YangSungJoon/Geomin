@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService{
 		userVo.setUser_pw(encoder.encode(userVo.getUser_pw()));
 
 		int res = userMapper.updatePw(userVo);				
-		
+		System.out.println("비밀번호 업데이트 : " + userVo.getUser_pw());
 		return res;
 	}
 

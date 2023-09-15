@@ -24,7 +24,7 @@ public class MailService {
 	public static void main(String[] args) {
 		// 메일 서비스 생성
 		MailService mailService = new MailService();
-		 mailService.findPwSendMail("wed478","wed478@naver.com", "healpio", "임시비밀번호");
+		 mailService.findPwSendMail("wed478","wed478@naver.com", "geomin", "임시비밀번호");
 	}
 
 	public void findPwSendMail(String userId, String userEmail, String userName, String temporaryPassword) {
@@ -49,7 +49,7 @@ public class MailService {
 			// 보내는 날짜 지정
 			msg.setSentDate(new Date());
 			// 발송자 설정 (발송자의 메일, 발송자명)
-			msg.setFrom(new InternetAddress("shinwed478@gmail.com", "healpio"));
+			msg.setFrom(new InternetAddress("shinwed478@gmail.com", "geomin"));
              // 수신자 설정 
 			// Message.RecipientType.TO : 받는 사람 
 			InternetAddress to = new InternetAddress(userEmail);

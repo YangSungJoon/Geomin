@@ -237,16 +237,19 @@ public class UserController {
 	 @ResponseBody
 	 public Map<String, Object> passwordEditAction(@RequestBody UserVO userVo) {
 	     try {
-	         // 새 비밀번호 암호화
-	         userVo.setUser_pw(encoder.encode(userVo.getUser_pw()));
+	    	 System.out.println("비밀번호 업데이트 : " + userVo.getUser_pw());
+	         // 새 비밀번호 암호화 (UserServiceImpl에서 다시 암호화 하는 로직이 있으므로 주석처리)
+	       //  userVo.setUser_pw(encoder.encode(userVo.getUser_pw()));
 
 	         // 비밀번호 업데이트 서비스 호출
-	         int updateResult = userService.passwordEdit(userVo);
-	         
-	         System.out.println("userVo : " + userVo);
-	         
+	         int updateResult = userService.updatePw(userVo);
+
 	         Map<String, Object> response = new HashMap<>();
-	         response.put("check", updateResult > 0);
+	         if (updateResult > 0) {
+	             response.put("check", true);
+	         } else {
+	             response.put("check", false);
+	         }
 	         return response;
 	     } catch (Exception e) {
 	         e.printStackTrace();
@@ -255,4 +258,5 @@ public class UserController {
 	         return response;
 	     }
 	 }
+
 }

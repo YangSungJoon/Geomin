@@ -43,7 +43,7 @@
                 <div>
                 <h5>아이디</h5>
                 	
-               	<div>	<span id="userId">&nbsp; ${userVo.user_id}</span>      </div>                   
+               	<div>	<span id="userId">${userVo.user_id}</span>      </div>                   
                	</div> 	
             </div><br>
 				
