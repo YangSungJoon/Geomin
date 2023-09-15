@@ -180,7 +180,7 @@
 						        	<input type="checkbox" name="group_id" class="check2" id="checkbox" style="display: none;" value="${li.group_id }" >
 						        	<input type="checkbox" name="content_id" class="check3" id="checkbox"  style="display: none;" value="${li.content_id}" >
 						        </td>
-						        <td  class = "contentName button btnColor btnPush">${li.content_name}</td>
+						        <td  class = "contentName button btnColor btnPush"><a href ="/management/contentListView?content_id=${li.content_id}">${li.content_name}</a></td>
 						        <td class = "people">${li.group_name }</td>
 						        <td  class = "people">${li.learner_name}</td>
 						        <%-- <td> ${li.groupyn }</td> --%>
