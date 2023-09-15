@@ -65,10 +65,10 @@
                     <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
                     <td class = "workContent" style="white-space: nowrap; overflow: auto; ellipsis; max-width: 220px;"><c:out value="${worklist.homework_content_leader }"/></td>
                     <td class = "sendDate" style = "color: red; font-weight: bold;" ><c:out value="${worklist.homework_deadline }"/></td>
-                    <td class = "studyContent">
+                    <td class = "studyContent"style="white-space: nowrap; overflow: auto; max-width: 200px;">
                     <c:choose>
                     <c:when test="${not empty worklist.homework_content_learner }">
-                   		<c:out value="${worklist.homework_content_learner }"/>
+                   		<c:out value="${worklist.homework_content_learner }" />
                     </c:when>
                     <c:otherwise>
                     <form action="/homework/homework_sendAction" method="post">
@@ -88,7 +88,6 @@
             </table>
             
         </div>
-
 <script>
 	function send(){
     	alert('학습 내용 등록이 완료되었습니다.');

@@ -153,7 +153,7 @@ totalCnt : ${totalCnt } <br> --%>
 					        <td class = "people">${li.user_name}</td>
 					        <td  class = "people">${li.homework_deadline}</td>
 					        <td  class = "people" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${li.homework_subdate}</td>
-					        <td class="people" style="white-space: nowrap; overflow: auto; max-width: 200px;">
+					        <td class="people" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">
 							  <span class="show-modal" style="cursor: pointer;" onclick="openModal('${li.homework_content_learner}')"> ${li.homework_content_learner}</span>
 							</td>
 					        <td class = "point">
