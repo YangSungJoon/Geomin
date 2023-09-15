@@ -124,6 +124,7 @@ tr:hover td {
 .workContent{
 	width: 220px;
 	height: 100px;
+   	font-weight: bold;
 }
 
 .sendDate{
@@ -255,6 +256,7 @@ strong:hover{
     color: #8d8c8cb8;
 }
 
+/* 모달 전체 화면을 덮는 배경 */
 .modal {
   display: none;
   position: fixed;
@@ -269,13 +271,18 @@ strong:hover{
 
 /* 모달 창 */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 800px;
-  position: relative;
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    border: 3px solid #888;
+    width: 700px;
+    max-width: 700px;
+    position: relative;
+    height: 200px;
+    border-radius: 2rem;
+    max-height: 200px;
+    text-align: center;
+    line-height: 3rem;
 }
 
 /* 모달 창 닫기 버튼 */
@@ -287,6 +294,8 @@ strong:hover{
   cursor: pointer;
 }
 
-.hidden-text{
-	display: none;
+.modal_h3{
+   	text-align: center;
+    border-bottom: 3px solid#ebecf0;
+    line-height: 3rem;
 }
