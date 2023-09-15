@@ -37,6 +37,8 @@
     height: 200px;
     border-radius: 2rem;
     max-height: 200px;
+    text-align: center;
+    line-height: 3rem;
 }
 
 /* 모달 창 닫기 버튼 */

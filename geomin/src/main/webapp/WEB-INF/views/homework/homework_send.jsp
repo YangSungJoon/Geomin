@@ -63,7 +63,7 @@
                     <td class = "contentName button btnColor btnPush"><a href ="/management/contentListView?content_id=${worklist.content_id}">
                     <strong><c:out value="${worklist.content_name }"/></strong></a></td>
                     <td class = "readerName"><c:out value="${worklist.user_id_leader }"/></td>
-                    <td class = "workContent" style="white-space: nowrap; overflow: auto; ellipsis; max-width: 220px;"><c:out value="${worklist.homework_content_leader }"/></td>
+                    <td class = "workContent" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px;" onclick="openModal('${worklist.homework_content_leader}')"><c:out value="${worklist.homework_content_leader }"/></td>
                     <td class = "sendDate" style = "color: red; font-weight: bold;" ><c:out value="${worklist.homework_deadline }"/></td>
                     <td class = "studyContent"style="white-space: nowrap; overflow: auto; max-width: 200px;">
                     <c:choose>
@@ -88,10 +88,49 @@
             </table>
             
         </div>
+        
+<!-- 모달 창을 나타내는 div -->
+<div id="myModal" class="modal">
+  <!-- 모달 창 내용 -->
+  <div class="modal-content">
+    <!-- 모달 창 닫기 버튼 -->
+    <h3 class = "modal_h3">숙제 내용</h3>
+    <span class="close">&times;</span>
+    <!-- 모달 창에 표시할 내용 -->
+    <div id="modal-content"></div>
+  </div>
+</div>
+
 <script>
 	function send(){
     	alert('학습 내용 등록이 완료되었습니다.');
 	}
+	
+	//모달 창 열기
+	function openModal(content) {
+	  var modal = document.getElementById('myModal');
+	  var modalContent = document.getElementById('modal-content');
+	  modal.style.display = 'block';
+	  modalContent.innerHTML = content;
+	}
+
+	// 모달 창 닫기
+	function closeModal() {
+	  var modal = document.getElementById('myModal');
+	  modal.style.display = 'none';
+	}
+
+	// 모달 창 닫기 버튼 클릭 시 닫기
+	var closeBtn = document.getElementsByClassName('close')[0];
+	closeBtn.addEventListener('click', closeModal);
+
+	// 모달 창 바깥 클릭 시 닫기
+	window.addEventListener('click', function(event) {
+	  var modal = document.getElementById('myModal');
+	  if (event.target == modal) {
+	    closeModal();
+	  }
+	});
 </script>
 
 </body>
