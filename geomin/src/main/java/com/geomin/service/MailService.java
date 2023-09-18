@@ -36,8 +36,8 @@ public class MailService {
 		prop.put("mail.smtp.auth", "true");// SMTP 서버의 인증 사용
 		prop.put("mail.smtp.port", "587");// TLS 포트번호= 587, SSL 포트번호= 465
 		
-		String mail_id = "testYSJ0809";
-		String mail_pw = "kmdeesfkqtsndikz";
+		String mail_id = "id";
+		String mail_pw = "password";
 		
 		// 구글 계정 인증용 ID/PW 세팅
 		Authenticator auth = new MailAuth(mail_id, mail_pw);
