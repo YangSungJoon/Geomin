@@ -16,7 +16,6 @@ import com.geomin.service.ManagementService;
 import com.geomin.vo.AnnouncementVO;
 import com.geomin.vo.Criteria;
 import com.geomin.vo.PageDto;
-import com.geomin.vo.SubScriptionVO;
 
 @RequestMapping("/management/*")
 @Controller

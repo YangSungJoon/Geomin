@@ -227,9 +227,7 @@ public class homework_tController {
 			
 			return "homework_t/homework_evaluation";
 		}
-		
-		
-		
+	
 		
 	}
 	

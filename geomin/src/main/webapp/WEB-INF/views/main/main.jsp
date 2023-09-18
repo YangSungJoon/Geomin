@@ -61,7 +61,7 @@
 	            <div class = "recommand-image3">
 	                <img src="../resources/image/baduk3.jpg" alt="이미지">
 	                <div class = "pac_content">
-		                <a href = "/management/contentListView?content_id=0003"><p class = "pacName">고급 바둑 마스터 클래스 <span id = "pac_select">👈</span></p></a>
+		                <a href = "/management/contentListView?content_id=0004"><p class = "pacName">고급 바둑 마스터 클래스 <span id = "pac_select">👈</span></p></a>
 		                <p class= "con_price">63,750 원</p>
 	                </div>
 	            </div>

@@ -30,15 +30,7 @@ public class StudyController {
 	@Autowired
 	private GroupJoinService groupjoinService;
 	
-//	@GetMapping("/homework_send/{user_id_learner}")
-//	public String homework_send(@PathVariable("user_id_learner") String user_id_learner, Model model) {
-//		
-//		// 화면에 전달
-//		model.addAttribute("home", homeworkService.getList(user_id_learner));
-//		
-//		return "/homework_send";
-//	}
-	
+
 	@GetMapping("/homework/homework_send")
 	public String getList(@RequestParam(value = "user_id", required = false) String user_id
 			,@RequestParam(value = "user_id_leader", required = false) String user_id_leader, Model model) {
@@ -106,10 +98,7 @@ public class StudyController {
 	@PostMapping("/homework/study_group_join")
 	public String groupAdd(@RequestParam("user_id") String user_id, GroupJoinVO groupjoinvo, Model model) {
 		log.info("그룹 가입 신청 ==================================");
-		
-//		model.addAttribute("list", homeworkService.getGroupInfo());
-//		System.out.println(groupjoinvo.toString());
-		
+	
 		groupjoinService.userInfo(user_id);
 		homeworkService.getGroupInfo();
 		groupjoinService.groupAdd(groupjoinvo);

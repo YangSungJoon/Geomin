@@ -2,8 +2,6 @@ package com.geomin.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.GroupVO;
 import com.geomin.vo.HomeWorkVO;

@@ -12,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.geomin.mapper.UserMapper;
-import com.geomin.vo.ContentVO;
 import com.geomin.vo.UserVO;
 
 import lombok.extern.log4j.Log4j;

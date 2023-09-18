@@ -17,15 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.geomin.service.HomeWorkService;
+import com.geomin.service.MailService;
 import com.geomin.service.UserService;
-import com.geomin.vo.HomeWorkVO;
 import com.geomin.vo.UserVO;
 
 import lombok.extern.log4j.Log4j;
-
-import com.geomin.service.HomeWorkService;
-import com.geomin.service.HomeWorkServiceImpl;
-import com.geomin.service.MailService;
 
 @Controller
 @Log4j

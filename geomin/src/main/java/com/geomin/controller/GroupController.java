@@ -13,7 +13,6 @@ import com.geomin.service.ContentService;
 import com.geomin.vo.Criteria;
 import com.geomin.vo.PageDto;
 import com.geomin.vo.SubScriptionVO;
-import com.sun.org.apache.xpath.internal.axes.SubContextList;
 
 import lombok.extern.log4j.Log4j;
 
@@ -176,10 +175,6 @@ public class GroupController {
     		
     		return "group/groupApproval";
 		}
-		
-		
-	    
-    
 		
 	}
 	

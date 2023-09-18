@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.geomin.vo.AnnouncementVO;
-import com.geomin.vo.Criteria;
 
 public interface AnnouncementMapper {
 	

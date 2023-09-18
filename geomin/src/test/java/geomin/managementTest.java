@@ -1,6 +1,5 @@
 package geomin;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assume.assumeNotNull;
 
 import java.util.List;
@@ -15,9 +14,6 @@ import com.geomin.mapper.HomeWorkMapper;
 import com.geomin.mapper.ManagementMapper;
 import com.geomin.vo.ContentVO;
 import com.geomin.vo.HomeWorkVO;
-import com.geomin.vo.SaleVO;
-import com.geomin.vo.SubScriptionVO;
-import com.geomin.vo.UserVO;
 
 import lombok.extern.log4j.Log4j;
 
